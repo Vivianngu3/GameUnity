@@ -1,4 +1,5 @@
 import React from 'react';
+import Heading from './component/text/Heading'
 import logo from './res/images/logo.svg';
 import './App.css';
 
@@ -19,6 +20,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <Heading type='section'>Section</Heading>
+      <Heading type='title'>Title</Heading>
+      <Heading type='section' allCaps={true}>Section</Heading>
+      <Heading type='title' allCaps={true}>Sprout</Heading>
     </div>
   );
 }
