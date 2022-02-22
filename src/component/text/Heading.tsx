@@ -8,7 +8,7 @@ interface Props {
   allCaps?: Boolean
 }
 
-function Heading(props: React.PropsWithChildren<Props>) {
+export default function Heading(props: React.PropsWithChildren<Props>) {
 
   let stylesArray = []
   
@@ -28,5 +28,3 @@ function Heading(props: React.PropsWithChildren<Props>) {
     </h1>
   )
 }
-
-export default Heading

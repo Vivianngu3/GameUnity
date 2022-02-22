@@ -1,0 +1,13 @@
+import React from "react"
+import Heading from "../text/Heading"
+import logo from "../../res/images/seedling.svg"
+import styles from "./Logo.module.css"
+
+export default function Logo() {
+  return (
+    <div className={styles.container}>
+      <img src={logo} alt='logo' />
+      <Heading type='title' allCaps={true}>Sprout</Heading>
+    </div>
+  )
+}
