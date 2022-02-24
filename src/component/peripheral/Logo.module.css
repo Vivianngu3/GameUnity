@@ -1,5 +1,11 @@
 .container {
-    display: flex;
-    width: fit-content;
-    margin: 1rem;
+  display: flex;
+  width: fit-content;
+  padding-top: 28px;
+  color: white;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
 }

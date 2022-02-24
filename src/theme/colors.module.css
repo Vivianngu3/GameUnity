@@ -1,0 +1,11 @@
+.bg-light-brown {
+  background-color: var(--light-brown);
+}
+
+.bg-medium-brown {
+  background-color: var(--medium-brown);
+}
+
+.bg-dark-brown {
+  background-color: var(--dark-brown);
+}

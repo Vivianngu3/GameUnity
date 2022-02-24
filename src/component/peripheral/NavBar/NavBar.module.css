@@ -1,0 +1,8 @@
+.navBar {
+  padding-left: 86px;
+  padding-right: 112px;
+  background-color: var(--dark-brown); 
+  height: 112px;
+  display: flex;
+  flex-direction: row;
+}

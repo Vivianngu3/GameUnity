@@ -6,7 +6,7 @@ import styles from "./Logo.module.css"
 export default function Logo() {
   return (
     <div className={styles.container}>
-      <img src={logo} alt='logo' />
+      <img src={logo} alt='logo' className={styles.icon} />
       <Heading type='title' allCaps={true}>Sprout</Heading>
     </div>
   )

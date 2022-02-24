@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './text.module.css'
+import utils from '../../utils/utils.module.css'
 
 type Type = 'title' | 'section'
 
@@ -12,7 +13,7 @@ export default function Heading(props: React.PropsWithChildren<Props>) {
 
   let stylesArray = []
   
-  if (props.allCaps) stylesArray.push(styles.allCaps)
+  if (props.allCaps) stylesArray.push(utils.allCaps)
 
   switch (props.type) {
     case 'title':
