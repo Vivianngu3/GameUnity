@@ -4,6 +4,10 @@
   font-weight: bold;
 }
 
+.disabled:hover {
+  cursor: default;
+}
+
 .enabled {
   font-weight: normal;
 }

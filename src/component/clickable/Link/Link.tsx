@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import styles from './Link.module.css'
 import utils from '../../../utils/utils.module.css'
 import {NavLink} from 'react-router-dom'

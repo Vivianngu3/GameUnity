@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import styles from "./NavBar.module.css"
 import Logo from "../Logo"
 import Link from '../../clickable/Link/Link'
