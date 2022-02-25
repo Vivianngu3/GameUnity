@@ -1,18 +1,22 @@
 import React from 'react'
-import {Outlet} from 'react-router-dom'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Heading from './component/text/Heading'
-import logo from './res/images/logo.svg'
 import './App.css'
+import Landing from './page/Landing/Landing'
+import WithPeripherals from './page/WithPeripherals/WithPeripherals'
 
 export default function App() {
   return (
-    <div className="App">
-      <img src={logo} className="App-logo" alt="logo" />
-      <Heading type='section'>Section</Heading>
-      <Heading type='title'>Title</Heading>
-      <Heading type='section' allCaps={true}>Section</Heading>
-      <Heading type='title' allCaps={true}>Sprout</Heading>
-      <Outlet/>
+  <div className="App">
+    <BrowserRouter>
+      <Routes>
+        <Route path={'/'} element={<WithPeripherals/>}>
+          <Route index element={<Landing/>} />
+          <Route path={'about'} element={<Heading type={'title'}>About us!</Heading>} />
+        </Route>
+        <Route path={'game'} element={<Heading type={'section'}>Game Page!</Heading>} />
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }

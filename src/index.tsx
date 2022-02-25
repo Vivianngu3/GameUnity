@@ -9,18 +9,9 @@ import reportWebVitals from './reportWebVitals'
 import Heading from './component/text/Heading'
 import Landing from './page/Landing/Landing'
 
-/* <React.StrictMode>*/
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path={'/'} element={<App/>}>
-          <Route index element={<Landing/>} />
-            <Route index element={<Heading type={'section'}>Nested</Heading>} />
-          <Route path={'about'} element={<Heading type={'title'}>About us!</Heading>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 )
