@@ -1,14 +1,16 @@
 :root {
+  --page-background: white;
+
   --color-primary: #937356;
   --color-secondary: #DBAD8D;
   --color-tertiary: #FFF3E8;
+
+  --color-on-primary: white;
+  --color-on-secondary: black;
+  --color-on-tertiary: black;
 
   /*--color-primary: #FFF3E8;*/
   /*--color-tertiary: #937356;*/
   /*--color-on-primary: black;*/
   /*--color-on-tertiary: white;*/
-
-  --color-on-primary: white;
-  --color-on-secondary: black;
-  --color-on-tertiary: black;
 }
