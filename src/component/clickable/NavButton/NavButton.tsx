@@ -1,14 +1,16 @@
 import React from 'react';
-import styles from './Button.module.css'
+import styles from './NavButton.module.css'
 import utils from '../../../utils/utils.module.css'
+import {NavLink} from 'react-router-dom'
 
 type Shade = 'color-secondary' | 'color-tertiary'
 
 interface Props {
   shade: Shade
+  destination: string
 }
 
-export default function Button(props: React.PropsWithChildren<Props>) {
+export default function NavButton(props: React.PropsWithChildren<Props>) {
   let classes: string[] = [];
   switch (props.shade) {
     case 'color-secondary':
@@ -20,9 +22,13 @@ export default function Button(props: React.PropsWithChildren<Props>) {
   }
   
   classes.push(utils.allCaps)
-  classes.push(styles.button)
+  classes.push(styles.nav)
 
   return (
-    <button className={classes.join(' ')}>{props.children}</button>
+    <div className={classes.join(' ')}>
+      <NavLink className={styles.link} to={props.destination}>
+        {props.children}
+      </NavLink>
+    </div>
   )
 }

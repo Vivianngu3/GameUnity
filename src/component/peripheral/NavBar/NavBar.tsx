@@ -2,7 +2,8 @@ import React from "react"
 import styles from "./NavBar.module.css"
 import Logo from "../Logo"
 import Link from '../../clickable/Link/Link'
-import Button from '../../clickable/Button/Button'
+import NavButton from '../../clickable/NavButton/NavButton'
+import {ABOUT_US, RECAP, WITH_PERIPHERALS} from '../../../res/constants/url-endpoints'
 
 interface LinkData {
   text: string
@@ -13,9 +14,9 @@ export default function NavBar() {
   const [disabledLinkIndex, setDisabledLinkIndex] = React.useState(0)
 
   const linksData: LinkData[] = [
-    { text: 'Home', destination: '/' },
-    { text: 'About', destination: '/about' },
-    { text: 'Recap', destination: '/recap' }
+    { text: 'Home', destination: WITH_PERIPHERALS },
+    { text: 'About', destination: ABOUT_US },
+    { text: 'Recap', destination: RECAP }
   ]
   let links = []
   for (let i = 0; i < linksData.length; i++) {
@@ -36,7 +37,10 @@ export default function NavBar() {
       <Logo />
       <div className={styles.nav}>
         {links}
-        <Button shade='color-tertiary'>Play Now!</Button>
+        <NavButton
+          shade='color-tertiary'
+          destination={'game'}
+        >Play Now!</NavButton>
       </div>
     </div>
   )

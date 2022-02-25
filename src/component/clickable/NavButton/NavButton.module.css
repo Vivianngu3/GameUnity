@@ -1,5 +1,8 @@
 .color-secondary {
   background-color: var(--color-secondary);
+}
+
+.color-secondary .link {
   color: var(--color-on-secondary);
 }
 
@@ -8,7 +11,13 @@
   color: var(--color-on-tertiary);
 }
 
-.button {
+.color-tertiary .link {
+  color: var(--color-on-tertiary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
   border-radius: 10px;
   border-width: 0;
   padding-left: 20px;
@@ -18,4 +27,9 @@
   font-family: var(--default-font);
   font-size: 1.8rem;
   font-weight: bold;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
 }
