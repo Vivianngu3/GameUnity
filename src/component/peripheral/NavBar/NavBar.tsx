@@ -4,22 +4,40 @@ import Logo from "../Logo"
 import Link from '../../clickable/Link/Link'
 import Button from '../../clickable/Button/Button'
 
-export default function NavBar() {
-  const [disabledButtonIndex, setdisabledButtonIndex] = React.useState(0)
+interface LinkData {
+  text: string
+  destination: string
+}
 
-  const unfilledButtonsText = ['Home', 'About', 'Recap']
-  let unfilledButtons = []
-  for (let i = 0; i < unfilledButtonsText.length; i++) {
-    unfilledButtons.push(
-      <Link disabled={i === disabledButtonIndex}>
-        {unfilledButtonsText[i]}
+export default function NavBar() {
+  const [disabledLinkIndex, setDisabledLinkIndex] = React.useState(0)
+
+  const linksData: LinkData[] = [
+    { text: 'Home', destination: '/' },
+    { text: 'About', destination: '/about' },
+    { text: 'Recap', destination: '/recap' }
+  ]
+  let links = []
+  for (let i = 0; i < linksData.length; i++) {
+    links.push(
+      <Link
+        key={i}
+        disabled={i === disabledLinkIndex}
+        destination={linksData[i].destination}
+        onClick={() => {setDisabledLinkIndex(i)}}
+      >
+        {linksData[i].text}
       </Link>
     )
   }
+
   return (
     <div className={styles.navBar}>
       <Logo />
-      <Button shade='light' allCaps>Play Now!</Button>
+      <div className={styles.nav}>
+        {links}
+        <Button shade='color-tertiary'>Play Now!</Button>
+      </div>
     </div>
   )
 }

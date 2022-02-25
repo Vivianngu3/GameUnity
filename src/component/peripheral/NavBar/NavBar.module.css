@@ -1,8 +1,18 @@
+.navBar, .nav {
+  display: flex;
+  flex-direction: row;
+}
+
 .navBar {
   padding-left: 86px;
   padding-right: 112px;
-  background-color: var(--dark-brown); 
+  background-color: var(--color-primary);
   height: 112px;
-  display: flex;
-  flex-direction: row;
+}
+
+.nav {
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2.4rem;
 }

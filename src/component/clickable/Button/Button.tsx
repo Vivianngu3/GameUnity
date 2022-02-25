@@ -2,27 +2,25 @@ import React from 'react';
 import styles from './Button.module.css'
 import utils from '../../../utils/utils.module.css'
 
-type Shade = 'light' | 'medium'
+type Shade = 'color-secondary' | 'color-tertiary'
 
 interface Props {
   shade: Shade
-  allCaps?: Boolean
 }
 
 export default function Button(props: React.PropsWithChildren<Props>) {
   let classes: string[] = [];
   switch (props.shade) {
-    case 'light':
-      classes.push(styles.light)
+    case 'color-secondary':
+      classes.push(styles['color-secondary'])
       break
-    case 'medium':
-      classes.push(styles.medium)
+    case 'color-tertiary':
+      classes.push(styles['color-tertiary'])
       break
   }
   
-  if (props.allCaps) {
-    classes.push(utils.allCaps)
-  }
+  classes.push(utils.allCaps)
+  classes.push(styles.button)
 
   return (
     <button className={classes.join(' ')}>{props.children}</button>

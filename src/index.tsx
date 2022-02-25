@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import './index.css'
 import './theme/colors.css'
+import './theme/fonts.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import Heading from './component/text/Heading'
@@ -14,8 +15,9 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<App/>}>
-          <Route index element={<Heading type={'title'}>Root</Heading>}/>
-          <Route path={'Landing'} element={<Landing/>}/>
+          <Route index element={<Landing/>} />
+            <Route index element={<Heading type={'section'}>Nested</Heading>} />
+          <Route path={'about'} element={<Heading type={'title'}>About us!</Heading>} />
         </Route>
       </Routes>
     </BrowserRouter>

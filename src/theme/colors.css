@@ -1,5 +1,14 @@
 :root {
-  --light-brown: #FFF3E8;
-  --medium-brown: #DBAD8D;
-  --dark-brown: #937356;
+  --color-primary: #937356;
+  --color-secondary: #DBAD8D;
+  --color-tertiary: #FFF3E8;
+
+  /*--color-primary: #FFF3E8;*/
+  /*--color-tertiary: #937356;*/
+  /*--color-on-primary: black;*/
+  /*--color-on-tertiary: white;*/
+
+  --color-on-primary: white;
+  --color-on-secondary: white;
+  --color-on-tertiary: black;
 }

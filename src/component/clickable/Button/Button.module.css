@@ -1,7 +1,21 @@
-.light {
-  background-color: var(--light-brown);
+.color-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-on-secondary);
 }
 
-.medium {
-  background-color: var(--medium-brown);
+.color-tertiary {
+  background-color: var(--color-tertiary);
+  color: var(--color-on-tertiary);
+}
+
+.button {
+  border-radius: 10px;
+  border-width: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 72px;
+  margin-left: 1.2rem;
+  font-family: var(--default-font);
+  font-size: 1.8rem;
+  font-weight: bold;
 }
