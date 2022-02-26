@@ -1,16 +1,32 @@
+.on-primary {
+  color: var(--color-on-primary)
+}
+
+.on-secondary {
+  color: var(--color-on-secondary)
+}
+
+.on-tertiary {
+  color: var(--color-on-tertiary)
+}
+
+.on-page-background {
+  color: var(--color-on-page-background)
+}
+
 /* Heading */
 .title {
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: normal;
 }
 
 .section {
-  font-size: 32px;
+  font-size: 3.2rem;
 }
 
 /* Block */
 .block {
-
+  font-size: 2.4rem;
 }
 
 

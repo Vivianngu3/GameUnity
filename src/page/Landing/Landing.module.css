@@ -3,15 +3,47 @@
 }
 
 .with-background-color {
-  /* This border ensures that this container wraps completely around the margins of its contents */
-  border: 1px solid var(--color-tertiary);
+  display: flex;
+  border-bottom: 1px solid var(--color-tertiary);
+  padding: 3rem 0 2rem 0;
+  --side-margins: 5%;
+  --right-shift: 7%;
   background: var(--color-tertiary);
 }
 
-.with-background-color > .aside {
+.with-background-color > .left,
+.with-background-color > .right {
+  display: block;
+}
 
+.with-background-color > .left {
+  margin-left: calc(var(--side-margins)
+                    + var(--right-shift));
+  width: 35%;
+}
+
+.with-background-color > .right {
+  margin-right: calc(var(--side-margins)
+                    - var(--right-shift));
+  margin-left: 3%;
+  width: 45%;
+}
+
+.plants {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .background-curve {
   width: 100%;
+}
+
+section.journey {
+  margin-top: 14rem;
+}
+
+section.message {
+  width: 80%;
+  margin: 5rem auto 20rem auto;
 }

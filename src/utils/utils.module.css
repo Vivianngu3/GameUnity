@@ -2,6 +2,13 @@
   text-transform: uppercase;
 }
 
+.block-horiz-centered {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .left-align {
   text-align: left;
 }

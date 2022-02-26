@@ -7,7 +7,13 @@ export default function Logo() {
   return (
     <div className={styles.container}>
       <img src={logo} alt='logo' className={styles.icon} />
-      <Heading type='title' allCaps={true}>Sprout</Heading>
+      <Heading
+        type='title'
+        color={'on-primary'}
+        allCaps={true}
+      >
+        Sprout
+      </Heading>
     </div>
   )
 }

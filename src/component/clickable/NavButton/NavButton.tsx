@@ -8,6 +8,8 @@ type Shade = 'color-secondary' | 'color-tertiary'
 interface Props {
   shade: Shade
   destination: string
+  centered?: boolean
+  className?: string
 }
 
 export default function NavButton(props: React.PropsWithChildren<Props>) {
@@ -20,7 +22,10 @@ export default function NavButton(props: React.PropsWithChildren<Props>) {
       classes.push(styles['color-tertiary'])
       break
   }
-  
+
+  // if (props.centered) classes.push(utils['block-horiz-centered'])
+  if (props.centered) classes.push(utils['block-horiz-centered'])
+
   classes.push(utils.allCaps)
   classes.push(styles.nav)
 

@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <div className={styles.footer}>
       <Logo />
-      <Heading type={'title'}>
+      <Heading type={'title'} color={'on-primary'}>
         GameUnity
       </Heading>
       <div>

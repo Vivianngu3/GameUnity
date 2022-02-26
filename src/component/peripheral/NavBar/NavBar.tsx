@@ -38,6 +38,7 @@ export default function NavBar() {
       <div className={styles.nav}>
         {links}
         <NavButton
+          className={styles['nav-button']}
           shade='color-tertiary'
           destination={'game'}
         >Play Now!</NavButton>

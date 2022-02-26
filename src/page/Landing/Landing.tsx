@@ -1,5 +1,6 @@
-import React, {PropsWithChildren} from 'react'
+import React from 'react'
 import styles from './Landing.module.css'
+import utils from '../../utils/utils.module.css'
 
 import plants from '../../res/images/four-plants.png'
 import backgroundCurve from '../../res/images/landing-background-curve.svg'
@@ -19,17 +20,27 @@ export default function Landing() {
   return (
     <div className={styles.page}>
       <section className={styles['with-background-color']}>
-        <section className={styles.aside}>
+        <section className={styles.left}>
           <Heading type={'section'}>Grow With Us!</Heading>
           <Block align={'left'}>
             Come help the Sprout team in learning about agricultural problems simply by starting in your backyard!
           </Block>
-          <NavButton shade={'color-secondary'} destination={GAME}>Play Now!</NavButton>
+          <br/>
+          <NavButton
+            shade={'color-secondary'}
+            destination={GAME}
+            centered={true}
+          >
+            Play Now!
+          </NavButton>
         </section>
-        <img
-          src={plants}
-          alt={"Happy illustrated plants"}
-        />
+        <section className={styles.right}>
+          <img
+            className={styles.plants}
+            src={plants}
+            alt={"Happy illustrated plants"}
+          />
+        </section>
       </section>
       <img
         src={backgroundCurve}
@@ -37,24 +48,38 @@ export default function Landing() {
         aria-hidden={true}
         className={styles['background-curve']}
       />
-      <Heading type={'section'} allCaps={true}>
-        Start your Journey
-      </Heading>
-      <section>
-        <ImageWithText src={farmers} alt={'Farmers'}>
-          Become a gardner.
-        </ImageWithText>
-        <ImageWithText src={tomato} alt={'Tomato growing'}>
-          Pick what seed to grow.
-        </ImageWithText>
-        <ImageWithText src={carrots} alt={'Carrots in a planter'}>
-          Learn gardening facts.
-        </ImageWithText>
-        <ImageWithText src={ribbon} alt={'Award ribbon'}>
-          Gain new vocabulary.
-        </ImageWithText>
+      <section className={styles.journey}>
+        <Heading type={'section'} allCaps={true}>
+          Start your Journey
+        </Heading>
+        <table className={utils['block-horiz-centered']}>
+          <tr>
+            <td>
+              <ImageWithText src={farmers} alt={'Farmers'}>
+                Become a gardner.
+              </ImageWithText>
+            </td>
+            <td>
+              <ImageWithText src={tomato} alt={'Tomato growing'}>
+                Pick what seed to grow.
+              </ImageWithText>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <ImageWithText src={carrots} alt={'Carrots in a planter'}>
+                Learn gardening facts.
+              </ImageWithText>
+            </td>
+            <td>
+              <ImageWithText src={ribbon} alt={'Award ribbon'}>
+                Gain new vocabulary.
+              </ImageWithText>
+            </td>
+          </tr>
+        </table>
       </section>
-      <section>
+      <section className={styles.message}>
         <Heading type={'section'}>
           Our Message to You
         </Heading>
@@ -65,7 +90,12 @@ export default function Landing() {
         <Block>
           New to Sprout? Click below to learn more about the team and our mission.
         </Block>
-        <NavButton shade={'color-secondary'} destination={ABOUT_US}>
+        <br/>
+        <NavButton
+          shade={'color-secondary'}
+          destination={ABOUT_US}
+          centered={true}
+        >
           About Us!
         </NavButton>
       </section>
