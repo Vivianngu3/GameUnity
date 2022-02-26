@@ -4,9 +4,9 @@ import utils from '../../../utils/utils.module.css'
 import {NavLink} from 'react-router-dom'
 
 interface Props {
-  disabled: Boolean
   destination: string
-  onClick: () => void
+  disabled?: Boolean
+  onClick?: () => void
 }
 
 export default function Link(props: React.PropsWithChildren<Props>) {

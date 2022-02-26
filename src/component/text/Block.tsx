@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './text.module.css'
+import utils from '../../utils/utils.module.css'
 
 type Align = 'center' | 'left'
 
@@ -8,9 +9,12 @@ interface Props {
 }
 
 export default function Block(props: React.PropsWithChildren<Props>) {
-    if (props.align === 'left') {
-        return <p className={styles.left}>{props.children}</p>
-    } else {
-        return <p className={styles.center}>{props.children}</p>
-    }
+    let classes: string[] = []
+
+    classes.push(props.align === 'left' ? utils['left-align'] : utils['center-align'])
+    classes.push(styles.block)
+
+    return (
+      <p className={classes.join(' ')}>{props.children}</p>
+    )
 }

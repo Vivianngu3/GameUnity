@@ -1,3 +1,11 @@
 .allCaps {
   text-transform: uppercase;
 }
+
+.left-align {
+  text-align: left;
+}
+
+.center-align {
+  text-align: center;
+}
