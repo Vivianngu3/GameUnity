@@ -29,6 +29,7 @@ export default function BackgroundCurve(props: Props) {
     <svg
       width="1440" height="111" viewBox="0 0 1440 111"
       fill="white" xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
       className={classes.join(' ')}
     >
       <path d="
@@ -36,7 +37,7 @@ export default function BackgroundCurve(props: Props) {
         C 587.112 78.3668
           270.188 187.568
           0 24.7873
-        V -20
+        V 0
         H 1440
         V 24.7873
         C 1363.65 7.08485

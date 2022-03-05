@@ -27,7 +27,6 @@ export default function Landing() {
           </Block>
           <br/>
           <NavButton
-            color={'secondary'}
             destination={GAME}
             centered={true}
           >
@@ -42,7 +41,7 @@ export default function Landing() {
           />
         </section>
       </section>
-      <Curve color='tertiary' />
+      <Curve color='page-background' />
       {/* <img
         src={backgroundCurve}
         alt={"Decorative curve"}
@@ -93,7 +92,6 @@ export default function Landing() {
         </Block>
         <br/>
         <NavButton
-          color={'secondary'}
           destination={ABOUT_US}
           centered={true}
         >

@@ -20,3 +20,27 @@
 .nav-button {
   margin-left: 1.2rem;
 }
+
+.color-primary {
+  background-color: var(--color-primary);
+}
+
+.color-primary * {
+  color: var(--color-on-primary);
+}
+
+.color-secondary {
+  background-color: var(--color-secondary);
+}
+
+.color-secondary * {
+  color: var(--color-on-secondary);
+}
+
+.color-page-background {
+  background-color: var(--color-page-background);
+}
+
+.color-page-background * {
+  color: var(--color-on-page-background);
+}
