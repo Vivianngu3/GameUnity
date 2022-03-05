@@ -3,7 +3,6 @@ import styles from './Landing.module.css'
 import utils from '../../utils/utils.module.css'
 
 import plants from '../../res/images/four-plants.png'
-import backgroundCurve from '../../res/images/landing-background-curve.svg'
 
 import farmers from '../../res/images/farmers.png'
 import tomato from '../../res/images/tomato.png'
@@ -15,6 +14,7 @@ import Block from '../../component/text/Block'
 import NavButton from '../../component/clickable/NavButton/NavButton'
 import {ABOUT_US, GAME} from '../../res/constants/url-endpoints'
 import ImageWithText from '../../component/static/ImageWithText/ImageWithText'
+import Curve from '../../component/static/BackgroundCurve/BackgroundCurve'
 
 export default function Landing() {
   return (
@@ -27,7 +27,7 @@ export default function Landing() {
           </Block>
           <br/>
           <NavButton
-            shade={'color-secondary'}
+            color={'secondary'}
             destination={GAME}
             centered={true}
           >
@@ -42,12 +42,13 @@ export default function Landing() {
           />
         </section>
       </section>
-      <img
+      <Curve color='tertiary' />
+      {/* <img
         src={backgroundCurve}
         alt={"Decorative curve"}
         aria-hidden={true}
         className={styles['background-curve']}
-      />
+      /> */}
       <section className={styles.journey}>
         <Heading type={'section'} allCaps={true}>
           Start your Journey
@@ -92,7 +93,7 @@ export default function Landing() {
         </Block>
         <br/>
         <NavButton
-          shade={'color-secondary'}
+          color={'secondary'}
           destination={ABOUT_US}
           centered={true}
         >

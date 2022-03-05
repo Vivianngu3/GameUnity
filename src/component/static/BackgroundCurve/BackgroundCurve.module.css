@@ -1,0 +1,19 @@
+.background-curve {
+  width: 100%;
+}
+
+.color-primary {
+  fill: var(--color-primary);
+}
+
+.color-secondary {
+  fill: var(--color-secondary);
+}
+
+.color-tertiary {
+  fill: var(--color-tertiary);
+}
+
+.color-page-background {
+  fill: var(--color-page-background);
+}

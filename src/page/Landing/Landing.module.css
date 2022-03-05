@@ -17,14 +17,12 @@
 }
 
 .with-background-color > .left {
-  margin-left: calc(var(--side-margins)
-                    + var(--right-shift));
+  margin-left: calc(var(--side-margins) + var(--right-shift));
   width: 35%;
 }
 
 .with-background-color > .right {
-  margin-right: calc(var(--side-margins)
-                    - var(--right-shift));
+  margin-right: calc(var(--side-margins) - var(--right-shift));
   margin-left: 3%;
   width: 45%;
 }
@@ -33,10 +31,6 @@
   display: block;
   width: 100%;
   height: auto;
-}
-
-.background-curve {
-  width: 100%;
 }
 
 section.journey {
