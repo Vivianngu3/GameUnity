@@ -7,12 +7,14 @@ interface Props {
   destination: string
   disabled?: Boolean
   onClick?: () => void
+  className?: string
 }
 
 export default function Link(props: React.PropsWithChildren<Props>) {
   let classes: String[] = []
   classes.push(props.disabled ? styles.disabled : styles.enabled)
   classes.push(utils.allCaps)
+  if (props.className) classes.push(props.className)
   classes.push(styles.link)
   return (
     <NavLink

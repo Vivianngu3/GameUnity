@@ -1,6 +1,6 @@
 .disabled {
   border-top: 1px solid transparent;
-  border-bottom: 1px solid var(--color-on-primary);
+  border-bottom: 1px solid var(--text-on-primary);
   font-weight: 900;
 }
 

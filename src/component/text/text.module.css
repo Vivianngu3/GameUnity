@@ -1,13 +1,13 @@
 .on-primary {
-  color: var(--color-on-primary)
+  color: var(--text-on-primary)
 }
 
 .on-secondary {
-  color: var(--color-on-secondary)
+  color: var(--text-on-secondary)
 }
 
 .on-tertiary {
-  color: var(--color-on-tertiary)
+  color: var(--text-on-tertiary)
 }
 
 .on-page-background {
