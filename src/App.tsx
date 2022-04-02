@@ -6,6 +6,7 @@ import Heading from './component/text/Heading'
 import Landing from './page/Landing/Landing'
 import WithPeripherals from './page/WithPeripherals/WithPeripherals'
 import GameStart from './page/GameStart/GameStart'
+import Nurturing from './page/Nurturing/Nurturing'
 
 export default function App() {
   return (
@@ -28,7 +29,7 @@ export default function App() {
           steps that make up each of these user flows.
           */}
           <Route path={urls.ONBOARDING} element={<Heading type={'section'}>Onboarding</Heading>} />
-          <Route path={urls.NURTURING} element={<Heading type={'section'}>Nurturing</Heading>} />
+          <Route path={urls.NURTURING} element={<Nurturing />} />
         </Route>
       </Routes>
     </BrowserRouter>
