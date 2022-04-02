@@ -1,6 +1,6 @@
 import React from 'react'
 import BigLogo from '../../component/static/BigLogo/BigLogo'
-import {ABOUT_US, GAME_WELCOME} from '../../res/constants/url-endpoints'
+import {ABOUT_US, GAME_WELCOME, WITH_PERIPHERALS} from '../../res/constants/url-endpoints'
 import Link from '../../component/clickable/Link/Link'
 import styles from './GameStart.module.css'
 
@@ -14,7 +14,7 @@ export default function GameStart() {
           className={styles.link}
         >Start</Link>
         <Link
-          destination={ABOUT_US}
+          destination={WITH_PERIPHERALS + "/" + ABOUT_US}
           className={styles.link}
         >Exit</Link>
       </div>
