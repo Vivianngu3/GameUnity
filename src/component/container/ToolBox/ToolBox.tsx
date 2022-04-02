@@ -14,12 +14,13 @@ export default function ToolBox() {
   ]
 
   tools.map(tool => {
-    <div>
+    return (
+      <div>
 
-    </div>
-  })
+      </div>
+    )})
 
   return (
-
+    <></>
   )
 }
