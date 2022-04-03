@@ -7,6 +7,7 @@ import Landing from './page/Landing/Landing'
 import WithPeripherals from './page/WithPeripherals/WithPeripherals'
 import GameStart from './page/GameStart/GameStart'
 import Nurturing from './page/Nurturing/Nurturing'
+import Welcome from './page/Welcome/Welcome'
 
 export default function App() {
   return (
@@ -20,7 +21,7 @@ export default function App() {
         </Route>
         <Route path={urls.GAME} element={<Outlet />} >
           <Route index element={<GameStart />} />
-          <Route path={urls.GAME_WELCOME} element={<Heading type={'section'}>Welcome</Heading>} />
+          <Route path={urls.GAME_WELCOME} element={<Welcome />} />
           {/* Choosing a seed may be out of scope */}
           {/*<Route path={urls.CHOOSE_SEED} element={<Heading type={'section'}>Choose Seed</Heading>} />*/}
           <Route path={urls.CHOOSE_PLOT} element={<Heading type={'section'}>Choose Plot</Heading>} />

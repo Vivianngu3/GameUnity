@@ -1,0 +1,6 @@
+.container {
+  width: min-content;
+  position: fixed;
+  bottom: 220px;
+  right: 56px;
+}

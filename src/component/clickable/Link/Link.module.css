@@ -13,7 +13,7 @@
 }
 
 .link {
-  color: var(--color-on-page-background);
+  color: var(--text-on-page-background);
   text-decoration: none;
   font-size: 2.4rem;
 }

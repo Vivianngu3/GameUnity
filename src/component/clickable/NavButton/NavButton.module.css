@@ -15,5 +15,5 @@
 .link {
   display: block;
   text-decoration: none;
-  color: var(--color-on-page-background);
+  color: var(--text-on-page-background);
 }

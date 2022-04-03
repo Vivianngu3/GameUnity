@@ -11,8 +11,10 @@
 }
 
 .on-page-background {
-  color: var(--color-on-page-background)
+  color: var(--text-on-page-background)
 }
+
+
 
 /* Heading */
 .title {
@@ -29,5 +31,28 @@
   font-size: 2.4rem;
 }
 
+.block.small {
+  font-size: 1.8rem;
+}
 
-/* Tutorial */
+/* Label */
+.labelSize {
+  font-size: 1.8rem;
+}
+
+.color-primary {
+  color: var(--color-primary);
+}
+
+.black {
+  color: black;
+}
+
+.light {
+  font-weight: lighter;
+}
+
+.bold {
+  font-weight: bold;
+}
+
