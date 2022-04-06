@@ -6,6 +6,10 @@
   text-decoration: underline;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .block-horiz-centered {
   display: block;
   width: fit-content;

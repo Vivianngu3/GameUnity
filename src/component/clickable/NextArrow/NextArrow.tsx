@@ -1,8 +1,9 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
-import next from '../../../res/images/next-arrow.svg'
-import Label from '../../text/Label'
 import styles from './NextArrow.module.css'
+import utils from '../../../utils/utils.module.css'
+import next from '../../../res/images/next-arrow.svg'
+import { Navigate } from 'react-router-dom'
+import Label from '../../text/Label'
 
 interface Props {
   callbackArray: (() => void)[]
@@ -37,7 +38,7 @@ export default function NextArrow(props: Props) {
         <Navigate to={props.nextPage} />
       ) : (
         <div
-          className={styles.container}
+          className={utils.clickable + ' ' + styles.container}
           onClick={onClick}
         >
           <img src={next} alt={'Next arrow'} />

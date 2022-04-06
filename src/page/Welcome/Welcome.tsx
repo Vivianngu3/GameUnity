@@ -2,8 +2,9 @@ import React from 'react'
 import Dialog from '../../component/static/Dialog/Dialog'
 import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
-import utils from '../../utils/utils.module.css'
 import Definition from '../../component/modal/Definition/Definition'
+import utils from '../../utils/utils.module.css'
+import styles from './Welcome.module.css'
 
 export default function Welcome() {
   let timeoutID: NodeJS.Timeout
@@ -35,13 +36,19 @@ export default function Welcome() {
       setShowTimmy(false)
       setDialog(
         <Dialog>
-          On this journey you will learn about <span className={utils.underline}>agriculture</span>.
+          On this journey you will learn about <></>
+          <span
+            onClick={() => {
+              console.log('clicked underlined word')
+              setShowDefinition(true)}}
+            className={utils.clickable + ' ' + utils.underline}
+          >agriculture</span>.
         </Dialog>
       )
     },
     () => {
       console.log('second callback')
-      setTimmy(<Timmy>Click on the <span>underlined</span> word to learn more about it!</Timmy>)
+      setTimmy(<Timmy>Click on the <span className={utils.underline}>underlined</span> word to learn more about it!</Timmy>)
       setShowTimmy(true)
       setShowArrow(false)
     },
