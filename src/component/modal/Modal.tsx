@@ -1,23 +1,20 @@
 import React, {useState} from 'react'
 import styles from './Modal.module.css'
 
-type Type = 'definition' | 'tool'
-type Show = 'hidden' | 'shown'
-
 interface Props {
-  type?: Type // default definition
-  show?: Show // default hidden
+  className?: string
 }
 
 export default function Modal(props: React.PropsWithChildren<Props>) {
-  /* if() {
-  return (
-    <div className={styles.modalBackground}>
-      <div className={styles.modal}>
-        <button className={styles.button}>Got it!</button>
-      </div>
-    </div>
+  return(
+    <div className={styles.modalWrapper}> {/*default closed*/}
+     <div className={styles.modalOverlay}>
+       <div className={styles.modal + ' ' + props.className}>
+         <div className={styles.modalBody}>
+           {props.children}
+         </div>
+         </div>
+       </div>
+     </div>
   )
-}*/
-  return (<></>)
 }

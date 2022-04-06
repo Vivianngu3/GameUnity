@@ -1,26 +1,26 @@
 import React from 'react';
 import Modal from '../Modal'
-import styles from './Definition.module.css'
+import styles from './Tool.module.css'
 
 interface Props {
   hide: () => void
-  pronunciation: string
 }
 
-export default function Definition(props: React.PropsWithChildren<Props>) {
+export default function Tool(props: React.PropsWithChildren<Props>) {
   return (
     <Modal>
       <div className={styles.container}>
+        <div className={styles.exit}>
+          {/*X BUTTON*/}
+          <button onClick={props.hide} />
+        </div>
         <div>
           {props.children}
+          {/*SVG*/}
           {/*PROUNCIATION*/}
           {/*WORD*/}
           {/*PART OF SPEECH*/}
           {/*DEFINITION*/}
-        </div>
-        <div className={styles.exit}>
-          <button onClick={props.hide}>Got it!</button>
-          {/*GOT IT BUTTON*/}
         </div>
       </div>
     </Modal>

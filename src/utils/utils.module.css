@@ -2,6 +2,10 @@
   text-transform: uppercase;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .block-horiz-centered {
   display: block;
   width: fit-content;

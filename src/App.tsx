@@ -8,6 +8,9 @@ import WithPeripherals from './page/WithPeripherals/WithPeripherals'
 import GameStart from './page/GameStart/GameStart'
 import Nurturing from './page/Nurturing/Nurturing'
 import Welcome from './page/Welcome/Welcome'
+import Recap from './page/Recap/Recap'
+import About from './page/About/About'
+
 
 export default function App() {
   return (
@@ -16,8 +19,8 @@ export default function App() {
       <Routes>
         <Route path={urls.WITH_PERIPHERALS} element={<WithPeripherals />}>
           <Route index element={<Landing/>} />
-          <Route path={urls.ABOUT_US} element={<Heading type={'section'}>About us!</Heading>} />
-          <Route path={urls.RECAP} element={<Heading type={'section'}>Recap!</Heading>} />
+          <Route path={urls.ABOUT_US} element={<About/>} />
+          <Route path={urls.RECAP} element={<Recap/>} />
         </Route>
         <Route path={urls.GAME} element={<Outlet />} >
           <Route index element={<GameStart />} />

@@ -2,19 +2,23 @@ import React from 'react'
 import Dialog from '../../component/static/Dialog/Dialog'
 import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
+import utils from '../../utils/utils.module.css'
+import Definition from '../../component/modal/Definition/Definition'
 
 export default function Welcome() {
   let timeoutID: NodeJS.Timeout
 
+  const [dialog, setDialog] = React.useState(
+    <Dialog>
+      Welcome to Sprout!
+      <br/>
+      Our friend Timmy will help you on your journey.
+    </Dialog>
+  )
   const [showTimmy, setShowTimmy] = React.useState(false)
   const [timmy, setTimmy] = React.useState(<></>)
   const [showArrow, setShowArrow] = React.useState(false)
-
-  const [isModalVisible, setIsModalVisible] = React.useState(false)
-  const toggleModal = () => {
-    setIsModalVisible(wasModalVisible => !wasModalVisible)
-  }
-
+  const [showDefinition, setShowDefinition] = React.useState(false)
 
   React.useEffect(() => {
     timeoutID = setTimeout(() => {
@@ -29,6 +33,11 @@ export default function Welcome() {
     () => {
       console.log('first callback')
       setShowTimmy(false)
+      setDialog(
+        <Dialog>
+          On this journey you will learn about <span className={utils.underline}>agriculture</span>.
+        </Dialog>
+      )
     },
     () => {
       console.log('second callback')
@@ -41,11 +50,15 @@ export default function Welcome() {
 
   return (
     <div>
-      <Dialog>
-        Welcome to Sprout!
-        <br/>
-        Our friend Timmy will help you on your journey.
-      </Dialog>
+      {showDefinition &&
+        <Definition
+          hide={() => {setShowDefinition(false)}}
+          pronunciation={'ag-ruh-cull-chur'}
+        />
+      }
+      {
+        dialog
+      }
       {showTimmy &&
         timmy
       }
