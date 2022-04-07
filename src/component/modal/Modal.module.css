@@ -1,8 +1,5 @@
 .modalWrapper {
   position: fixed;
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*justify-content: center;*/
   top: 0;
   bottom: 0;
   left: 0;
@@ -12,6 +9,9 @@
 }
 
 .modalOverlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: rgba(0, 0, 0, 0.6);
   height: 100%;
   width: 100%;
