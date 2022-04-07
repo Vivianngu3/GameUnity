@@ -1,0 +1,18 @@
+.page {
+  background-color: white;
+  min-height: 100vh;
+  border-bottom: 1px solid transparent;
+}
+
+.with-background-color {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50rem;
+  border-bottom: 1px solid var(--color-secondary);
+  background-color: var(--color-secondary);
+}
+
+.spaced {
+  margin-top: 500px;
+}

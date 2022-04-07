@@ -1,18 +1,20 @@
 .on-primary {
-  color: var(--color-on-primary)
+  color: var(--text-on-primary)
 }
 
 .on-secondary {
-  color: var(--color-on-secondary)
+  color: var(--text-on-secondary)
 }
 
 .on-tertiary {
-  color: var(--color-on-tertiary)
+  color: var(--text-on-tertiary)
 }
 
 .on-page-background {
-  color: var(--color-on-page-background)
+  color: var(--text-on-page-background)
 }
+
+
 
 /* Heading */
 .title {
@@ -29,5 +31,28 @@
   font-size: 2.4rem;
 }
 
+.block.small {
+  font-size: 1.8rem;
+}
 
-/* Tutorial */
+/* Label */
+.labelSize {
+  font-size: 1.8rem;
+}
+
+.color-primary {
+  color: var(--color-primary);
+}
+
+.black {
+  color: black;
+}
+
+.light {
+  font-weight: lighter;
+}
+
+.bold {
+  font-weight: bold;
+}
+

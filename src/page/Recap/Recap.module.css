@@ -1,0 +1,16 @@
+.page {
+  background-color: white;
+  min-height: 100vh;
+  border-bottom: 1px solid transparent
+}
+
+.boxContent {
+  background-color: var(--color-secondary);
+  padding: 3rem;
+  margin: 5rem;
+  border-radius: 25px;
+}
+
+.cards {
+
+}

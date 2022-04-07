@@ -1,0 +1,42 @@
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modalOverlay {
+  background: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.modalWrapper .modal{
+  background: white;
+  width: 600px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0px);
+  border-radius: 4px;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modalWrapper .modal .modalBody{
+
+}
+
+.isOpen {
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.isOpen .modal {
+  transform: translate(-50%, 90px);
+}
