@@ -39,6 +39,23 @@ section.journey {
   margin-top: 14rem;
 }
 
+table {
+  border-spacing: 2rem;
+}
+
+/* I learned how to make a div fill a table cell from https://stackoverflow.com/questions/3215553/make-a-div-fill-an-entire-table-cell */
+td {
+  padding: 0 96px;
+  height: 1px;
+}
+
+td > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 section.message {
   width: 80%;
   margin: 5rem auto 20rem auto;
