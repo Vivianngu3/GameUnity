@@ -4,18 +4,22 @@ import styles from './Definition.module.css'
 
 interface Props {
   hide: () => void
-  pronunciation: string
-  word: string
-  partOfSpeech: string
-  definition: string
+  pronunciation?: string
+  word?: string
+  partOfSpeech?: string
+  definition?: string
 }
 
-export default function Definition(props: React.PropsWithChildren<Props>) {
+export default function Definition(props: Props) {
   return (
     <Modal>
       <div className={styles.container}>
         <div>
-          {props.children}
+          {props.pronunciation}
+          {props.word}
+          {props.partOfSpeech}
+          {props.definition}
+          {/* {props.children} */}
           {/*PROUNCIATION*/}
           {/*WORD*/}
           {/*PART OF SPEECH*/}
