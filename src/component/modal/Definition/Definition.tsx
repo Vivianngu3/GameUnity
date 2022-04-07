@@ -5,6 +5,9 @@ import styles from './Definition.module.css'
 interface Props {
   hide: () => void
   pronunciation: string
+  word: string
+  partOfSpeech: string
+  definition: string
 }
 
 export default function Definition(props: React.PropsWithChildren<Props>) {

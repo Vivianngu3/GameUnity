@@ -4,6 +4,11 @@ import styles from './Tool.module.css'
 
 interface Props {
   hide: () => void
+  image: HTMLImageElement
+  pronunciation: string
+  word: string
+  partOfSpeech: string
+  definition: string
 }
 
 export default function Tool(props: React.PropsWithChildren<Props>) {
