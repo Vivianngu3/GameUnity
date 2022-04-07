@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Plot.module.css'
 
 type Wetness = "dry" | "medium" | "wet"
-type Progress = "start" | "dug" | "seeds-inserted" | "planted" | "watered" | "growth1" | "growth2" | "growth3" | "with-starburst" | "tomato"
+export type Progress = "start" | "dug" | "seeds-inserted" | "planted" | "watered" | "growth1" | "growth2" | "growth3" | "with-starburst" | "tomato"
 
 interface Props {
   wetness?: Wetness

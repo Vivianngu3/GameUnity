@@ -52,14 +52,27 @@ export default function Welcome() {
       setShowTimmy(true)
       setShowArrow(false)
     },
-
+    () => {
+      console.log('third callback')
+      setDialog(
+        <Dialog>
+            Now it's time to start your journey! Pick the seed packet below.
+        </Dialog>
+      )
+      setShowTimmy(false)
+      setShowArrow(false)
+    },
   ]
 
   return (
     <div>
       {showDefinition &&
         <Definition
-          hide={() => {setShowDefinition(false)}}
+          hide={() => {
+            setShowDefinition(false)
+            setShowArrow(true)
+            }
+          }
           pronunciation={'ag • ruh • cull •chur'}
           word={'Agriculture'}
           partOfSpeech={'Noun'}

@@ -11,26 +11,16 @@ interface Props {
 }
 
 export default function NextArrow(props: Props) {
-  let callbacksCopy = [...props.callbackArray]
-  const [callbackArray, setCallbackArray] = React.useState(callbacksCopy)
-
   const [navigateNext, setNavigateNext] = React.useState(false)
-  if (props.nextPage) callbacksCopy.push(() => {setNavigateNext(true)})
+  if (props.nextPage) props.callbackArray.push(() => {setNavigateNext(true)})
+  // TODO: continue
+  props.callbackArray.reverse()
 
   let onClick = () => {
-    console.log('Callbacks before:')
-    console.log(callbackArray)
-    if (callbackArray.length > 0) {
-      let currentCallback = callbackArray[0]
-      currentCallback()
-      if (callbackArray.length > 1) {
-        setCallbackArray(callbackArray.slice(1))
-      } else if (callbackArray.length === 1) {
-        setCallbackArray([])
-      }
-    }
-    console.log('Callbacks after:')
-    console.log(callbackArray)
+    console.log('Callbacks:')
+    console.log(props.callbackArray)
+    let currentCallback = props.callbackArray.pop()
+    if (currentCallback) {currentCallback()}
   }
   return (
     <>

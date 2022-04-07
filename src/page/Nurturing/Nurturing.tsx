@@ -1,7 +1,7 @@
 import React from 'react'
 import Plot from '../../component/container/Plot/Plot'
 import StateHandler from './StateHandler'
-// import {Progress} from '../../component/container/Plot/Plot'
+import {Progress} from '../../component/container/Plot/Plot'
 
 interface State<E> {
   state: E
@@ -10,7 +10,7 @@ interface State<E> {
 
 export interface NurturingState {
   plotFence: State<boolean>
-  // plotProgress: State<Progress>
+  plotProgress: State<Progress>
 }
 
 export default function Nurturing() {
