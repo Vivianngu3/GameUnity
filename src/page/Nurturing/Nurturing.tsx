@@ -1,20 +1,25 @@
 import React from 'react'
 import Plot from '../../component/container/Plot/Plot'
-import Tool from '../../component/modal/Tool/Tool'
-import Definition from '../../component/modal/Definition/Definition'
-import Timmy from '../../component/static/Timmy/Timmy'
+import StateHandler from './StateHandler'
+// import {Progress} from '../../component/container/Plot/Plot'
+
+interface State<E> {
+  state: E
+  setter: (newState: E) => void
+}
+
+export interface NurturingState {
+  plotFence: State<boolean>
+  // plotProgress: State<Progress>
+}
 
 export default function Nurturing() {
-  // has a mediator
+  // has a StateHandler
+  // const stateHandler = StateHandler()
   return (
     <>
       <Plot />
-      <Timmy>Hey I'm Timmy</Timmy>
-      <Definition hide={() => {}} definition={'definition'} />
-      {/*<Tool*/}
-
-      {/*/>*/}
+      {/*<ToolBox />*/}
     </>
-    // <ToolBox />
   )
 }
