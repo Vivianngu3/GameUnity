@@ -15,26 +15,33 @@ export default function Tool(props: Props) {
   return (
     <Modal>
       <div className={styles.container}>
-        <div className={styles.exit}>
-          <button onClick={props.hide}>X</button>
-        </div>
-        <div>
-          <div>
-            {props.svg}
-          </div>
-          <div>
-            {props.pronunciation}
-          </div>
-          <div>
-            {props.word}
-          </div>
-          <div>
-            {props.partOfSpeech}
-          </div>
-          <div>
-            {props.definition}
+
+      <div className={styles.exitContainer}>
+          <div className={styles.exit}>
+            <button className={styles.exitButton} onClick={props.hide}>X</button>
           </div>
         </div>
+
+        <div className={styles.svg}>
+          {props.svg}
+        </div>
+
+        <div className={styles.pronunciation}>
+          {props.pronunciation}
+        </div>
+
+        <div className={styles.word}>
+          {props.word}
+        </div>
+
+        <div className={styles.partOfSpeech}>
+          {props.partOfSpeech}
+        </div>
+
+        <div className={styles.definition}>
+          {props.definition}
+        </div>
+
       </div>
     </Modal>
   )

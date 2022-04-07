@@ -1,8 +1,49 @@
 .container {
   display: flex;
   flex-direction: column;
+  padding: 1.5rem;
+ }
+ 
+ .pronunciation {
+     font-size: 2.8rem;
+     font-weight: bold;
+ }
+ 
+ .word {
+     font-size: 2.3rem;
+     font-weight: bold;
+ }
+ 
+ .partOfSpeech {
+     font-size: 1.5rem;
+ }
+ 
+ .definition {
+     margin: 3rem 3rem 8rem 3rem;
+     font-size: 1.8rem;
+ }
+ 
+ .exitContainer {
+ display: flex;
+ flex-direction: row;
+ justify-content: left;
+ }
+ 
+ .exit {
+ 
+ }
+ 
+ .exitButton {
+     border: 0;
+     border-radius: 1rem;
+     padding: 15px 20px 15px 20px;
+     background-color: white;
+ 
+     font: var(--default-font);
+     font-weight: bold;
+     font-size: 3rem;
+ }
+
+ .exitButton:hover{
+  background-color: var(--color-secondary);
 }
-
-/*.exit {*/
-
-/*}*/

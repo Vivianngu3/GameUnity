@@ -60,7 +60,7 @@ export default function Welcome() {
       {showDefinition &&
         <Definition
           hide={() => {setShowDefinition(false)}}
-          pronunciation={'ag • ruh • cull • chur'}
+          pronunciation={'ag • ruh • cull •chur'}
           word={'Agriculture'}
           partOfSpeech={'Noun'}
           definition={'The practice of growing plants and animals'}
