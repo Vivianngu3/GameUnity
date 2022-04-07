@@ -7,7 +7,7 @@ interface Props {}
 
 export default function Timmy(props: React.PropsWithChildren<Props>) {
   return(
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles.timmy}>
         <img src={timmy} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
       </div>

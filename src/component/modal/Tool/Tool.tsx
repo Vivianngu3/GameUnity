@@ -4,11 +4,11 @@ import styles from './Tool.module.css'
 
 interface Props {
   hide: () => void
-  image: HTMLImageElement
-  pronunciation: string
-  word: string
-  partOfSpeech: string
-  definition: string
+  svg?: HTMLImageElement
+  pronunciation?: string
+  word?: string
+  partOfSpeech?: string
+  definition?: string
 }
 
 export default function Tool(props: Props) {
@@ -16,20 +16,24 @@ export default function Tool(props: Props) {
     <Modal>
       <div className={styles.container}>
         <div className={styles.exit}>
-          {/*X BUTTON*/}
-          <button onClick={props.hide} />
+          <button onClick={props.hide}>X</button>
         </div>
         <div>
-          {props.image}
-          {props.pronunciation}
-          {props.word}
-          {props.partOfSpeech}
-          {props.definition}
-          {/*SVG*/}
-          {/*PROUNCIATION*/}
-          {/*WORD*/}
-          {/*PART OF SPEECH*/}
-          {/*DEFINITION*/}
+          <div>
+            {props.svg}
+          </div>
+          <div>
+            {props.pronunciation}
+          </div>
+          <div>
+            {props.word}
+          </div>
+          <div>
+            {props.partOfSpeech}
+          </div>
+          <div>
+            {props.definition}
+          </div>
         </div>
       </div>
     </Modal>

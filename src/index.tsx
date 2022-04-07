@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import './theme/colors.css'
 import './theme/fonts.css'
+import './res/constants/z-indices.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 

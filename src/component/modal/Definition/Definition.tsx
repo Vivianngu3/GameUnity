@@ -16,18 +16,20 @@ export default function Definition(props: Props) {
       <div className={styles.container}>
         <div>
           {props.pronunciation}
-          {props.word}
-          {props.partOfSpeech}
-          {props.definition}
-          {/* {props.children} */}
-          {/*PROUNCIATION*/}
-          {/*WORD*/}
-          {/*PART OF SPEECH*/}
-          {/*DEFINITION*/}
         </div>
+        <div>
+          {props.word}
+        </div>
+        <div>
+          {props.partOfSpeech}
+        </div>
+        <div>
+          {props.definition}
+        </div>
+      </div>
+      <div>
         <div className={styles.exit}>
           <button onClick={props.hide}>Got it!</button>
-          {/*GOT IT BUTTON*/}
         </div>
       </div>
     </Modal>
