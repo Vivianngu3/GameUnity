@@ -32,6 +32,7 @@ export default function Nurturing() {
       />
       <button onClick={() => {stateHandler.dig()}}>add plot</button>
       {/*<ToolBox />*/}
+      <CheckList />
     </>
   )
 }
