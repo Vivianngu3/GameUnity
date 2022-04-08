@@ -90,7 +90,7 @@ export default function Welcome() {
         <NextArrow
           callbacks={nextArrowCallbacks}
           setCallbacks={setNextArrowCallbacks}
-          // nextPage={GAME + '/' + CHOOSE_SEED}
+          nextPage={GAME + '/' + CHOOSE_SEED}
         />
       }
     </div>
