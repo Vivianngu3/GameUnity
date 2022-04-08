@@ -1,12 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Plot from '../../component/container/Plot/Plot'
 import StateHandler from './StateHandler'
 import {Progress} from '../../component/container/Plot/Plot'
-
-interface State<E> {
-  state: E
-  setter: (newState: E) => void
-}
+import {State} from './StateHandler'
 
 export interface NurturingState {
   plotFence: State<boolean>
@@ -14,11 +10,21 @@ export interface NurturingState {
 }
 
 export default function Nurturing() {
-  // has a StateHandler
-  // const stateHandler = StateHandler()
+  const [plotFence, setPlotFence] = useState(false)
+  const [plotProgress, setPlotProgress] = useState<Progress>('start')
+
+  const stateHandler = new StateHandler({
+    plotFence: {'state': plotFence, 'set': setPlotFence},
+    plotProgress: {'state': plotProgress, 'set': setPlotProgress},
+  })
+
   return (
     <>
-      <Plot />
+      {plotFence &&
+        <Plot />
+      }
+
+      <button onClick={() => {stateHandler.dig()}}>add plot</button>
       {/*<ToolBox />*/}
     </>
   )
