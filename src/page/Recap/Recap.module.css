@@ -4,13 +4,22 @@
   border-bottom: 1px solid transparent
 }
 
+.heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10rem 5rem 0 5rem;
+  padding: 5rem;
+
+}
+
+.bee1{
+  
+}
+
 .boxContent {
   background-color: var(--color-secondary);
   padding: 3rem;
-  margin: 5rem;
+  margin: 10rem 10rem 0 10rem;
   border-radius: 25px;
-}
-
-.cards {
-
 }
