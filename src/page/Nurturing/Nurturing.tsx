@@ -21,6 +21,7 @@ export default function Nurturing() {
     <>
       <Plot />
       {/*<ToolBox />*/}
+      <CheckList />
     </>
   )
 }

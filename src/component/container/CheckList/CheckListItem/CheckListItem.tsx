@@ -9,15 +9,18 @@ interface Props {
 
 export default function CheckListItem(props: Props) {
 
-    let checkBox = '[ ]'
+    let checkBox = <div className={styles.checkBox}></div>
 
     if (props.checked) {
-        checkBox = '[x]'
+        checkBox =
+        <div className={styles.checkBox}>
+            <svg></svg>
+        </div>
     }
 
     return(
         <div className={styles.itemContainer}>
-            <div className={styles.checkBox}>
+            <div className={styles.checkBoxContainer}>
                 {checkBox}
             </div>
 
