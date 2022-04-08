@@ -4,10 +4,10 @@ import utils from '../../utils/utils.module.css'
 
 import plants from '../../res/images/four-plants.png'
 
-import farmers from '../../res/images/farmers.png'
-import tomato from '../../res/images/tomato.png'
-import carrots from '../../res/images/carrots.png'
-import ribbon from '../../res/images/award-ribbon.png'
+import gardener from '../../res/images/single-gardener.png'
+import packets from '../../res/images/packets.png'
+import checklist from '../../res/images/checklist.png'
+import medal from '../../res/images/medal.svg'
 
 import Heading from '../../component/text/Heading'
 import Block from '../../component/text/Block'
@@ -55,32 +55,40 @@ export default function Landing() {
         <table className={utils['block-horiz-centered']}>
           <tr>
             <td>
-              <ImageWithText src={farmers} alt={'Farmers'}>
-                Become a gardner.
-              </ImageWithText>
+              <div>
+                <ImageWithText src={gardener} alt={'Farmers'}>
+                  Become a gardner.
+                </ImageWithText>
+              </div>
             </td>
             <td>
-              <ImageWithText src={tomato} alt={'Tomato growing'}>
-                Pick what seed to grow.
-              </ImageWithText>
+              <div>
+                <ImageWithText src={packets} alt={'Tomato growing'}>
+                  Pick what seed to grow.
+                </ImageWithText>
+              </div>
             </td>
           </tr>
           <tr>
             <td>
-              <ImageWithText src={carrots} alt={'Carrots in a planter'}>
-                Learn gardening facts.
-              </ImageWithText>
+              <div>
+                <ImageWithText src={checklist} alt={'Carrots in a planter'}>
+                  Learn gardening facts.
+                </ImageWithText>
+              </div>
             </td>
             <td>
-              <ImageWithText src={ribbon} alt={'Award ribbon'}>
-                Gain new vocabulary.
-              </ImageWithText>
+              <div>
+                <ImageWithText src={medal} alt={'Award medal'}>
+                  Gain new vocabulary.
+                </ImageWithText>
+              </div>
             </td>
           </tr>
         </table>
       </section>
       <section className={styles.message}>
-        <Heading type={'section'}>
+        <Heading type={'section'} allCaps={true}>
           Our Message to You
         </Heading>
         <Block>

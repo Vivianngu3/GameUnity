@@ -1,0 +1,21 @@
+.itemContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 10px 0 10px 20px;
+}
+
+.checkBoxContainer {
+    margin: 0 15px 0 0;
+}
+
+.checkBox {
+    height: 15px;
+    width: 15px;
+    border: 0.1rem solid black;
+    border-radius: 0.25rem;
+}
+
+.itemText {
+
+}

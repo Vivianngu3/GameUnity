@@ -13,6 +13,15 @@
   background-color: var(--color-secondary);
 }
 
+.imageSection {
+  width: 100%;
+  position: absolute;
+  bottom: -30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .spaced {
   margin-top: 500px;
 }

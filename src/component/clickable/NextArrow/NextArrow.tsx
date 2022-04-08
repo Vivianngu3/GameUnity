@@ -1,46 +1,47 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import next from '../../../res/images/next-arrow.svg'
-import Label from '../../text/Label'
+import React, {Dispatch, SetStateAction} from 'react'
 import styles from './NextArrow.module.css'
+import utils from '../../../utils/utils.module.css'
+import next from '../../../res/images/next-arrow.svg'
+import { Navigate } from 'react-router-dom'
+import Label from '../../text/Label'
+
+type CallbackArray = (() => void)[]
 
 interface Props {
-  callbackArray: (() => void)[]
+  callbacks: CallbackArray
+  setCallbacks: Dispatch<SetStateAction<CallbackArray>>
   nextPage?: string // Should be a page endpoint like 'game/welcome'
 }
 
 export default function NextArrow(props: Props) {
-  let callbacksCopy = [...props.callbackArray]
-  const [callbackArray, setCallbackArray] = React.useState(callbacksCopy)
-
   const [navigateNext, setNavigateNext] = React.useState(false)
-  if (props.nextPage) callbacksCopy.push(() => {setNavigateNext(true)})
+  if (props.nextPage) props.callbacks.push(() => {
+    setNavigateNext(true)
+  })
 
   let onClick = () => {
-    console.log('Callbacks before:')
-    console.log(callbackArray)
-    if (callbackArray.length > 0) {
-      let currentCallback = callbackArray[0]
+    console.log('Callbacks:')
+    console.log(props.callbacks)
+    if (props.callbacks.length > 0) {
+      let currentCallback = props.callbacks[0]
       currentCallback()
-      if (callbackArray.length > 1) {
-        setCallbackArray(callbackArray.slice(1))
-      } else if (callbackArray.length === 1) {
-        setCallbackArray([])
+      if (props.callbacks.length > 1) {
+        props.setCallbacks(props.callbacks.slice(1))
+      } else if (props.callbacks.length === 1) {
+        props.setCallbacks([])
       }
     }
-    console.log('Callbacks after:')
-    console.log(callbackArray)
   }
   return (
     <>
       {navigateNext && props.nextPage ? (
-        <Navigate to={props.nextPage} />
+        <Navigate to={props.nextPage}/>
       ) : (
         <div
-          className={styles.container}
+          className={utils.clickable + ' ' + styles.container}
           onClick={onClick}
         >
-          <img src={next} alt={'Next arrow'} />
+          <img src={next} alt={'Next arrow'}/>
           <Label
             allCaps={true}
             color={'color-primary'}
