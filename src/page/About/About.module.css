@@ -16,7 +16,7 @@
 .imageSection {
   width: 100%;
   position: absolute;
-  bottom: -30px;
+  bottom: -210px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -24,4 +24,12 @@
 
 .spaced {
   margin-top: 500px;
+}
+
+.role {
+  font-size: 20px;
+}
+
+.name {
+  font-weight: bold;
 }

@@ -65,6 +65,8 @@ export default function Welcome() {
     return () => {clearTimeout(timeoutID)}
   }, [])
 
+  console.log(nextArrowCallbacks)
+
   return (
     <div>
       {showDefinition &&

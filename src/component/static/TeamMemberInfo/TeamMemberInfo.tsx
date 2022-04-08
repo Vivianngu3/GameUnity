@@ -17,7 +17,7 @@ export default function TeamMemberInfo(props: Props) {
       <img src={props.src} alt={props.alt} />
       <Block>{props.name}</Block>
       <Block>{props.role}</Block>
-      <Block>{props.email} {props.github} {props.linkedin}</Block>
+      <Block> {props.email} {props.github} {props.linkedin}</Block>
     </div>
   )
 }
