@@ -26,9 +26,9 @@ export default function Nurturing() {
       }
 
       <CheckList
-        dug
-        planted
-        improved
+          dug
+          planted
+          improved
       />
       <button onClick={() => {stateHandler.dig()}}>add plot</button>
       {/*<ToolBox />*/}

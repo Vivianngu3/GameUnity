@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './CheckListItem.module.css'
+import CheckMark from '../../../../../src/res/images/green-check.svg'
 import utils from "../../../../utils/utils.module.css";
 
 interface Props {
@@ -14,7 +15,7 @@ export default function CheckListItem(props: Props) {
     if (props.checked) {
         checkBox =
         <div className={styles.checkBox}>
-            <svg></svg>
+            <img className={styles.checkMark} src={CheckMark} alt={'check mark'} width={'30'} height={'30'} />
         </div>
     }
 
