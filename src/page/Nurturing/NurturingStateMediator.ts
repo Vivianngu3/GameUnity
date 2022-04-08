@@ -6,15 +6,15 @@ export interface State<E> {
   set: Dispatch<SetStateAction<E>>
 }
 
-export default class StateHandler {
+export default class NurturingStateMediator {
   state: NurturingState;
   constructor(state: NurturingState) {
     this.state = state
   }
   dig() {
-    console.log('plot added')
     this.state && console.log("state!")
-    this.state.plotFence && console.log("plotFence!")
-    this.state.plotFence.set(true)
+    this.state.plotProgress && console.log("plotProgress!")
+    this.state.plotProgress.set("dug")
+    console.log('dug')
   }
 }
