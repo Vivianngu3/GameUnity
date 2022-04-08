@@ -4,30 +4,24 @@ import CheckMark from '../../../../../src/res/images/green-check.svg'
 import utils from "../../../../utils/utils.module.css";
 
 interface Props {
-    item?: string
-    checked?: boolean
+  item?: string
+  checked?: boolean
 }
 
 export default function CheckListItem(props: Props) {
-
-    let checkBox = <div className={styles.checkBox}></div>
-
-    if (props.checked) {
-        checkBox =
+  return(
+    <div className={styles.itemContainer}>
+      <div className={styles.checkBoxContainer}>
         <div className={styles.checkBox}>
+          {props.checked &&
             <img className={styles.checkMark} src={CheckMark} alt={'check mark'} width={'30'} height={'30'} />
+          }
         </div>
-    }
+      </div>
 
-    return(
-        <div className={styles.itemContainer}>
-            <div className={styles.checkBoxContainer}>
-                {checkBox}
-            </div>
-
-            <div className={styles.itemText}>
-                {props.item}
-            </div>
-        </div>
-    )
+      <div className={styles.itemText}>
+        {props.item}
+      </div>
+    </div>
+  )
 }
