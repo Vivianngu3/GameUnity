@@ -3,15 +3,13 @@ import styles from './CheckList.module.css'
 import CheckListItem from "./CheckListItem/CheckListItem";
 
 interface Props {
-    checked?: {
-        dug: boolean
-        planted: boolean
-        watered: boolean
-        protected: boolean
-        improved: boolean
-        learned: boolean
-        collected: boolean
-    }
+    dug?: boolean
+    planted?: boolean
+    watered?: boolean
+    protected?: boolean
+    improved?: boolean
+    learned?: boolean
+    collected?: boolean
 }
 
 export default function CheckList(props: Props) {
@@ -26,31 +24,31 @@ export default function CheckList(props: Props) {
 
                 <div className={styles.checkListItems}>
                     <CheckListItem
-                        checked={true}
+                        checked={props.dug}
                         item={'Dig a hole'}
                     />
                     <CheckListItem
-                        checked={false}
+                        checked={props.planted}
                         item={'Plant seed'}
                     />
                     <CheckListItem
-                        checked={false}
+                        checked={props.watered}
                         item={'Water seed'}
                     />
                     <CheckListItem
-                        checked={false}
+                        checked={props.protected}
                         item={'Protect plant'}
                     />
                     <CheckListItem
-                        checked={false}
+                        checked={props.improved}
                         item={'Improve soil'}
                     />
                     <CheckListItem
-                        checked={false}
+                        checked={props.learned}
                         item={'Learn all the tools'}
                     />
                     <CheckListItem
-                        checked={false}
+                        checked={props.collected}
                         item={'Collect plant'}
                     />
                 </div>

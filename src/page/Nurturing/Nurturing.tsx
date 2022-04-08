@@ -3,6 +3,7 @@ import Plot from '../../component/container/Plot/Plot'
 import StateHandler from './StateHandler'
 import {Progress} from '../../component/container/Plot/Plot'
 import {State} from './StateHandler'
+import CheckList from '../../component/container/CheckList/CheckList'
 
 export interface NurturingState {
   plotFence: State<boolean>
@@ -24,6 +25,11 @@ export default function Nurturing() {
         <Plot />
       }
 
+      <CheckList
+        dug
+        planted
+        improved
+      />
       <button onClick={() => {stateHandler.dig()}}>add plot</button>
       {/*<ToolBox />*/}
     </>

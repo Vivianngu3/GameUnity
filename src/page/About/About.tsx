@@ -10,7 +10,6 @@ import Juliane from '../../res/images/Juliane.svg'
 import Shane from '../../res/images/Shane.svg'
 import Hannan from '../../res/images/Hannan.svg'
 import TeamMemberInfo from '../../component/static/TeamMemberInfo/TeamMemberInfo'
-import {Image} from 'react-bootstrap'
 
 export default function About() {
   return (
