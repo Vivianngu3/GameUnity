@@ -23,10 +23,17 @@ export default function Nurturing() {
       <Plot
         fence={plotFence}
         progress={plotProgress}
+        />
+
+      <CheckList
+          dug
+          planted
+          improved
       />
 
       <button onClick={() => {stateMediator.dig()}}>Dig</button>
       {/*<ToolBox />*/}
+      <CheckList />
     </>
   )
 }
