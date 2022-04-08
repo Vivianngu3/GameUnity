@@ -1,0 +1,14 @@
+.itemContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 10px 0 10px 15px;
+}
+
+.checkBox {
+    margin: 0 15px 0 0;
+}
+
+.itemText {
+
+}
