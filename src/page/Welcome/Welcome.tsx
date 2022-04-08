@@ -5,6 +5,7 @@ import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import Definition from '../../component/modal/Definition/Definition'
 import utils from '../../utils/utils.module.css'
 import styles from './Welcome.module.css'
+import {CHOOSE_SEED, GAME} from '../../res/constants/url-endpoints'
 
 export default function Welcome() {
 
@@ -42,16 +43,16 @@ export default function Welcome() {
         setShowTimmy(true)
         setShowArrow(false)
       },
-      () => {
-        console.log('third callback')
-        setDialog(
-          <Dialog>
-            Now it's time to start your journey! Pick the seed packet below.
-          </Dialog>
-        )
-        setShowTimmy(false)
-        setShowArrow(false)
-      },
+      // () => {
+      //   console.log('third callback')
+      //   setDialog(
+      //     <Dialog>
+      //       Now it's time to start your journey! Pick the seed packet below.
+      //     </Dialog>
+      //   )
+      //   setShowTimmy(false)
+      //   setShowArrow(false)
+      // },
     ]
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
 
@@ -89,6 +90,7 @@ export default function Welcome() {
         <NextArrow
           callbacks={nextArrowCallbacks}
           setCallbacks={setNextArrowCallbacks}
+          // nextPage={GAME + '/' + CHOOSE_SEED}
         />
       }
     </div>

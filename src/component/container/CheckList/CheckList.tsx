@@ -3,26 +3,24 @@ import styles from './CheckList.module.css'
 import CheckListItem from "./CheckListItem/CheckListItem";
 
 interface Props {
-    checked?: {
-        dug: boolean
-        planted: boolean
-        watered: boolean
-        protected: boolean
-        improved: boolean
-        learned: boolean
-        collected: boolean
-    }
+    dug?: boolean
+    planted?: boolean
+    watered?: boolean
+    protected?: boolean
+    improved?: boolean
+    learned?: boolean
+    collected?: boolean
 }
 
 export default function CheckList(props: Props) {
 
     return(
         <div className={styles.checkListContainer}>
-
+        
             <div className={styles.checkListHeader}>
                 Checklist
             </div>
-
+        
             <div className={styles.checkListItems}>
                 <CheckListItem
                     checked={true}
