@@ -1,8 +1,16 @@
 import React from 'react'
 import styles from './About.module.css'
+
 import Block from '../../component/text/Block'
 import Heading from '../../component/text/Heading'
+
 import Curve from '../../component/static/BackgroundCurve/BackgroundCurve'
+import Vivian from '../../res/images/Vivian.svg'
+import Juliane from '../../res/images/Juliane.svg'
+import Shane from '../../res/images/Shane.svg'
+import Hannan from '../../res/images/Hannan.svg'
+import TeamMemberInfo from '../../component/static/TeamMemberInfo/TeamMemberInfo'
+import {Image} from 'react-bootstrap'
 
 export default function About() {
   return (
@@ -13,6 +21,44 @@ export default function About() {
           Undergraduates at the University of Washington who loves to play video games.
         </Block>
         {/* team member pics, absolute positioned with a negative `bottom` css property */}
+      </section>
+      <section className={styles.imageSection}>
+        <TeamMemberInfo
+          src={Vivian}
+          alt={"Lead Designer"}
+          name={"Vivian Nguyen"}
+          role={"UX/UW Designer"}
+          email={""}
+          github={""}
+          linkedin={""}
+        />
+        <TeamMemberInfo
+          src={Juliane}
+          alt={'Project Manager'}
+          name={'Juliane De Los Santos'}
+          role={'Project Manager'}
+          email={''}
+          github={''}
+          linkedin={''}
+        />
+        <TeamMemberInfo
+          src={Shane}
+          alt={"Developer"}
+          name={"Shane Fretwell"}
+          role={"Developer"}
+          email={""}
+          github={""}
+          linkedin={""}
+        />
+        <TeamMemberInfo
+          src={Hannan}
+          alt={"Developer"}
+          name={"Hannan Ajmal"}
+          role={"Developer"}
+          email={""}
+          github={""}
+          linkedin={""}
+        />
       </section>
       <Curve color='secondary' />
       <section>
