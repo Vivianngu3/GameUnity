@@ -3,6 +3,8 @@ import Plot from '../../component/container/Plot/Plot'
 import StateMediator, {State} from './NurturingStateMediator'
 import {Progress} from '../../component/container/Plot/Plot'
 import CheckList, {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
+import ToolBox from "../../component/container/ToolBox/ToolBox";
+
 
 export interface NurturingState {
   plotFence: State<boolean>
@@ -33,7 +35,7 @@ export default function Nurturing() {
       />
       <button onClick={() => {stateMediator.dig()}}>Dig!</button>
       <button onClick={() => {stateMediator.sowSeeds()}}>Sow Seeds!</button>
-      {/*<ToolBox />*/}
+      <ToolBox />
     </>
   )
 }
