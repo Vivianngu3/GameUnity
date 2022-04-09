@@ -1,0 +1,21 @@
+.tool {
+  height: 90px;
+  width: 90px;
+  background-color: #c4c4c4;
+  border: 0.1rem none;
+  border-radius: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.toolIcon {
+  height: 45px;
+  width: 45px;
+}
+
+.toolLabel {
+  margin-top: 5px;
+  font-size: 1.6rem;
+}
