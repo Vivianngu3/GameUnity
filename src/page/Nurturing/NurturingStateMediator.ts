@@ -13,17 +13,37 @@ export default class NurturingStateMediator {
     this.state = state
   }
   dig() {
-    this.state && console.log('state!')
-    this.state.plotProgress && console.log('plotProgress!')
+    // TODO: Shovel animation
     this.state.plotProgress.set('dug')
     this.addCheckedItem('dug')
-    console.log('dug')
+  }
+
+  sowSeeds() {
+    this.state.plotProgress.set('seeds-inserted')
+  }
+
+  coverSeeds() {
+    this.state.plotProgress.set('planted')
+    this.addCheckedItem('planted')
+  }
+
+  water() {
+    // TODO: Watering animation
+    this.state.plotProgress.set('watered')
+    this.addCheckedItem('watered')
+  }
+
+  fence() {
+    this.state.plotFence.set(true)
+    this.addCheckedItem('protected')
   }
 
   private addCheckedItem(item: keyof ChecklistProps) {
-    // this.state.checkedItems.set({
-    //   [item]: true,
-    //   ...this.state.checkedItems
-    // })
+    // @ts-ignore Typescript doesn't seem to acknowledge that item will always be a valid key even
+    // though item's explicit type is that of a key of ChecklistProps
+    this.state.checkedItems.set({
+      [item]: true,
+      ...this.state.checkedItems
+    })
   }
 }
