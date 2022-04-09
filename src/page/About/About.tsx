@@ -30,6 +30,7 @@ export default function About() {
           src={Vivian}
           alt={"Lead Designer"}
           name={"Vivian Nguyen"}
+
           role={"UX/UW Designer"}
           email={""}
           github={""}
@@ -40,7 +41,7 @@ export default function About() {
           alt={'Project Manager'}
           name={'Juliane De Los Santos'}
           role={'Project Manager'}
-          email={''}
+          email= {''}
           github={''}
           linkedin={''}
         />

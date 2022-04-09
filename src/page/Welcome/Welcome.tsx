@@ -5,7 +5,8 @@ import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import Definition from '../../component/modal/Definition/Definition'
 import utils from '../../utils/utils.module.css'
 import styles from './Welcome.module.css'
-import {CHOOSE_SEED, GAME} from '../../res/constants/url-endpoints'
+import {INTRODUCE_SEED, GAME} from '../../res/constants/url-endpoints'
+import {useNavigate} from 'react-router-dom'
 
 export default function Welcome() {
 
@@ -20,6 +21,8 @@ export default function Welcome() {
   const [timmy, setTimmy] = React.useState(<></>)
   const [showArrow, setShowArrow] = React.useState(false)
   const [showDefinition, setShowDefinition] = React.useState(false)
+
+  const navigate = useNavigate()
 
   let initialNextArrowCallbacks = [
       () => {
@@ -43,6 +46,9 @@ export default function Welcome() {
         setShowTimmy(true)
         setShowArrow(false)
       },
+    () => {
+      navigate('/' + GAME + '/' + INTRODUCE_SEED)
+    }
       // () => {
       //   console.log('third callback')
       //   setDialog(
@@ -64,8 +70,6 @@ export default function Welcome() {
     }, 2500)
     return () => {clearTimeout(timeoutID)}
   }, [])
-
-  console.log(nextArrowCallbacks)
 
   return (
     <div>
@@ -92,7 +96,6 @@ export default function Welcome() {
         <NextArrow
           callbacks={nextArrowCallbacks}
           setCallbacks={setNextArrowCallbacks}
-          nextPage={GAME + '/' + CHOOSE_SEED}
         />
       }
     </div>

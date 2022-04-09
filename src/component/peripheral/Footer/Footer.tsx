@@ -17,12 +17,12 @@ export default function Footer() {
         GameUnity
       </Heading>
       <div>
-        <Link destination={'twitter'}>
+        <a href={'https://www.twitter.com'}>
           <img src={twitter} alt={'Twitter icon'} />
-        </Link>
-        <Link destination={'youtube'}>
+        </a>
+        <a href={'https://www.youtube.com'}>
           <img src={youtube} alt={'Youtube icon'} />
-        </Link>
+        </a>
       </div>
     </div>
   )
