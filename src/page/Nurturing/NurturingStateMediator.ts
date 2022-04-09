@@ -19,7 +19,7 @@ export default class NurturingStateMediator {
   }
 
   sowSeeds() {
-    this.state.plotProgress.set('seeds-inserted')
+    this.state.plotProgress.set('seeds-sown')
   }
 
   coverSeeds() {

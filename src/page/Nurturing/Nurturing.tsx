@@ -32,6 +32,7 @@ export default function Nurturing() {
         {...checkedItems}
       />
       <button onClick={() => {stateMediator.dig()}}>Dig!</button>
+      <button onClick={() => {stateMediator.sowSeeds()}}>Sow Seeds!</button>
       {/*<ToolBox />*/}
     </>
   )
