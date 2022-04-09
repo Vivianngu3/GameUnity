@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './CheckList.module.css'
 import CheckListItem from "./CheckListItem/CheckListItem";
 
-interface Props {
+export interface Props {
     dug?: boolean
     planted?: boolean
     watered?: boolean

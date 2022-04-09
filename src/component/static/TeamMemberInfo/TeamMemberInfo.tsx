@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './TeamMemberInfo.module.css'
 import Block from '../../text/Block'
 import Caption from '../../text/Caption'
+import Icon from '../../text/Icon'
 
 interface Props {
   src: string
@@ -19,7 +20,7 @@ export default function TeamMemberInfo(props: Props) {
       <img src={props.src} alt={props.alt} />
       <Block>{props.name}</Block>
       <Caption>{props.role}</Caption>
-      <div> {props.email} {props.github} {props.linkedin}</div>
+      {/*<Icon>{props.email} {props.github} {props.linkedin}</Icon>*/}
     </div>
   )
 }
