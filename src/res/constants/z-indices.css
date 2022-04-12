@@ -3,4 +3,5 @@
   --checklist-z-index: 150;
   --modal-z-index: 999;
   --toolbox-icon-z-index: 70;
+  --game-background-z-index: 0;
 }
