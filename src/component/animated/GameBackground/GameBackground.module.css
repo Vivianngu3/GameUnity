@@ -26,6 +26,14 @@
   background-color: #6E9C49;
 }
 
+.tree {
+  position: absolute;
+  left: 27%;
+  bottom: calc(var(--grass-height) - 20px);
+
+  width: 135px;
+}
+
 
 .sky.noon {
   background-color: #DAEDF1;
@@ -33,7 +41,7 @@
 
 .sun.noon {
   left: 10%;
-  top: 12%;
+  top: 10%;
   fill: #FFF84A;
 }
 
@@ -44,7 +52,7 @@
 
 .sun.afternoon {
   left: 35%;
-  top: 13%;
+  top: 11%;
   fill: #FFF84A;
 }
 
@@ -54,8 +62,8 @@
 }
 
 .sun.evening {
-  left: 60%;
-  top: 25%;
+  left: 62%;
+  top: 22%;
   fill: #FEFCCF;
 }
 

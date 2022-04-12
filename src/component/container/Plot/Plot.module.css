@@ -1,12 +1,12 @@
 .soil {
   position: absolute;
-  bottom: 80px;
+  bottom: 70px;
   margin-left: calc(50vw - var(--width) / 2);
   margin-right: calc(50vw - var(--width) / 2);
 
-  --width: 200px;
+  --width: 250px;
   width: var(--width);
-  height: 125px;
+  height: 150px;
   border-radius: 15px;
 
   background-color: #624A35;

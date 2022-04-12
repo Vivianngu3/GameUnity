@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './GameBackground.module.css'
+import Tree from '../../../res/images/tree.svg'
 
 export type Time = 'noon' | 'afternoon' | 'evening' | 'twilight'
 type AnimalsPosition = 1 | 2 | 3
@@ -39,6 +40,7 @@ export default function GameBackground(props: Props) {
         <circle cx={1} cy={1} r={1}/>
       </svg>
       <div className={styles.grass} />
+      <img src={Tree} alt={'Tree'} className={styles.tree} />
     </div>
   )
 }
