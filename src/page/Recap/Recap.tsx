@@ -38,7 +38,13 @@ export default function Recap () {
             This will ensure that the contents in the game have met its purpose of teaching vocabulary, decision making,
             and impacts that were made in the virtual environment.
           </Block>
+
+         
+
         </section>
+
+        <Heading type={'section'} > HOVER OVER AREAS TO COVER </Heading>
+        
         
         <div className= {styles['row']}>
 
@@ -47,10 +53,40 @@ export default function Recap () {
               
               <div className={styles['flip-box-front']}>
                 <h2>Vocabulary</h2>
+                <h3>Words to revisit from the game</h3>
               </div>
 
               <div className={styles['flip-box-back']}>
                 <h2>Questions</h2>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles['flip-box']}>
+            <div className={styles['flip-box-inner']}>
+              
+              <div className={styles['flip-box-front']}>
+                <h2>Comprehension</h2>
+                <h3>Find out the key takeaways</h3>
+              </div>
+
+              <div className={styles['flip-box-back']}>
+                <h2>Questions</h2>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles['flip-box']}>
+            <div className={styles['flip-box-inner']}>
+              
+              <div className={styles['flip-box-front']}>
+                <h2>Critical Thinking</h2>
+                <h3>Understand the effects of choices</h3>
+              </div>
+
+              <div className={styles['flip-box-back']}>
+                <h2>Questions</h2>
+                <li></li>
               </div>
             </div>
           </div>

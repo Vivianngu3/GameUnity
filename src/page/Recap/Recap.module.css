@@ -27,6 +27,7 @@
   background-color: var(--color-secondary);
   width: 50%;
   margin: auto;
+  margin-bottom: 5rem;
   padding: 3rem;
   border-radius: 20px;
 }
@@ -34,13 +35,17 @@
 .row {
   margin-top: 10rem;
   margin-bottom: 20rem;
+  display: flex;
+  flex-direction: row;
 }
+
+
+
 .flip-box {
   margin: auto;
   background-color: transparent;
   width: 300px;
   height: 300px;
-  perspective: 1000px;
 }
 
 .flip-box-inner {
@@ -48,7 +53,6 @@
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
@@ -65,17 +69,45 @@
   backface-visibility: hidden;
 }
 
+
 .flip-box-front {
   background-color: #f1f1f1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 20px;
+  border: 1px solid black;
   color: black;
+}
+
+.flip-box-front h2 {
+    margin: 0;
+    font-size: 20pt;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.flip-box-front h3 {
+  margin: 0;
+  font-weight: bold;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 .flip-box-back {
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: #f1f1f1;
+  border: 1px solid black;
   color: black;
   transform: rotateY(180deg);
+}
+
+.flip-box-back h2 {
+  margin-top: 20px;
+  font-size: 20pt;
 }
