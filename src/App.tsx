@@ -25,8 +25,7 @@ export default function App() {
         <Route path={urls.GAME} element={<Outlet />} >
           <Route index element={<GameStart />} />
           <Route path={urls.GAME_WELCOME} element={<Welcome />} />
-          {/* Choosing a seed may be out of scope */}
-          {/*<Route path={urls.CHOOSE_SEED} element={<Heading type={'section'}>Choose Seed</Heading>} />*/}
+          <Route path={urls.INTRODUCE_SEED} element={<Heading type={'section'}>Here's Your Seed!</Heading>} />
           <Route path={urls.CHOOSE_PLOT} element={<Heading type={'section'}>Choose Plot</Heading>} />
           {/*
           The onboarding and nurturing pages will have many different states to accommodate the

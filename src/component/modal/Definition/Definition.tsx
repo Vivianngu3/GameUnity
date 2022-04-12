@@ -1,6 +1,7 @@
 import React from 'react';
-import Modal from '../Modal'
 import styles from './Definition.module.css'
+import Modal from '../Modal'
+import Caption from '../../text/Caption'
 
 interface Props {
   hide: () => void
@@ -23,9 +24,9 @@ export default function Definition(props: Props) {
           {props.word}
         </div>
 
-        <div className={styles.partOfSpeech}>
+        <Caption>
           {props.partOfSpeech}
-        </div>
+        </Caption>
 
         <div className={styles.definition}>
           {props.definition}

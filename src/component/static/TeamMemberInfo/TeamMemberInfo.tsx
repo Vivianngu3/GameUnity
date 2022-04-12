@@ -1,5 +1,8 @@
 import React from 'react'
+import styles from './TeamMemberInfo.module.css'
 import Block from '../../text/Block'
+import Caption from '../../text/Caption'
+import Icon from '../../text/Icon'
 
 interface Props {
   src: string
@@ -16,8 +19,8 @@ export default function TeamMemberInfo(props: Props) {
     <div>
       <img src={props.src} alt={props.alt} />
       <Block>{props.name}</Block>
-      <Block>{props.role}</Block>
-      <Block>{props.email} {props.github} {props.linkedin}</Block>
+      <Caption>{props.role}</Caption>
+      {/*<Icon>{props.email} {props.github} {props.linkedin}</Icon>*/}
     </div>
   )
 }

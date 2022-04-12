@@ -3,13 +3,17 @@ import styles from './About.module.css'
 
 import Block from '../../component/text/Block'
 import Heading from '../../component/text/Heading'
-
+import TeamMemberInfo from '../../component/static/TeamMemberInfo/TeamMemberInfo'
 import Curve from '../../component/static/BackgroundCurve/BackgroundCurve'
+
 import Vivian from '../../res/images/Vivian.svg'
 import Juliane from '../../res/images/Juliane.svg'
 import Shane from '../../res/images/Shane.svg'
 import Hannan from '../../res/images/Hannan.svg'
-import TeamMemberInfo from '../../component/static/TeamMemberInfo/TeamMemberInfo'
+import email from '../../res/images/email-icon.svg'
+import git from '../../res/images/github-icon.svg'
+import linkedin from '../../res/images/linkedin-icon.svg'
+
 
 export default function About() {
   return (
@@ -26,6 +30,7 @@ export default function About() {
           src={Vivian}
           alt={"Lead Designer"}
           name={"Vivian Nguyen"}
+
           role={"UX/UW Designer"}
           email={""}
           github={""}
@@ -36,7 +41,7 @@ export default function About() {
           alt={'Project Manager'}
           name={'Juliane De Los Santos'}
           role={'Project Manager'}
-          email={''}
+          email= {''}
           github={''}
           linkedin={''}
         />
