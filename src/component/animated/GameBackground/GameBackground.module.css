@@ -1,0 +1,80 @@
+.sky {
+  position: absolute;
+  z-index: var(--game-background-z-index);
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+
+  --grass-height: 250px;
+  --sun-height: 125px;
+}
+
+.sun {
+  position: absolute;
+  width: var(--sun-height);
+  height: var(--sun-height);
+}
+
+.grass {
+  position: absolute;
+  bottom: 0;
+
+  width: 100vw;
+  height: var(--grass-height);
+
+  background-color: #6E9C49;
+}
+
+.tree {
+  position: absolute;
+  left: 27%;
+  bottom: calc(var(--grass-height) - 20px);
+
+  width: 135px;
+}
+
+
+.sky.noon {
+  background-color: #DAEDF1;
+}
+
+.sun.noon {
+  left: 10%;
+  top: 10%;
+  fill: #FFF84A;
+}
+
+
+.sky.afternoon {
+  background-color: #FFF0E2;
+}
+
+.sun.afternoon {
+  left: 35%;
+  top: 11%;
+  fill: #FFF84A;
+}
+
+
+.sky.evening {
+  background-color: #A6B7D1;
+}
+
+.sun.evening {
+  left: 62%;
+  top: 22%;
+  fill: #FEFCCF;
+}
+
+
+.sky.twilight {
+  background-color: #6D7D96;
+}
+
+.sun.twilight {
+  left: 82%;
+  bottom: calc(var(--grass-height) - var(--sun-height) / 2);
+  fill: #FFFB9E;
+}
+
