@@ -18,6 +18,7 @@ export default function Recap () {
 
         <img
         className={styles['bee1']}
+        
         src={Bee}
         alt={"Smiling cartoon bee"}
         />
@@ -25,6 +26,7 @@ export default function Recap () {
         <Heading type={'section'} > RECAP ON SPROUT </Heading>
 
         <img
+        className={styles['bee2']}
         src={Bee}
         alt={"Smiling cartoon bee"}
         />
@@ -38,11 +40,23 @@ export default function Recap () {
           </Block>
         </section>
         
-      <div className= {styles['cards']}>
+        <div className= {styles['row']}>
 
-      </div>
+          <div className={styles['flip-box']}>
+            <div className={styles['flip-box-inner']}>
+              
+              <div className={styles['flip-box-front']}>
+                <h2>Vocabulary</h2>
+              </div>
+
+              <div className={styles['flip-box-back']}>
+                <h2>Questions</h2>
+              </div>
+            </div>
+          </div>
+          
+        </div>
       </section>
-
     </div>
   )
 }
