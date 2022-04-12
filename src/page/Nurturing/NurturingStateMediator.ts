@@ -1,6 +1,7 @@
 import {NurturingState} from './Nurturing'
 import {Dispatch, SetStateAction} from 'react'
 import {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
+import {Progress as PlotProgress} from '../../component/container/Plot/Plot'
 
 export interface State<E> {
   state: E
@@ -9,9 +10,13 @@ export interface State<E> {
 
 export default class NurturingStateMediator {
   state: NurturingState;
-  constructor(state: NurturingState) {
+  progressOrder: PlotProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered']
+  notify: (message: string) => void
+  constructor(state: NurturingState, notify: (message: string) => void) {
     this.state = state
+    this.notify = notify
   }
+
   dig() {
     // TODO: Shovel animation
     this.state.plotProgress.set('dug')
@@ -19,7 +24,11 @@ export default class NurturingStateMediator {
   }
 
   sowSeeds() {
-    this.state.plotProgress.set('seeds-sown')
+    if (this.isCompleted('dug')) {
+      this.state.plotProgress.set('seeds-sown')
+    } else {
+      this.notify("You need to dig a hole first!")
+    }
   }
 
   coverSeeds() {
@@ -38,9 +47,16 @@ export default class NurturingStateMediator {
     this.addCheckedItem('protected')
   }
 
+  private isCompleted(stateName: PlotProgress) {
+    let passedStateIndex = this.progressOrder.indexOf(stateName)
+    let currStateIndex = this.progressOrder.indexOf(this.state.plotProgress.state)
+    return currStateIndex >= passedStateIndex
+  }
+
   private addCheckedItem(item: keyof ChecklistProps) {
-    // @ts-ignore Typescript doesn't seem to acknowledge that item will always be a valid key even
-    // though item's explicit type is that of a key of ChecklistProps
+    // Typescript doesn't seem to acknowledge that `item` will always be a valid key even
+    // though item's explicit type is correct
+    // @ts-ignore
     this.state.checkedItems.set({
       [item]: true,
       ...this.state.checkedItems
