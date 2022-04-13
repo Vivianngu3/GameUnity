@@ -59,6 +59,12 @@ export default function Recap () {
 
               <div className={styles['flip-box-back']}>
                 <h2>Questions</h2>
+                  <ul> 
+                    <li>What is agriculture?</li>
+                    <li>What is a pesticide?</li>
+                    <li>What is pollinate?</li>
+                    <li>What is chemical?</li>
+                  </ul>
               </div>
             </div>
           </div>
@@ -69,10 +75,15 @@ export default function Recap () {
               <div className={styles['flip-box-front']}>
                 <h2>Comprehension</h2>
                 <h3>Find out the key takeaways</h3>
+
               </div>
 
               <div className={styles['flip-box-back']}>
                 <h2>Questions</h2>
+                  <ul> 
+                    <li>What was the main idea of the story?</li>
+                    <li>What happens when you use pesticide?</li>
+                  </ul>
               </div>
             </div>
           </div>
@@ -87,7 +98,10 @@ export default function Recap () {
 
               <div className={styles['flip-box-back']}>
                 <h2>Questions</h2>
-                <li></li>
+                  <ul> 
+                    <li>What clues did you use to make the right choices?</li>
+                    <li>How can you connect what you learned to your life?</li>
+                  </ul>
               </div>
             </div>
           </div>
