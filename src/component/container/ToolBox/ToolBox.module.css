@@ -30,7 +30,6 @@
   position: absolute;
   bottom: 20px;
   left: 985px;
-  right: 0;
   z-index: var(--toolbox-icon-z-index);
 }
 

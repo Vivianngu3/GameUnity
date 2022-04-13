@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './GameBackground.module.css'
 import Tree from '../../../res/images/tree.svg'
+import Bee from '../../../res/images/Bee.svg'
+import Rabbit from '../../../res/images/Rabbit.svg'
 
 export type Time = 'noon' | 'afternoon' | 'evening' | 'twilight'
 type AnimalsPosition = 1 | 2 | 3
@@ -34,6 +36,22 @@ export default function GameBackground(props: Props) {
       sunStyles.push(styles.noon)
       skyStyles.push(styles.noon)
   }
+
+  let beeStyles = [styles.bee]
+  let rabbitStyles = [styles.rabbit]
+
+  switch (props.animalsPosition) {
+    case 1:
+      beeStyles.push(styles.positionOne)
+      break
+    case 2:
+      beeStyles.push(styles.positionTwo)
+      break
+    default:
+      beeStyles.push(styles.hidden)
+      rabbitStyles.push(styles.hidden)
+  }
+
   return (
     <div className={skyStyles.join(' ')}>
       <svg viewBox="0 0 2 2" className={sunStyles.join(' ')}>
@@ -41,6 +59,8 @@ export default function GameBackground(props: Props) {
       </svg>
       <div className={styles.grass} />
       <img src={Tree} alt={'Tree'} className={styles.tree} />
+      <img src={Bee} alt={'Bee'} className={beeStyles.join(' ')} />
+      <img src={Rabbit} alt={'Rabbit'} className={rabbitStyles.join(' ')} />
     </div>
   )
 }

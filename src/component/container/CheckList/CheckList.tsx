@@ -51,8 +51,6 @@ export default function CheckList(props: Props) {
                 item={'Collect plant'}
               />
           </div>
-
-          <div className={styles.bottomGradient}></div>
       </div>
     )
 }

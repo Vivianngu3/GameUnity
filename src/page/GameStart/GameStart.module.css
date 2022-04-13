@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--color-secondary);
+  background-color: var(--color-two);
   height: 100vh;
 }
 

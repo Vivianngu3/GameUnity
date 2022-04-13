@@ -39,7 +39,9 @@ export default function Nurturing() {
 
   return (
     <>
-      <GameBackground time={times[0]} />
+      <GameBackground
+        time={times[0]}
+        />
       <Plot
         fence={plotFence}
         progress={plotProgress}
@@ -48,9 +50,7 @@ export default function Nurturing() {
       <CheckList
         {...checkedItems}
       />
-      <button onClick={() => {stateMediator.dig()}}>Dig!</button>
-      <button onClick={() => {stateMediator.sowSeeds()}}>Sow Seeds!</button>
-      <ToolBox />
+      <ToolBox behaviorHandler={stateMediator} />
     </>
   )
 }

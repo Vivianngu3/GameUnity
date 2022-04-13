@@ -26,7 +26,7 @@ export default function Plot(props: Props) {
       contained =
         <div className={styles.holeContainer}>
           <svg viewBox="0 0 2 2" className={styles.hole}>
-            <circle cx={1} cy={1} r={1}/>
+            <circle cx={1} cy={1} r={1} />
           </svg>
           <img src={seeds} alt={'Seeds in a hole'} className={styles.seeds} />
         </div>

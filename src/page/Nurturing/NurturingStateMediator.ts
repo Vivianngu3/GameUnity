@@ -2,13 +2,14 @@ import {NurturingState} from './Nurturing'
 import {Dispatch, SetStateAction} from 'react'
 import {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
 import {Progress as PlotProgress} from '../../component/container/Plot/Plot'
+import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 
 export interface State<E> {
   state: E
   set: Dispatch<SetStateAction<E>>
 }
 
-export default class NurturingStateMediator {
+export default class NurturingStateMediator implements ToolBehaviorHandler {
   state: NurturingState;
   progressOrder: PlotProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered']
   notify: (message: string) => void
@@ -17,7 +18,14 @@ export default class NurturingStateMediator {
     this.notify = notify
   }
 
+  cut() {
+    this.notify("Not ready to use that yet")
+  }
+
   dig() {
+    if (this) console.log("This??")
+    if (this.state) console.log("State from dig!")
+    if (this.state.plotProgress) console.log("plotProgress from dig!")
     // TODO: Shovel animation
     this.state.plotProgress.set('dug')
     this.addCheckedItem('dug')
@@ -32,19 +40,39 @@ export default class NurturingStateMediator {
   }
 
   coverSeeds() {
-    this.state.plotProgress.set('planted')
-    this.addCheckedItem('planted')
+    if (this.isCompleted('seeds-sown')) {
+      this.state.plotProgress.set('planted')
+      this.addCheckedItem('planted')
+    }
   }
 
   water() {
-    // TODO: Watering animation
-    this.state.plotProgress.set('watered')
-    this.addCheckedItem('watered')
+    if (this.isCompleted('planted')) {
+      // TODO: Watering animation
+      this.state.plotProgress.set('watered')
+      this.addCheckedItem('watered')
+    } else if (this.isCompleted('dug')) {
+      this.notify("You need to finish planting your seed first!")
+    } else {
+      this.notify("You need to plant your seed first!")
+    }
   }
 
-  fence() {
+  postFence() {
     this.state.plotFence.set(true)
     this.addCheckedItem('protected')
+  }
+
+  improveSoil() {
+    this.notify("Not ready to use that yet")
+  }
+
+  fertilizer() {
+    this.notify("Not ready to use that yet")
+  }
+
+  pesticide() {
+    this.notify("Not ready to use that yet")
   }
 
   private isCompleted(stateName: PlotProgress) {

@@ -9,6 +9,7 @@ interface Props {
   type: Type
   color?: Color
   allCaps?: Boolean
+  block?: boolean
 }
 
 export default function Heading(props: React.PropsWithChildren<Props>) {
@@ -16,6 +17,7 @@ export default function Heading(props: React.PropsWithChildren<Props>) {
   let stylesArray = []
   
   if (props.allCaps) stylesArray.push(utils.allCaps)
+  if (props.block) stylesArray.push(styles.displayBlock)
 
   switch (props.type) {
     case 'title':

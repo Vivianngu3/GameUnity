@@ -2,20 +2,24 @@ import React from 'react';
 import styles from './Tool.module.css'
 import Label from "../../../text/Label";
 
-interface Props {
-  img?: string
-  tool?: string
+export interface Props {
+  icon?: string
+  name?: string
+  onClick: () => void
 }
 
 export default function Tool(props: Props) {
 
   return (
-    <div className={styles.tool}>
+    <div
+      className={styles.tool}
+      onClick={props.onClick}
+    >
       <div>
-        <img className={styles.toolIcon} src={props.img} />
+        <img className={styles.toolIcon} src={props.icon} />
       </div>
       <div className={styles.toolLabel}>
-        {props.tool}
+        {props.name}
       </div>
     </div>
   )
