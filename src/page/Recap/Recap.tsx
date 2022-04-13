@@ -34,6 +34,7 @@ export default function Recap () {
         </section>
         
         <section className={styles['boxContent']}>
+
           <Block align={'center'}> We have provided sample questions that can be used after the game has been played.
             This will ensure that the contents in the game have met its purpose of teaching vocabulary, decision making,
             and impacts that were made in the virtual environment.
@@ -43,7 +44,7 @@ export default function Recap () {
 
         </section>
 
-        <Heading type={'section'} > HOVER OVER AREAS TO COVER </Heading>
+        <Heading type={'section'}> HOVER OVER AREAS TO COVER </Heading>
         
         
         <div className= {styles['row']}>
@@ -90,9 +91,42 @@ export default function Recap () {
               </div>
             </div>
           </div>
-          
+
         </div>
+
+        <Heading type={'section'}> TRY THIS AT HOME </Heading>
+
       </section>
+      <div className={styles['container']}>
+          <div className={styles['card']}>
+            <div className={styles['img']}> </div>
+              <div className={styles['content']}>
+                <h2>Chia Pets</h2>
+                <p> Chia Pets are figurines where the chia sprouts grow within a couple of weeks to look like the animal’s fur or hair. </p> 
+                <button>Find More </button> 
+              </div>
+          </div>
+
+          <div className={styles['card']}>
+            <div className={styles['img2']}> </div>
+              <div className={styles['content']}>
+                <h2>Eastern Leaf</h2>
+                <p> Our little green trees are ready for adoption and looking for good homes.</p> 
+                <button>Find More</button> 
+              </div>
+          </div>
+
+          <div className={styles['card']}>
+            <div className={styles['img3']}> </div>
+              <div className={styles['content']}>
+                <h2>Card title </h2>
+                <p> Some quick example text to build on the card title and make up the bulk of the card's content. </p> 
+                <button>Find More</button> 
+              </div>
+          </div>
+        
+        </div>
+
     </div>
   )
 }
