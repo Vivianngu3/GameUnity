@@ -168,7 +168,17 @@ li {
 }
 
 .content {
-  padding: 15px;
+  padding: 20px;
+}
+
+.title{
+  font-size: large;
+}
+
+
+.content p {
+ margin: 20px;
+ font-size: small;
 }
 
 a{
