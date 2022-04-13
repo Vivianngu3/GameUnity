@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Recap.module.css'
 import Block from '../../component/text/Block'
 import Heading from '../../component/text/Heading'
+import Caption from '../../component/text/Caption'
 
 
 import Bee from '../../res/images/Bee.svg'
@@ -109,6 +110,7 @@ export default function Recap () {
         </div>
 
         <Heading type={'section'}> TRY THIS AT HOME </Heading>
+        <Caption>Continue growing outside our site!</Caption>
 
       </section>
       <div className={styles['container']}>
