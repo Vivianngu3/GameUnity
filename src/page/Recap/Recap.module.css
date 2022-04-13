@@ -5,28 +5,33 @@
 }
 
 
-
 /* Intro */
 .heading {
   display: flex;
-  margin-top: 5rem;
-  padding: 5rem;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.beeHeading {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .bee1{
-  margin: auto;
-  transform: scaleX(-1);
-  position: relative;
+  height: 100px;
+  transform: scaleX(-1) rotate(25deg);
+  margin-right: 30px;
 }
 
 .bee2{
-  margin: auto;
-  position: relative;
+  height: 100px;
+  transform: rotate(25deg);
+  margin-left: 30px;
 }
 
 .boxContent {
-  border:10px dashed #90AC8E;
+  border: 10px dashed #90AC8E;
   width: 65%;
   margin: auto;
   margin-bottom: 20rem;
@@ -88,10 +93,9 @@ li {
 
 
 .flip-box-front {
-  background-color: #f1f1f1;
+  background-color: #90AC8E;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  border: 1px solid black;
   color: black;
 }
 
@@ -99,7 +103,7 @@ li {
     margin: 0;
     font-size: x-large;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -109,7 +113,7 @@ li {
   margin: 0;
   font-weight: bold;
   position: absolute;
-  top: 60%;
+  top: 55%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -119,7 +123,7 @@ li {
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: #f1f1f1;
-  border: 1px solid black;
+  border: 1px solid #90AC8E;
   color: black;
   transform: rotateY(180deg);
 }

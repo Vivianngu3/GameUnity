@@ -12,25 +12,15 @@ export default function Recap () {
 
   return (
     <div className={styles.page}>
-
-      <section className={styles.center}>
       
         <section className={styles['heading']}>
 
-        <img
-        className={styles['bee1']}
-        
-        src={Bee}
-        alt={"Smiling cartoon bee"}
-        />
-
-        <Heading type={'section'} > RECAP ON SPROUT </Heading>
-
-        <img
-        className={styles['bee2']}
-        src={Bee}
-        alt={"Smiling cartoon bee"}
-        />
+          <div className={styles['beeHeading']}>
+            <img className={styles['bee1']} src={Bee} alt={"Smiling cartoon bee"}/>
+            <Heading type={'section'}> RECAP ON SPROUT </Heading>
+            <img className={styles['bee2']} src={Bee} alt={"Smiling cartoon bee"}
+            />
+          </div>
 
         </section>
         
@@ -40,8 +30,6 @@ export default function Recap () {
             This will ensure that the contents in the game have met its purpose of teaching vocabulary, decision making,
             and impacts that were made in the virtual environment.
           </Block>
-
-         
 
         </section>
 
@@ -112,7 +100,6 @@ export default function Recap () {
         <Heading type={'section'}> TRY THIS AT HOME </Heading>
         <Caption>Continue growing outside our site!</Caption>
 
-      </section>
       <div className={styles['container']}>
           <div className={styles['card']}>
             <div className={styles['img']}> </div>
