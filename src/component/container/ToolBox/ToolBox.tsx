@@ -30,14 +30,14 @@ interface Props {
 export default function ToolBox(props: Props) {
   let callbacks = props.behaviorHandler
   let tools: ToolProps[] = [
-    {name: 'scissors', onClick: callbacks.cut, icon: scissors},
-    {name: 'shovel', onClick: callbacks.dig, icon: shovel},
-    {name: 'water', onClick: callbacks.water, icon: water},
-    {name: 'pesticide', onClick: callbacks.pesticide, icon: pesticide},
-    {name: 'seeds', onClick: callbacks.sowSeeds, icon: seeds},
-    {name: 'fence', onClick: callbacks.postFence, icon: fence},
-    {name: 'worms', onClick: callbacks.improveSoil, icon: worms},
-    {name: 'fertilizer', onClick: callbacks.fertilizer, icon: fertilizer}
+    {name: 'scissors', onClick: () => {callbacks.cut()}, icon: scissors},
+    {name: 'shovel', onClick: () => {callbacks.dig()}, icon: shovel},
+    {name: 'water', onClick: () => {callbacks.water()}, icon: water},
+    {name: 'pesticide', onClick: () => {callbacks.pesticide()}, icon: pesticide},
+    {name: 'seeds', onClick: () => {callbacks.sowSeeds()}, icon: seeds},
+    {name: 'fence', onClick: () => {callbacks.postFence()}, icon: fence},
+    {name: 'worms', onClick: () => {callbacks.improveSoil()}, icon: worms},
+    {name: 'fertilizer', onClick: () => {callbacks.fertilizer()}, icon: fertilizer}
   ]
 
   let toolsArray = tools.map(tool => {

@@ -9,11 +9,10 @@ export interface Props {
 }
 
 export default function Tool(props: Props) {
-
   return (
     <div
       className={styles.tool}
-      onClick={props.onClick}
+      onClick={() => {props.onClick()}}
     >
       <div>
         <img className={styles.toolIcon} src={props.icon} />

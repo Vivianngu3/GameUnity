@@ -23,7 +23,9 @@ export default class NurturingStateMediator implements ToolBehaviorHandler {
   }
 
   dig() {
-    if (this) console.log("This??")
+    console.log("logging")
+    if (this === undefined) console.log("This is undefined")
+    if (this !== undefined) console.log("This isn't undefined")
     if (this.state) console.log("State from dig!")
     if (this.state.plotProgress) console.log("plotProgress from dig!")
     // TODO: Shovel animation
