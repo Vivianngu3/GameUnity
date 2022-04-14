@@ -45,6 +45,7 @@ export default function Nurturing() {
       <Plot
         fence={plotFence}
         progress={plotProgress}
+        coverSeed={() => {stateMediator.coverSeeds()}}
         />
 
       <CheckList

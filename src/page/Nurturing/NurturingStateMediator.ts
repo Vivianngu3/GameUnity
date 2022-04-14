@@ -23,19 +23,20 @@ export default class NurturingStateMediator implements ToolBehaviorHandler {
   }
 
   dig() {
+    // TODO: remove debugging logs
     console.log("logging")
     if (this === undefined) console.log("This is undefined")
     if (this !== undefined) console.log("This isn't undefined")
     if (this.state) console.log("State from dig!")
     if (this.state.plotProgress) console.log("plotProgress from dig!")
     // TODO: Shovel animation
-    this.state.plotProgress.set('dug')
+    this.setPlotCompleted('dug')
     this.addCheckedItem('dug')
   }
 
   sowSeeds() {
     if (this.isCompleted('dug')) {
-      this.state.plotProgress.set('seeds-sown')
+      this.setPlotCompleted('seeds-sown')
     } else {
       this.notify("You need to dig a hole first!")
     }
@@ -43,7 +44,7 @@ export default class NurturingStateMediator implements ToolBehaviorHandler {
 
   coverSeeds() {
     if (this.isCompleted('seeds-sown')) {
-      this.state.plotProgress.set('planted')
+      this.setPlotCompleted('planted')
       this.addCheckedItem('planted')
     }
   }
@@ -51,7 +52,7 @@ export default class NurturingStateMediator implements ToolBehaviorHandler {
   water() {
     if (this.isCompleted('planted')) {
       // TODO: Watering animation
-      this.state.plotProgress.set('watered')
+      this.setPlotCompleted('watered')
       this.addCheckedItem('watered')
     } else if (this.isCompleted('dug')) {
       this.notify("You need to finish planting your seed first!")
@@ -75,6 +76,12 @@ export default class NurturingStateMediator implements ToolBehaviorHandler {
 
   pesticide() {
     this.notify("Not ready to use that yet")
+  }
+
+  private setPlotCompleted(stateName: PlotProgress) {
+    if (!this.isCompleted(stateName)) {
+      this.state.plotProgress.set(stateName)
+    }
   }
 
   private isCompleted(stateName: PlotProgress) {
