@@ -4,21 +4,21 @@
 
 .toolBoxIconOpen {
   position: absolute;
-  bottom: 110px;
-  left: 1000px;
+  bottom: 113px;
+  left: 934px;
   right: 0;
   z-index: var(--toolbox-icon-z-index);
 }
 
 .toolsContainerOpen {
   position: fixed;
-  height: 85px;
-  width: 1000px;
+  height: 70px;
+  width: 950px;
   bottom: 0;
   left: 0;
   right: 0;
   margin: 0 auto;
-  padding: 25px 40px;
+  padding: 20px 40px 28px 40px;
   background-color: rgba(196, 196, 196, 0.35);
 
   display: flex;
@@ -28,16 +28,15 @@
 
 .toolBoxIconClosed {
   position: absolute;
-  bottom: 20px;
-  left: 985px;
-  right: 0;
+  bottom: 55px;
+  left: 934px;
   z-index: var(--toolbox-icon-z-index);
 }
 
 .toolsContainerClosed {
   position: fixed;
   height: 60px;
-  width: 1080px;
+  width: 1030px;
   bottom: 0;
   left: 0;
   right: 0;

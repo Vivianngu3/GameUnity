@@ -1,13 +1,13 @@
 .on-primary {
-  color: var(--text-on-primary)
+  color: var(--text-on-color-one)
 }
 
 .on-secondary {
-  color: var(--text-on-secondary)
+  color: var(--text-on-color-two)
 }
 
 .on-tertiary {
-  color: var(--text-on-tertiary)
+  color: var(--text-on-color-three)
 }
 
 .on-page-background {
@@ -26,6 +26,10 @@
   font-size: 3.2rem;
 }
 
+.displayBlock {
+  display: block;
+}
+
 /* Block */
 .block {
   font-size: 2.4rem;
@@ -40,8 +44,8 @@
   font-size: 1.8rem;
 }
 
-.color-primary {
-  color: var(--color-primary);
+.color-one {
+  color: var(--color-one);
 }
 
 .black {

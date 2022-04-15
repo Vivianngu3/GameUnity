@@ -1,6 +1,6 @@
 import styles from './BackgroundCurve.module.css'
 
-type Color = "primary" | "secondary" | "tertiary" | "page-background"
+type Color = "one" | "two" | "three" | "four" | "page-background"
 
 interface Props {
   color: Color
@@ -9,21 +9,24 @@ interface Props {
 export default function BackgroundCurve(props: Props) {
   let classes: string[] = [];
   switch (props.color) {
-    case 'primary':
-      classes.push(styles['color-primary'])
+    case 'one':
+      classes.push(styles.colorOne)
       break
-    case 'secondary':
-      classes.push(styles['color-secondary'])
+    case 'two':
+      classes.push(styles.colorTwo)
       break
-    case 'tertiary':
-      classes.push(styles['color-tertiary'])
+    case 'three':
+      classes.push(styles.colorThree)
+      break
+    case 'four':
+      classes.push(styles.colorFour)
       break
     case 'page-background':
-      classes.push(styles['color-page-background'])
+      classes.push(styles.colorPageBackground)
       break
   }
 
-  classes.push(styles['background-curve'])
+  classes.push(styles.backgroundCurve)
 
   return (
     <svg

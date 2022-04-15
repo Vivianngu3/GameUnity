@@ -17,13 +17,13 @@ export default function Recap () {
 
           <div className={styles['beeHeading']}>
             <img className={styles['bee1']} src={Bee} alt={"Smiling cartoon bee"}/>
-            <Heading type={'section'}> RECAP ON SPROUT </Heading>
+            <Heading block= {true} type={'section'}> RECAP ON SPROUT </Heading>
             <img className={styles['bee2']} src={Bee} alt={"Smiling cartoon bee"}
             />
           </div>
 
         </section>
-        
+  
         <section className={styles['boxContent']}>
 
           <Block align={'center'}> We have provided sample questions that can be used after the game has been played.

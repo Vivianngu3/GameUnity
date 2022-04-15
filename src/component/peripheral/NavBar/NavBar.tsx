@@ -5,7 +5,7 @@ import Link from '../../clickable/Link/Link'
 import NavButton from '../../clickable/NavButton/NavButton'
 import {ABOUT_US, RECAP, WITH_PERIPHERALS} from '../../../res/constants/url-endpoints'
 
-type Color = 'page-background' | 'secondary' | 'primary'
+type Color = 'page-background' | 'two' | 'one' | 'four'
 
 interface LinkData {
   text: string
@@ -18,8 +18,8 @@ export default function NavBar() {
 
   const linksData: LinkData[] = [
     { text: 'Home', destination: WITH_PERIPHERALS, navBarColor: 'page-background' },
-    { text: 'About', destination: ABOUT_US, navBarColor: 'secondary' },
-    { text: 'Recap', destination: RECAP, navBarColor: 'primary' }
+    { text: 'About', destination: ABOUT_US, navBarColor: 'four' },
+    { text: 'Recap', destination: RECAP, navBarColor: 'one' }
   ]
 
   const [disabledLinkIndex, setDisabledLinkIndex] = React.useState(DEFAULT_PAGE_INDEX)
@@ -50,11 +50,14 @@ export default function NavBar() {
     case "page-background":
       navBarClasses.push(styles['color-page-background'])
       break
-    case "primary":
-      navBarClasses.push(styles['color-primary'])
+    case "one":
+      navBarClasses.push(styles.colorOne)
       break
-    case "secondary":
-      navBarClasses.push(styles['color-secondary'])
+    case "two":
+      navBarClasses.push(styles.colorTwo)
+      break
+    case "four":
+      navBarClasses.push(styles.colorFour)
       break
   }
 

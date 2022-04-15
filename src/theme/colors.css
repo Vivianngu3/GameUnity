@@ -3,11 +3,13 @@
   --color-on-page-background: black;
   --text-on-page-background: black;
 
-  --color-primary: #937356;
-  --color-secondary: #DBAD8D;
-  --color-tertiary: #fff3e8;
+  --color-one: #937356;
+  --color-two: #DBAD8D;
+  --color-three: #fff3e8;
+  --color-four: #90AC8E;
 
-  --text-on-primary: white;
-  --text-on-secondary: black;
-  --text-on-tertiary: black;
+  --text-on-color-one: white;
+  --text-on-color-two: black;
+  --text-on-color-three: black;
+  --text-on-color-four: black;
 }

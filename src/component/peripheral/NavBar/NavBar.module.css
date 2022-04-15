@@ -6,7 +6,7 @@
 .navBar {
   padding-left: 86px;
   padding-right: 112px;
-  background-color: var(--color-primary);
+  background-color: var(--color-one);
   height: 112px;
 }
 
@@ -21,20 +21,28 @@
   margin-left: 1.2rem;
 }
 
-.color-primary {
-  background-color: var(--color-primary);
+.colorOne {
+  background-color: var(--color-one);
 }
 
-.color-primary * {
-  color: var(--text-on-primary);
+.colorOne * {
+  color: var(--text-on-color-one);
 }
 
-.color-secondary {
-  background-color: var(--color-secondary);
+.colorTwo {
+  background-color: var(--color-two);
 }
 
-.color-secondary * {
-  color: var(--text-on-secondary);
+.colorTwo * {
+  color: var(--text-on-color-two);
+}
+
+.colorFour {
+  background-color: var(--color-four);
+}
+
+.colorFour * {
+  color: var(--text-on-color-four);
 }
 
 .color-page-background {

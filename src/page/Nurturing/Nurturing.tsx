@@ -4,8 +4,7 @@ import StateMediator, {State} from './NurturingStateMediator'
 import {Progress} from '../../component/container/Plot/Plot'
 import CheckList, {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
 import ToolBox from "../../component/container/ToolBox/ToolBox";
-import GameBackground from '../../component/animated/GameBackground/GameBackground'
-import {Time} from '../../component/animated/GameBackground/GameBackground'
+import GameBackground, {Time} from '../../component/animated/GameBackground/GameBackground'
 
 export interface NurturingState {
   plotFence: State<boolean>
@@ -24,7 +23,7 @@ export default function Nurturing() {
     plotFence: {'state': plotFence, 'set': setPlotFence},
     plotProgress: {'state': plotProgress, 'set': setPlotProgress},
     checkedItems: {'state': checkedItems, 'set': setCheckedItems},
-  })
+  }, console.log)
 
   React.useEffect(() => {
     let timerID = setInterval(() => {
@@ -40,18 +39,19 @@ export default function Nurturing() {
 
   return (
     <>
-      <GameBackground time={times[0]} />
+      <GameBackground
+        time={times[0]}
+        />
       <Plot
         fence={plotFence}
         progress={plotProgress}
+        coverSeed={() => {stateMediator.coverSeeds()}}
         />
 
       <CheckList
         {...checkedItems}
       />
-      <button onClick={() => {stateMediator.dig()}}>Dig!</button>
-      <button onClick={() => {stateMediator.sowSeeds()}}>Sow Seeds!</button>
-      <ToolBox />
+      <ToolBox behaviorHandler={stateMediator} />
     </>
   )
 }

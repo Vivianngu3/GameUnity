@@ -78,3 +78,31 @@
   fill: #FFFB9E;
 }
 
+.bee {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+}
+
+.rabbit {
+  height: 120px;
+  width: 120px;
+
+  position: absolute;
+  bottom: calc(var(--grass-height) - 20px);
+  left: 900px;
+}
+
+.hidden {
+  display: none;
+}
+
+.positionOne {
+  bottom: calc(var(--grass-height) + 160px);
+  left: 220px;
+}
+
+.positionTwo {
+  bottom: calc(var(--grass-height) + 160px);
+  left: 50%;
+}

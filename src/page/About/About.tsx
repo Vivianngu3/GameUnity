@@ -10,75 +10,82 @@ import Vivian from '../../res/images/Vivian.svg'
 import Juliane from '../../res/images/Juliane.svg'
 import Shane from '../../res/images/Shane.svg'
 import Hannan from '../../res/images/Hannan.svg'
-import email from '../../res/images/email-icon.svg'
-import git from '../../res/images/github-icon.svg'
-import linkedin from '../../res/images/linkedin-icon.svg'
-
+import Bee from '../../res/images/Bee.svg'
 
 export default function About() {
   return (
     <div className={styles.page}>
+
       <section className={styles['with-background-color']}>
-        <Heading type={'section'}> OUR TEAM MEMBERS</Heading>
+        <div className={styles.beesHeading}>
+          <img src={Bee} alt={'Bee'} className={styles.beeReflect} />
+          <Heading block={true} type={'section'}> OUR TEAM MEMBERS</Heading>
+          <img src={Bee} alt={'Bee'} className={styles.bee} />
+        </div>
         <Block align={'center'}>
           Undergraduates at the University of Washington who loves to play video games.
         </Block>
-        {/* team member pics, absolute positioned with a negative `bottom` css property */}
       </section>
+
       <section className={styles.imageSection}>
         <TeamMemberInfo
-          src={Vivian}
-          alt={"Lead Designer"}
-          name={"Vivian Nguyen"}
-
-          role={"UX/UW Designer"}
-          email={""}
-          github={""}
-          linkedin={""}
+          memberImageSrc={Vivian}
+          memberImageAlt={"Lead Designer"}
+          memberName={"Vivian Nguyen"}
+          memberRole={"UX/UW Designer"}
+          emailSrc={"vn23@uw.edu"}
+          githubSrc={"www.github.com/Vivianngu3"}
+          linkedinSrc={'www.linkedin.com/in/vivianngu/'}
         />
         <TeamMemberInfo
-          src={Juliane}
-          alt={'Project Manager'}
-          name={'Juliane De Los Santos'}
-          role={'Project Manager'}
-          email= {''}
-          github={''}
-          linkedin={''}
+          memberImageSrc={Juliane}
+          memberImageAlt={'Project Manager'}
+          memberName={'Juliane De Los Santos'}
+          memberRole={'Project Manager'}
+          emailSrc= {'julianed@uw.edu'}
+          githubSrc={'www.github.com/julianedelossantos'}
+          linkedinSrc={'www.linkedin.com/in/juliane-de-los-santos/'}
         />
         <TeamMemberInfo
-          src={Shane}
-          alt={"Developer"}
-          name={"Shane Fretwell"}
-          role={"Developer"}
-          email={""}
-          github={""}
-          linkedin={""}
+          memberImageSrc={Shane}
+          memberImageAlt={"Developer"}
+          memberName={"Shane Fretwell"}
+          memberRole={"Developer"}
+          emailSrc={'fretws@uw.edu'}
+          githubSrc={"www.github.com/fretws"}
+          linkedinSrc={'www.linkedin.com/in/shane-fretwell-a50659214/'}
         />
         <TeamMemberInfo
-          src={Hannan}
-          alt={"Developer"}
-          name={"Hannan Ajmal"}
-          role={"Developer"}
-          email={""}
-          github={""}
-          linkedin={""}
+          memberImageSrc={Hannan}
+          memberImageAlt={"Developer"}
+          memberName={"Hannan Ajmal"}
+          memberRole={"Developer"}
+          emailSrc={'hannanajmal05@gmail.com'}
+          githubSrc={'www.github.com/hannanajmal/'}
+          linkedinSrc={'www.linkedin.com/in/hannan-ajmal/'}
         />
       </section>
-      <Curve color='secondary' />
-      <section>
-        <section className={styles.spaced}>
+
+      <Curve color='four' />
+
+      <section className={styles.container}>
+
+        <section className={styles.content}>
           <Heading type={'section'}> THE PROBLEM AREA</Heading>
           <Block align={'center'}>
             The ongoing COVID-19 pandemic has shifted public, in-person elementary school classrooms to an online format, thus rendering traditional-based classroom work useless. This is especially concerning around the already unrequired science curriculum in the U.S. The increasing disengagement yet increasing comfortability of low-quality online teaching lowers students’ overall academic capability compared to previous generations. These contexts pose a risk when it comes to how equipped the future generations will be when understanding and handling the fast approaching catostrophic effects from past poor environmental decisions.
           </Block>
         </section>
-        <section className={styles.spaced}>
+
+        <section className={styles.content}>
           <Heading type={'section'}> OUR MISSION</Heading>
           <Block align={'center'}>
             The Sprout team aims to provide a solution to encourage elementary school teachers for grades 1-3 to incorporate environmental education in their classrooms. Teachers will find that our gamified approach to increasing environmental awareness, more namely agricultural awareness, references english language arts (ELA) common core standards and next generation science standards for elementary school students grades 1-3. This interactive approach to storytelling will ultimately fulfill our mission to increase environmental awareness in elementary school classrooms while furthuring the development of students’ reading capabilities.
           </Block>
         </section>
+
       </section>
+
     </div>
   )
 }

@@ -1,19 +1,23 @@
-.background-curve {
+.backgroundCurve {
   width: 100%;
 }
 
-.color-primary {
-  fill: var(--color-primary);
+.colorOne {
+  fill: var(--color-one);
 }
 
-.color-secondary {
-  fill: var(--color-secondary);
+.colorTwo {
+  fill: var(--color-two);
 }
 
-.color-tertiary {
-  fill: var(--color-tertiary);
+.colorThree {
+  fill: var(--color-three);
 }
 
-.color-page-background {
+.colorFour {
+  fill: var(--color-four);
+}
+
+.colorPageBackground {
   fill: var(--color-page-background);
 }
