@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import toolbox from '../../../res/images/toolbox.svg'
 import scissors from '../../../res/images/scissors.svg'
@@ -45,22 +45,30 @@ export default function ToolBox(props: Props) {
       <Tool icon={tool.icon} name={tool.name} onClick={tool.onClick} key={tool.name} />
     )})
 
-  return (
-    //return when open
+  const [showDisplay, setShowDisplay] = useState(false)
+
+  let display =
+    <div className={styles.toolsContainerClosed}>
+      <div className={styles.toolBoxIconClosed}>
+        <img onClick={() => {setShowDisplay(true)}} src={toolbox} />
+      </div>
+    </div>
+
+  if (showDisplay) {
+    display =
     <div className={styles.toolBox}>
       <div className={styles.toolBoxIconOpen}>
-        <img src={toolbox} />
+        <img onClick={() => {setShowDisplay(false)}} src={toolbox} />
       </div>
       <div className={styles.toolsContainerOpen}>
         {toolsArray}
       </div>
-
     </div>
-    // Return when closed
-    // <div className={styles.toolsContainerClosed}>
-    //    <div className={styles.toolBoxIconClosed}>
-    //       <img src={toolbox} />
-    //    </div>
-    // </div>
+  }
+
+  return (
+    <>
+    {display}
+    </>
   )
 }
