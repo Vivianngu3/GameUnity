@@ -96,7 +96,7 @@ export default class NurturingStateMediator implements ToolBehaviorHandler {
     // @ts-ignore
     this.state.checkedItems.set({
       [item]: true,
-      ...this.state.checkedItems
+      ...this.state.checkedItems.state
     })
   }
 }
