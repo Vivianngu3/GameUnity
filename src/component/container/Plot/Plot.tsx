@@ -1,8 +1,6 @@
 import React from 'react'
 import styles from './Plot.module.css'
 import seeds from '../../../res/images/seeds-in-hole.svg'
-import pile from '../../../res/images/pile-of-dirt.svg'
-import pileWet from '../../../res/images/pile-of-wet-dirt.svg'
 
 type Wetness = "dry" | "medium" | "wet"
 export type Progress = "start" | "dug" | "seeds-sown" | "planted" | "watered" | "growth1" | "growth2" | "growth3" | "with-starburst" | "tomato"
