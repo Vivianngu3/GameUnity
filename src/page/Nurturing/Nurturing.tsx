@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Plot from '../../component/container/Plot/Plot'
-import StateMediator, {State} from './NurturingStateMediator'
+import {State} from '../../utils/StateMediator'
+import StateMediator from './NurturingStateMediator'
 import {Progress} from '../../component/container/Plot/Plot'
 import CheckList, {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
 import ToolBox from "../../component/container/ToolBox/ToolBox";
@@ -25,10 +26,12 @@ export default function Nurturing() {
     checkedItems: {'state': checkedItems, 'set': setCheckedItems},
   }, console.log)
 
+  React.useEffect(() => {return () => {stateMediator.stopUpdates()}}, [])
+
   React.useEffect(() => {
-    let timerID = setInterval(() => {
+    let timerID = setTimeout(() => {
       let remainingTimes = times.slice(1)
-      if (remainingTimes) {
+      if (remainingTimes.length > 0) {
         setTimes(remainingTimes)
       } else {
         clearTimeout(timerID)
