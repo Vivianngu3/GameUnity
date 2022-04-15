@@ -1,6 +1,6 @@
 .tool {
-  height: 90px;
-  width: 90px;
+  height: 85px;
+  width: 85px;
   background-color: #c4c4c4;
   border: 0.1rem none;
   border-radius: 1rem;
@@ -11,11 +11,10 @@
 }
 
 .toolIcon {
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
 }
 
 .toolLabel {
-  margin-top: 5px;
   font-size: 1.6rem;
 }
