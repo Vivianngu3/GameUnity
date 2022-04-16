@@ -47,18 +47,8 @@ export default function Welcome() {
         setShowArrow(false)
       },
     () => {
-      navigate('/' + GAME + '/' + INTRODUCE_SEED)
+      navigate('/' + GAME + INTRODUCE_SEED)
     }
-      // () => {
-      //   console.log('third callback')
-      //   setDialog(
-      //     <Dialog>
-      //       Now it's time to start your journey! Pick the seed packet below.
-      //     </Dialog>
-      //   )
-      //   setShowTimmy(false)
-      //   setShowArrow(false)
-      // },
     ]
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
 

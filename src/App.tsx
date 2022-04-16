@@ -10,6 +10,7 @@ import Nurturing from './page/Nurturing/Nurturing'
 import Welcome from './page/Welcome/Welcome'
 import Recap from './page/Recap/Recap'
 import About from './page/About/About'
+import TimeLapse from './page/TimeLapse/TimeLapse'
 
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
           */}
           <Route path={urls.ONBOARDING} element={<Heading type={'section'}>Onboarding</Heading>} />
           <Route path={urls.NURTURING} element={<Nurturing />} />
+          <Route path={urls.TIME_LAPSE} element={<TimeLapse />} />
         </Route>
       </Routes>
     </BrowserRouter>

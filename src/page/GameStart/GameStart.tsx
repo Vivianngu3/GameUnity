@@ -14,7 +14,7 @@ export default function GameStart() {
           className={styles.link}
         >Start</Link>
         <Link
-          destination={WITH_PERIPHERALS + "/" + ABOUT_US}
+          destination={WITH_PERIPHERALS + ABOUT_US}
           className={styles.link}
         >Exit</Link>
       </div>

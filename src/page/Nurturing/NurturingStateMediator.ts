@@ -33,6 +33,7 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
       console.log("State from dig!")
       if (this.state.plotProgress) console.log("plotProgress from dig!")
     }
+    this.state?.setTimmyText('')
     // TODO: Shovel animation
     this.setPlotCompleted('dug')
     this.addCheckedItem('dug')
@@ -41,6 +42,9 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
   sowSeeds() {
     if (this.isCompleted('dug')) {
       this.setPlotCompleted('seeds-sown')
+      this.state?.setTimmyText('Click the hole to cover your seeds.')
+      this.state?.setToolboxOpen(false)
+      this.setOneTimeToolboxSideEffect(() => {this.state?.setTimmyText('')})
     } else {
       this.notify("You need to dig a hole first!")
     }
@@ -48,6 +52,9 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
 
   coverSeeds() {
     if (this.isCompleted('seeds-sown')) {
+      if (!this.isCompleted('planted')) {
+        this.state?.setTimmyText('Good job! Now open your tool box and try to water your seed.')
+      }
       this.setPlotCompleted('planted')
       this.addCheckedItem('planted')
     }
@@ -55,9 +62,15 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
 
   water() {
     if (this.isCompleted('planted')) {
+      this.state?.setTimmyText('')
       // TODO: Watering animation
       this.setPlotCompleted('watered')
       this.addCheckedItem('watered')
+
+      setTimeout(() => {
+        this.state?.setTimmyText('Great work!')
+        this.state?.setShowNextArrow(true)
+      }, 1000)
     } else if (this.isCompleted('dug')) {
       this.notify("You need to finish planting your seed first!")
     } else {
@@ -66,7 +79,7 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
   }
 
   postFence() {
-    if (this.state) this.state.plotFence.set(true)
+    this.state?.plotFence.set(true)
     this.addCheckedItem('protected')
   }
 
@@ -82,16 +95,23 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
     this.notify("Not ready to use that yet")
   }
 
+  private setOneTimeToolboxSideEffect(sideEffect: () => void) {
+    this.state?.setToolboxToggleSideEffect(() => {
+      sideEffect()
+      this.state?.setToolboxToggleSideEffect(() => {})
+    })
+  }
+
   private setPlotCompleted(stateName: PlotProgress) {
-    if (this.state && !this.isCompleted(stateName)) {
-      this.state.plotProgress.set(stateName)
+    if (!this.isCompleted(stateName)) {
+      this.state?.plotProgress.set(stateName)
     }
   }
 
   private isCompleted(stateName: PlotProgress) {
     let passedStateIndex = this.progressOrder.indexOf(stateName)
     if (this.state) {
-      let currStateIndex = this.progressOrder.indexOf(this.state.plotProgress.state)
+      let currStateIndex = this.progressOrder.indexOf(this.state.plotProgress.value)
       return currStateIndex >= passedStateIndex
     } else return false
   }
@@ -103,7 +123,7 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
       // @ts-ignore
       this.state.checkedItems.set({
         [item]: true,
-        ...this.state.checkedItems.state
+        ...this.state.checkedItems.value
       })
     }
   }

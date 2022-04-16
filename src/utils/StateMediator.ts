@@ -1,7 +1,7 @@
 import {Dispatch, SetStateAction} from 'react'
 
 export interface State<E> {
-  state: E
+  value: E
   set: Dispatch<SetStateAction<E>>
 }
 
