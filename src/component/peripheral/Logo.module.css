@@ -2,7 +2,7 @@
   display: flex;
   width: fit-content;
   padding-top: 28px;
-  color: var(--color-on-primary);
+  color: var(--text-on-color-one);
 }
 
 .icon {

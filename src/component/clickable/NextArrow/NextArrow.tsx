@@ -1,8 +1,7 @@
-import React, {Dispatch, SetStateAction, useEffect} from 'react'
+import React, {Dispatch, SetStateAction} from 'react'
 import styles from './NextArrow.module.css'
 import utils from '../../../utils/utils.module.css'
 import next from '../../../res/images/next-arrow.svg'
-import { Navigate } from 'react-router-dom'
 import Label from '../../text/Label'
 
 type CallbackArray = (() => void)[]
@@ -33,6 +32,7 @@ export default function NextArrow(props: Props) {
     let container = document.querySelector('div.' + containerClasses.join('.'))
     container && container.addEventListener('click', onClick)
     return () => {container && container.removeEventListener('click', onClick)}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClick])
 
 

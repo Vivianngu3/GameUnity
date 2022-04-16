@@ -4,8 +4,7 @@ import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import Definition from '../../component/modal/Definition/Definition'
 import utils from '../../utils/utils.module.css'
-import styles from './Welcome.module.css'
-import {INTRODUCE_SEED, GAME} from '../../res/constants/url-endpoints'
+import {GAME, INTRODUCE_SEED} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
 
 export default function Welcome() {

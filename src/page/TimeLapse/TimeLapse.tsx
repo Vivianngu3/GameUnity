@@ -1,10 +1,7 @@
 import React, {useState} from 'react'
 import GameBackground, {Time} from '../../component/animated/GameBackground/GameBackground'
-import {useNavigate} from 'react-router-dom'
 
 export default function TimeLapse() {
-  const navigate = useNavigate()
-
   const [times, setTimes] = useState<Time[]>(['noon', 'afternoon', 'evening', 'twilight'])
 
   React.useEffect(() => {

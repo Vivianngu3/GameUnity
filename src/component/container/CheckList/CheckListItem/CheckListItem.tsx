@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './CheckListItem.module.css'
 import CheckMark from '../../../../../src/res/images/green-check.svg'
-import utils from "../../../../utils/utils.module.css";
 
 interface Props {
   item?: string

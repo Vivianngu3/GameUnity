@@ -1,14 +1,13 @@
-import React, {Dispatch, SetStateAction, useEffect, useRef, useState} from 'react'
-import Plot from '../../component/container/Plot/Plot'
+import React, {Dispatch, SetStateAction, useRef, useState} from 'react'
+import Plot, {Progress} from '../../component/container/Plot/Plot'
 import {State} from '../../utils/StateMediator'
 import StateMediator from './NurturingStateMediator'
-import {Progress} from '../../component/container/Plot/Plot'
 import CheckList, {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
-import ToolBox from "../../component/container/ToolBox/ToolBox";
-import GameBackground, {Time} from '../../component/animated/GameBackground/GameBackground'
+import ToolBox from '../../component/container/ToolBox/ToolBox'
+import GameBackground from '../../component/animated/GameBackground/GameBackground'
 import Timmy from '../../component/static/Timmy/Timmy'
 import {useNavigate} from 'react-router-dom'
-import {GAME, INTRODUCE_SEED, TIME_LAPSE} from '../../res/constants/url-endpoints'
+import {GAME, TIME_LAPSE} from '../../res/constants/url-endpoints'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 
 export interface NurturingState {
@@ -65,6 +64,7 @@ export default function Nurturing() {
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
   }, console.log)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {return () => {stateMediator.stopUpdates()}}, [])
 
   return (

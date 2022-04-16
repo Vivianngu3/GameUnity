@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, useState} from 'react'
+import React from 'react'
 
 import toolbox from '../../../res/images/toolbox.svg'
 import scissors from '../../../res/images/scissors.svg'
@@ -45,7 +45,10 @@ export default function ToolBox(props: Props) {
 
   let toolsArray = tools.map(tool => {
     return (
-      <Tool icon={tool.icon} name={tool.name} onClick={tool.onClick} key={tool.name} />
+      <Tool
+        name={tool.name} alt={tool.name} key={tool.name}
+        icon={tool.icon} onClick={tool.onClick}
+      />
     )})
 
   const openButtonHandler = () => {
@@ -54,28 +57,16 @@ export default function ToolBox(props: Props) {
     props.toggleSideEffect()
   }
 
-  let display =
-    <div className={styles.toolsContainerClosed}>
-      <div className={styles.toolBoxIconClosed}>
-        <img onClick={() => {openButtonHandler()}} src={toolbox} />
-      </div>
-    </div>
-
-  if (props.openState.value) {
-    display =
-    <div className={styles.toolBox}>
-      <div className={styles.toolBoxIconOpen}>
-        <img onClick={() => {openButtonHandler()}} src={toolbox} />
-      </div>
-      <div className={styles.toolsContainerOpen}>
-        {toolsArray}
-      </div>
-    </div>
-  }
-
   return (
-    <>
-    {display}
-    </>
+    <div className={styles.toolBox}>
+      <div className={props.openState.value ? styles.toolBoxIconOpen : styles.toolsContainerClosed}>
+        <img onClick={() => {openButtonHandler()}} src={toolbox} alt={'Click to open or close toolbox'} />
+      </div>
+      { props.openState.value &&
+        <div className={styles.toolsContainerOpen}>
+          {toolsArray}
+        </div>
+      }
+    </div>
   )
 }
