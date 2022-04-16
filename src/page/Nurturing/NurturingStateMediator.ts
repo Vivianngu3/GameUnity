@@ -25,14 +25,6 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
   }
 
   dig() {
-    // TODO: remove debugging logs
-    console.log("logging")
-    if (this === undefined) console.log("This is undefined")
-    if (this !== undefined) console.log("This isn't undefined")
-    if (this.state) {
-      console.log("State from dig!")
-      if (this.state.plotProgress) console.log("plotProgress from dig!")
-    }
     this.state?.setTimmyText('')
     // TODO: Shovel animation
     this.setPlotCompleted('dug')
@@ -44,7 +36,6 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
       this.setPlotCompleted('seeds-sown')
       this.state?.setTimmyText('Click the hole to cover your seeds.')
       this.state?.setToolboxOpen(false)
-      this.setOneTimeToolboxSideEffect(() => {this.state?.setTimmyText('')})
     } else {
       this.notify("You need to dig a hole first!")
     }
@@ -93,13 +84,6 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
 
   pesticide() {
     this.notify("Not ready to use that yet")
-  }
-
-  private setOneTimeToolboxSideEffect(sideEffect: () => void) {
-    this.state?.setToolboxToggleSideEffect(() => () => {
-      sideEffect()
-      this.state?.setToolboxToggleSideEffect(() => () => {})
-    })
   }
 
   private setPlotCompleted(stateName: PlotProgress) {

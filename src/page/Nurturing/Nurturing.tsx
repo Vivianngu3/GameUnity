@@ -17,7 +17,6 @@ export interface NurturingState {
   setTimmyText: Dispatch<SetStateAction<string>>
   setShowNextArrow: Dispatch<SetStateAction<boolean>>
   setToolboxOpen: Dispatch<SetStateAction<boolean>>
-  setToolboxToggleSideEffect: Dispatch<SetStateAction<() => void>>
 }
 
 export default function Nurturing() {
@@ -25,11 +24,10 @@ export default function Nurturing() {
   const [showArrow, setShowArrow] = React.useState(false)
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
 
-  const initialSideEffect = () => { setTimmyText('') }
   // See here for an explanation of why this needs a function that returns a function in order to have a simple function in state:
   // https://stackoverflow.com/questions/55621212/is-it-possible-to-react-usestate-in-react
   const [toolboxToggleSideEffect, setToolboxToggleSideEffect] =
-    React.useState<() => void>(() => initialSideEffect)
+    React.useState<() => void>(() => () => {})
 
   const navigate = useNavigate()
 
@@ -50,6 +48,16 @@ export default function Nurturing() {
   const [plotProgress, setPlotProgress] = useState<Progress>('start')
   const [checkedItems, setCheckedItems] = useState<ChecklistProps>({})
 
+  const notifyUserOnce = (str: string) => {
+    let timmyTextBefore = timmyText
+    setTimmyText(str)
+    setToolboxOpen(false)
+    setToolboxToggleSideEffect(() => () => {
+      setTimmyText(timmyTextBefore)
+      setToolboxToggleSideEffect(() => () => {})
+    })
+  }
+
   const stateMediator = new StateMediator({
     plotFence: {'value': plotFence, 'set': setPlotFence},
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
@@ -57,8 +65,7 @@ export default function Nurturing() {
     setTimmyText: setTimmyText,
     setShowNextArrow: setShowArrow,
     setToolboxOpen: setToolboxOpen,
-    setToolboxToggleSideEffect: setToolboxToggleSideEffect,
-  }, console.log)
+  }, notifyUserOnce)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {return () => {stateMediator.stopUpdates()}}, [])
@@ -77,7 +84,7 @@ export default function Nurturing() {
       />
 
       {/* When timmyText === '', it is falsey, and this <Timmy /> is not displayed */}
-      {timmyText &&
+      {!toolboxOpen && timmyText &&
         <Timmy>{timmyText}</Timmy>
       }
 

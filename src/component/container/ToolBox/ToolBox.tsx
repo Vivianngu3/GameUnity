@@ -27,7 +27,7 @@ export interface ToolBehaviorHandler {
 interface Props {
   behaviorHandler: ToolBehaviorHandler
   openState: State<boolean>
-  toggleSideEffect: () => void
+  toggleSideEffect?: () => void
 }
 
 export default function ToolBox(props: Props) {
@@ -54,7 +54,7 @@ export default function ToolBox(props: Props) {
   const openButtonHandler = () => {
     console.log("Toolbox open handler called")
     props.openState.set(!props.openState.value)
-    props.toggleSideEffect()
+    props.toggleSideEffect && props.toggleSideEffect()
   }
 
   return (
