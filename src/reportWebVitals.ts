@@ -1,4 +1,3 @@
-// noinspection SuspiciousTypeOfGuard
 
 import { ReportHandler } from 'web-vitals';
 

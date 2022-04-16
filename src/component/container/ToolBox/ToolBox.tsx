@@ -58,8 +58,8 @@ export default function ToolBox(props: Props) {
   }
 
   return (
-    <div className={styles.toolBox}>
-      <div className={props.openState.value ? styles.toolBoxIconOpen : styles.toolsContainerClosed}>
+    <div className={props.openState.value ? styles.toolBox : styles.toolsContainerClosed}>
+      <div className={props.openState.value ? styles.toolBoxIconOpen : styles.toolBoxIconClosed}>
         <img onClick={() => {openButtonHandler()}} src={toolbox} alt={'Click to open or close toolbox'} />
       </div>
       { props.openState.value &&
