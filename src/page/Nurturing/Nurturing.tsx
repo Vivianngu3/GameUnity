@@ -25,15 +25,11 @@ export default function Nurturing() {
   const [showArrow, setShowArrow] = React.useState(false)
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
 
-  const mounted = useRef(false)
+  const initialSideEffect = () => { setTimmyText('') }
+  // See here for an explanation of why this needs a function that returns a function in order to have a simple function in state:
+  // https://stackoverflow.com/questions/55621212/is-it-possible-to-react-usestate-in-react
   const [toolboxToggleSideEffect, setToolboxToggleSideEffect] =
-    React.useState<() => void>(() => {
-      if (mounted.current) {
-        setTimmyText('')
-      } else {
-        mounted.current = true
-      }
-    })
+    React.useState<() => void>(() => initialSideEffect)
 
   const navigate = useNavigate()
 

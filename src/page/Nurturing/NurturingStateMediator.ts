@@ -96,9 +96,9 @@ export default class NurturingStateMediator implements ToolBehaviorHandler, Stat
   }
 
   private setOneTimeToolboxSideEffect(sideEffect: () => void) {
-    this.state?.setToolboxToggleSideEffect(() => {
+    this.state?.setToolboxToggleSideEffect(() => () => {
       sideEffect()
-      this.state?.setToolboxToggleSideEffect(() => {})
+      this.state?.setToolboxToggleSideEffect(() => () => {})
     })
   }
 
