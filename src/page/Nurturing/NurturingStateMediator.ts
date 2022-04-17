@@ -1,34 +1,24 @@
 import {NurturingState} from './Nurturing'
-import {Dispatch, SetStateAction} from 'react'
-import {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
 import {Progress as PlotProgress} from '../../component/container/Plot/Plot'
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
+import GameStateMediator from '../../utils/GameStateMediator'
 
-export interface State<E> {
-  state: E
-  set: Dispatch<SetStateAction<E>>
-}
-
-export default class NurturingStateMediator implements ToolBehaviorHandler {
-  state: NurturingState;
+export default class NurturingStateMediator extends GameStateMediator<NurturingState> implements ToolBehaviorHandler {
   progressOrder: PlotProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered']
-  notify: (message: string) => void
-  constructor(state: NurturingState, notify: (message: string) => void) {
-    this.state = state
-    this.notify = notify
+
+  // We need to stop updates when Nurturing is unmounted to avoid updating the state of an unmounted component
+  stopUpdates() {
+    this.state = null;
+    console.log("Updates from NurturingStateMediator stopped")
+    console.log(this.state)
   }
 
   cut() {
-    this.notify("Not ready to use that yet")
+    this.notifyUserOnce("Not ready to use that yet")
   }
 
   dig() {
-    // TODO: remove debugging logs
-    console.log("logging")
-    if (this === undefined) console.log("This is undefined")
-    if (this !== undefined) console.log("This isn't undefined")
-    if (this.state) console.log("State from dig!")
-    if (this.state.plotProgress) console.log("plotProgress from dig!")
+    this.state?.timmyText.set('')
     // TODO: Shovel animation
     this.setPlotCompleted('dug')
     this.addCheckedItem('dug')
@@ -37,13 +27,18 @@ export default class NurturingStateMediator implements ToolBehaviorHandler {
   sowSeeds() {
     if (this.isCompleted('dug')) {
       this.setPlotCompleted('seeds-sown')
+      this.state?.timmyText.set('Click the hole to cover your seeds.')
+      this.state?.setToolboxOpen(false)
     } else {
-      this.notify("You need to dig a hole first!")
+      this.notifyUserOnce("You need to dig a hole first!")
     }
   }
 
   coverSeeds() {
     if (this.isCompleted('seeds-sown')) {
+      if (!this.isCompleted('planted')) {
+        this.state?.timmyText.set('Good job! Now open your tool box and try to water your seed.')
+      }
       this.setPlotCompleted('planted')
       this.addCheckedItem('planted')
     }
@@ -51,52 +46,35 @@ export default class NurturingStateMediator implements ToolBehaviorHandler {
 
   water() {
     if (this.isCompleted('planted')) {
+      this.state?.timmyText.set('')
       // TODO: Watering animation
       this.setPlotCompleted('watered')
       this.addCheckedItem('watered')
+
+      setTimeout(() => {
+        this.state?.timmyText.set('Great work!')
+        this.state?.setShowNextArrow(true)
+      }, 1000)
     } else if (this.isCompleted('dug')) {
-      this.notify("You need to finish planting your seed first!")
+      this.notifyUserOnce("You need to finish planting your seed first!")
     } else {
-      this.notify("You need to plant your seed first!")
+      this.notifyUserOnce("You need to plant your seed first!")
     }
   }
 
   postFence() {
-    this.state.plotFence.set(true)
-    this.addCheckedItem('protected')
+    this.notifyUserOnce("Not ready to use that yet")
   }
 
   improveSoil() {
-    this.notify("Not ready to use that yet")
+    this.notifyUserOnce("Not ready to use that yet")
   }
 
   fertilizer() {
-    this.notify("Not ready to use that yet")
+    this.notifyUserOnce("Not ready to use that yet")
   }
 
   pesticide() {
-    this.notify("Not ready to use that yet")
-  }
-
-  private setPlotCompleted(stateName: PlotProgress) {
-    if (!this.isCompleted(stateName)) {
-      this.state.plotProgress.set(stateName)
-    }
-  }
-
-  private isCompleted(stateName: PlotProgress) {
-    let passedStateIndex = this.progressOrder.indexOf(stateName)
-    let currStateIndex = this.progressOrder.indexOf(this.state.plotProgress.state)
-    return currStateIndex >= passedStateIndex
-  }
-
-  private addCheckedItem(item: keyof ChecklistProps) {
-    // Typescript doesn't seem to acknowledge that `item` will always be a valid key even
-    // though item's explicit type is correct
-    // @ts-ignore
-    this.state.checkedItems.set({
-      [item]: true,
-      ...this.state.checkedItems
-    })
+    this.notifyUserOnce("Not ready to use that yet")
   }
 }

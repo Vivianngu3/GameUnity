@@ -7,7 +7,6 @@ import youtube from '../../../res/images/icon-youtube.png'
 
 import Logo from '../Logo'
 import Heading from '../../text/Heading'
-import Link from '../../clickable/Link/Link'
 
 export default function Footer() {
   return (

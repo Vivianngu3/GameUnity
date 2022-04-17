@@ -4,8 +4,7 @@ import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import Definition from '../../component/modal/Definition/Definition'
 import utils from '../../utils/utils.module.css'
-import styles from './Welcome.module.css'
-import {INTRODUCE_SEED, GAME} from '../../res/constants/url-endpoints'
+import {GAME, INTRODUCE_SEED} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
 
 export default function Welcome() {
@@ -47,18 +46,8 @@ export default function Welcome() {
         setShowArrow(false)
       },
     () => {
-      navigate('/' + GAME + '/' + INTRODUCE_SEED)
+      navigate('/' + GAME + INTRODUCE_SEED)
     }
-      // () => {
-      //   console.log('third callback')
-      //   setDialog(
-      //     <Dialog>
-      //       Now it's time to start your journey! Pick the seed packet below.
-      //     </Dialog>
-      //   )
-      //   setShowTimmy(false)
-      //   setShowArrow(false)
-      // },
     ]
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
 
