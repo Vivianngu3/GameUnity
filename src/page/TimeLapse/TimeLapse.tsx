@@ -5,7 +5,7 @@ import CheckList from '../../component/container/CheckList/CheckList'
 import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import {useNavigate} from 'react-router-dom'
-import {GAME, NEW_SPROUT, TIME_LAPSE} from '../../res/constants/url-endpoints'
+import {GAME, NEW_SPROUT} from '../../res/constants/url-endpoints'
 
 interface Time {
   background: TimeOfDay
