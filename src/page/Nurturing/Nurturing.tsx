@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction, useRef, useState} from 'react'
-import Plot, {Progress} from '../../component/container/Plot/Plot'
-import {State} from '../../utils/StateMediator'
+import Plot, {Progress as PlotProgress, Progress} from '../../component/container/Plot/Plot'
+import {GamePageState, State} from '../../utils/GameStateMediator'
 import StateMediator from './NurturingStateMediator'
 import CheckList, {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
 import ToolBox from '../../component/container/ToolBox/ToolBox'
@@ -10,13 +10,8 @@ import {useNavigate} from 'react-router-dom'
 import {GAME, TIME_LAPSE} from '../../res/constants/url-endpoints'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 
-export interface NurturingState {
-  plotFence: State<boolean>
-  plotProgress: State<Progress>
-  checkedItems: State<ChecklistProps>
-  setTimmyText: Dispatch<SetStateAction<string>>
+export interface NurturingState extends GamePageState {
   setShowNextArrow: Dispatch<SetStateAction<boolean>>
-  setToolboxOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export default function Nurturing() {
@@ -44,28 +39,17 @@ export default function Nurturing() {
 
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
 
-  const [plotFence, setPlotFence] = useState(false)
   const [plotProgress, setPlotProgress] = useState<Progress>('start')
   const [checkedItems, setCheckedItems] = useState<ChecklistProps>({})
 
-  const notifyUserOnce = (str: string) => {
-    let timmyTextBefore = timmyText
-    setTimmyText(str)
-    setToolboxOpen(false)
-    setToolboxToggleSideEffect(() => () => {
-      setTimmyText(timmyTextBefore)
-      setToolboxToggleSideEffect(() => () => {})
-    })
-  }
-
   const stateMediator = new StateMediator({
-    plotFence: {'value': plotFence, 'set': setPlotFence},
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
-    setTimmyText: setTimmyText,
-    setShowNextArrow: setShowArrow,
+    timmyText: {'value': timmyText, 'set': setTimmyText},
     setToolboxOpen: setToolboxOpen,
-  }, notifyUserOnce)
+    setToolboxToggleSideEffect: setToolboxToggleSideEffect,
+    setShowNextArrow: setShowArrow,
+  })
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {return () => {stateMediator.stopUpdates()}}, [])
@@ -74,7 +58,6 @@ export default function Nurturing() {
     <>
       <GameBackground />
       <Plot
-        fence={plotFence}
         progress={plotProgress}
         coverSeed={() => {stateMediator.coverSeeds()}}
         />

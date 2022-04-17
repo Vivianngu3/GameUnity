@@ -11,7 +11,7 @@ import worms from '../../../res/images/worms.svg'
 import fertilizer from '../../../res/images/fertilizer.svg'
 import styles from './ToolBox.module.css'
 import Tool, {Props as ToolProps} from './Tool/Tool'
-import {State} from '../../../utils/StateMediator'
+import {State} from '../../../utils/GameStateMediator'
 
 export interface ToolBehaviorHandler {
   cut(): void;

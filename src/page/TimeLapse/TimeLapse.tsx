@@ -18,7 +18,7 @@ export default function TimeLapse() {
     {background: 'noon', plot: 'watered'},
     {background: 'afternoon', plot: 'growth1'},
     {background: 'evening', plot: 'growth2'},
-    {background: 'twilight', plot: 'growth3'},
+    {background: 'twilight', plot: 'grown'},
     {background: 'noon', plot: 'with-starburst'},
   ]
 
