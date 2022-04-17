@@ -5,3 +5,21 @@
   height: 17.5rem;
   background: var(--color-one);
 }
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ischoolIcon {
+  height: 45px;
+  width: 45px;
+  margin-right: 15px;
+  border-radius: 50px;
+}
+
+.youtubeIcon {
+  height: 45px;
+  width: 60px;
+}

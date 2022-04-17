@@ -16,7 +16,7 @@
 .imageSection {
   width: 100%;
   position: absolute;
-  bottom: -210px;
+  bottom: -300px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
