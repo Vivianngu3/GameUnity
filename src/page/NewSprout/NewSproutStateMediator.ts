@@ -21,8 +21,8 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       if (this.isCompleted('tomato')) {
         console.log('Tomato completed')
         // Show big tomatoes
-        this.state?.timmyText.set("Great job! You grew some tomatoes.")
-        // this.state?.setShowNextArrow(true)
+        this.state?.timmyText.set("Great job! You grew your own tomatoes.")
+        this.state?.setToolboxOpen(false)
         this.setNextArrowCallbacks([
           () => {
             this.state?.timmyText.set('With that, our journey comes to an end.')
@@ -166,6 +166,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         'Your plant has finished growing!\n' +
         'It’s time to take off the fence. Click it!'
       )
+      this.state?.setToolboxOpen(false)
       this.setPlotCompleted('protected-tomato')
     }
   }
