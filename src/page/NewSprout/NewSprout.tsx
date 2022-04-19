@@ -6,18 +6,17 @@ import CheckList, {Props as ChecklistProps} from '../../component/container/Chec
 import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import ToolBox from '../../component/container/ToolBox/ToolBox'
-import {useNavigate} from 'react-router-dom'
+import {NavigateFunction, useNavigate} from 'react-router-dom'
 import NewSproutStateMediator from './NewSproutStateMediator'
-import {GAME} from '../../res/constants/url-endpoints'
 
 export interface NewSproutState extends GamePageState {
+  nextArrowCallbacks: State<(() => void)[]>
   // toolsLearned: State<Set<UnorderedProgress>>
-  setShowNextArrow: Dispatch<SetStateAction<boolean>>
+  navigate: NavigateFunction
 }
 
 export default function NewSprout() {
   const [timmyText, setTimmyText] = React.useState('Oh look! Some new friends have joined us.')
-  const [showArrow, setShowArrow] = React.useState(true)
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
 
   const [toolboxToggleSideEffect, setToolboxToggleSideEffect] =
@@ -31,24 +30,8 @@ export default function NewSprout() {
     },
     () => {
       setTimmyText('Look in your tool box and pick the tool that would help protect your plant.')
-      setShowArrow(false) // After worms, next arrow reappears
-    },
-    () => {
-      setTimmyText('Now try learning about the other tools while your plant grows!')
-    },
-    () => {
-      setTimmyText("Click on all the tools you haven't learned yet!")
-      setShowArrow(false) // After getting the tomatoes, next arrow reappears
-    },
-    () => {
-      setTimmyText('With that, our journey comes to an end.')
-    },
-    () => {
-      setTimmyText("I'll see you next time!")
-    },
-    () => {
-      navigate('/' + GAME)
-    },
+      setNextArrowCallbacks([])
+    }
   ]
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
 
@@ -66,8 +49,8 @@ export default function NewSprout() {
     timmyText: {'value': timmyText, 'set': setTimmyText},
     setToolboxOpen: setToolboxOpen,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
-    // toolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
-    setShowNextArrow: setShowArrow,
+    nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
+    navigate: navigate
   })
 
 
@@ -91,7 +74,7 @@ export default function NewSprout() {
         <Timmy>{timmyText}</Timmy>
       }
 
-      {showArrow &&
+      {nextArrowCallbacks.length > 0 &&
         <NextArrow
           callbacks={nextArrowCallbacks}
           setCallbacks={setNextArrowCallbacks}

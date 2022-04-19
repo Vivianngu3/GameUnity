@@ -2,6 +2,7 @@ import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
 import {MySet as Set} from '../../utils/Set'
+import {GAME} from '../../res/constants/url-endpoints'
 
 enum UnorderedProgress {
   SCISSORS_LEARNED,
@@ -27,7 +28,18 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       if (this.isCompleted('tomato')) {
         // Show big tomatoes
         this.state?.timmyText.set("Great job! You grew some tomatoes.")
-        this.state?.setShowNextArrow(true)
+        // this.state?.setShowNextArrow(true)
+        this.setNextArrowCallbacks([
+          () => {
+              this.state?.timmyText.set('With that, our journey comes to an end.')
+            },
+            () => {
+              this.state?.timmyText.set("I'll see you next time!")
+            },
+            () => {
+              this.state?.navigate('/' + GAME)
+            },
+        ])
       } else {
         this.unorderedToolsLearned.add(UnorderedProgress.SCISSORS_LEARNED)
         // Show definition
@@ -54,7 +66,15 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         this.state?.timmyText.set('Woohoo!')
         setTimeout(() => {
           this.state?.setToolboxOpen(false)
-          this.state?.setShowNextArrow(true)
+          // this.state?.setShowNextArrow(true)
+          this.setNextArrowCallbacks([
+              () => {
+                this.state?.timmyText.set('Now try learning about the other tools while your plant grows!')
+              },
+              () => {
+                this.state?.timmyText.set("Click on all the tools you haven't learned yet!")
+              },
+          ])
         }, 1000)
       } else {
         this.notifyUserOnce("We aren't ready for that yet!")
@@ -87,6 +107,16 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   dig(): void {this.disabledTool()}
   sowSeeds(): void {this.disabledTool()}
   water(): void {this.disabledTool()}
+
+  private setNextArrowCallbacks(callbacks: (() => void)[]) {
+    let end = callbacks.length - 1
+    let lastCallback = callbacks[end]
+    callbacks[end] = () => {
+      lastCallback()
+      this.state?.nextArrowCallbacks.set([])
+    }
+    this.state?.nextArrowCallbacks.set(callbacks)
+  }
 
   private moveOnIfToolsLearned() {
     // TODO: get UnorderedProgress values dynamically
