@@ -6,7 +6,7 @@ import Definition from '../../component/modal/Definition/Definition'
 import planet from '../../res/images/planet.png'
 import styles from './Welcome.module.css'
 import utils from '../../utils/utils.module.css'
-import {GAME, INTRODUCE_SEED} from '../../res/constants/url-endpoints'
+import {GAME, INTRODUCE_SEED, NURTURING} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
 
 export default function Welcome() {
@@ -51,7 +51,7 @@ export default function Welcome() {
         setShowPlanet(<img className={styles.planetSize} src={planet}/>)
       },
     () => {
-      navigate('/' + GAME + INTRODUCE_SEED)
+      navigate('/' + GAME + NURTURING)
     }
     ]
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
@@ -71,6 +71,7 @@ export default function Welcome() {
         <Definition
           hide={() => {
             setShowDefinition(false)
+            setTimmy(<Timmy>Click next to get started!</Timmy>)
             setShowArrow(true)
             }
           }
