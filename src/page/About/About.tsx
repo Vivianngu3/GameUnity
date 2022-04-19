@@ -6,10 +6,10 @@ import Heading from '../../component/text/Heading'
 import TeamMemberInfo from '../../component/static/TeamMemberInfo/TeamMemberInfo'
 import Curve from '../../component/static/BackgroundCurve/BackgroundCurve'
 
-import Vivian from '../../res/images/Vivian.svg'
-import Juliane from '../../res/images/Juliane.svg'
-import Shane from '../../res/images/Shane.svg'
-import Hannan from '../../res/images/Hannan.svg'
+import Vivian from '../../res/images/Vivian.png'
+import Juliane from '../../res/images/Juliane.png'
+import Shane from '../../res/images/Shane.png'
+import Hannan from '../../res/images/Hannan.png'
 import Bee from '../../res/images/Bee.svg'
 
 export default function About() {
@@ -80,7 +80,7 @@ export default function About() {
         <section className={styles.content}>
           <Heading type={'section'}> OUR MISSION</Heading>
           <Block align={'center'}>
-            The Sprout team aims to provide a solution to encourage elementary school teachers for grades 1-3 to incorporate environmental education in their classrooms. Teachers will find that our gamified approach to increasing environmental awareness, more namely agricultural awareness, references english language arts (ELA) common core standards and next generation science standards for elementary school students grades 1-3. This interactive approach to storytelling will ultimately fulfill our mission to increase environmental awareness in elementary school classrooms while furthering the development of students’ reading capabilities.
+            The Sprout team aims to provide a solution to encourage elementary school teachers for grades 1-3 to incorporate environmental education in their classrooms. Teachers will find that our gamified approach to increasing environmental awareness, more namely agricultural awareness, references <a className={styles.linkText} href={'http://www.corestandards.org/ELA-Literacy/'}>english language arts (ELA) common core standards</a> and <a className={styles.linkText} href={'https://ngss.nsta.org/AccessStandardsByTopic.aspx'}>next generation science standards</a> for elementary school students grades 1-3. This interactive approach to storytelling will ultimately fulfill our mission to increase environmental awareness in elementary school classrooms while furthering the development of students’ reading capabilities.
           </Block>
         </section>
 

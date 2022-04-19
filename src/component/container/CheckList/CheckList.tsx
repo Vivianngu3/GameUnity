@@ -18,37 +18,37 @@ export default function CheckList(props: Props) {
       <div className={styles.checkListContainer}>
 
           <div className={styles.checkListHeader}>
-              Checklist
+              To-Do
           </div>
 
           <div className={styles.checkListItems}>
               <CheckListItem
                 checked={props.dug}
-                item={'Dig a hole'}
+                item={'1. Dig a hole'}
               />
               <CheckListItem
                 checked={props.planted}
-                item={'Plant seed'}
+                item={'2. Plant seed'}
               />
               <CheckListItem
                 checked={props.watered}
-                item={'Water seed'}
+                item={'3. Water seed'}
               />
               <CheckListItem
                 checked={props.protected}
-                item={'Protect plant'}
+                item={'4. Protect plant'}
               />
               <CheckListItem
                 checked={props.improved}
-                item={'Improve soil'}
+                item={'5. Improve soil'}
               />
               <CheckListItem
                 checked={props.learned}
-                item={'Learn all the tools'}
+                item={'6. Learn all the tools'}
               />
               <CheckListItem
                 checked={props.collected}
-                item={'Collect plant'}
+                item={'7. Collect plant'}
               />
           </div>
       </div>
