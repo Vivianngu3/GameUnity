@@ -83,13 +83,28 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   }
 
   pesticide(): void {
-    if (this.isCompleted('improved')) {
-      this.unorderedToolsLearned.add(UnorderedProgress.PESTICIDE_LEARNED)
-      // Show definition
-      this.moveOnIfToolsLearned()
-    } else {
-      this.notifyUserOnce("We aren't ready for that yet!")
-    }
+    this.unorderedToolsLearned.add(UnorderedProgress.PESTICIDE_LEARNED)
+    this.state?.timmyText.set("Pesticides are used to keep bugs from harming your plant")
+    this.state?.setToolboxOpen(false)
+    this.setNextArrowCallbacks([
+      () => {
+        this.state?.timmyText.set("Even if pesticides could help keep away bugs and insects...")
+      },
+      () => {
+        this.state?.timmyText.set("They can also harm people, plants, animals, and the environment.")
+      },
+      () => {
+        this.state?.timmyText.set("That’s because pesticides are made up of chemicals that animals shouldn't eat.")
+      },
+      () => {
+        this.state?.timmyText.set("If these chemicals hurt the bees that pollinate the plants, then your seed won't grow!")
+      },
+      () => {
+        this.state?.timmyText.set("That's why it's better find a different way to protect your plant!")
+      },
+    ])
+    // Show definition
+    this.moveOnIfToolsLearned()
   }
 
   postFence(): void {
