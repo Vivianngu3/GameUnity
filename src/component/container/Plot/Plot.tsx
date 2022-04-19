@@ -3,7 +3,7 @@ import styles from './Plot.module.css'
 import seeds from '../../../res/images/seeds-in-hole.svg'
 
 type Wetness = "dry" | "medium" | "wet"
-export type Progress = "start" | "dug" | "seeds-sown" | "planted" | "watered" | "growth1" | "growth2" | "grown" | "with-starburst" | "tomato"
+export type Progress = "start" | "dug" | "seeds-sown" | "planted" | "watered" | "growth1" | "growth2" | "grown" | "with-starburst" | "protected" | "protected-tomato" | "tomato"
 
 interface Props {
   wetness?: Wetness

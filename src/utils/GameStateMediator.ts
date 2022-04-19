@@ -2,6 +2,8 @@ import {Dispatch, SetStateAction} from 'react'
 import {Progress as PlotProgress} from '../component/container/Plot/Plot'
 import {Props as ChecklistProps} from '../component/container/CheckList/CheckList'
 
+export type GameProgress = PlotProgress | 'fertilized' | 'pesticide-learned' | 'fertilizer-learned'
+
 export interface GamePageState {
   plotProgress: State<PlotProgress>
   checkedItems: State<ChecklistProps>
@@ -17,11 +19,14 @@ export interface State<E> {
 
 export default abstract class GameStateMediator<S extends GamePageState> {
   state: S | null
-  abstract progressOrder: PlotProgress[];
-  abstract stopUpdates(): void;
+  progressOrder: GameProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered', 'protected', 'fertilized', 'pesticide-learned', 'fertilizer-learned']
 
   constructor(state: S) {
     this.state = state
+  }
+
+  stopUpdates() {
+    this.state = null
   }
 
   protected notifyUserOnce(str: string) {

@@ -1,11 +1,8 @@
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
-import {Progress} from '../../component/container/Plot/Plot'
 
 export default class NewSproutStateMediator extends GameStateMediator<NewSproutState> implements ToolBehaviorHandler {
-  progressOrder: Progress[] = []
-
   stopUpdates(): void {
     this.state = null
   }
@@ -27,7 +24,8 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
 
   postFence(): void {
     this.state?.plotFence.set(true)
-    // this.addCheckedItem('protected')
+    this.addCheckedItem('protected')
+    this.state?.timmyText.set('Awesome! Open up your tool box to improve area your plant is growing in.')
   }
 
   sowSeeds(): void {

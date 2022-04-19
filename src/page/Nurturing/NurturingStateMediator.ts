@@ -4,8 +4,6 @@ import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 
 export default class NurturingStateMediator extends GameStateMediator<NurturingState> implements ToolBehaviorHandler {
-  progressOrder: PlotProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered']
-
   // We need to stop updates when Nurturing is unmounted to avoid updating the state of an unmounted component
   stopUpdates() {
     this.state = null;
@@ -53,6 +51,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
 
       setTimeout(() => {
         this.state?.timmyText.set('Great work!')
+        this.state?.setToolboxOpen(false)
         this.state?.setShowNextArrow(true)
       }, 1000)
     } else if (this.isCompleted('dug')) {
