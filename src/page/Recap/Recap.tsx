@@ -48,11 +48,11 @@ export default function Recap () {
 
               <div className={styles['flip-box-back']}>
                 <h2>Questions</h2>
-                  <ul> 
-                    <li>What is agriculture?</li>
-                    <li>What is a pesticide?</li>
-                    <li>What is pollinate?</li>
-                    <li>What is chemical?</li>
+                  <ul className={styles.flipBoxList}>
+                    <li className={styles.flipBoxListItem}>What is agriculture?</li>
+                    <li className={styles.flipBoxListItem}>What is a pesticide?</li>
+                    <li className={styles.flipBoxListItem}>What is pollinate?</li>
+                    <li className={styles.flipBoxListItem}>What is chemical?</li>
                   </ul>
               </div>
             </div>
@@ -69,9 +69,9 @@ export default function Recap () {
 
               <div className={styles['flip-box-back']}>
                 <h2>Questions</h2>
-                  <ul> 
-                    <li>What was the main idea of the story?</li>
-                    <li>What happens when you use pesticide?</li>
+                  <ul className={styles.flipBoxList}>
+                    <li className={styles.flipBoxListItem}>What was the main idea of the story?</li>
+                    <li className={styles.flipBoxListItem}>What happens when you use pesticide?</li>
                   </ul>
               </div>
             </div>
@@ -87,9 +87,9 @@ export default function Recap () {
 
               <div className={styles['flip-box-back']}>
                 <h2>Questions</h2>
-                  <ul> 
-                    <li>What clues did you use to make the right choices?</li>
-                    <li>How can you connect what you learned to your life?</li>
+                  <ul className={styles.flipBoxList}>
+                    <li className={styles.flipBoxListItem}>What clues did you use to make the right choices?</li>
+                    <li className={styles.flipBoxListItem}>How can you connect what you learned to your life?</li>
                   </ul>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function Recap () {
               <div className={styles['content']}>
                 <h2 className={styles['title']}>Chia Pets</h2>
                 <p> Chia Pets are figurines where the chia sprouts grow within a couple of weeks to look like the animal’s fur or hair. </p> 
-                <button> <a href='https://www.chia.com/' target="_blank" rel="noreferrer"> Find More </a> </button> 
+                <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.chia.com/' target="_blank" rel="noreferrer"> Find More </a> </button>
               </div>
           </div>
 
@@ -115,7 +115,7 @@ export default function Recap () {
               <div className={styles['content']}>
                 <h2 className={styles['title']}>Eastern Leaf</h2>
                 <p> Our little green trees are ready for adoption and looking for good homes.</p> 
-                <button> <a href='https://www.easternleaf.com/' target="_blank" rel="noreferrer"> Find More </a> </button> 
+                <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.easternleaf.com/' target="_blank" rel="noreferrer"> Find More </a> </button>
               </div>
           </div>
 
@@ -125,7 +125,7 @@ export default function Recap () {
                 <h2 className={styles['title']}>Plant Kits</h2>
                 <p> Nature’s Blossom all-in-one beginner’s seed starter kits are perfect for any age. 
                   Enjoy the rewarding feeling of watching your tomato garden grow. </p> 
-                <button> <a href='https://www.amazon.com/Natures-Blossom-Tomato-Gardening-Starter/dp/B06XJWQ8FM' target="_blank" rel="noreferrer"> Find More </a> </button>
+                <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.amazon.com/Natures-Blossom-Tomato-Gardening-Starter/dp/B06XJWQ8FM' target="_blank" rel="noreferrer"> Find More </a> </button>
               </div>
           </div>
         

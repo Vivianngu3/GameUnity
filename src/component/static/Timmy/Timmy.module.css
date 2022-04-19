@@ -12,6 +12,8 @@
 
 .timmyDialog {
   position: fixed;
+  bottom: 260px;
+  left: 370px;
 
   display: flex;
   flex-direction: column;
@@ -20,7 +22,6 @@
 
   border: 0.1rem solid black;
   border-radius: 1rem;
-  margin: 180px 0 0 360px;
 
   width: 300px;
   height: 80px;
