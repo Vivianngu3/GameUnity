@@ -40,7 +40,7 @@ export default function BackgroundCurve(props: Props) {
         C 587.112 78.3668
           270.188 187.568
           0 24.7873
-        V 0
+        V -1
         H 1440
         V 24.7873
         C 1363.65 7.08485
