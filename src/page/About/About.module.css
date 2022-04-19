@@ -4,7 +4,7 @@
   border-bottom: 1px solid transparent;
 }
 
-.with-background-color {
+.withBackgroundColor {
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -16,7 +16,7 @@ export default function About() {
   return (
     <div className={styles.page}>
 
-      <section className={styles['with-background-color']}>
+      <section className={styles.withBackgroundColor}>
         <div className={styles.beesHeading}>
           <img src={Bee} alt={'Bee'} className={styles.beeReflect} />
           <Heading block={true} type={'section'}> OUR TEAM MEMBERS</Heading>
