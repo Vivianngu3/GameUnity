@@ -2,8 +2,7 @@ import {Dispatch, SetStateAction} from 'react'
 import {Progress as PlotProgress} from '../component/container/Plot/Plot'
 import {Props as ChecklistProps} from '../component/container/CheckList/CheckList'
 
-type UnorderedProgress = 'pesticide-learned' | 'fertilizer-learned'
-export type GameProgress = PlotProgress | 'improved' | UnorderedProgress
+export type GameProgress = PlotProgress | 'improved'// | UnorderedProgress
 
 export interface GamePageState {
   plotProgress: State<PlotProgress>

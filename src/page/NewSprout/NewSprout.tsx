@@ -8,9 +8,10 @@ import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import ToolBox from '../../component/container/ToolBox/ToolBox'
 import {useNavigate} from 'react-router-dom'
 import NewSproutStateMediator from './NewSproutStateMediator'
+import {GAME} from '../../res/constants/url-endpoints'
 
 export interface NewSproutState extends GamePageState {
-  plotFence: State<boolean>
+  // toolsLearned: State<Set<UnorderedProgress>>
   setShowNextArrow: Dispatch<SetStateAction<boolean>>
 }
 
@@ -30,10 +31,23 @@ export default function NewSprout() {
     },
     () => {
       setTimmyText('Look in your tool box and pick the tool that would help protect your plant.')
-      setShowArrow(false)
+      setShowArrow(false) // After worms, next arrow reappears
     },
     () => {
-      navigate('/')
+      setTimmyText('Now try learning about the other tools while your plant grows!')
+    },
+    () => {
+      setTimmyText("Click on all the tools you haven't learned yet!")
+      setShowArrow(false) // After getting the tomatoes, next arrow reappears
+    },
+    () => {
+      setTimmyText('With that, our journey comes to an end.')
+    },
+    () => {
+      setTimmyText("I'll see you next time!")
+    },
+    () => {
+      navigate('/' + GAME)
     },
   ]
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
@@ -44,7 +58,7 @@ export default function NewSprout() {
     planted: true,
     watered: true,
   })
-  const [plotFence, setPlotFence] = React.useState(false)
+  // const [unorderedToolsLearned, setUnorderedToolsLearned] = React.useState<Set<UnorderedProgress>>(new Set())
 
   const stateMediator = new NewSproutStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
@@ -52,7 +66,7 @@ export default function NewSprout() {
     timmyText: {'value': timmyText, 'set': setTimmyText},
     setToolboxOpen: setToolboxOpen,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
-    plotFence: {'value': plotFence, 'set': setPlotFence},
+    // toolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
     setShowNextArrow: setShowArrow,
   })
 
@@ -62,6 +76,10 @@ export default function NewSprout() {
       <GameBackground animalsPosition={1} />
       <Plot
         progress={plotProgress}
+        removeFence={() => {
+          setPlotProgress('tomato')
+          setTimmyText('Now use your scissors to collect it.')
+        }}
       />
 
       <CheckList

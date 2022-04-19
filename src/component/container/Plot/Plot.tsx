@@ -11,9 +11,9 @@ export type Progress = "start" | "dug" | "seeds-sown" | "planted" | "watered" | 
 
 interface Props {
   wetness?: Wetness
-  fence?: boolean
   progress?: Progress
   coverSeed?: () => void
+  removeFence?: () => void
 }
 
 export default function Plot(props: Props) {
@@ -134,7 +134,10 @@ export default function Plot(props: Props) {
       contained =
         <div className={styles.holeContainer}>
           <img className={styles.tomatoPlant} src={tomatoPlant} />
-          <img className={styles.fence} src={fence}/>
+          <img
+            onClick={() => {if (props.removeFence) props.removeFence()}}
+            className={styles.fence} src={fence}
+          />
         </div>
       break
     case 'tomato':
@@ -146,6 +149,7 @@ export default function Plot(props: Props) {
     default:
       contained = <></>
   }
+  console.log(props.progress)
   return (
     <div className={styles.soil} >
       {
