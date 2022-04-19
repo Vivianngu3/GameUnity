@@ -48,8 +48,8 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
       this.setPlotCompleted('watered')
       this.addCheckedItem('watered')
 
+      this.state?.timmyText.set('Great work!')
       setTimeout(() => {
-        this.state?.timmyText.set('Great work!')
         this.state?.setToolboxOpen(false)
         this.state?.setShowNextArrow(true)
       }, 1000)

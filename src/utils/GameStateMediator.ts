@@ -2,7 +2,8 @@ import {Dispatch, SetStateAction} from 'react'
 import {Progress as PlotProgress} from '../component/container/Plot/Plot'
 import {Props as ChecklistProps} from '../component/container/CheckList/CheckList'
 
-export type GameProgress = PlotProgress | 'fertilized' | 'pesticide-learned' | 'fertilizer-learned'
+type UnorderedProgress = 'pesticide-learned' | 'fertilizer-learned'
+export type GameProgress = PlotProgress | 'improved' | UnorderedProgress
 
 export interface GamePageState {
   plotProgress: State<PlotProgress>
@@ -19,7 +20,7 @@ export interface State<E> {
 
 export default abstract class GameStateMediator<S extends GamePageState> {
   state: S | null
-  progressOrder: GameProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered', 'protected', 'fertilized', 'pesticide-learned', 'fertilizer-learned']
+  progressOrder: GameProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered', 'protected', 'improved'] //, 'pesticide-learned', 'fertilizer-learned']
 
   constructor(state: S) {
     this.state = state
@@ -27,6 +28,10 @@ export default abstract class GameStateMediator<S extends GamePageState> {
 
   stopUpdates() {
     this.state = null
+  }
+
+  protected disabledTool() {
+    this.notifyUserOnce("We're all done with that tool!")
   }
 
   protected notifyUserOnce(str: string) {
@@ -47,7 +52,7 @@ export default abstract class GameStateMediator<S extends GamePageState> {
     }
   }
 
-  protected isCompleted(stateName: PlotProgress) {
+  protected isCompleted(stateName: GameProgress) {
     let passedStateIndex = this.progressOrder.indexOf(stateName)
     if (this.state) {
       let currStateIndex = this.progressOrder.indexOf(this.state.plotProgress.value)

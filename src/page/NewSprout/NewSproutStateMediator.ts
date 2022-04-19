@@ -7,30 +7,47 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     this.state = null
   }
 
-  cut(): void {
-  }
-
-  dig(): void {
-  }
+  cut(): void { }
 
   fertilizer(): void {
+    if (this.isCompleted('improved')) {
+      // Show definition
+    } else {
+      this.notifyUserOnce("We aren't ready for that yet!")
+    }
   }
 
   improveSoil(): void {
+    if (!this.isCompleted('improved')) {
+      if (this.isCompleted('protected')) {
+        this.addCheckedItem('improved')
+      } else {
+        this.notifyUserOnce("We aren't ready for that yet!")
+      }
+    }
   }
 
   pesticide(): void {
+    if (this.isCompleted('improved')) {
+      // Show definition
+    } else {
+      this.notifyUserOnce("We aren't ready for that yet!")
+    }
   }
 
   postFence(): void {
-    this.state?.plotFence.set(true)
-    this.addCheckedItem('protected')
-    this.state?.timmyText.set('Awesome! Open up your tool box to improve area your plant is growing in.')
+    if (!this.isCompleted('protected')) {
+      this.state?.plotFence.set(true)
+      this.addCheckedItem('protected')
+
+      this.state?.timmyText.set('Awesome! Open up your tool box to improve the area your plant is growing in.')
+      setTimeout(() => {
+        this.state?.setToolboxOpen(false)
+      }, 1000)
+    }
   }
 
-  sowSeeds(): void {
-  }
-
-  water(): void {
-  }
+  dig(): void {this.disabledTool()}
+  sowSeeds(): void {this.disabledTool()}
+  water(): void {this.disabledTool()}
 }

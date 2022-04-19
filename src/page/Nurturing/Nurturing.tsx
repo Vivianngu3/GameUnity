@@ -1,5 +1,5 @@
 import React, {Dispatch, SetStateAction, useState} from 'react'
-import Plot, {Progress} from '../../component/container/Plot/Plot'
+import Plot, {Progress as PlotProgress} from '../../component/container/Plot/Plot'
 import {GamePageState} from '../../utils/GameStateMediator'
 import NurturingStateMediator from './NurturingStateMediator'
 import CheckList, {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
@@ -39,7 +39,7 @@ export default function Nurturing() {
 
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
 
-  const [plotProgress, setPlotProgress] = useState<Progress>('start')
+  const [plotProgress, setPlotProgress] = useState<PlotProgress>('start')
   const [checkedItems, setCheckedItems] = useState<ChecklistProps>({})
 
   const stateMediator = new NurturingStateMediator({
