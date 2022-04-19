@@ -149,7 +149,6 @@ export default function Plot(props: Props) {
     default:
       contained = <></>
   }
-  console.log(props.progress)
   return (
     <div className={styles.soil} >
       {
