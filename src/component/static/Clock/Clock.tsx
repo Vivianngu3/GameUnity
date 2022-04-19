@@ -8,6 +8,6 @@ interface Props {
 
 export default function Clock(props: Props) {
   return (
-    <></>
+    <p>{props.time}</p>
   )
 }

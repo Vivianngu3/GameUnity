@@ -6,7 +6,7 @@ import Definition from '../../component/modal/Definition/Definition'
 import planet from '../../res/images/planet.png'
 import styles from './Welcome.module.css'
 import utils from '../../utils/utils.module.css'
-import {GAME, INTRODUCE_SEED, NURTURING} from '../../res/constants/url-endpoints'
+import {GAME, NURTURING} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
 
 export default function Welcome() {
@@ -30,7 +30,7 @@ export default function Welcome() {
       () => {
         console.log('first callback')
         setShowTimmy(false)
-        setShowPlanet(<img className={styles.planetSize} src={planet}/>)
+        setShowPlanet(<img alt={''} className={styles.planetSize} src={planet}/>)
         setDialog(
           <Dialog>
             On this journey you will learn about <></>
@@ -48,7 +48,7 @@ export default function Welcome() {
         setTimmy(<Timmy>Click on the <span className={utils.underline}>underlined</span> word to learn more about it!</Timmy>)
         setShowTimmy(true)
         setShowArrow(false)
-        setShowPlanet(<img className={styles.planetSize} src={planet}/>)
+        setShowPlanet(<img alt={''} className={styles.planetSize} src={planet}/>)
       },
     () => {
       navigate('/' + GAME + NURTURING)

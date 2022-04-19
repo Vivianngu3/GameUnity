@@ -12,6 +12,7 @@ import Recap from './page/Recap/Recap'
 import About from './page/About/About'
 import TimeLapse from './page/TimeLapse/TimeLapse'
 import NewSprout from './page/NewSprout/NewSprout'
+import Kitchen from './page/Kitchen/Kitchen'
 
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
           <Route path={urls.NURTURING} element={<Nurturing />} />
           <Route path={urls.TIME_LAPSE} element={<TimeLapse />} />
           <Route path={urls.NEW_SPROUT} element={<NewSprout />} />
+          <Route path={urls.KITCHEN} element={<Kitchen />} />
         </Route>
       </Routes>
     </BrowserRouter>

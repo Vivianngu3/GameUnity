@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react'
+import React from 'react'
 import GameBackground from '../../component/animated/GameBackground/GameBackground'
 import {GamePageState, State} from '../../utils/GameStateMediator'
 import Plot, {Progress as PlotProgress} from '../../component/container/Plot/Plot'
