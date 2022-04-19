@@ -3,6 +3,8 @@ import Dialog from '../../component/static/Dialog/Dialog'
 import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import Definition from '../../component/modal/Definition/Definition'
+import planet from '../../res/images/planet.png'
+import styles from './Welcome.module.css'
 import utils from '../../utils/utils.module.css'
 import {GAME, INTRODUCE_SEED} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
@@ -20,6 +22,7 @@ export default function Welcome() {
   const [timmy, setTimmy] = React.useState(<></>)
   const [showArrow, setShowArrow] = React.useState(false)
   const [showDefinition, setShowDefinition] = React.useState(false)
+  const [showPlanet, setShowPlanet] = React.useState(<></>)
 
   const navigate = useNavigate()
 
@@ -27,6 +30,7 @@ export default function Welcome() {
       () => {
         console.log('first callback')
         setShowTimmy(false)
+        setShowPlanet(<img className={styles.planetSize} src={planet}/>)
         setDialog(
           <Dialog>
             On this journey you will learn about <></>
@@ -44,6 +48,7 @@ export default function Welcome() {
         setTimmy(<Timmy>Click on the <span className={utils.underline}>underlined</span> word to learn more about it!</Timmy>)
         setShowTimmy(true)
         setShowArrow(false)
+        setShowPlanet(<img className={styles.planetSize} src={planet}/>)
       },
     () => {
       navigate('/' + GAME + INTRODUCE_SEED)
@@ -80,6 +85,9 @@ export default function Welcome() {
       }
       {showTimmy &&
         timmy
+      }
+      {showPlanet &&
+        showPlanet
       }
       {showArrow &&
         <NextArrow

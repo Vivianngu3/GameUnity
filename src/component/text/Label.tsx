@@ -16,6 +16,7 @@ export default function Label(props: React.PropsWithChildren<Props>) {
   let stylesArray = []
 
   stylesArray.push(styles['labelSize'])
+  stylesArray.push(styles['labelMargin'])
 
   if (props.allCaps) stylesArray.push(utils.allCaps)
 
@@ -24,7 +25,7 @@ export default function Label(props: React.PropsWithChildren<Props>) {
       stylesArray.push(styles['black'])
       break
     case 'color-primary':
-      stylesArray.push(styles['color-primary'])
+      stylesArray.push(styles['color-one'])
       break
     default:
       stylesArray.push(styles['black'])
