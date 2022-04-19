@@ -1,5 +1,4 @@
 import {NurturingState} from './Nurturing'
-import {Progress as PlotProgress} from '../../component/container/Plot/Plot'
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 
