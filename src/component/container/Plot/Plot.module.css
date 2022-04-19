@@ -49,8 +49,58 @@
 }
 
 .pile.dry {
+  z-index: 2;
   fill: #55381E;
 }
 .pile.wet {
+  z-index: 2;
   fill: #332011;
+}
+
+.sprout1 {
+  position: absolute;
+  z-index: 1;
+  height: 50px;
+  width: 60px;
+  bottom: 15px;
+  left: -10px;
+}
+
+.sprout2 {
+  position: absolute;
+  z-index: 1;
+  height: 80px;
+  width: 80px;
+  bottom: 20px;
+  left: -25px;
+}
+
+.sprout3 {
+  position: absolute;
+  z-index: 1;
+  height: 120px;
+  width: 120px;
+  bottom: 30px;
+  left: -45px;
+}
+
+.starburst {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: -110px;
+}
+
+.fence {
+  position: absolute;
+  z-index: 3;
+  bottom: -60px;
+  left: -190px;
+}
+
+.tomatoPlant {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: -110px;
 }
