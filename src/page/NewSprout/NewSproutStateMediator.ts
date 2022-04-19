@@ -37,8 +37,20 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       } else {
         console.log('Tomato not completed')
         this.addLearnedTool(UnorderedProgress.SCISSORS_LEARNED)
-        // Show definition
-        this.moveOnIfAllToolsLearned()
+
+        this.state?.timmyText.set("Scissors can be used to keep plants healthy.")
+        this.state?.setToolboxOpen(false)
+        this.setNextArrowCallbacks([
+          () => {
+            this.state?.timmyText.set("Cutting off dead parts of a plant can help the rest of the plant grow.")
+          },
+          () => {
+            this.state?.timmyText.set("Scissors are also good for collecting fruits and veggies from a plant that has finished growing.")
+          },
+          () => {
+            this.moveOnIfAllToolsLearned()
+          },
+        ])
       }
     }
   }
@@ -46,8 +58,23 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   fertilizer(): void {
     if (this.isCompleted('protected')) {
       this.addLearnedTool(UnorderedProgress.FERTILIZER_LEARNED)
-      // Show definition
-      this.moveOnIfAllToolsLearned()
+
+      this.state?.timmyText.set("Fertilizer is used to make plants grow bigger...")
+      this.state?.setToolboxOpen(false)
+      this.setNextArrowCallbacks([
+        () => {
+          this.state?.timmyText.set("But fertilizers are not always a good way to help your plant grow.")
+        },
+        () => {
+          this.state?.timmyText.set("Some of the bad chemicals in fertilizer can sink underground and get into the water you drink!")
+        },
+        () => {
+          this.state?.timmyText.set("We don’t want to drink fertilizer!")
+        },
+        () => {
+          this.moveOnIfAllToolsLearned()
+        },
+      ])
     } else {
       this.notifyUserOnce("We aren't ready for that yet!")
     }
@@ -106,10 +133,12 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         () => {
           this.state?.timmyText.set("That's why it's better find a different way to protect your plant.")
         },
+        () => {
+          this.moveOnIfAllToolsLearned()
+        },
       )
     }
     this.setNextArrowCallbacks(callbacks)
-    this.moveOnIfAllToolsLearned()
   }
 
   postFence(): void {
@@ -168,6 +197,8 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       )
       this.state?.setToolboxOpen(false)
       this.setPlotCompleted('protected-tomato')
+    } else {
+      this.state?.timmyText.set("Keep learning tools by clicking on them!")
     }
   }
 }
