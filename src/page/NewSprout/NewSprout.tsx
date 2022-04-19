@@ -7,11 +7,12 @@ import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import ToolBox from '../../component/container/ToolBox/ToolBox'
 import {NavigateFunction, useNavigate} from 'react-router-dom'
-import NewSproutStateMediator from './NewSproutStateMediator'
+import NewSproutStateMediator, {UnorderedProgress} from './NewSproutStateMediator'
+import {MyArray} from '../../utils/MyArray'
 
 export interface NewSproutState extends GamePageState {
   nextArrowCallbacks: State<(() => void)[]>
-  // toolsLearned: State<Set<UnorderedProgress>>
+  unorderedToolsLearned: State<MyArray<UnorderedProgress>>
   navigate: NavigateFunction
 }
 
@@ -41,7 +42,7 @@ export default function NewSprout() {
     planted: true,
     watered: true,
   })
-  // const [unorderedToolsLearned, setUnorderedToolsLearned] = React.useState<Set<UnorderedProgress>>(new Set())
+  const [unorderedToolsLearned, setUnorderedToolsLearned] = React.useState<MyArray<UnorderedProgress>>(new MyArray())
 
   const stateMediator = new NewSproutStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
@@ -50,6 +51,7 @@ export default function NewSprout() {
     setToolboxOpen: setToolboxOpen,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
     nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
+    unorderedToolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
     navigate: navigate
   })
 

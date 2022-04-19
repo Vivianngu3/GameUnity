@@ -1,8 +1,8 @@
-export class MySet<E> extends Set<E> {
+export class MyArray<E> extends Array<E> {
   hasAll(elements: E[]) {
     let hasAll = true
     elements.forEach((element: E) => {
-      if (!this.has(element)) {
+      if (element in this) {
         hasAll = false
       }
     })

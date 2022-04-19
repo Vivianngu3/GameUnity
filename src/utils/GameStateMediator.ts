@@ -19,7 +19,7 @@ export interface State<E> {
 
 export default abstract class GameStateMediator<S extends GamePageState> {
   state: S | null
-  progressOrder: GameProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered', 'protected', 'improved'] //, 'pesticide-learned', 'fertilizer-learned']
+  progressOrder: PlotProgress[] = ['start', 'dug', 'seeds-sown', 'planted', 'watered', 'protected', /*'improved',*/ 'protected-tomato', 'tomato'] //, 'pesticide-learned', 'fertilizer-learned']
 
   constructor(state: S) {
     this.state = state
@@ -51,7 +51,7 @@ export default abstract class GameStateMediator<S extends GamePageState> {
     }
   }
 
-  protected isCompleted(stateName: GameProgress) {
+  protected isCompleted(stateName: PlotProgress) {
     let passedStateIndex = this.progressOrder.indexOf(stateName)
     if (this.state) {
       let currStateIndex = this.progressOrder.indexOf(this.state.plotProgress.value)
