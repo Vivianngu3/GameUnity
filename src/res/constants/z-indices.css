@@ -1,7 +1,9 @@
 :root {
-  --timmy-z-index: 80;
-  --checklist-z-index: 150;
+  --timmy-z-index: 400;
+  --checklist-z-index: 500;
   --modal-z-index: 999;
-  --toolbox-icon-z-index: 70;
+  --toolbox-zindex: 200;
+  --toolbox-icon-z-index: 300;
   --game-background-z-index: 0;
+  --plot-z-index: 0;
 }
