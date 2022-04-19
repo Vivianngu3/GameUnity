@@ -5,18 +5,6 @@
     margin: 10px 0 10px 20px;
 }
 
-.checkBoxContainer {
-    margin: 0 15px 0 0;
-}
-
-.checkBox {
-    height: 15px;
-    width: 15px;
-    border: 0.1rem solid black;
-    border-radius: 0.25rem;
-    position: relative;
-}
-
 .checkMark {
     position: absolute;
     top: -1.3rem;
@@ -25,4 +13,8 @@
 
 .itemText {
 
+}
+
+.itemTextStrikethrough {
+    text-decoration: line-through;
 }

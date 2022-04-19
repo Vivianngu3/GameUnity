@@ -8,17 +8,15 @@ interface Props {
 }
 
 export default function CheckListItem(props: Props) {
+  let classes: string[] = [styles.itemText]
+
+  if (props.checked) {
+    classes.push(styles.itemTextStrikethrough)
+  }
+
   return(
     <div className={styles.itemContainer}>
-      <div className={styles.checkBoxContainer}>
-        <div className={styles.checkBox}>
-          {props.checked &&
-            <img className={styles.checkMark} src={CheckMark} alt={'check mark'} width={'30'} height={'30'} />
-          }
-        </div>
-      </div>
-
-      <div className={styles.itemText}>
+      <div className={classes.join(' ')}>
         {props.item}
       </div>
     </div>
