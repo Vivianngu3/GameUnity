@@ -30,7 +30,7 @@ export default function Kitchen() {
       setTime('3')
     },
     () => {
-      setTimmyText('Don\'t throw away everything. Ask an adult how you can \"recycle\".')
+      setTimmyText('Don\'t throw away everything. Ask an adult how you can "recycle".')
       setTime('4')
     },
     () => {
