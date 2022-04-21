@@ -58,7 +58,7 @@ export default function Welcome() {
 
   React.useEffect(() => {
     let timeoutID = setTimeout(() => {
-      setTimmy(<Timmy>Click on the next button to continue</Timmy>)
+      setTimmy(<Timmy>Click on the next button to continue.</Timmy>)
       setShowTimmy(true)
       setShowArrow(true)
     }, 2500)

@@ -1,5 +1,10 @@
 import React from 'react'
 import styles from './KitchenBackground.module.css'
+import window from '../../../res/images/window.svg'
+import cuttingBoardTomato from '../../../res/images/cutting-board-with-tomato.svg'
+import cuttingBoardKnife from '../../../res/images/cutting-board-with-knife.svg'
+import oven from '../../../res/images/oven.png'
+import pizza from '../../../res/images/pizza.png'
 import Clock, { Time } from '../Clock/Clock'
 
 export type View = 'cutting-board' | 'zoomed-out' | 'pizza' | 'clear'
@@ -13,22 +18,52 @@ export default function KitchenBackground(props: Props) {
   let counters: JSX.Element = <></>
   switch (props.view) {
     case 'cutting-board':
-      // counters = a view of the cutting board
+      counters =
+        <div className={styles.wall}>
+          <div className={styles.table} />
+          <img className={styles.cuttingBoardTomato} src={cuttingBoardTomato} alt={'knife and tomato on top of cutting board'}/>
+          <img className={styles.window} src={window} alt={'window'} />
+          <Clock time={props.time} />
+        </div>
       break
     case 'zoomed-out':
-      // counters = a view of the whole kitchen
+      counters =
+        <div className={styles.wall}>
+          <div className={styles.table} />
+          <div className={styles.angleShadow}/>
+          <div className={styles.smallDrawer1} />
+          <div className={styles.smallDrawer2} />
+          <div className={styles.smallDrawer3} />
+          <div className={styles.bigDrawer1} />
+          <div className={styles.bigDrawer2} />
+          <div className={styles.bigDrawer3} />
+          <img className={styles.cuttingBoardKnife} src={cuttingBoardKnife} alt={'knife on top of cutting board'}/>
+          <img className={styles.oven} src={oven} alt={'oven'} />
+          <img className={styles.window} src={window} alt={'window'} />
+          <Clock time={props.time} />
+        </div>
       break
     case 'pizza':
-      // counters = a view of the pizza
+      counters =
+        <div className={styles.wall}>
+          <div className={styles.table} />
+          <img className={styles.pizza} src={pizza} alt={'pizza'}/>
+          <img className={styles.window} src={window} alt={'window'} />
+          <Clock time={props.time} />
+        </div>
       break
     case 'clear':
-      // counters = a view of the countertop with nothing on it
+      counters =
+        <div className={styles.wall}>
+          <div className={styles.table} />
+          <img className={styles.window} src={window} alt={'window'} />
+          <Clock time={props.time} />
+        </div>
       break
   }
   return (
-    <div className={styles.wall}>
-      <Clock time={props.time} />
+    <>
       {counters}
-    </div>
+    </>
   )
 }
