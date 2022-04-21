@@ -1,0 +1,148 @@
+.wall {
+  background-color: #ECDBCC;
+  position: absolute;
+  z-index: var(--game-background-z-index);
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.table {
+  position: absolute;
+  z-index: var(--game-background-z-index) + 1;
+  bottom: 0;
+
+  width: 100vw;
+  height: 245px;
+
+  background-color: #937356;
+}
+
+.angleShadow {
+  position: absolute;
+  z-index: var(--game-background-z-index) + 2;
+  bottom: 0;
+
+  width: 100vw;
+  height: 167px;
+
+  background-color: #68492C;
+}
+
+.smallDrawer1 {
+  position: absolute;
+  z-index: var(--game-background-z-index) + 3;
+  bottom: 100px;
+  left: 0;
+
+  width: 260px;
+  height: 40px;
+
+  background-color: #AD886C;
+}
+
+.smallDrawer2 {
+  position: absolute;
+  z-index: var(--game-background-z-index) + 3;
+  bottom: 100px;
+  left: 700px;
+
+  width: 260px;
+  height: 40px;
+
+  background-color: #AD886C;
+}
+
+.smallDrawer3 {
+  position: absolute;
+  z-index: var(--game-background-z-index) + 3;
+  bottom: 100px;
+  left: 1000px;
+
+  width: 260px;
+  height: 40px;
+
+  background-color: #AD886C;
+}
+
+.bigDrawer1 {
+  position: absolute;
+  z-index: var(--game-background-z-index) + 3;
+  bottom: 0;
+  left: 0;
+
+  width: 260px;
+  height: 80px;
+
+  background-color: #AD886C;
+}
+
+.bigDrawer2 {
+  position: absolute;
+  z-index: var(--game-background-z-index) + 3;
+  bottom: 0;
+  left: 700px;
+
+  width: 260px;
+  height: 80px;
+
+  background-color: #AD886C;
+}
+
+.bigDrawer3 {
+  position: absolute;
+  z-index: var(--game-background-z-index) + 3;
+  bottom: 0;
+  left: 1000px;
+
+  width: 260px;
+  height: 80px;
+
+  background-color: #AD886C;
+}
+
+.window {
+  position: absolute;
+  left: 600px;
+  bottom: 350px;
+
+  height: 280px;
+  width: 480px;
+}
+
+.cuttingBoardTomato {
+  position: absolute;
+  left: 550px;
+  bottom: 10px;
+
+  height: 280px;
+  width: 680px;
+}
+
+.cuttingBoardKnife {
+  position: absolute;
+  left: 760px;
+  bottom: 155px;
+
+  height: 120px;
+  width: 220px;
+}
+
+.pizza {
+  position: absolute;
+  left: 600px;
+  bottom: 0px;
+
+  height: 250px;
+  width: 400px;
+}
+
+.oven {
+  position: absolute;
+  left: 280px;
+  bottom:0px;
+
+  height: 300px;
+  width: 400px;
+}
