@@ -3,7 +3,7 @@ import KitchenBackground, {View} from '../../component/static/KitchenBackground/
 import {Time} from '../../component/static/Clock/Clock'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import Timmy from '../../component/static/Timmy/Timmy'
-import {GAME, NURTURING} from "../../res/constants/url-endpoints";
+import {GAME} from "../../res/constants/url-endpoints";
 import {useNavigate} from "react-router-dom";
 
 export default function Kitchen() {
