@@ -84,6 +84,7 @@ export default function NewSprout() {
       }
 
       <ToolBox
+        disabledTools={['scissors', 'fence']}
         behaviorHandler={stateMediator}
         openState={{value: toolboxOpen, set: setToolboxOpen}}
         toggleSideEffect={() => {toolboxToggleSideEffect()}}

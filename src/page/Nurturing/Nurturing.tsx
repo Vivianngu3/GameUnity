@@ -79,6 +79,7 @@ export default function Nurturing() {
       }
 
       <ToolBox
+        disabledTools={[]}
         behaviorHandler={stateMediator}
         openState={{value: toolboxOpen, set: setToolboxOpen}}
         toggleSideEffect={() => {toolboxToggleSideEffect()}}

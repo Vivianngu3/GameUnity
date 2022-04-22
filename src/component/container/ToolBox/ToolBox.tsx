@@ -10,7 +10,7 @@ import fence from '../../../res/images/fence.svg'
 import worms from '../../../res/images/worms.svg'
 import fertilizer from '../../../res/images/fertilizer.svg'
 import styles from './ToolBox.module.css'
-import Tool, {Props as ToolProps} from './Tool/Tool'
+import Tool, {Props as ToolProps, ToolName} from './Tool/Tool'
 import {State} from '../../../utils/GameStateMediator'
 
 export interface ToolBehaviorHandler {
@@ -28,6 +28,7 @@ interface Props {
   behaviorHandler: ToolBehaviorHandler
   openState: State<boolean>
   toggleSideEffect?: () => void
+  disabledTools: ToolName[]
 }
 
 export default function ToolBox(props: Props) {
@@ -46,6 +47,7 @@ export default function ToolBox(props: Props) {
   let toolsArray = tools.map(tool => {
     return (
       <Tool
+        disabled={props.disabledTools.includes(tool.name)}
         name={tool.name} alt={tool.name} key={tool.name}
         icon={tool.icon} onClick={tool.onClick}
       />

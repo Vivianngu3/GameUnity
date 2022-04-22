@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--color-two);
+  background-color: #FFF3E8;
   height: 100vh;
+  width: 100vw;
 }
 
 .logo {
@@ -12,10 +13,52 @@
   border-top: 1px hidden;
 }
 
+.title {
+  color: #937356;
+  font-size: 9.6rem;
+  margin: -50px 0 50px 0;
+}
+
 .link {
-  color: white;
+  color: #937356;
   font-size: 3.6rem;
   font-weight: bolder;
   display: block;
   margin: 2rem auto;
+}
+
+.treeLeft {
+  position: fixed;
+  bottom: 0;
+  left: -230px;
+
+  height: 700px;
+  width: 500px;
+}
+
+.treeRight {
+  position: fixed;
+  bottom: 50px;
+  right: -130px;
+
+  height: 600px;
+  width: 500px;
+}
+
+.bushLeft {
+  position: fixed;
+  bottom: 0;
+  left: -120px;
+
+  height: 180px;
+  width: 500px;
+}
+
+.bushRight {
+  position: fixed;
+  bottom: 0;
+  right: -100px;
+
+  height: 180px;
+  width: 500px;
 }

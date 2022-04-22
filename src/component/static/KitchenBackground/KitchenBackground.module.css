@@ -46,7 +46,7 @@
   position: absolute;
   z-index: var(--game-background-z-index) + 3;
   bottom: 100px;
-  left: 700px;
+  right: 320px;
 
   width: 260px;
   height: 40px;
@@ -58,7 +58,7 @@
   position: absolute;
   z-index: var(--game-background-z-index) + 3;
   bottom: 100px;
-  left: 1000px;
+  right: 20px;
 
   width: 260px;
   height: 40px;
@@ -82,7 +82,7 @@
   position: absolute;
   z-index: var(--game-background-z-index) + 3;
   bottom: 0;
-  left: 700px;
+  right: 320px;
 
   width: 260px;
   height: 80px;
@@ -94,7 +94,7 @@
   position: absolute;
   z-index: var(--game-background-z-index) + 3;
   bottom: 0;
-  left: 1000px;
+  right: 20px;
 
   width: 260px;
   height: 80px;
@@ -104,7 +104,7 @@
 
 .window {
   position: absolute;
-  left: 600px;
+  right: 250px;
   bottom: 350px;
 
   height: 280px;
@@ -113,7 +113,7 @@
 
 .cuttingBoardTomato {
   position: absolute;
-  left: 550px;
+  right: 100px;
   bottom: 10px;
 
   height: 280px;
@@ -131,7 +131,7 @@
 
 .pizza {
   position: absolute;
-  left: 600px;
+  right: 300px;
   bottom: 0px;
 
   height: 250px;
