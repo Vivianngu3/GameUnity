@@ -5,7 +5,6 @@ import Link from '../../component/clickable/Link/Link'
 import styles from './GameStart.module.css'
 import tree from '../../res/images/start-tree.svg'
 import bush from '../../res/images/start-bush.svg'
-import Heading from "../../component/text/Heading";
 
 export default function GameStart() {
   return (
