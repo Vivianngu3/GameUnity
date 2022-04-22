@@ -1,7 +1,7 @@
 .tool {
   height: 85px;
   width: 85px;
-  background-color: #c4c4c4;
+  background-color: #F3E9DC;
   border: 0.1rem none;
   border-radius: 1rem;
   position: relative;
@@ -17,6 +17,8 @@
 
 .toolLabel {
   font-size: 1.6rem;
+  font-weight: bold;
+  color: #937356;
 }
 
 .disabled {

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Tool.module.css'
 
-export type ToolName = 'scissors' | 'shovel' | 'water' | 'pesticide' | 'seeds' | 'fence' | 'worms' | 'fertilizer'
+export type ToolName = 'Scissors' | 'Shovel' | 'Water' | 'Pesticide' | 'Seeds' | 'Fence' | 'Worms' | 'Fertilizer'
 
 export interface Props {
   icon: string
