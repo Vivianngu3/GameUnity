@@ -19,7 +19,7 @@
   right: 0;
   margin: 0 auto;
   padding: 20px 40px 28px 40px;
-  background-color: rgba(196, 196, 196, 0.35);
+  background: #F3E9DC80;
 
   display: flex;
   flex-direction: row;
@@ -41,5 +41,5 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  background-color: rgba(196, 196, 196, 0.35);
+  background: #F3E9DC80;
 }

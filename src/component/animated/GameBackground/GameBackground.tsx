@@ -15,24 +15,30 @@ interface Props {
 export default function GameBackground(props: Props) {
   let sunStyles = [styles.sun]
   let skyStyles = [styles.sky]
+  let coronaStyles = [styles.corona]
   switch (props.time) {
     case 'noon':
+      coronaStyles.push(styles.noon)
       sunStyles.push(styles.noon)
       skyStyles.push(styles.noon)
       break
     case 'afternoon':
+      coronaStyles.push(styles.afternoon)
       sunStyles.push(styles.afternoon)
       skyStyles.push(styles.afternoon)
       break
     case 'evening':
+      coronaStyles.push(styles.evening)
       sunStyles.push(styles.evening)
       skyStyles.push(styles.evening)
       break
     case 'twilight':
+      coronaStyles.push(styles.twilight)
       sunStyles.push(styles.twilight)
       skyStyles.push(styles.twilight)
       break
     default:
+      coronaStyles.push(styles.noon)
       sunStyles.push(styles.noon)
       skyStyles.push(styles.noon)
   }
@@ -54,6 +60,7 @@ export default function GameBackground(props: Props) {
 
   return (
     <div className={skyStyles.join(' ')}>
+      <div className={coronaStyles.join(' ')}/>
       <svg viewBox="0 0 2 2" className={sunStyles.join(' ')}>
         <circle cx={1} cy={1} r={1}/>
       </svg>
