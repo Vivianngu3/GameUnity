@@ -13,6 +13,7 @@ import About from './page/About/About'
 import TimeLapse from './page/TimeLapse/TimeLapse'
 import NewSprout from './page/NewSprout/NewSprout'
 import Kitchen from './page/Kitchen/Kitchen'
+import TimmySelect from "./page/TimmySelect/TimmySelect";
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         </Route>
         <Route path={urls.GAME} element={<Outlet />} >
           <Route index element={<GameStart />} />
+          <Route path={urls.TIMMY_SELECT} element={<TimmySelect />} />
           <Route path={urls.GAME_WELCOME} element={<Welcome />} />
           <Route path={urls.INTRODUCE_SEED} element={<Heading type={'section'}>Here's Your Seed!</Heading>} />
           <Route path={urls.CHOOSE_PLOT} element={<Heading type={'section'}>Choose Plot</Heading>} />

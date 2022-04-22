@@ -1,0 +1,11 @@
+.timmysRowContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.timmy {
+  margin-top: 50px;
+  height: 300px;
+  width: 260px;
+}

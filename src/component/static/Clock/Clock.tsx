@@ -35,6 +35,8 @@ export default function Clock(props: Props) {
     case '6':
       clockPosition = <img className={styles.clock} src={clock6} alt={'clock in position 6'} />
       break
+    default:
+      clockPosition = <img className={styles.clock} src={clock1} alt={'clock in position 1'} />
   }
 
   return (

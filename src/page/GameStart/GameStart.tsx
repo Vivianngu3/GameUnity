@@ -1,22 +1,30 @@
 import React from 'react'
 import BigLogo from '../../component/static/BigLogo/BigLogo'
-import {LANDING, GAME_WELCOME, WITH_PERIPHERALS} from '../../res/constants/url-endpoints'
+import {LANDING, TIMMY_SELECT, WITH_PERIPHERALS} from '../../res/constants/url-endpoints'
 import Link from '../../component/clickable/Link/Link'
 import styles from './GameStart.module.css'
+import tree from '../../res/images/start-tree.svg'
+import bush from '../../res/images/start-bush.svg'
+import Heading from "../../component/text/Heading";
 
 export default function GameStart() {
   return (
     <div className={styles['full-page']}>
       <div className={styles.content}>
         <BigLogo className={styles.logo} />
+        <h1 className={styles.title}>SPROUT</h1>
         <Link
-          destination={GAME_WELCOME}
+          destination={TIMMY_SELECT}
           className={styles.link}
         >Start</Link>
         <Link
           destination={'/' + WITH_PERIPHERALS + LANDING}
           className={styles.link}
         >Exit</Link>
+        <img className={styles.treeLeft} src={tree} alt={'tree'}/>
+        <img className={styles.treeRight} src={tree} alt={'tree'}/>
+        <img className={styles.bushLeft} src={bush} alt={'bushes'}/>
+        <img className={styles.bushRight} src={bush} alt={'bushes'}/>
       </div>
     </div>
   )
