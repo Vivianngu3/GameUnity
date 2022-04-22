@@ -5,11 +5,13 @@ import Bee from '../../../res/images/Bee.svg'
 import Rabbit from '../../../res/images/Rabbit.svg'
 
 export type Time = 'noon' | 'afternoon' | 'evening' | 'twilight'
-type AnimalsPosition = 1 | 2 | 3
+type BeePosition = 1 | 2
+type RabbitPosition = 1 | 2
 
 interface Props {
   time?: Time
-  animalsPosition?: AnimalsPosition
+  beePosition?: BeePosition
+  rabbitPosition?: RabbitPosition
 }
 
 export default function GameBackground(props: Props) {
@@ -46,15 +48,25 @@ export default function GameBackground(props: Props) {
   let beeStyles = [styles.bee]
   let rabbitStyles = [styles.rabbit]
 
-  switch (props.animalsPosition) {
+  switch (props.beePosition) {
     case 1:
-      beeStyles.push(styles.positionOne)
+      beeStyles.push(styles.beePositionOne)
       break
     case 2:
-      beeStyles.push(styles.positionTwo)
+      beeStyles.push(styles.beePositionTwo)
       break
     default:
       beeStyles.push(styles.hidden)
+  }
+
+  switch (props.rabbitPosition) {
+    case 1:
+      rabbitStyles.push(styles.rabbitPositionOne)
+      break
+    case 2:
+      rabbitStyles.push(styles.rabbitPositionTwo)
+      break
+    default:
       rabbitStyles.push(styles.hidden)
   }
 

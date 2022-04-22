@@ -30,6 +30,12 @@ export default function NewSprout() {
       setTimmyText('With this many new faces, it might be a good idea to protect your plant.')
     },
     () => {
+      setTimmyText('It seems like the bunny looks hungry.')
+    },
+    () => {
+      setTimmyText('We need to protect your plant so the bunny can’t eat it!.')
+    },
+    () => {
       setTimmyText('Look in your tool box and pick the tool that would help protect your plant.')
       setNextArrowCallbacks([])
     }
@@ -58,7 +64,7 @@ export default function NewSprout() {
 
   return (
     <>
-      <GameBackground animalsPosition={1} />
+      <GameBackground rabbitPosition={1} beePosition={1} />
       <Plot
         progress={plotProgress}
         removeFence={() => {
