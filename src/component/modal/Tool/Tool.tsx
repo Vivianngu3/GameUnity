@@ -4,7 +4,7 @@ import styles from './Tool.module.css'
 
 interface Props {
   hide: () => void
-  svg?: HTMLImageElement
+  img?: string
   pronunciation?: string
   word?: string
   partOfSpeech?: string
@@ -23,7 +23,7 @@ export default function Tool(props: Props) {
         </div>
 
         <div className={styles.svg}>
-          {props.svg}
+          <img src={props.img} />
         </div>
 
         <div className={styles.pronunciation}>

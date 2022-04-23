@@ -1,0 +1,32 @@
+.inner {
+  z-index: var(--plot-z-index) + 1;
+  width: 280px;
+  height: 150px;
+  border-radius: 15px;
+}
+
+.outer {
+  z-index: var(--plot-z-index);
+  width: 350px;
+  height: 180px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner.dry {
+  background-color: #DBAD8D;
+}
+
+.inner.medium {
+  background-color: #624A35;
+}
+
+.inner.wet {
+  background-color: #271C12;
+}
+
+.outer.wet {
+  background-color: #55ACEE;
+}

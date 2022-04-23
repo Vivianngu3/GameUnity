@@ -6,13 +6,18 @@ import timmy3 from '../../res/images/Timmy3.svg'
 import timmy4 from '../../res/images/Timmy4.svg'
 import {GAME, GAME_WELCOME} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
-import Label from '../../component/text/Label';
 import styles from './TimmySelect.module.css'
-
+import TimmyChoice from '../../component/static/Timmy/TimmyChoice/TimmyChoice'
+import {WhichTimmy} from '../../component/static/Timmy/Timmy'
 
 export default function TimmySelect() {
 
   const navigate = useNavigate()
+
+  let timmyOnClick = (whichTimmy: WhichTimmy) => {
+    console.log(`Timmy selected: ${whichTimmy}`)
+    navigate('/' + GAME + GAME_WELCOME)
+  }
 
   return (
     <div>
@@ -22,49 +27,10 @@ export default function TimmySelect() {
 
       <div className={styles.timmysRowContainer}>
 
-        <div>
-          <img
-            className={styles.timmy}
-            onClick={() => {navigate('/' + GAME + GAME_WELCOME)}}
-            src={timmy1} alt={'directions-giver timmy'}
-            width={'360'}
-            height={'400'}
-          />
-          <Label boldness={'bold'}>Timmy</Label>
-        </div>
-
-        <div>
-          <img
-            className={styles.timmy}
-            onClick={() => {navigate('/' + GAME + GAME_WELCOME)}}
-            src={timmy2} alt={'directions-giver timmy'}
-            width={'360'}
-            height={'400'}
-          />
-          <Label boldness={'bold'}>Timmy</Label>
-        </div>
-
-        <div>
-          <img
-            className={styles.timmy}
-            onClick={() => {navigate('/' + GAME + GAME_WELCOME)}}
-            src={timmy3} alt={'directions-giver timmy'}
-            width={'360'}
-            height={'400'}
-          />
-          <Label boldness={'bold'}>Timmy</Label>.
-        </div>
-
-        <div>
-          <img
-            className={styles.timmy}
-            onClick={() => {navigate('/' + GAME + GAME_WELCOME)}}
-            src={timmy4} alt={'directions-giver timmy'}
-            width={'360'}
-            height={'400'}
-          />
-          <Label boldness={'bold'}>Timmy</Label>
-        </div>
+        <TimmyChoice src={timmy1} onClick={() => {timmyOnClick('1')}}/>
+        <TimmyChoice src={timmy2} onClick={() => {timmyOnClick('2')}}/>
+        <TimmyChoice src={timmy3} onClick={() => {timmyOnClick('3')}}/>
+        <TimmyChoice src={timmy4} onClick={() => {timmyOnClick('4')}}/>
 
       </div>
     </div>

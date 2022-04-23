@@ -87,6 +87,17 @@ export default function Landing() {
           </tr>
         </table>
       </section>
+     <section>
+      <div>
+        <iframe
+          src={"https://www.youtube.com/watch?v=QEaKcmL-iZc"}
+          frameBorder={'0'}
+          allow={"autoplay; encrypted-media"}
+          allowFullScreen
+          title={"video"}
+          />{" "}
+      </div>
+     </section>
       <section className={styles.message}>
         <Heading type={'section'} allCaps={true}>
           Our Message to You

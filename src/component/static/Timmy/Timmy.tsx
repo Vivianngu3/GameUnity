@@ -6,10 +6,10 @@ import timmy4 from '../../../res/images/Timmy4.svg'
 import styles from './Timmy.module.css'
 import Block from '../../text/Block'
 
-export type whichTimmy = '1' | '2' | '3' | '4'
+export type WhichTimmy = '1' | '2' | '3' | '4'
 
 interface Props {
-  whichTimmy?: whichTimmy
+  whichTimmy?: WhichTimmy
 }
 
 export default function Timmy(props: React.PropsWithChildren<Props>) {

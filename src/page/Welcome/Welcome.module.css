@@ -1,5 +1,9 @@
 .planetSize {
-  margin-top: 30px;
+  margin-top: 2%;
   height: 400px;
   width: 550px;
+}
+
+.packetSize {
+  margin-top: 5%;
 }

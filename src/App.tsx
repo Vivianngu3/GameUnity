@@ -14,6 +14,7 @@ import TimeLapse from './page/TimeLapse/TimeLapse'
 import NewSprout from './page/NewSprout/NewSprout'
 import Kitchen from './page/Kitchen/Kitchen'
 import TimmySelect from "./page/TimmySelect/TimmySelect";
+import PlotChoice from './page/PlotChoice/PlotChoice'
 
 
 export default function App() {
@@ -30,7 +31,7 @@ export default function App() {
           <Route index element={<GameStart />} />
           <Route path={urls.TIMMY_SELECT} element={<TimmySelect />} />
           <Route path={urls.GAME_WELCOME} element={<Welcome />} />
-          <Route path={urls.INTRODUCE_SEED} element={<Heading type={'section'}>Here's Your Seed!</Heading>} />
+          <Route path={urls.PLOT_CHOICE} element={<PlotChoice />} />
           <Route path={urls.CHOOSE_PLOT} element={<Heading type={'section'}>Choose Plot</Heading>} />
           {/*
           The onboarding and nurturing pages will have many different states to accommodate the

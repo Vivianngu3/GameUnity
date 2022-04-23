@@ -1,4 +1,9 @@
-.timmysRowContainer {
+.plotsContainer {
+  width: 100vw;
+
+  position: fixed;
+  bottom: 30px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

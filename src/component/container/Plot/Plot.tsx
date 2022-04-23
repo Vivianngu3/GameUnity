@@ -6,11 +6,9 @@ import starburst from '../../../res/images/starburst.svg'
 import tomatoPlant from '../../../res/images/tomato-plant.png'
 import fence from '../../../res/images/big-fence.svg'
 
-type Wetness = "dry" | "medium" | "wet"
 export type Progress = "start" | "dug" | "seeds-sown" | "planted" | "watered" | "growth1" | "growth2" | "grown" | "with-starburst" | "protected" | "protected-tomato" | "tomato"
 
 interface Props {
-  wetness?: Wetness
   progress?: Progress
   coverSeed?: () => void
   removeFence?: () => void
