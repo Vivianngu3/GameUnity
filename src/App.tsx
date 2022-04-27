@@ -13,8 +13,9 @@ import About from './page/About/About'
 import TimeLapse from './page/TimeLapse/TimeLapse'
 import NewSprout from './page/NewSprout/NewSprout'
 import Kitchen from './page/Kitchen/Kitchen'
-import TimmySelect from "./page/TimmySelect/TimmySelect";
+import TimmySelect from "./page/TimmySelect/TimmySelect"
 import PlotChoice from './page/PlotChoice/PlotChoice'
+import Onboarding from './page/Onboarding/Onboarding'
 
 
 export default function App() {
@@ -32,12 +33,11 @@ export default function App() {
           <Route path={urls.TIMMY_SELECT} element={<TimmySelect />} />
           <Route path={urls.GAME_WELCOME} element={<Welcome />} />
           <Route path={urls.PLOT_CHOICE} element={<PlotChoice />} />
-          <Route path={urls.CHOOSE_PLOT} element={<Heading type={'section'}>Choose Plot</Heading>} />
           {/*
           The onboarding and nurturing pages will have many different states to accommodate the
           steps that make up each of these user flows.
           */}
-          <Route path={urls.ONBOARDING} element={<Heading type={'section'}>Onboarding</Heading>} />
+          <Route path={urls.ONBOARDING} element={<Onboarding />} />
           <Route path={urls.NURTURING} element={<Nurturing />} />
           <Route path={urls.TIME_LAPSE} element={<TimeLapse />} />
           <Route path={urls.NEW_SPROUT} element={<NewSprout />} />

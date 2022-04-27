@@ -1,15 +1,17 @@
 import React from 'react'
 import styles from './ChoicePlot.module.css'
 
-type Wetness = "dry" | "medium" | "wet"
+export type Wetness = "dry" | "medium" | "wet"
 
 interface Props {
   wetness?: Wetness
+  onClick?: () => void
 }
 
 export default function ChoicePlot(props: Props) {
   let innerClasses: string[] = [styles.inner]
   let outerClasses: string[] = [styles.outer]
+
   switch (props.wetness) {
     case 'dry':
       innerClasses.push(styles.dry)
@@ -27,7 +29,7 @@ export default function ChoicePlot(props: Props) {
 
   return (
       <div className={outerClasses.join(' ')}>
-        <div className={innerClasses.join(' ')} />
+        <div onClick={() => {props.onClick && props.onClick()}} className={innerClasses.join(' ')} />
       </div>
   )
 }

@@ -1,5 +1,5 @@
 .page {
-  background-color: var(--color-two);
+  background-color: var(--color-four);
   min-height: 100vh;
   border-bottom: 1px solid transparent;
 }
@@ -54,6 +54,20 @@ td > div {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.videoMargin {
+  margin: 100px 0 50px 0;
+}
+
+.rowContainer {
+  margin: auto auto;
+  max-width: 1000px;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  display: flex;
+  align-items: end;
 }
 
 section.message {

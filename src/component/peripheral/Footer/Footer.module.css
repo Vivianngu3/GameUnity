@@ -1,25 +1,12 @@
 .footer {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 17.5rem;
-  background: var(--color-one);
-}
-
-.icons {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 17.5rem;
+  background: var(--color-four);
 }
 
-.ischoolIcon {
-  height: 45px;
-  width: 45px;
-  margin-right: 15px;
-  border-radius: 50px;
-}
+.icon {
 
-.youtubeIcon {
-  height: 45px;
-  width: 60px;
 }

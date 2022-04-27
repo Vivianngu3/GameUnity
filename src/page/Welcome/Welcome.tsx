@@ -7,7 +7,7 @@ import planet from '../../res/images/planet.png'
 import seedPacket from '../../res/images/seed-packet.svg'
 import styles from './Welcome.module.css'
 import utils from '../../utils/utils.module.css'
-import {GAME, NURTURING} from '../../res/constants/url-endpoints'
+import {GAME, PLOT_CHOICE} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
 
 export default function Welcome() {
@@ -65,7 +65,7 @@ export default function Welcome() {
 
       },
     () => {
-      navigate('/' + GAME + NURTURING)
+      navigate('/' + GAME + PLOT_CHOICE)
     }
     ]
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)

@@ -142,6 +142,8 @@
   grid-gap: 20px;
 }
 .card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #d3d3d3;
   border-radius: .25rem;
 }
@@ -172,17 +174,26 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
+}
+
+.content:nth-child(0) {
+  flex-grow: 0;
+}
+
+.content:nth-child(1) {
+  flex-grow: 1;
+}
+
+.content p {
+  margin: 20px;
+  font-size: small;
 }
 
 .title{
   font-size: large;
-}
-
-
-.content p {
- margin: 20px;
- font-size: small;
 }
 
 .cardLink{

@@ -105,8 +105,12 @@ export default function Recap () {
             <div className={styles['img']}> </div>
               <div className={styles['content']}>
                 <h2 className={styles['title']}>Chia Pets</h2>
-                <p> Chia Pets are figurines where the chia sprouts grow within a couple of weeks to look like the animal’s fur or hair. </p> 
-                <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.chia.com/' target="_blank" rel="noreferrer"> Find More </a> </button>
+                <div>
+                  <p> Chia Pets are figurines where the chia sprouts grow within a couple of weeks to look like the animal’s fur or hair. </p>
+                </div>
+                <div>
+                  <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.chia.com/' target="_blank" rel="noreferrer"> Find More </a> </button>
+                </div>
               </div>
           </div>
 
@@ -114,8 +118,12 @@ export default function Recap () {
             <div className={styles['img2']}> </div>
               <div className={styles['content']}>
                 <h2 className={styles['title']}>Eastern Leaf</h2>
-                <p> Our little green trees are ready for adoption and looking for good homes.</p> 
-                <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.easternleaf.com/' target="_blank" rel="noreferrer"> Find More </a> </button>
+                <div>
+                  <p> Our little green trees are ready for adoption and looking for good homes.</p>
+                </div>
+                <div>
+                  <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.easternleaf.com/' target="_blank" rel="noreferrer"> Find More </a> </button>
+                </div>
               </div>
           </div>
 
@@ -124,8 +132,10 @@ export default function Recap () {
               <div className={styles['content']}>
                 <h2 className={styles['title']}>Plant Kits</h2>
                 <p> Nature’s Blossom all-in-one beginner’s seed starter kits are perfect for any age. 
-                  Enjoy the rewarding feeling of watching your tomato garden grow. </p> 
-                <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.amazon.com/Natures-Blossom-Tomato-Gardening-Starter/dp/B06XJWQ8FM' target="_blank" rel="noreferrer"> Find More </a> </button>
+                  Enjoy the rewarding feeling of watching your tomato garden grow. </p>
+                <div>
+                  <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.amazon.com/Natures-Blossom-Tomato-Gardening-Starter/dp/B06XJWQ8FM' target="_blank" rel="noreferrer"> Find More </a> </button>
+                </div>
               </div>
           </div>
         
