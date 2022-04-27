@@ -132,7 +132,7 @@
 .pizza {
   position: absolute;
   right: 300px;
-  bottom: 0px;
+  bottom: 0;
 
   height: 250px;
   width: 400px;
@@ -141,7 +141,7 @@
 .oven {
   position: absolute;
   left: 280px;
-  bottom:0px;
+  bottom:0;
 
   height: 300px;
   width: 400px;

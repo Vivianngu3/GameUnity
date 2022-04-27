@@ -34,8 +34,7 @@
 .boxContent {
   border: 10px dashed #90AC8E;
   width: 65%;
-  margin: auto;
-  margin-bottom: 20rem;
+  margin: auto auto 20rem;
   padding: 3rem;
   border-radius: 20px;
 }
@@ -57,8 +56,7 @@
 
 .flipBoxListItem {
   margin-right: 10px;
-  list-style: circle;
-  list-style-position: outside;
+  list-style: circle outside;
   font-size: medium;
 }
 
@@ -101,13 +99,12 @@
 }
 
 .flip-box-front h2 {
-    margin: 0;
-    font-size: x-large;
+  font-size: x-large;
     position: absolute;
     top: 45%;
     left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+  margin: 0 -50% 0 0;
+  transform: translate(-50%, -50%)
 }
 
 .flip-box-front h3 {

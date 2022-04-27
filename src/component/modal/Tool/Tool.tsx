@@ -23,7 +23,7 @@ export default function Tool(props: Props) {
         </div>
 
         <div className={styles.svg}>
-          <img src={props.img} />
+          <img src={props.img} alt={''} />
         </div>
 
         <div className={styles.pronunciation}>

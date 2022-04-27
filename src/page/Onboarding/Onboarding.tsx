@@ -2,7 +2,6 @@ import React from 'react'
 import Dialog from '../../component/static/Dialog/Dialog'
 import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
-import Definition from '../../component/modal/Definition/Definition'
 import {GAME, NURTURING} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
 
@@ -66,7 +65,7 @@ export default function Onboarding() {
 
   return (
     <div>
-      {
+      {showDialog &&
         dialog
       }
       {showTimmy &&

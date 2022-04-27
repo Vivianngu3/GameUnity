@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function Timmy(props: React.PropsWithChildren<Props>) {
-  let timmy = <></>
+  let timmy: JSX.Element;
 
   switch (props.whichTimmy) {
     case '1':

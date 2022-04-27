@@ -1,8 +1,7 @@
 import React from 'react'
 import './App.css'
 import * as urls from './res/constants/url-endpoints'
-import {BrowserRouter, Route, Routes, Outlet} from 'react-router-dom'
-import Heading from './component/text/Heading'
+import {BrowserRouter, Outlet, Route, Routes} from 'react-router-dom'
 import Landing from './page/Landing/Landing'
 import WithPeripherals from './page/WithPeripherals/WithPeripherals'
 import GameStart from './page/GameStart/GameStart'
@@ -13,7 +12,7 @@ import About from './page/About/About'
 import TimeLapse from './page/TimeLapse/TimeLapse'
 import NewSprout from './page/NewSprout/NewSprout'
 import Kitchen from './page/Kitchen/Kitchen'
-import TimmySelect from "./page/TimmySelect/TimmySelect"
+import TimmySelect from './page/TimmySelect/TimmySelect'
 import PlotChoice from './page/PlotChoice/PlotChoice'
 import Onboarding from './page/Onboarding/Onboarding'
 

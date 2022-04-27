@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function Clock(props: Props) {
-  let clockPosition = <></>
+  let clockPosition: JSX.Element;
 
   switch (props.time) {
     case '1':

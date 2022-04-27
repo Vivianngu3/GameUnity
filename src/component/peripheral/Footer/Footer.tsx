@@ -5,7 +5,6 @@ import styles from './Footer.module.css'
 import ischool from '../../../res/images/icon-ischool.svg'
 
 import Logo from '../Logo'
-import Heading from '../../text/Heading'
 import Icon from '../../clickable/Icon/Icon'
 
 export default function Footer() {
