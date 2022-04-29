@@ -18,6 +18,8 @@ import ImageWithText from '../../component/static/ImageWithText/ImageWithText'
 import Curve from '../../component/static/BackgroundCurve/BackgroundCurve'
 import NavBar from '../../component/peripheral/NavBar/NavBar'
 import Footer from '../../component/peripheral/Footer/Footer'
+import DirectedDialog from '../../component/static/DirectedDialog/DirectedDialog'
+import Plot from '../../component/container/Plot/Plot'
 
 export default function Landing() {
   return (
@@ -47,12 +49,6 @@ export default function Landing() {
           </section>
         </section>
         <Curve color='page-background' />
-        {/* <img
-        src={backgroundCurve}
-        alt={"Decorative curve"}
-        aria-hidden={true}
-        className={styles['background-curve']}
-      /> */}
         <section className={styles.journey}>
           <Heading type={'section'} allCaps={true}>
             Journey Through Sprout
@@ -64,6 +60,11 @@ export default function Landing() {
             <img src={Timmy3} alt={"Timmy3"} height={'200'} width={'200'}/>
             <img src={Timmy4} alt={"Timmy4"} height={'200'} width={'200'}/>
           </div>
+          <DirectedDialog pointTo={
+            <Plot />
+          }>
+            Dialog that hovers!
+          </DirectedDialog>
           <Block>Choose your gardening guides.</Block>
 
           <div className={styles.rowContainer}>

@@ -1,0 +1,40 @@
+.container {
+  position: relative;
+  --dialog-x-offset: 48px;
+  --dialog-y-offset: 42px;
+}
+
+.dialog {
+  position: absolute;
+  bottom: calc(100% + var(--dialog-y-offset));
+
+  width: 460px;
+  height: 160px;
+
+  color: var(--text-on-color-three);
+  background-color: var(--color-three);
+
+  border: 3px solid var(--color-one);
+}
+
+.arrow {
+  position: absolute;
+  bottom: 100%;
+}
+
+.dialog.right {
+  left: calc(100% + var(--dialog-x-offset));
+}
+
+.arrow.right {
+  transform: scale(-1,1);
+  left: 100%;
+}
+
+.dialog.left {
+  right: calc(100% + var(--dialog-x-offset));
+}
+
+.arrow.left {
+  right: 100%;
+}
