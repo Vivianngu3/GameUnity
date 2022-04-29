@@ -3,7 +3,7 @@ import styles from "./NavBar.module.css"
 import Logo from "../Logo"
 import Link from '../../clickable/Link/Link'
 import NavButton from '../../clickable/NavButton/NavButton'
-import {ABOUT_US, LANDING, RECAP} from '../../../res/constants/url-endpoints'
+import {ABOUT_US, GAME, LANDING, RECAP} from '../../../res/constants/url-endpoints'
 
 export type Color = 'page-background' | 'two' | 'one' | 'four'
 export type Page = 'Home' | 'About' | 'Recap'
@@ -65,7 +65,7 @@ export default function NavBar(props: Props) {
         {links}
         <NavButton
           className={styles['nav-button']}
-          destination={'game'}
+          destination={'/' + GAME}
         >Play Now!</NavButton>
       </div>
     </div>

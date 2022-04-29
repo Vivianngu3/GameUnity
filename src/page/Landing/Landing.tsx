@@ -34,7 +34,7 @@ export default function Landing() {
             </Block>
             <br/>
             <NavButton
-              destination={GAME}
+              destination={'/' + GAME}
               centered={true}
             >
               Play Now!
@@ -110,7 +110,7 @@ export default function Landing() {
           </Block>
           <br/>
           <NavButton
-            destination={ABOUT_US}
+            destination={'/' + ABOUT_US}
             centered={true}
           >
             About Us!
