@@ -6,7 +6,6 @@ import {NavLink} from 'react-router-dom'
 interface Props {
   destination: string
   disabled?: Boolean
-  onClick?: () => void
   className?: string
 }
 
@@ -20,7 +19,6 @@ export default function Link(props: React.PropsWithChildren<Props>) {
     <NavLink
       className={classes.join(' ')}
       to={props.destination}
-      onClick={props.onClick}
     >
       {props.children}
     </NavLink>

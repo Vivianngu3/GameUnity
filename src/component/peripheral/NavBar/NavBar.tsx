@@ -3,27 +3,28 @@ import styles from "./NavBar.module.css"
 import Logo from "../Logo"
 import Link from '../../clickable/Link/Link'
 import NavButton from '../../clickable/NavButton/NavButton'
-import {ABOUT_US, RECAP, WITH_PERIPHERALS} from '../../../res/constants/url-endpoints'
+import {ABOUT_US, LANDING, RECAP} from '../../../res/constants/url-endpoints'
 
-type Color = 'page-background' | 'two' | 'one' | 'four'
+export type Color = 'page-background' | 'two' | 'one' | 'four'
+export type Page = 'Home' | 'About' | 'Recap'
+
+interface Props {
+  color: Color
+  page: Page
+}
 
 interface LinkData {
-  text: string
+  text: Page
   destination: string
   navBarColor: Color
 }
 
-export default function NavBar() {
-  const DEFAULT_PAGE_INDEX = 0
-
+export default function NavBar(props: Props) {
   const linksData: LinkData[] = [
-    { text: 'Home', destination: WITH_PERIPHERALS, navBarColor: 'page-background' },
-    { text: 'About', destination: ABOUT_US, navBarColor: 'four' },
-    { text: 'Recap', destination: RECAP, navBarColor: 'one' }
+    { text: 'Home', destination: '/' + LANDING, navBarColor: 'page-background' },
+    { text: 'About', destination: '/' + ABOUT_US, navBarColor: 'four' },
+    { text: 'Recap', destination: '/' + RECAP, navBarColor: 'one' }
   ]
-
-  const [disabledLinkIndex, setDisabledLinkIndex] = React.useState(DEFAULT_PAGE_INDEX)
-  const [navBarColor, setNavBarColor] = React.useState(linksData[DEFAULT_PAGE_INDEX].navBarColor)
 
   let links = []
   for (let i = 0; i < linksData.length; i++) {
@@ -31,12 +32,8 @@ export default function NavBar() {
     links.push(
       <Link
         key={i}
-        disabled={i === disabledLinkIndex}
+        disabled={link.text === props.page}
         destination={link.destination}
-        onClick={() => {
-          setDisabledLinkIndex(i)
-          setNavBarColor(link.navBarColor)
-        }}
       >
         {link.text}
       </Link>
@@ -46,7 +43,7 @@ export default function NavBar() {
   const navBarClasses: string[] = []
   navBarClasses.push(styles.navBar)
 
-  switch (navBarColor) {
+  switch (props.color) {
     case "page-background":
       navBarClasses.push(styles['color-page-background'])
       break

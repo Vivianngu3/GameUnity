@@ -1,6 +1,6 @@
 import React from 'react'
 import BigLogo from '../../component/static/BigLogo/BigLogo'
-import {LANDING, TIMMY_SELECT, WITH_PERIPHERALS} from '../../res/constants/url-endpoints'
+import {LANDING, TIMMY_SELECT} from '../../res/constants/url-endpoints'
 import Link from '../../component/clickable/Link/Link'
 import styles from './GameStart.module.css'
 import tree from '../../res/images/start-tree.svg'
@@ -17,7 +17,7 @@ export default function GameStart() {
           className={styles.link}
         >Start</Link>
         <Link
-          destination={'/' + WITH_PERIPHERALS + LANDING}
+          destination={'/' + LANDING}
           className={styles.link}
         >Exit</Link>
         <img className={styles.treeLeft} src={tree} alt={'tree'}/>

@@ -3,7 +3,6 @@ import './App.css'
 import * as urls from './res/constants/url-endpoints'
 import {BrowserRouter, Outlet, Route, Routes} from 'react-router-dom'
 import Landing from './page/Landing/Landing'
-import WithPeripherals from './page/WithPeripherals/WithPeripherals'
 import GameStart from './page/GameStart/GameStart'
 import Nurturing from './page/Nurturing/Nurturing'
 import Welcome from './page/Welcome/Welcome'
@@ -22,11 +21,9 @@ export default function App() {
   <div className="App">
     <BrowserRouter>
       <Routes>
-        <Route path={urls.WITH_PERIPHERALS} element={<WithPeripherals />}>
-          <Route index element={<Landing/>} />
-          <Route path={urls.ABOUT_US} element={<About/>} />
-          <Route path={urls.RECAP} element={<Recap/>} />
-        </Route>
+        <Route path={urls.LANDING} element={<Landing/>} />
+        <Route path={urls.ABOUT_US} element={<About/>} />
+        <Route path={urls.RECAP} element={<Recap/>} />
         <Route path={urls.GAME} element={<Outlet />} >
           <Route index element={<GameStart />} />
           <Route path={urls.TIMMY_SELECT} element={<TimmySelect />} />
