@@ -9,6 +9,7 @@ import ToolBox from '../../component/container/ToolBox/ToolBox'
 import {NavigateFunction, useNavigate} from 'react-router-dom'
 import NewSproutStateMediator, {UnorderedProgress} from './NewSproutStateMediator'
 import {MyArray} from '../../utils/MyArray'
+import TomatoStarburst from '../../component/modal/TomatoStarburst/TomatoStarburst'
 
 export interface NewSproutState extends GamePageState {
   nextArrowCallbacks: State<(() => void)[]>
@@ -61,10 +62,10 @@ export default function NewSprout() {
     navigate: navigate
   })
 
-
   return (
     <>
       <GameBackground rabbitPosition={1} beePosition={1} />
+      <TomatoStarburst />
       <Plot
         progress={plotProgress}
         removeFence={() => {
@@ -90,7 +91,7 @@ export default function NewSprout() {
       }
 
       <ToolBox
-        disabledTools={['Scissors', 'Fence']}
+        disabledTools={['Water', 'Shovel', 'Seeds']}
         behaviorHandler={stateMediator}
         openState={{value: toolboxOpen, set: setToolboxOpen}}
         toggleSideEffect={() => {toolboxToggleSideEffect()}}

@@ -5,11 +5,13 @@ import Block from '../../text/Block'
 type Side = 'left' | 'right'
 
 interface Props {
-  pointTo: JSX.Element
+  anchor: JSX.Element
   side?: Side
 }
 
 export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
+  // let anchorPosInfo = (props.anchor).getBoundingClientRect()
+
   let sideClass: string;
   switch (props.side) {
     case 'left':
@@ -21,7 +23,7 @@ export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
   return (
     <>
       <div className={styles.container}>
-        {props.pointTo}
+        {props.anchor}
         <div className={styles.dialog + ' ' + sideClass}>
           <Block>
             {props.children}

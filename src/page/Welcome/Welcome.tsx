@@ -23,8 +23,8 @@ export default function Welcome() {
   const [timmy, setTimmy] = React.useState(<></>)
   const [showArrow, setShowArrow] = React.useState(false)
   const [showDefinition, setShowDefinition] = React.useState(false)
-  const [showPlanet, setShowPlanet] = React.useState(<></>)
-  const [showSeeds, setShowSeeds] = React.useState(<></>)
+  const [showPlanet, setShowPlanet] = React.useState(false)
+  const [showSeeds, setShowSeeds] = React.useState(false)
 
   const navigate = useNavigate()
 
@@ -32,7 +32,7 @@ export default function Welcome() {
       () => {
         console.log('first callback')
         setShowTimmy(false)
-        setShowPlanet(<img alt={'planet'} className={styles.planetSize} src={planet}/>)
+        setShowPlanet(true)
         setDialog(
           <Dialog>
             On this journey you will learn about <></>
@@ -50,18 +50,18 @@ export default function Welcome() {
         setTimmy(<Timmy>Click on the <span className={utils.underline}>underlined</span> word to learn more about it!</Timmy>)
         setShowTimmy(true)
         setShowArrow(false)
-        setShowPlanet(<img alt={'planet'} className={styles.planetSize} src={planet}/>)
+        setShowPlanet(true)
       },
       () => {
         console.log('third callback')
         setShowTimmy(false)
-        setShowPlanet(<></>)
+        setShowPlanet(false)
         setDialog(
           <Dialog>
             Now it's time to start! You will be going through the journey of these seeds.
           </Dialog>
         )
-        setShowSeeds(<img alt={'seed packet'} className={styles.packetSize} src={seedPacket}/>)
+        setShowSeeds(true)
 
       },
     () => {
@@ -102,10 +102,14 @@ export default function Welcome() {
         timmy
       }
       {showPlanet &&
-        showPlanet
+        <div className={styles.center}>
+          <img alt={'planet'} className={styles.planetSize} src={planet}/>
+        </div>
       }
       {showSeeds &&
-        showSeeds
+        <div className={styles.center}>
+          <img alt={'seed packet'} className={styles.packetSize} src={seedPacket}/>
+        </div>
       }
       {showArrow &&
         <NextArrow

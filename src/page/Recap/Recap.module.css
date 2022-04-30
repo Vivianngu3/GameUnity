@@ -173,14 +173,15 @@
 .content {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   padding: 20px;
 }
 
-.content:nth-child(0) {
+.content > *:nth-child(1) {
   flex-grow: 0;
 }
 
-.content:nth-child(1) {
+.content > *:nth-child(2) {
   flex-grow: 1;
 }
 

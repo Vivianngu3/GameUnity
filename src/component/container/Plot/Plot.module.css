@@ -13,7 +13,7 @@
   background-color: #624A35;
 }
 
-.holeContainer {
+.plotContents {
   position: absolute;
   left: 0;
   right: 0;
@@ -92,11 +92,24 @@
   left: -110px;
 }
 
-.fence {
+.fenceForeground{
   position: absolute;
   z-index: 3;
-  bottom: -60px;
-  left: -190px;
+  bottom: -100px;
+  left: -100px;
+  height: 200px;
+  width: 270px;
+}
+
+.fenceBackground{
+  position: absolute;
+  z-index: 0;
+  bottom: 100%;
+  left: 10px;
+  right: 0;
+  margin: auto;
+  height: 200px;
+  width: 200px;
 }
 
 .tomatoPlant {

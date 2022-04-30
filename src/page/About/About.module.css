@@ -5,18 +5,23 @@
 }
 
 .withBackgroundColor {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 30rem;
+  min-height: 45rem;
   border-bottom: 1px solid var(--color-four);
   background-color: var(--color-four);
+}
+
+.withBackgroundColor:nth-child(1) {
+  padding-bottom: 7.5rem;
 }
 
 .imageSection {
   width: 100%;
   position: absolute;
-  bottom: -300px;
+  bottom: -310px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -27,6 +32,7 @@
   flex-direction: row;
   justify-content: center;
 }
+
 .beeReflect {
   height: 100px;
   transform: rotate(-25deg) scaleX(-1);
@@ -39,8 +45,8 @@
   margin-left: 30px;
 }
 
-.container {
-  margin: 600px 0 100px 0;
+.textSections {
+  margin: 400px 0 100px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

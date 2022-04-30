@@ -8,8 +8,8 @@
   display: flex;
   border-bottom: 1px solid var(--color-page-background);
   padding: 3rem 0 2rem 0;
-  --side-margins: 5%;
-  --right-shift: 7%;
+  --side-margins: 2.5%;
+  --right-shift: 11%;
   background: var(--color-page-background);
 }
 
@@ -20,19 +20,19 @@
 
 .with-background-color > .left {
   margin-left: calc(var(--side-margins) + var(--right-shift));
+  padding-top: 3rem;
   width: 35%;
 }
 
 .with-background-color > .right {
   margin-right: calc(var(--side-margins) - var(--right-shift));
-  margin-left: 3%;
-  width: 45%;
+  margin-left: 15%;
+  width: 35%;
 }
 
-.plants {
+.splashArt {
   display: block;
-  width: 100%;
-  height: auto;
+  height: 90%;
 }
 
 section.journey {

@@ -135,8 +135,10 @@ export default function Recap () {
             <div className={styles['img3']}> </div>
             <div className={styles['content']}>
               <h2 className={styles['title']}>Plant Kits</h2>
-              <p> Nature’s Blossom all-in-one beginner’s seed starter kits are perfect for any age.
-                Enjoy the rewarding feeling of watching your tomato garden grow. </p>
+              <div>
+                <p> Nature’s Blossom all-in-one beginner’s seed starter kits are perfect for any age.
+                  Enjoy the rewarding feeling of watching your tomato garden grow. </p>
+              </div>
               <div>
                 <button className={styles.cardButton}> <a className={styles.cardLink} href='https://www.amazon.com/Natures-Blossom-Tomato-Gardening-Starter/dp/B06XJWQ8FM' target="_blank" rel="noreferrer"> Find More </a> </button>
               </div>

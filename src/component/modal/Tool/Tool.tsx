@@ -6,7 +6,7 @@ interface Props {
   hide: () => void
   img?: string
   pronunciation?: string
-  word?: string
+  toolName?: string
   partOfSpeech?: string
   definition?: string
 }
@@ -31,7 +31,7 @@ export default function Tool(props: Props) {
         </div>
 
         <div className={styles.word}>
-          {props.word}
+          {props.toolName}
         </div>
 
         <div className={styles.partOfSpeech}>

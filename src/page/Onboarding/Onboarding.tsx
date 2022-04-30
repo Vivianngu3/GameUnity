@@ -4,6 +4,9 @@ import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import {GAME, NURTURING} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
+import GameBackground from '../../component/animated/GameBackground/GameBackground'
+import Tool from '../../component/modal/Tool/Tool'
+import img from '../../res/images/Rabbit.svg'
 
 export default function Onboarding() {
 
@@ -64,7 +67,8 @@ export default function Onboarding() {
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
 
   return (
-    <div>
+    <>
+      <GameBackground />
       {showDialog &&
         dialog
       }
@@ -77,6 +81,15 @@ export default function Onboarding() {
           setCallbacks={setNextArrowCallbacks}
         />
       }
-    </div>
+    {/* TODO: Remove definition modal */}
+      <Tool
+        hide={()=>{}}
+        definition={'definition'}
+        img={img}
+        pronunciation={'sih-zors'}
+        partOfSpeech={'noun'}
+        toolName={'Scissors'}
+      />
+    </>
   )
 }

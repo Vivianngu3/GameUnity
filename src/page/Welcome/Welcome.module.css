@@ -1,9 +1,15 @@
+.center {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
 .planetSize {
-  margin-top: 2%;
   height: 400px;
   width: 550px;
 }
 
 .packetSize {
-  margin-top: 5%;
+
 }

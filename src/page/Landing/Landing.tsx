@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Landing.module.css'
 
-import plants from '../../res/images/four-plants.png'
+import splashArt from '../../res/images/landing-splash.svg'
 
 import Timmy1 from '../../res/images/Timmy1.svg'
 import Timmy2 from '../../res/images/Timmy2.svg'
@@ -19,7 +19,6 @@ import Curve from '../../component/static/BackgroundCurve/BackgroundCurve'
 import NavBar from '../../component/peripheral/NavBar/NavBar'
 import Footer from '../../component/peripheral/Footer/Footer'
 import DirectedDialog from '../../component/static/DirectedDialog/DirectedDialog'
-import Plot from '../../component/container/Plot/Plot'
 
 export default function Landing() {
   return (
@@ -42,8 +41,8 @@ export default function Landing() {
           </section>
           <section className={styles.right}>
             <img
-              className={styles.plants}
-              src={plants}
+              className={styles.splashArt}
+              src={splashArt}
               alt={"Happy illustrated plants"}
             />
           </section>
@@ -55,16 +54,16 @@ export default function Landing() {
           </Heading>
 
           <div className={styles.rowContainer}>
-            <img src={Timmy1} alt={'Timmy1'} height={'200'} width={'200'}/>
+            <DirectedDialog anchor={
+              // <Plot />
+              <img src={Timmy1} alt={'Timmy1'} height={'200'} width={'200'}/>
+            }>
+              Dialog that hovers!
+            </DirectedDialog>
             <img src={Timmy2} alt={'Timmy2'} height={'200'} width={'200'}/>
             <img src={Timmy3} alt={"Timmy3"} height={'200'} width={'200'}/>
             <img src={Timmy4} alt={"Timmy4"} height={'200'} width={'200'}/>
           </div>
-          <DirectedDialog pointTo={
-            <Plot />
-          }>
-            Dialog that hovers!
-          </DirectedDialog>
           <Block>Choose your gardening guides.</Block>
 
           <div className={styles.rowContainer}>

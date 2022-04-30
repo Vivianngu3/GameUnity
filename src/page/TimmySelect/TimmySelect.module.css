@@ -1,4 +1,9 @@
 .timmysRowContainer {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

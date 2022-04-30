@@ -29,6 +29,11 @@
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-.modalWrapper .modal .modalBody{
-
+.tomatoStarburst{
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 800px;
+  width: 800px;
+  margin: auto;
 }

@@ -18,10 +18,10 @@ export default function Logo(props: Props) {
 
         <div className={styles.columnContainer}>
           <p className={styles.sproutText}>
-              SPROUT
+            SPROUT
           </p>
           <p className={styles.teamText}>
-              GameUnity
+            GameUnity
           </p>
         </div>
 
