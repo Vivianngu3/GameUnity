@@ -9,7 +9,6 @@ import ToolBox from '../../component/container/ToolBox/ToolBox'
 import {NavigateFunction, useNavigate} from 'react-router-dom'
 import NewSproutStateMediator, {UnorderedProgress} from './NewSproutStateMediator'
 import {MyArray} from '../../utils/MyArray'
-import TomatoStarburst from '../../component/modal/TomatoStarburst/TomatoStarburst'
 
 export interface NewSproutState extends GamePageState {
   nextArrowCallbacks: State<(() => void)[]>
@@ -20,6 +19,8 @@ export interface NewSproutState extends GamePageState {
 export default function NewSprout() {
   const [timmyText, setTimmyText] = React.useState('Oh look! Some new friends have joined us.')
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
+  const [nextArrowVariation, setNextArrowVariation] = React.useState(false)
+  const [checkListVariation, setCheckListVariation] = React.useState(false)
 
   const [toolboxToggleSideEffect, setToolboxToggleSideEffect] =
     React.useState<() => void>(() => () => {})
@@ -65,7 +66,6 @@ export default function NewSprout() {
   return (
     <>
       <GameBackground rabbitPosition={1} beePosition={1} />
-      <TomatoStarburst />
       <Plot
         progress={plotProgress}
         removeFence={() => {
@@ -76,6 +76,7 @@ export default function NewSprout() {
 
       <CheckList
         {...checkedItems}
+        modalVariation={checkListVariation}
       />
 
       {/* When timmyText === '', it is falsey, and this <Timmy /> is not displayed */}
@@ -87,6 +88,7 @@ export default function NewSprout() {
         <NextArrow
           callbacks={nextArrowCallbacks}
           setCallbacks={setNextArrowCallbacks}
+          modalVariation={nextArrowVariation}
         />
       }
 

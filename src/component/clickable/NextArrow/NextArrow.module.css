@@ -4,3 +4,7 @@
   bottom: 220px;
   right: 56px;
 }
+
+.priority {
+  z-index: var(--modal-z-index);
+}

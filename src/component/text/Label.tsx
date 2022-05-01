@@ -2,7 +2,7 @@ import React from 'react'
 import utils from '../../utils/utils.module.css'
 import styles from './text.module.css'
 
-type Color = 'black' | 'color-primary'
+type Color = 'black' | 'color-primary' | 'color-five'
 type Boldness = 'light' | 'bold'
 
 interface Props {
@@ -26,6 +26,9 @@ export default function Label(props: React.PropsWithChildren<Props>) {
       break
     case 'color-primary':
       stylesArray.push(styles['color-one'])
+      break
+    case 'color-five':
+      stylesArray.push(styles['color-five'])
       break
     default:
       stylesArray.push(styles['black'])

@@ -10,12 +10,19 @@ export interface Props {
     improved?: boolean
     learned?: boolean
     collected?: boolean
+    modalVariation?: boolean
 }
 
 export default function CheckList(props: Props) {
+    const containerStyles = []
 
-    return(
-      <div className={styles.checkListContainer}>
+    if (props.modalVariation) {
+        containerStyles.push(styles.checkListContainerPriority)
+    } else {
+        containerStyles.push(styles.checkListContainer)
+    }
+    return (
+      <div className={containerStyles.join(' ')}>
 
           <div className={styles.checkListHeader}>
               To-Do

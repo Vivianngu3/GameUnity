@@ -1,7 +1,7 @@
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
-import {GAME} from '../../res/constants/url-endpoints'
+import {GAME, KITCHEN} from '../../res/constants/url-endpoints'
 
 export enum UnorderedProgress {
   SCISSORS_LEARNED,
@@ -31,7 +31,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
             this.state?.timmyText.set("I'll see you next time!")
           },
           () => {
-            this.state?.navigate('/' + GAME)
+            this.state?.navigate('/' + GAME + KITCHEN)
           },
         ])
       } else {

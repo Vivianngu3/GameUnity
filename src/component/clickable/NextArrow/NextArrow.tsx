@@ -2,11 +2,13 @@ import React, {Dispatch, SetStateAction} from 'react'
 import styles from './NextArrow.module.css'
 import utils from '../../../utils/utils.module.css'
 import next from '../../../res/images/next-arrow.svg'
+import next2 from '../../../res/images/next-arrow2.svg'
 import Label from '../../text/Label'
 
 type CallbackArray = (() => void)[]
 
 interface Props {
+  modalVariation?: boolean
   callbacks: CallbackArray
   setCallbacks: Dispatch<SetStateAction<CallbackArray>>
 }
@@ -35,17 +37,32 @@ export default function NextArrow(props: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClick])
 
-
-  return (
-    <div className={containerClasses.join(' ')}>
-      <img src={next} alt={'Next arrow'}/>
-      <Label
-        allCaps={true}
-        color={'color-primary'}
-        boldness={'bold'}
-      >
-        Next
-      </Label>
-    </div>
-  )
+  if (props.modalVariation) {
+    const containerClasses = [utils.clickable, styles.container, styles.priority]
+    return (
+      <div className={containerClasses.join(' ')}>
+        <img src={next2} alt={'Next arrow'}/>
+        <Label
+          allCaps={true}
+          color={'color-five'}
+          boldness={'bold'}
+        >
+          Next
+        </Label>
+      </div>
+    )
+  } else {
+    return (
+      <div className={containerClasses.join(' ')}>
+        <img src={next} alt={'Next arrow'}/>
+        <Label
+          allCaps={true}
+          color={'color-primary'}
+          boldness={'bold'}
+        >
+          Next
+        </Label>
+      </div>
+    )
+  }
 }

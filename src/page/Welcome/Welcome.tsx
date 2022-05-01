@@ -62,7 +62,6 @@ export default function Welcome() {
           </Dialog>
         )
         setShowSeeds(true)
-
       },
     () => {
       navigate('/' + GAME + PLOT_CHOICE)

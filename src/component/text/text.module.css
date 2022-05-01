@@ -52,6 +52,10 @@
   color: var(--color-one);
 }
 
+.color-five {
+  color: var(--color-five)
+}
+
 .black {
   color: black;
 }
