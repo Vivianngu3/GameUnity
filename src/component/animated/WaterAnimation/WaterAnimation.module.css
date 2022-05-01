@@ -1,0 +1,90 @@
+@keyframes wateringCan {
+  0% {
+    position: absolute;
+    top: 260px;
+    right: 0;
+    bottom: 0;
+    left: 150px;
+    margin: auto;
+    transform: rotate(-0deg);
+    z-index: var(--timmy-z-index);
+  }
+  25% {
+    position: absolute;
+    top: 260px;
+    right: 0;
+    bottom: 0;
+    left: 150px;
+    margin: auto;
+    transform: rotate(-20deg);
+    z-index: var(--timmy-z-index);
+  }
+  50%  {
+    position: absolute;
+    top: 260px;
+    right: 0;
+    bottom: 0;
+    left: 150px;
+    margin: auto;
+    transform: rotate(-50deg);
+    z-index: var(--timmy-z-index);
+  }
+  75%  {
+    position: absolute;
+    top: 260px;
+    right: 0;
+    bottom: 0;
+    left: 150px;
+    margin: auto;
+    transform: rotate(0deg);
+    z-index: var(--timmy-z-index);
+  }
+  100% {
+    position: absolute;
+    top: 260px;
+    right: 0;
+    bottom: 0;
+    left: 150px;
+    margin: auto;
+    transform: rotate(0deg);
+    z-index: var(--timmy-z-index);
+  }
+}
+
+.animateWateringCan {
+  width: 150px;
+  height: 150px;
+  animation: wateringCan 2.5s 1;
+}
+
+@keyframes water {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.waterDrops {
+  position: absolute;
+  left: 35px;
+  right: 0;
+  bottom: 125px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65px;
+  height: 65px;
+  z-index: 399;
+  opacity: 0;
+  animation: water 2.5s 1;
+}
