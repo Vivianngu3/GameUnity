@@ -4,7 +4,7 @@
 ### Problem Statement
 How might 1st-3rd grade teachers in Washington State engage their students in learning about the gardening process so that their students can understand the impact agriculture has on the environment?
 
-### Solution Overview
+### Project Information Overview
 The ongoing COVID-19 pandemic has caused decreasing public elementary school student engagement yet increasing comfortability of low-quality online teaching. This is contributing to falling student reading capability and teachers' lack of incentive to challenge their students further through the incorporation of a science curriculum, leaving students underprepared to handle the increase in greener initiatives. To address these informational gaps, Sprout aims to deliver elementary school students from grades 1-3 an interactive web-based storybook that introduces environmental education while increasing reading proficiencies by incorporating elements of both the English Language Arts Common Core (vocabulary, comprehension, inference, etc.) and Next Generation Science Standards (plant lifecycle, ecosystems, energy, etc.).
 
 ## Research
