@@ -1,5 +1,4 @@
 .container {
-  position: relative;
   --dialog-x-offset: 48px;
   --dialog-y-offset: 42px;
 }
@@ -35,6 +34,6 @@
   right: calc(100% + var(--dialog-x-offset));
 }
 
-.arrow.left {
-  right: 100%;
-}
+/*.arrow.left {*/
+/*  right: 100%;*/
+/*}*/
