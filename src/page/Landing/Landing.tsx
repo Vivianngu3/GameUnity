@@ -55,14 +55,6 @@ export default function Landing() {
           </Heading>
 
           <div className={styles.rowContainer}>
-            <DirectedDialog
-              closeness={50}
-              side={'left'}
-              anchor={
-                <Plot />
-              }>
-              Dialog that hovers!
-            </DirectedDialog>
             <img src={Timmy1} alt={'Timmy1'} height={'200'} width={'200'}/>
             <img src={Timmy2} alt={'Timmy2'} height={'200'} width={'200'}/>
             <img src={Timmy3} alt={"Timmy3"} height={'200'} width={'200'}/>

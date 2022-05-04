@@ -14,6 +14,11 @@
   background-color: var(--color-three);
 
   border: 3px solid var(--color-one);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .arrow {
