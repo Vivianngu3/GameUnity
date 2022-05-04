@@ -56,7 +56,8 @@ export default function Landing() {
 
           <div className={styles.rowContainer}>
             <DirectedDialog
-              positioning={'fixed-anchor'}
+              closeness={50}
+              side={'left'}
               anchor={
                 <Plot />
               }>
