@@ -27,10 +27,10 @@ export default function TimmySelect() {
 
       <div className={styles.timmysRowContainer}>
 
-        <TimmyChoice src={timmy1} onClick={() => {timmyOnClick('1')}}/>
-        <TimmyChoice src={timmy2} onClick={() => {timmyOnClick('2')}}/>
-        <TimmyChoice src={timmy3} onClick={() => {timmyOnClick('3')}}/>
-        <TimmyChoice src={timmy4} onClick={() => {timmyOnClick('4')}}/>
+        <TimmyChoice src={timmy1} onClick={() => {timmyOnClick(1)}}/>
+        <TimmyChoice src={timmy2} onClick={() => {timmyOnClick(2)}}/>
+        <TimmyChoice src={timmy3} onClick={() => {timmyOnClick(3)}}/>
+        <TimmyChoice src={timmy4} onClick={() => {timmyOnClick(4)}}/>
 
       </div>
     </div>

@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from './DirectedDialog.module.css'
-import Block from '../../text/Block'
+import Block, {Size as TextSize} from '../../text/Block'
 
 type Side = 'left' | 'right'
 
 interface Props {
   anchor: JSX.Element
   closeness?: number
+  closenessCoordinates?: {x: number, y:number}
+  textSize?: TextSize
   side?: Side
 }
 
@@ -17,23 +19,24 @@ export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
     if (node !== null) {
       let anchor = node.children[0]
       let posInfo = anchor.getBoundingClientRect()
-      let closeness = props.closeness || 0
+      let xOffset = props.closenessCoordinates?.x || props.closeness || 0
+      let yOffset = props.closenessCoordinates?.y || props.closeness || 0
       let builtStyles = {
         position: "fixed",
-        top: Math.round(posInfo.top + closeness) + 'px',
+        top: Math.round(posInfo.top + yOffset) + 'px',
       }
       let left;
       if (props.side === 'left') {
-        left = posInfo.left + closeness
+        left = posInfo.left + xOffset
       } else {
-        left = posInfo.right - closeness
+        left = posInfo.right - xOffset
       }
       Object.assign(builtStyles, {
         left: Math.round(left) + 'px'
       })
       setContainerStyle(builtStyles)
     }
-  }, [props.closeness, props.side])
+  }, [props.closeness, props.closenessCoordinates, props.side])
 
   let sideClass = (props.side === 'left') ? styles.left : styles.right
 
@@ -45,7 +48,7 @@ export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
         style={containerStyle}
       >
         <div className={styles.dialog + ' ' + sideClass}>
-          <Block>
+          <Block size={props.textSize}>
             {props.children}
           </Block>
         </div>
