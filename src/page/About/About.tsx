@@ -89,10 +89,10 @@ export default function About() {
           <section className={styles.content}>
             <Heading type={'section'}> PROJECT STATUS</Heading>
             <Block align={'center'}>
-              University of Washington Information School Capstone project for Winter and Spring 2022
+              University of Washington Information School Capstone project for Winter and Spring 2022.
             </Block>
             <Block align={'center'}>
-              In late May 2022, development will cease and a copy of our repository will be made for any future capstone group, should they chose to take on our project for further development.
+              In late May 2022, development will cease and a copy of our repository will be made for any future capstone group, should they choose to take on our project for further development.
             </Block>
           </section>
 
