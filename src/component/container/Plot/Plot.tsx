@@ -29,15 +29,19 @@ export default function Plot(props: Props) {
       break
     case 'seeds-sown':
       contained =
-        <div
-          className={styles.plotContents}
-          onClick={() => {if (props.coverSeed) props.coverSeed()}}
-        >
-          <svg viewBox="0 0 2 2" className={styles.hole}>
-            <circle cx={1} cy={1} r={1} />
-          </svg>
-          <img src={seeds} alt={'Seeds in a hole'} className={styles.seeds} />
-        </div>
+        <DirectedDialog
+          side={'left'}
+          anchor={
+            <div
+              className={styles.plotContents}
+              onClick={() => {if (props.coverSeed) props.coverSeed()}}
+            >
+              <svg viewBox="0 0 2 2" className={styles.hole}>
+                <circle cx={1} cy={1} r={1} />
+              </svg>
+              <img src={seeds} alt={'Seeds in a hole'} className={styles.seeds} />
+            </div>
+          }>Click to cover your seeds.</DirectedDialog>
       break
     case 'planted':
       contained =

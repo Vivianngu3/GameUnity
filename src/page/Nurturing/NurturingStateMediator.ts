@@ -17,7 +17,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
   sowSeeds() {
     if (this.isCompleted('dug')) {
       this.setPlotCompleted('seeds-sown')
-      this.state?.timmyText.set('Click the hole to cover your seeds.')
+      this.state?.timmyText.set('')
       this.state?.setToolboxOpen(false)
     } else {
       this.notifyUserOnce("You need to dig a hole first!")
