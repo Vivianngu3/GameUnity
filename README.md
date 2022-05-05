@@ -27,7 +27,7 @@ Our user research fell short of recruiting enough elementary school students to 
 ### Design Tactics
 - A lot of inspiration from video games as well as children books. 
 - Incorporating effective feedback when a user clicks or uses a function (ex: when the shovel is clicked on, animated a shovel digging)
-- Using color contrast checker for vision accessbiblity 
+- Using color contrast checker for vision accessibility 
 - Using design platforms/free features for icons and vectors (Figma plug-ins and canva)
 
 ### Message to Future Designers on Continuation (from Vivian Nguyen)
@@ -39,12 +39,15 @@ Our user research fell short of recruiting enough elementary school students to 
 ## Development
 ### Development Tactics
 What your code includes, how to build and deploy the code
--
--
--
+- Some description of the code is found in [Codeline.md](./Codeline.md)
+- Run the code via `npm start`
+- We will not have a deployment scheme set up for the open source repository. You will have to set this up yourself, but for reference, we used Netlify for our deployment of the original repository.
 
 ### Message to Future Developers on Continuation (from Shane Fretwell)
 How to contribute to the code
--
--
--
+- We use Typescript here, which has a lot of benefits that you can look into if you aren't familiar. However, those benefits are best brought about by an IDE that knows how to handle TypeScript. Look into how well your IDE works with the language!
+- A description of the directory structure and how new code is added is in the [Codeline.md file](./Codeline.md)
+- The categories of components (explained in Codeline.md) are meant to make finding a component easier, so don't spend too much time thinking about where a new component might belong in the categories. To some extent, it's just a gut feeling
+  - You may even want to reorganize the components into categories that feel more natural to you!
+- The rules for component directories described in the Codeline.md file are also not hard and fast; it is just rare that you would want to deviate from them. One example of where we deviated from the typical component directory structure was the Plot component, which has a stripped down version included inside its directory
+- You may wish to better organize images into categories within the images directory.

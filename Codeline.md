@@ -1,0 +1,36 @@
+- `root`
+    - `DOCS`
+    - `src`
+        - `component`: React components that aren't full pages
+            - `component-category`
+                - `component-directory`: Each component directory shares the name of the component
+                    - `ComponentName.tsx`
+                    - `ComponentName.module.css`: Only add a .module.css file if needed for that component
+                - `component2-directory`
+                    - `Component2Name.tsx`
+                    - `Component2Name.module.css`
+            - `component-category2`
+                - ... more components
+            - ... more categories of components
+        - `page`
+            - `page-directory`: Each page directory shares the name of the page
+                - `PageName.tsx`
+                - `PageName.module.css`: Only add a .module.css file if needed
+            - ... more page directories
+        - `res`
+            - `images`
+            - `constants`: Constants that represent implementation decisions
+                - `url-endpoints.ts`
+                - `z-indices.css`: Note that any file type can go in this directory, so long as it's used for global constants
+                - ...
+        - `theme`: Constants that represent design decisions such as would be found in design guidelines
+            - `colors.css`: Again, any file type is allowed, though design decisions are usually best kept in .css files
+            - `fonts.css`
+            - ...
+        - `utils`: Utility files that will potentially be used by several components
+            - `GameStateMediator.ts`: Handles the changing of game page state based off of user actions
+            - `MyArray.ts`: Note that again, any file type is valid here
+            - `utils.module.css`: Common css rules, similar to bootstrap classes if you are familiar with that framework
+            - ...
+        - `App.tsx`: Where page routing happens
+        - `index.tsx`: Where global styles are loaded
