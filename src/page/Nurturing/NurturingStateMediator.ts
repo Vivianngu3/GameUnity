@@ -11,6 +11,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
     this.state?.timmyText.set('')
     // TODO: Shovel animation
     this.setPlotCompleted('dug')
+    this.state?.showChecklistExplanation.set(false)
     this.addCheckedItem('dug')
   }
 

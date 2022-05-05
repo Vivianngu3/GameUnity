@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction, useState} from 'react'
 import Plot, {Progress as PlotProgress} from '../../component/container/Plot/Plot'
-import {GamePageState} from '../../utils/GameStateMediator'
+import {GamePageState, State} from '../../utils/GameStateMediator'
 import NurturingStateMediator from './NurturingStateMediator'
 import CheckList, {Props as ChecklistProps} from '../../component/container/CheckList/CheckList'
 import ToolBox from '../../component/container/ToolBox/ToolBox'
@@ -9,14 +9,17 @@ import Timmy from '../../component/static/Timmy/Timmy'
 import {useNavigate} from 'react-router-dom'
 import {GAME, TIME_LAPSE} from '../../res/constants/url-endpoints'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
+import DirectedDialog from '../../component/static/DirectedDialog/DirectedDialog'
 
 export interface NurturingState extends GamePageState {
   setShowNextArrow: Dispatch<SetStateAction<boolean>>
+  showChecklistExplanation: State<boolean>
 }
 
 export default function Nurturing() {
-  const [timmyText, setTimmyText] = React.useState('Try completing your checklist in order!')
+  const [timmyText, setTimmyText] = React.useState('')
   const [showArrow, setShowArrow] = React.useState(false)
+  const [showChecklistExplanation, setShowChecklistExplanation] = React.useState(true)
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
 
   // See here for an explanation of why this needs a function that returns a function in order to have a simple function in state:
@@ -46,6 +49,7 @@ export default function Nurturing() {
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
     timmyText: {'value': timmyText, 'set': setTimmyText},
+    showChecklistExplanation: {'value': showChecklistExplanation, 'set': setShowChecklistExplanation},
     setToolboxOpen: setToolboxOpen,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
     setShowNextArrow: setShowArrow,
@@ -62,9 +66,17 @@ export default function Nurturing() {
         coverSeed={() => {stateMediator.coverSeeds()}}
         />
 
-      <CheckList
-        {...checkedItems}
-      />
+      {showChecklistExplanation ?
+        <DirectedDialog
+          side={'left'}
+          closenessCoordinates={{ x:0, y:180 }}
+          anchor={
+            <CheckList {...checkedItems} />
+          }>
+          Try completing your checklist in order!
+        </DirectedDialog> :
+        <CheckList {...checkedItems} />
+      }
 
       {/* When timmyText === '', it is falsey, and this <Timmy /> is not displayed */}
       {!toolboxOpen && timmyText &&
