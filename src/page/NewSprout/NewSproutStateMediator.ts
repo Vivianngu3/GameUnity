@@ -12,10 +12,6 @@ export enum UnorderedProgress {
 export default class NewSproutStateMediator extends GameStateMediator<NewSproutState> implements ToolBehaviorHandler {
   soilImproved = false
 
-  stopUpdates(): void {
-    this.state = null
-  }
-
   cut(): void {
     if (!this.soilImproved) {
       if (this.isCompleted('tomato')) {

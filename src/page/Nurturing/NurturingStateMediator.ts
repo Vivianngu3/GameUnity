@@ -3,13 +3,6 @@ import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 
 export default class NurturingStateMediator extends GameStateMediator<NurturingState> implements ToolBehaviorHandler {
-  // We need to stop updates when Nurturing is unmounted to avoid updating the state of an unmounted component
-  stopUpdates() {
-    this.state = null;
-    console.log("Updates from NurturingStateMediator stopped")
-    console.log(this.state)
-  }
-
   cut() {
     this.notifyUserOnce("Not ready to use that yet")
   }
