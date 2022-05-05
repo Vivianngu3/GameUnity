@@ -18,8 +18,6 @@ import ImageWithText from '../../component/static/ImageWithText/ImageWithText'
 import Curve from '../../component/static/BackgroundCurve/BackgroundCurve'
 import NavBar from '../../component/peripheral/NavBar/NavBar'
 import Footer from '../../component/peripheral/Footer/Footer'
-import DirectedDialog from '../../component/static/DirectedDialog/DirectedDialog'
-import Plot from '../../component/container/Plot/Plot'
 
 export default function Landing() {
   return (
