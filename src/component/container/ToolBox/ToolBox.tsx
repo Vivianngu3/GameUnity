@@ -1,5 +1,4 @@
 import React from 'react'
-
 import toolbox from '../../../res/images/toolbox.svg'
 import scissors from '../../../res/images/scissors.svg'
 import shovel from '../../../res/images/shovel.svg'
@@ -27,6 +26,7 @@ export interface ToolBehaviorHandler {
 interface Props {
   behaviorHandler: ToolBehaviorHandler
   openState: State<boolean>
+  disabled: boolean
   toggleSideEffect?: () => void
   disabledTools: ToolName[]
 }
@@ -54,9 +54,10 @@ export default function ToolBox(props: Props) {
     )})
 
   const openButtonHandler = () => {
-    console.log("Toolbox open handler called")
-    props.openState.set(!props.openState.value)
-    props.toggleSideEffect && props.toggleSideEffect()
+    if (!props.disabled) {
+      props.openState.set(!props.openState.value)
+      props.toggleSideEffect && props.toggleSideEffect()
+    }
   }
 
   return (

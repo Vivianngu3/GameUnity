@@ -9,6 +9,7 @@ export interface GamePageState {
   checkedItems: State<ChecklistProps>
   timmyText: State<string>
   setToolboxOpen: Dispatch<SetStateAction<boolean>>
+  setToolboxDisabled: Dispatch<SetStateAction<boolean>>
   setToolboxToggleSideEffect: Dispatch<SetStateAction<() => void>>
 }
 

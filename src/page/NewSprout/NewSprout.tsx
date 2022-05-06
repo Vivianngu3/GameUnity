@@ -19,6 +19,7 @@ export interface NewSproutState extends GamePageState {
 export default function NewSprout() {
   const [timmyText, setTimmyText] = React.useState('Oh look! Some new friends have joined us.')
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
+  const [toolboxDisabled, setToolboxDisabled] = React.useState(false)
   const [nextArrowVariation, setNextArrowVariation] = React.useState(false)
   const [checkListVariation, setCheckListVariation] = React.useState(false)
 
@@ -57,6 +58,7 @@ export default function NewSprout() {
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
     timmyText: {'value': timmyText, 'set': setTimmyText},
     setToolboxOpen: setToolboxOpen,
+    setToolboxDisabled: setToolboxDisabled,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
     nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
     unorderedToolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
@@ -96,6 +98,7 @@ export default function NewSprout() {
         disabledTools={['Water', 'Shovel', 'Seeds']}
         behaviorHandler={stateMediator}
         openState={{value: toolboxOpen, set: setToolboxOpen}}
+        disabled={toolboxDisabled}
         toggleSideEffect={() => {toolboxToggleSideEffect()}}
       />
     </>

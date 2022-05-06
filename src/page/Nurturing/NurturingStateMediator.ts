@@ -20,6 +20,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
       this.setPlotCompleted('seeds-sown')
       this.state?.timmyText.set('')
       this.state?.setToolboxOpen(false)
+      this.state?.setToolboxDisabled(true)
     } else {
       this.notifyUserOnce("You need to dig a hole first!")
     }
@@ -29,6 +30,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
     if (this.isCompleted('seeds-sown')) {
       if (!this.isCompleted('planted')) {
         this.state?.timmyText.set('Good job! Now open your tool box and try to water your seed.')
+        this.state?.setToolboxDisabled(false)
       }
       this.setPlotCompleted('planted')
       this.addCheckedItem('planted')
@@ -43,6 +45,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
       this.addCheckedItem('watered')
 
       this.state?.timmyText.set('Great work!')
+      this.state?.setToolboxDisabled(true)
       setTimeout(() => {
         this.state?.setToolboxOpen(false)
         this.state?.setShowNextArrow(true)
