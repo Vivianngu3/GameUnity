@@ -17,19 +17,19 @@ export default function Timmy(props: React.PropsWithChildren<Props>) {
 
   switch (props.whichTimmy) {
     case '1':
-      timmy = <img src={timmy1} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
+      timmy = <img draggable={false} src={timmy1} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
       break
     case '2':
-      timmy = <img src={timmy2} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
+      timmy = <img draggable={false} src={timmy2} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
       break
     case '3':
-      timmy = <img src={timmy3} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
+      timmy = <img draggable={false} src={timmy3} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
       break
     case '4':
-      timmy = <img src={timmy4} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
+      timmy = <img draggable={false} src={timmy4} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
       break
     default:
-      timmy = <img src={timmy1} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
+      timmy = <img draggable={false} src={timmy1} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
   }
 
   return(

@@ -21,7 +21,7 @@ export default function Tool(props: Props) {
         onClick={() => {props.onClick()}}
       >
         <div>
-          <img className={styles.toolIcon} src={props.icon} alt={props.alt} />
+          <img draggable={false} className={styles.toolIcon} src={props.icon} alt={props.alt} />
         </div>
         <div className={styles.toolLabel}>
           {props.name}

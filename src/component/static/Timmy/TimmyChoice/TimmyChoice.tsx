@@ -11,6 +11,7 @@ export default function TimmyChoice(props: Props) {
   return (
     <div>
       <img
+        draggable={false}
         className={styles.timmy}
         onClick={() => {props.onClick()}}
         src={props.src} alt={'directions-giver timmy'}

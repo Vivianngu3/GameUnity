@@ -2,21 +2,26 @@ import React from 'react';
 import styles from './Definition.module.css'
 import Modal from '../Modal'
 import Caption from '../../text/Caption'
+import speaker from '../../../res/images/speaker-icon.svg'
 
 interface Props {
   hide: () => void
   pronunciation?: string
-  word?: string
+  word: string
   partOfSpeech?: string
   definition?: string
 }
 
 export default function Definition(props: Props) {
+  const textToSpeech = new SpeechSynthesisUtterance()
+  textToSpeech.text = props.word
+
   return (
     <Modal>
       <div className={styles.container}>
 
         <div className={styles.pronunciation}>
+          <img className={styles.speaker} src={speaker} alt={'speaker icon'} onClick={() => window.speechSynthesis.speak(textToSpeech)} />
           {props.pronunciation}
         </div>
 

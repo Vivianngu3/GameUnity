@@ -18,25 +18,25 @@ export default function Clock(props: Props) {
 
   switch (props.time) {
     case '1':
-      clockPosition = <img className={styles.clock} src={clock1} alt={'clock in position 1'} />
+      clockPosition = <img draggable={false} className={styles.clock} src={clock1} alt={'clock in position 1'} />
       break
     case '2':
-      clockPosition = <img className={styles.clock} src={clock2} alt={'clock in position 2'} />
+      clockPosition = <img draggable={false} className={styles.clock} src={clock2} alt={'clock in position 2'} />
       break
     case '3':
-      clockPosition = <img className={styles.clock} src={clock3} alt={'clock in position 3'} />
+      clockPosition = <img draggable={false} className={styles.clock} src={clock3} alt={'clock in position 3'} />
       break
     case '4':
-      clockPosition = <img className={styles.clock} src={clock4} alt={'clock in position 4'} />
+      clockPosition = <img draggable={false} className={styles.clock} src={clock4} alt={'clock in position 4'} />
       break
     case '5':
-      clockPosition = <img className={styles.clock} src={clock5} alt={'clock in position 5'} />
+      clockPosition = <img draggable={false} className={styles.clock} src={clock5} alt={'clock in position 5'} />
       break
     case '6':
-      clockPosition = <img className={styles.clock} src={clock6} alt={'clock in position 6'} />
+      clockPosition = <img draggable={false} className={styles.clock} src={clock6} alt={'clock in position 6'} />
       break
     default:
-      clockPosition = <img className={styles.clock} src={clock1} alt={'clock in position 1'} />
+      clockPosition = <img draggable={false} className={styles.clock} src={clock1} alt={'clock in position 1'} />
   }
 
   return (

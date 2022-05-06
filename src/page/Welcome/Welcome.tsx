@@ -102,12 +102,12 @@ export default function Welcome() {
       }
       {showPlanet &&
         <div className={styles.center}>
-          <img alt={'planet'} className={styles.planetSize} src={planet}/>
+          <img draggable={false} alt={'planet'} className={styles.planetSize} src={planet}/>
         </div>
       }
       {showSeeds &&
         <div className={styles.center}>
-          <img alt={'seed packet'} className={styles.packetSize} src={seedPacket}/>
+          <img draggable={false} alt={'seed packet'} className={styles.packetSize} src={seedPacket}/>
         </div>
       }
       {showArrow &&

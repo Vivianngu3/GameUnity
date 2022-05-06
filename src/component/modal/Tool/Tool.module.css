@@ -3,6 +3,10 @@
   flex-direction: column;
   padding: 1.5rem;
  }
+
+.speaker {
+  margin-right: 10px;
+}
  
  .pronunciation {
      font-size: 2.8rem;

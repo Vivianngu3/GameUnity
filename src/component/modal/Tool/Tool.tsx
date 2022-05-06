@@ -1,17 +1,21 @@
 import React from 'react';
 import Modal from '../Modal'
 import styles from './Tool.module.css'
+import speaker from "../../../res/images/speaker-icon.svg";
 
 interface Props {
   hide: () => void
   img?: string
   pronunciation?: string
-  toolName?: string
+  toolName: string
   partOfSpeech?: string
   definition?: string
 }
 
 export default function Tool(props: Props) {
+  const textToSpeech = new SpeechSynthesisUtterance()
+  textToSpeech.text = props.toolName
+
   return (
     <Modal>
       <div className={styles.container}>
@@ -23,10 +27,11 @@ export default function Tool(props: Props) {
         </div>
 
         <div className={styles.svg}>
-          <img src={props.img} alt={''} />
+          <img draggable={false} src={props.img} alt={props.toolName} />
         </div>
 
         <div className={styles.pronunciation}>
+          <img className={styles.speaker} src={speaker} alt={'speaker icon'} onClick={() => window.speechSynthesis.speak(textToSpeech)} />
           {props.pronunciation}
         </div>
 

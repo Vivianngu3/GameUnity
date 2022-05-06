@@ -21,8 +21,8 @@ export default function KitchenBackground(props: Props) {
       counters =
         <div className={styles.wall}>
           <div className={styles.table} />
-          <img className={styles.cuttingBoardTomato} src={cuttingBoardTomato} alt={'knife and tomato on top of cutting board'}/>
-          <img className={styles.window} src={window} alt={'window'} />
+          <img draggable={false} className={styles.cuttingBoardTomato} src={cuttingBoardTomato} alt={'knife and tomato on top of cutting board'}/>
+          <img draggable={false} className={styles.window} src={window} alt={'window'} />
           <Clock time={props.time} />
         </div>
       break
@@ -37,9 +37,9 @@ export default function KitchenBackground(props: Props) {
           <div className={styles.bigDrawer1} />
           <div className={styles.bigDrawer2} />
           <div className={styles.bigDrawer3} />
-          <img className={styles.cuttingBoardKnife} src={cuttingBoardKnife} alt={'knife on top of cutting board'}/>
-          <img className={styles.oven} src={oven} alt={'oven'} />
-          <img className={styles.window} src={window} alt={'window'} />
+          <img draggable={false} className={styles.cuttingBoardKnife} src={cuttingBoardKnife} alt={'knife on top of cutting board'}/>
+          <img draggable={false} className={styles.oven} src={oven} alt={'oven'} />
+          <img draggable={false} className={styles.window} src={window} alt={'window'} />
           <Clock time={props.time} />
         </div>
       break
@@ -47,8 +47,8 @@ export default function KitchenBackground(props: Props) {
       counters =
         <div className={styles.wall}>
           <div className={styles.table} />
-          <img className={styles.pizza} src={pizza} alt={'pizza'}/>
-          <img className={styles.window} src={window} alt={'window'} />
+          <img draggable={false} className={styles.pizza} src={pizza} alt={'pizza'}/>
+          <img draggable={false} className={styles.window} src={window} alt={'window'} />
           <Clock time={props.time} />
         </div>
       break
@@ -56,7 +56,7 @@ export default function KitchenBackground(props: Props) {
       counters =
         <div className={styles.wall}>
           <div className={styles.table} />
-          <img className={styles.window} src={window} alt={'window'} />
+          <img draggable={false} className={styles.window} src={window} alt={'window'} />
           <Clock time={props.time} />
         </div>
       break

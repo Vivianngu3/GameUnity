@@ -41,7 +41,7 @@ export default function NextArrow(props: Props) {
     const containerClasses = [utils.clickable, styles.container, styles.priority]
     return (
       <div className={containerClasses.join(' ')}>
-        <img src={next2} alt={'Next arrow'}/>
+        <img draggable={false} src={next2} alt={'Next arrow'}/>
         <Label
           allCaps={true}
           color={'color-five'}
@@ -54,7 +54,7 @@ export default function NextArrow(props: Props) {
   } else {
     return (
       <div className={containerClasses.join(' ')}>
-        <img src={next} alt={'Next arrow'}/>
+        <img draggable={false} src={next} alt={'Next arrow'}/>
         <Label
           allCaps={true}
           color={'color-primary'}

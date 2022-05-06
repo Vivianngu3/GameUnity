@@ -77,9 +77,9 @@ export default function GameBackground(props: Props) {
         <circle cx={1} cy={1} r={1}/>
       </svg>
       <div className={styles.grass} />
-      <img src={Tree} alt={'Tree'} className={styles.tree} />
-      <img src={Bee} alt={'Bee'} className={beeStyles.join(' ')} />
-      <img src={Rabbit} alt={'Rabbit'} className={rabbitStyles.join(' ')} />
+      <img draggable={false} src={Tree} alt={'Tree'} className={styles.tree} />
+      <img draggable={false} src={Bee} alt={'Bee'} className={beeStyles.join(' ')} />
+      <img draggable={false} src={Rabbit} alt={'Rabbit'} className={rabbitStyles.join(' ')} />
     </div>
   )
 }
