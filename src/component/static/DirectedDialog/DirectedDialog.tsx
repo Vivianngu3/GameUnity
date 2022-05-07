@@ -37,7 +37,7 @@ export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
       })
       setContainerStyle(builtStyles)
     }
-  }, [props.closeness, props.closenessCoordinates, props.side])
+  }, [props.closeness, props.closenessCoordinates, props.side, windowDimensions])
 
   React.useEffect(() => {
     console.log("Listener added")
