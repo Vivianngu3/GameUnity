@@ -9,6 +9,11 @@ import ToolBox from '../../component/container/ToolBox/ToolBox'
 import {NavigateFunction, useNavigate} from 'react-router-dom'
 import NewSproutStateMediator, {UnorderedProgress} from './NewSproutStateMediator'
 import {MyArray} from '../../utils/MyArray'
+import Tool from '../../component/modal/Tool/Tool'
+import Definition from '../../component/modal/Definition/Definition'
+import pesticide from '../../res/images/pesticide.svg'
+import fertilizer from '../../res/images/fertilizer.svg'
+
 
 export interface NewSproutState extends GamePageState {
   nextArrowCallbacks: State<(() => void)[]>
@@ -22,6 +27,18 @@ export default function NewSprout() {
   const [toolboxDisabled, setToolboxDisabled] = React.useState(true)
   const [nextArrowVariation, setNextArrowVariation] = React.useState(false)
   const [checkListVariation, setCheckListVariation] = React.useState(false)
+  const [showWormsAnimation, setShowWormsAnimation] = React.useState(false)
+  const [showScissorsAnimation, setShowScissorsAnimation] = React.useState(false)
+
+  const [showPesticideTool, setShowPesticideTool] = React.useState(false)
+  const [showFertilizerTool, setShowFertilizerTool] = React.useState(false)
+
+  const [showOrganismDefinition, setShowOrganismDefinition] = React.useState(false)
+  const [showEnvironmentDefinition, setShowEnvironmentDefinition] = React.useState(false)
+  const [showChemicalDefinition, setShowChemicalDefinition] = React.useState(false)
+  const [showPollinateDefinition, setShowPollinateDefinition] = React.useState(false)
+
+
 
   const [toolboxToggleSideEffect, setToolboxToggleSideEffect] =
     React.useState<() => void>(() => () => {})
@@ -68,6 +85,80 @@ export default function NewSprout() {
 
   return (
     <>
+      {showPesticideTool &&
+        <Tool
+          hide={() => {
+            setShowPesticideTool(false)
+          }
+          }
+          definition={'Used to keep away organisms from harming your plant'}
+          img={pesticide}
+          pronunciation={'peh • stuh • side'}
+          partOfSpeech={'Noun'}
+          toolName={'Pesticide'}
+        />
+      }
+      {showFertilizerTool &&
+        <Tool
+          hide={() => {
+            setShowFertilizerTool(false)
+          }
+          }
+          definition={'Used to speed up the growth of your plant'}
+          img={fertilizer}
+          pronunciation={'fur • till • eye • zur'}
+          partOfSpeech={'Noun'}
+          toolName={'Fertilizer'}
+        />
+      }
+      {showOrganismDefinition &&
+        <Definition
+          hide={() => {
+            setShowOrganismDefinition(false)
+          }
+          }
+          pronunciation={'or • guh • niz •um'}
+          word={'Organism'}
+          partOfSpeech={'Noun'}
+          definition={'A single living thing'}
+        />
+      }
+      {showEnvironmentDefinition &&
+        <Definition
+          hide={() => {
+            setShowEnvironmentDefinition(false)
+          }
+          }
+          pronunciation={'en • vy • urn • ment'}
+          word={'Environment'}
+          partOfSpeech={'Noun'}
+          definition={'Everything that is around us'}
+        />
+      }
+      {showChemicalDefinition &&
+        <Definition
+          hide={() => {
+            setShowChemicalDefinition(false)
+          }
+          }
+          pronunciation={'kehm • ih • cull'}
+          word={'Chemical'}
+          partOfSpeech={'Noun'}
+          definition={'Something that is made up of two or more things'}
+        />
+      }
+      {showPollinateDefinition &&
+        <Definition
+          hide={() => {
+            setShowPollinateDefinition(false)
+          }
+          }
+          pronunciation={'paw • lihn • ate'}
+          word={'Pollinate'}
+          partOfSpeech={'Verb'}
+          definition={'Moving a plant\'s powder to another plant so that new seeds can be made'}
+        />
+      }
       <GameBackground rabbitPosition={1} beePosition={1} />
       <Plot
         progress={plotProgress}

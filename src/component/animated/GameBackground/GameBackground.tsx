@@ -4,20 +4,21 @@ import Tree from '../../../res/images/tree.svg'
 import Bee from '../../../res/images/Bee.svg'
 import Rabbit from '../../../res/images/Rabbit.svg'
 
-export type Time = 'noon' | 'afternoon' | 'evening' | 'twilight'
 type BeePosition = 1 | 2
 type RabbitPosition = 1 | 2
+type Time = 'noon' | 'afternoon' | 'evening' | 'twilight' | 'time-lapse'
 
 interface Props {
-  time?: Time
   beePosition?: BeePosition
   rabbitPosition?: RabbitPosition
+  time?: Time
 }
 
 export default function GameBackground(props: Props) {
   let sunStyles = [styles.sun]
   let skyStyles = [styles.sky]
   let coronaStyles = [styles.corona]
+
   switch (props.time) {
     case 'noon':
       coronaStyles.push(styles.noon)
@@ -38,6 +39,11 @@ export default function GameBackground(props: Props) {
       coronaStyles.push(styles.twilight)
       sunStyles.push(styles.twilight)
       skyStyles.push(styles.twilight)
+      break
+    case 'time-lapse':
+      coronaStyles.push(styles.timeLapse)
+      sunStyles.push(styles.timeLapse)
+      skyStyles.push(styles.timeLapse)
       break
     default:
       coronaStyles.push(styles.noon)

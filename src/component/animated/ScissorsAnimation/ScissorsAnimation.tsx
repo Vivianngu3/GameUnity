@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./ScissorsAniamtion.module.css";
+import styles from "./ScissorsAnimation.module.css";
 import openScissors from "../../../res/images/open-scissors.svg";
 import closedScissors from "../../../res/images/closed-scissors.svg";
 

@@ -1,6 +1,7 @@
 import {NurturingState} from './Nurturing'
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
+import {SHOVEL} from '../../theme/animation-durations'
 
 export default class NurturingStateMediator extends GameStateMediator<NurturingState> implements ToolBehaviorHandler {
   cut() {
@@ -10,9 +11,13 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
   dig() {
     this.state?.timmyText.set('')
     // TODO: Shovel animation
-    this.setPlotCompleted('dug')
     this.state?.showChecklistExplanation.set(false)
-    this.addCheckedItem('dug')
+    this.state?.showShovelAnimation.set(true)
+    setTimeout(() => {
+      this.state?.showShovelAnimation.set(false)
+      this.setPlotCompleted('dug')
+      this.addCheckedItem('dug')
+    }, SHOVEL * 1000)
   }
 
   sowSeeds() {

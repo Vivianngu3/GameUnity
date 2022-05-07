@@ -36,6 +36,109 @@
   width: 135px;
 }
 
+@keyframes skyAnimation {
+  0% {
+    background: linear-gradient(180deg, #FFFFFF 0%, #DAEDF1 43.75%);
+  }
+  33% {
+    background: #DAEDF1;
+  }
+  66% {
+    background: linear-gradient(180deg, rgba(255, 213, 93, 0.5) 0%, rgba(173, 235, 249, 0.5) 54.69%);
+  }
+  100% {
+    background: linear-gradient(180deg, rgba(0, 45, 112, 0.5) 15.1%, rgba(101, 51, 165, 0.5) 40.63%, rgba(255, 179, 0, 0.5) 76.04%);
+  }
+}
+
+.sky.timeLapse {
+  position: absolute;
+  z-index: var(--game-background-z-index);
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+
+  overflow: clip;
+
+  --grass-height: 245px;
+  --sun-height: 125px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #DAEDF1 43.75%);
+  /*
+    The suppression of errors here is necessary because of how the variable time-lapse-duration is being set.
+    It is being set by setting the `style` attribute of the App, in order to make the duration of these animations
+    visible as a global variable in both css and ts files.
+    See animation-durations.ts to see the definitions and edit animation durations
+   */
+  /*noinspection CssUnresolvedCustomProperty*/
+  animation: skyAnimation var(--time-lapse-duration) 1;
+}
+
+@keyframes sunAnimation {
+  0% {
+    left: 10%;
+    top: 10%;
+    fill: #FFF84A;
+  }
+  33% {
+    left: 35%;
+    top: 11%;
+    fill: #FFF84A;
+  }
+  66% {
+    left: 62%;
+    top: 22%;
+    fill: #FEFCCF;
+  }
+  100% {
+    left: 82%;
+    top: 55%;
+    fill: #FFFB9E;
+  }
+}
+
+.sun.timeLapse {
+  position: absolute;
+  width: var(--sun-height);
+  height: var(--sun-height);
+  left: 10%;
+  top: 10%;
+  fill: #FFF84A;
+  /*noinspection CssUnresolvedCustomProperty*/
+  animation: sunAnimation var(--time-lapse-duration) 1;
+}
+
+@keyframes coronaAnimation {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 0;
+    left: calc(62% - 2 * var(--sun-height));
+    top: calc(22% - (5*var(--sun-height) / 2));
+  }
+  100% {
+    opacity: 1;
+    left: calc(82% - 2 * var(--sun-height));
+    top: calc(60% - (5*var(--sun-height) / 2));
+  }
+}
+
+.corona.timeLapse {
+  opacity: 0;
+  position: absolute;
+  width: calc(var(--sun-height)*5);
+  height:calc(var(--sun-height)*5);
+  left: calc(62% - 2 * var(--sun-height));
+  top: calc(22% - (5*var(--sun-height) / 2));
+  background: radial-gradient(50% 50% at 50% 50%, #FCC21B 0%, rgba(255, 251, 145, 0.04) 72.92%);
+  /*noinspection CssUnresolvedCustomProperty*/
+  animation: coronaAnimation var(--time-lapse-duration) 1;
+}
+
 
 .sky.noon {
   background: linear-gradient(180deg, #FFFFFF 0%, #DAEDF1 43.75%);

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {CSSProperties} from 'react'
 import './App.css'
 import * as urls from './res/constants/url-endpoints'
 import {BrowserRouter, Outlet, Route, Routes} from 'react-router-dom'
@@ -16,9 +16,9 @@ import PlotChoice from './page/PlotChoice/PlotChoice'
 import Onboarding from './page/Onboarding/Onboarding'
 
 
-export default function App() {
+export default function App(props: {style: CSSProperties}) {
   return (
-  <div className="App">
+  <div style={props.style} className="App">
     <BrowserRouter>
       <Routes>
         <Route path={urls.LANDING} element={<Landing/>} />

@@ -4,12 +4,14 @@ import './index.css'
 import './theme/colors.css'
 import './theme/fonts.css'
 import './res/constants/z-indices.css'
+import styles from './theme/animation-durations'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/*<App />*/}
+    <App style={styles} />
   </React.StrictMode>,
   document.getElementById('root')
 )
