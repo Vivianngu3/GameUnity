@@ -12,10 +12,6 @@ export enum UnorderedProgress {
 export default class NewSproutStateMediator extends GameStateMediator<NewSproutState> implements ToolBehaviorHandler {
   soilImproved = false
 
-  stopUpdates(): void {
-    this.state = null
-  }
-
   cut(): void {
     if (!this.soilImproved) {
       if (this.isCompleted('tomato')) {
@@ -33,7 +29,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
           () => {
             this.state?.navigate('/' + GAME + KITCHEN)
           },
-        ])
+        ], true)
       } else {
         console.log('Tomato not completed')
         this.addLearnedTool(UnorderedProgress.SCISSORS_LEARNED)
@@ -50,12 +46,13 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
           () => {
             this.moveOnIfAllToolsLearned()
           },
-        ])
+        ], true)
       }
     }
   }
 
   fertilizer(): void {
+    // TODO: Handle if not in tools learning phase
     if (this.isCompleted('protected')) {
       this.addLearnedTool(UnorderedProgress.FERTILIZER_LEARNED)
 
@@ -74,7 +71,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         () => {
           this.moveOnIfAllToolsLearned()
         },
-      ])
+      ], true)
     } else {
       this.notifyUserOnce("We aren't ready for that yet!")
     }
@@ -96,7 +93,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
               () => {
                 this.state?.timmyText.set("Click on all the tools you haven't learned yet!")
               },
-          ])
+          ], true)
         }, 1000)
       } else {
         this.notifyUserOnce("We aren't ready for that yet!")
@@ -138,7 +135,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         },
       )
     }
-    this.setNextArrowCallbacks(callbacks)
+    this.setNextArrowCallbacks(callbacks, true)
   }
 
   postFence(): void {
@@ -153,14 +150,24 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     }
   }
 
+  removeFence() {
+    this.setPlotCompleted('tomato')
+    this.state?.setToolboxDisabled(false)
+    this.state?.timmyText.set('Now use your scissors to collect it.')
+  }
+
   dig(): void {this.disabledTool()}
   sowSeeds(): void {this.disabledTool()}
   water(): void {this.disabledTool()}
 
-  private setNextArrowCallbacks(callbacks: (() => void)[]) {
+  private setNextArrowCallbacks(callbacks: (() => void)[], disableToolbox?: boolean) {
     let end = callbacks.length - 1
     let lastCallback = callbacks[end]
+    if (disableToolbox) this.state?.setToolboxDisabled(true)
     callbacks[end] = () => {
+      // It is important that the last callback is called after we re-enable the toolbox, because the last callback
+      // wouldn't be able to disable the toolbox otherwise
+      if (disableToolbox) this.state?.setToolboxDisabled(false)
       lastCallback()
       this.state?.nextArrowCallbacks.set([])
     }
@@ -191,6 +198,8 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     console.log("UnorderedToolsLearned:")
     console.log(this.state?.unorderedToolsLearned.value)
     if (this.state?.unorderedToolsLearned.value.hasAll(unorderedTools)) {
+      this.state?.setToolboxDisabled(true)
+      // TODO: Change to directed dialog
       this.state?.timmyText.set(
         'Your plant has finished growing!\n' +
         'It’s time to take off the fence. Click it!'

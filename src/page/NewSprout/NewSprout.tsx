@@ -19,6 +19,7 @@ export interface NewSproutState extends GamePageState {
 export default function NewSprout() {
   const [timmyText, setTimmyText] = React.useState('Oh look! Some new friends have joined us.')
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
+  const [toolboxDisabled, setToolboxDisabled] = React.useState(true)
   const [nextArrowVariation, setNextArrowVariation] = React.useState(false)
   const [checkListVariation, setCheckListVariation] = React.useState(false)
 
@@ -39,6 +40,7 @@ export default function NewSprout() {
     },
     () => {
       setTimmyText('Look in your tool box and pick the tool that would help protect your plant.')
+      setToolboxDisabled(false)
       setNextArrowCallbacks([])
     }
   ]
@@ -57,6 +59,7 @@ export default function NewSprout() {
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
     timmyText: {'value': timmyText, 'set': setTimmyText},
     setToolboxOpen: setToolboxOpen,
+    setToolboxDisabled: setToolboxDisabled,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
     nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
     unorderedToolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
@@ -68,10 +71,7 @@ export default function NewSprout() {
       <GameBackground rabbitPosition={1} beePosition={1} />
       <Plot
         progress={plotProgress}
-        removeFence={() => {
-          setPlotProgress('tomato')
-          setTimmyText('Now use your scissors to collect it.')
-        }}
+        removeFence={() => { stateMediator.removeFence() }}
       />
 
       <CheckList
@@ -92,12 +92,14 @@ export default function NewSprout() {
         />
       }
 
-      <ToolBox
-        disabledTools={['Water', 'Shovel', 'Seeds']}
-        behaviorHandler={stateMediator}
-        openState={{value: toolboxOpen, set: setToolboxOpen}}
-        toggleSideEffect={() => {toolboxToggleSideEffect()}}
-      />
+      {!toolboxDisabled &&
+        <ToolBox
+          disabledTools={['Water', 'Shovel', 'Seeds']}
+          behaviorHandler={stateMediator}
+          openState={{value: toolboxOpen, set: setToolboxOpen}}
+          toggleSideEffect={() => {toolboxToggleSideEffect()}}
+        />
+      }
     </>
   )
 }

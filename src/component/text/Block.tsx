@@ -3,7 +3,7 @@ import styles from './text.module.css'
 import utils from '../../utils/utils.module.css'
 
 type Align = 'center' | 'left'
-type Size = 'medium' | 'small'
+export type Size = 'medium' | 'small'
 
 interface Props {
     align?: Align // centered is default

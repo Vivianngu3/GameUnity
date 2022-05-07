@@ -1,5 +1,4 @@
 import React from 'react'
-
 import toolbox from '../../../res/images/toolbox.svg'
 import scissors from '../../../res/images/scissors.svg'
 import shovel from '../../../res/images/shovel.svg'
@@ -54,7 +53,6 @@ export default function ToolBox(props: Props) {
     )})
 
   const openButtonHandler = () => {
-    console.log("Toolbox open handler called")
     props.openState.set(!props.openState.value)
     props.toggleSideEffect && props.toggleSideEffect()
   }

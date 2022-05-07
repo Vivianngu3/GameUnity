@@ -1,31 +1,64 @@
 import React from 'react'
 import styles from './DirectedDialog.module.css'
-import Block from '../../text/Block'
+import Block, {Size as TextSize} from '../../text/Block'
 
 type Side = 'left' | 'right'
 
 interface Props {
   anchor: JSX.Element
+  closeness?: number
+  closenessCoordinates?: {x: number, y:number}
+  textSize?: TextSize
   side?: Side
 }
 
 export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
-  // let anchorPosInfo = (props.anchor).getBoundingClientRect()
+  const [containerStyle, setContainerStyle] = React.useState({})
+  const [windowDimensions, setWindowDimensions] = React.useState({})
 
-  let sideClass: string;
-  switch (props.side) {
-    case 'left':
-      sideClass = styles.left
-      break
-    default:
-      sideClass = styles.right
-  }
+  let wrapperRef = React.useCallback(node => {
+    if (node !== null) {
+      let anchor = node.children[0]
+      let posInfo = anchor.getBoundingClientRect()
+      let xOffset = props.closenessCoordinates?.x || props.closeness || 0
+      let yOffset = props.closenessCoordinates?.y || props.closeness || 0
+      let builtStyles = {
+        position: "fixed",
+        top: Math.round(posInfo.top + yOffset) + 'px',
+      }
+      let left;
+      if (props.side === 'left') {
+        left = posInfo.left + xOffset
+      } else {
+        left = posInfo.right - xOffset
+      }
+      Object.assign(builtStyles, {
+        left: Math.round(left) + 'px'
+      })
+      setContainerStyle(builtStyles)
+    }
+  }, [props.closeness, props.closenessCoordinates, props.side])
+
+  React.useEffect(() => {
+    console.log("Listener added")
+    let resizeHandler = () => {
+      console.log("Handler called")
+      setWindowDimensions({ x: window.innerWidth, y: window.innerHeight })
+    }
+    window.addEventListener("resize", resizeHandler)
+  }, [])
+
+  let sideClass = (props.side === 'left') ? styles.left : styles.right
+
   return (
-    <>
-      <div className={styles.container}>
-        {props.anchor}
+    <div ref={wrapperRef}>
+      {props.anchor} {/* the useCallback ref relies on props.anchor being the ref's zeroth child */}
+      <div
+        className={styles.container}
+        style={containerStyle}
+      >
         <div className={styles.dialog + ' ' + sideClass}>
-          <Block>
+          <Block size={props.textSize}>
             {props.children}
           </Block>
         </div>
@@ -34,6 +67,6 @@ export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
           <path d="M47.9761 4.91016L92.2683 63.6045L2.97607 22.4102" stroke="#937356" strokeWidth="3"/>
         </svg>
       </div>
-    </>
+    </div>
   )
 }

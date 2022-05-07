@@ -18,7 +18,6 @@ import ImageWithText from '../../component/static/ImageWithText/ImageWithText'
 import Curve from '../../component/static/BackgroundCurve/BackgroundCurve'
 import NavBar from '../../component/peripheral/NavBar/NavBar'
 import Footer from '../../component/peripheral/Footer/Footer'
-import DirectedDialog from '../../component/static/DirectedDialog/DirectedDialog'
 
 export default function Landing() {
   return (
@@ -54,12 +53,7 @@ export default function Landing() {
           </Heading>
 
           <div className={styles.rowContainer}>
-            <DirectedDialog anchor={
-              // <Plot />
-              <img src={Timmy1} alt={'Timmy1'} height={'200'} width={'200'}/>
-            }>
-              Dialog that hovers!
-            </DirectedDialog>
+            <img src={Timmy1} alt={'Timmy1'} height={'200'} width={'200'}/>
             <img src={Timmy2} alt={'Timmy2'} height={'200'} width={'200'}/>
             <img src={Timmy3} alt={"Timmy3"} height={'200'} width={'200'}/>
             <img src={Timmy4} alt={"Timmy4"} height={'200'} width={'200'}/>

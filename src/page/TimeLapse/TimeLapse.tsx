@@ -42,7 +42,6 @@ export default function TimeLapse() {
       {(timeIndex === times.length - 1) &&
         <>
           <CheckList dug planted watered />
-          <Timmy>Look at your seed sprout!</Timmy>
           <NextArrow callbacks={[()=>{navigate('/' + GAME + NEW_SPROUT)}]} setCallbacks={()=>{}} />
         </>
       }

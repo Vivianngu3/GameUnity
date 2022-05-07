@@ -3,13 +3,6 @@ import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 
 export default class NurturingStateMediator extends GameStateMediator<NurturingState> implements ToolBehaviorHandler {
-  // We need to stop updates when Nurturing is unmounted to avoid updating the state of an unmounted component
-  stopUpdates() {
-    this.state = null;
-    console.log("Updates from NurturingStateMediator stopped")
-    console.log(this.state)
-  }
-
   cut() {
     this.notifyUserOnce("Not ready to use that yet")
   }
@@ -18,14 +11,16 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
     this.state?.timmyText.set('')
     // TODO: Shovel animation
     this.setPlotCompleted('dug')
+    this.state?.showChecklistExplanation.set(false)
     this.addCheckedItem('dug')
   }
 
   sowSeeds() {
     if (this.isCompleted('dug')) {
       this.setPlotCompleted('seeds-sown')
-      this.state?.timmyText.set('Click the hole to cover your seeds.')
+      this.state?.timmyText.set('')
       this.state?.setToolboxOpen(false)
+      this.state?.setToolboxDisabled(true)
     } else {
       this.notifyUserOnce("You need to dig a hole first!")
     }
@@ -35,6 +30,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
     if (this.isCompleted('seeds-sown')) {
       if (!this.isCompleted('planted')) {
         this.state?.timmyText.set('Good job! Now open your tool box and try to water your seed.')
+        this.state?.setToolboxDisabled(false)
       }
       this.setPlotCompleted('planted')
       this.addCheckedItem('planted')
@@ -49,6 +45,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
       this.addCheckedItem('watered')
 
       this.state?.timmyText.set('Great work!')
+      this.state?.setToolboxDisabled(true)
       setTimeout(() => {
         this.state?.setToolboxOpen(false)
         this.state?.setShowNextArrow(true)
