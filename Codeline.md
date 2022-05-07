@@ -26,7 +26,8 @@
         - `theme`: Constants that represent design decisions such as would be found in design guidelines
             - `colors.css`: Again, any file type is allowed, though design decisions are usually best kept in .css files
             - `fonts.css`
-            - `animation-durations.ts`: See the comment inside this file for an explanation the error suppression that is being used in animation styling
+            - `animation-durations.ts`: See the comment inside this file for an explanation of its utility
+            - `animation-durations.include.ts`: See the comment inside this file
             - ...
         - `utils`: Utility files that will potentially be used by several components
             - `GameStateMediator.ts`: Handles the changing of game page state based off of user actions

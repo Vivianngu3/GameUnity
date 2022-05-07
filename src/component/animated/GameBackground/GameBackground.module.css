@@ -64,13 +64,6 @@
   --grass-height: 245px;
   --sun-height: 125px;
   background: linear-gradient(180deg, #FFFFFF 0%, #DAEDF1 43.75%);
-  /*
-    The suppression of errors here is necessary because of how the variable time-lapse-duration is being set.
-    It is being set by setting the `style` attribute of the App, in order to make the duration of these animations
-    visible as a global variable in both css and ts files.
-    See animation-durations.ts to see the definitions and edit animation durations
-   */
-  /*noinspection CssUnresolvedCustomProperty*/
   animation: skyAnimation var(--time-lapse-duration) 1;
 }
 
@@ -104,7 +97,6 @@
   left: 10%;
   top: 10%;
   fill: #FFF84A;
-  /*noinspection CssUnresolvedCustomProperty*/
   animation: sunAnimation var(--time-lapse-duration) 1;
 }
 
@@ -135,7 +127,6 @@
   left: calc(62% - 2 * var(--sun-height));
   top: calc(22% - (5*var(--sun-height) / 2));
   background: radial-gradient(50% 50% at 50% 50%, #FCC21B 0%, rgba(255, 251, 145, 0.04) 72.92%);
-  /*noinspection CssUnresolvedCustomProperty*/
   animation: coronaAnimation var(--time-lapse-duration) 1;
 }
 
