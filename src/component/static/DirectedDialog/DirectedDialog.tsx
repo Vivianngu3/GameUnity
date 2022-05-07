@@ -14,6 +14,7 @@ interface Props {
 
 export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
   const [containerStyle, setContainerStyle] = React.useState({})
+  const [windowDimensions, setWindowDimensions] = React.useState({})
 
   let wrapperRef = React.useCallback(node => {
     if (node !== null) {
@@ -37,6 +38,15 @@ export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
       setContainerStyle(builtStyles)
     }
   }, [props.closeness, props.closenessCoordinates, props.side])
+
+  React.useEffect(() => {
+    console.log("Listener added")
+    let resizeHandler = () => {
+      console.log("Handler called")
+      setWindowDimensions({ x: window.innerWidth, y: window.innerHeight })
+    }
+    window.addEventListener("resize", resizeHandler)
+  }, [])
 
   let sideClass = (props.side === 'left') ? styles.left : styles.right
 
