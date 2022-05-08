@@ -2,6 +2,7 @@ import {CSSProperties} from 'react'
 
 export const TIME_LAPSE = 5
 export const SHOVEL = 2
+export const WATER = 2.5
 export const SCISSORS = 4
 
 /*
@@ -14,7 +15,8 @@ export const SCISSORS = 4
  */
 const STYLES = {
   '--time-lapse-duration': `${TIME_LAPSE}s`,
-  '--shovel-duration': `${SCISSORS}s`,
+  '--shovel-duration': `${SHOVEL}s`,
+  '--water-duration': `${WATER}s`,
   '--scissors-duration': `${SCISSORS}s`,
 }
 export default STYLES as CSSProperties

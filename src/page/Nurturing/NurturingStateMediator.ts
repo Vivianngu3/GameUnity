@@ -1,7 +1,7 @@
 import {NurturingState} from './Nurturing'
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
-import {SHOVEL} from '../../theme/animation-durations'
+import {SHOVEL as SHOVEL_SECONDS, WATER as WATER_SECONDS} from '../../theme/animation-durations'
 
 export default class NurturingStateMediator extends GameStateMediator<NurturingState> implements ToolBehaviorHandler {
   cut() {
@@ -10,14 +10,13 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
 
   dig() {
     this.state?.timmyText.set('')
-    // TODO: Shovel animation
     this.state?.showChecklistExplanation.set(false)
     this.state?.showShovelAnimation.set(true)
     setTimeout(() => {
       this.state?.showShovelAnimation.set(false)
       this.setPlotCompleted('dug')
       this.addCheckedItem('dug')
-    }, SHOVEL * 1000)
+    }, SHOVEL_SECONDS * 1000)
   }
 
   sowSeeds() {
@@ -46,15 +45,19 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
     if (this.isCompleted('planted')) {
       this.state?.timmyText.set('')
       // TODO: Watering animation
-      this.setPlotCompleted('watered')
-      this.addCheckedItem('watered')
-
-      this.state?.timmyText.set('Great work!')
+      this.state?.showWaterAnimation.set(true)
       this.state?.setToolboxDisabled(true)
       setTimeout(() => {
-        this.state?.setToolboxOpen(false)
-        this.state?.setShowNextArrow(true)
-      }, 1000)
+        this.state?.showWaterAnimation.set(false)
+        this.setPlotCompleted('watered')
+        this.addCheckedItem('watered')
+
+        this.state?.timmyText.set('Great work!')
+        setTimeout(() => {
+          this.state?.setToolboxOpen(false)
+          this.state?.setShowNextArrow(true)
+        }, 1000)
+      }, WATER_SECONDS * 1000)
     } else if (this.isCompleted('dug')) {
       this.notifyUserOnce("You need to finish planting your seed first!")
     } else {

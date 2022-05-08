@@ -11,6 +11,7 @@ import {GAME, TIME_LAPSE} from '../../res/constants/url-endpoints'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import DirectedDialog from '../../component/static/DirectedDialog/DirectedDialog'
 import ShovelAnimation from '../../component/animated/ShovelAnimation/ShovelAnimation'
+import WaterAnimation from '../../component/animated/WaterAnimation/WaterAnimation'
 
 export interface NurturingState extends GamePageState {
   setShowNextArrow: Dispatch<SetStateAction<boolean>>
@@ -27,6 +28,8 @@ export default function Nurturing() {
   const [toolboxDisabled, setToolboxDisabled] = React.useState(false)
   const [showShovelAnimation, setShowShovelAnimation] = React.useState(false)
   const [showWaterAnimation, setShowWaterAnimation] = React.useState(false)
+
+  const animations = [showShovelAnimation, showWaterAnimation]
 
   // See here for an explanation of why this needs a function that returns a function in order to have a simple function in state:
   // https://stackoverflow.com/questions/55621212/is-it-possible-to-react-usestate-in-react
@@ -71,10 +74,6 @@ export default function Nurturing() {
     <>
       <GameBackground />
 
-      {showShovelAnimation &&
-        <ShovelAnimation />
-      }
-
       <Plot
         progress={plotProgress}
         coverSeed={() => {stateMediator.coverSeeds()}}
@@ -104,13 +103,22 @@ export default function Nurturing() {
         />
       }
 
-      {!toolboxDisabled &&
+      {/* If any animation is playing, the toolbox is disabled */}
+      {!toolboxDisabled && !animations.some((elem) => elem) &&
         <ToolBox
           disabledTools={[]}
           behaviorHandler={stateMediator}
           openState={{value: toolboxOpen, set: setToolboxOpen}}
           toggleSideEffect={() => {toolboxToggleSideEffect()}}
         />
+      }
+
+      {showShovelAnimation &&
+        <ShovelAnimation />
+      }
+
+      {showWaterAnimation &&
+        <WaterAnimation />
       }
     </>
   )
