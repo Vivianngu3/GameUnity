@@ -99,7 +99,6 @@
   width: 120px;
   bottom: 30px;
   left: -45px;
-  /*noinspection CssUnresolvedCustomProperty*/
   animation: sprout var(--time-lapse-duration) 1;
 }
 
@@ -118,8 +117,16 @@
   bottom: 0;
   left: -110px;
   opacity: 1;
-  /*noinspection CssUnresolvedCustomProperty*/
   animation: starburst var(--time-lapse-duration) 1;
+}
+
+.sproutGrown {
+  position: absolute;
+  z-index: 1;
+  height: 120px;
+  width: 120px;
+  bottom: 30px;
+  left: -45px;
 }
 
 .fenceForeground{
