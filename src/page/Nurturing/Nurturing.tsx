@@ -21,7 +21,7 @@ export interface NurturingState extends GamePageState {
 }
 
 export default function Nurturing() {
-  const [timmyText, setTimmyText] = React.useState('')
+  const [timmyContents, setTimmyContents] = React.useState<JSX.Element | null>(null)
   const [showArrow, setShowArrow] = React.useState(false)
   const [showChecklistExplanation, setShowChecklistExplanation] = React.useState(true)
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
@@ -41,7 +41,7 @@ export default function Nurturing() {
   let initialNextArrowCallbacks = [
     () => {
       console.log('first callback')
-      setTimmyText("Let's take a break and watch your seed grow!")
+      setTimmyContents(<>Let's take a break and watch your seed grow!</>)
     },
     () => {
       console.log('navigation callback')
@@ -57,7 +57,7 @@ export default function Nurturing() {
   const stateMediator = new NurturingStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
-    timmyText: {'value': timmyText, 'set': setTimmyText},
+    timmyContents: {'value': timmyContents, 'set': setTimmyContents},
     showChecklistExplanation: {'value': showChecklistExplanation, 'set': setShowChecklistExplanation},
     showShovelAnimation: {'value': showShovelAnimation, 'set': setShowShovelAnimation},
     showWaterAnimation: {'value': showWaterAnimation, 'set': setShowWaterAnimation},
@@ -91,9 +91,8 @@ export default function Nurturing() {
         <CheckList {...checkedItems} />
       }
 
-      {/* When timmyText === '', it is falsey, and this <Timmy /> is not displayed */}
-      {!toolboxOpen && timmyText &&
-        <Timmy>{timmyText}</Timmy>
+      {!toolboxOpen && timmyContents &&
+        <Timmy>{timmyContents}</Timmy>
       }
 
       {showArrow &&
