@@ -29,12 +29,12 @@ Our user research fell short of recruiting enough elementary school students to 
 - Incorporating effective feedback when a user clicks or uses a function (ex: when the shovel is clicked on, animated a shovel digging)
 - Using color contrast checker for vision accessibility 
 - Using design platforms/free features for icons and vectors (Figma plug-ins and canva)
+- Created components that could be reused throughout the game for efficient development
 
 ### Message to Future Designers on Continuation (from Vivian Nguyen)
 - One of our stretch goals was to create different pathways on what plant will grow depending on the seeds the user chooses in the beginning. (ex: apples, carrots, cucumbers, etc). In the figma components (and in past iterations) I already designed multple packet choices. There just needs to be an ending for each path that is selected.The user can turn each plant they grow into different simple dishes (ex: Salad,carrot cake, apple pie).
 - There could also be a continuation on further designing a reward system. Such as adding experience points or a completion bar with the To-Do list. We would want more effective ways to keep engagement through out the game and revisitation.
-- 
--
+- Some other smaller Design consideration is adding a "Skip" button if they've already seen the explanation, adding more details within the tool information cards and vocabulary definition (Working with TTS, Visual teaching, sentence examples)
 
 ## Development
 ### Development Tactics
