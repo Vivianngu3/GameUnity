@@ -105,7 +105,7 @@ export default function NewSprout() {
         modalVariation={checkListVariation}
       />
 
-      {/* When timmyContents === '', it is falsey, and this <Timmy /> is not displayed */}
+      {/* When timmyContents === null, it is falsey, and this <Timmy /> is not displayed */}
       {!toolboxOpen && timmyContents &&
         <Timmy>{timmyContents}</Timmy>
       }
@@ -138,10 +138,7 @@ export default function NewSprout() {
 
       {showPesticideTool &&
         <Tool
-          hide={() => {
-            setShowPesticideTool(false)
-          }
-          }
+          hide={() => setShowPesticideTool(false)}
           definition={'Used to keep away organisms from harming your plant'}
           img={pesticide}
           pronunciation={'peh • stuh • side'}

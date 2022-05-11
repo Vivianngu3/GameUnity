@@ -91,6 +91,7 @@ export default function Nurturing() {
         <CheckList {...checkedItems} />
       }
 
+      {/* When timmyContents === null, it is falsey, and this <Timmy /> is not displayed */}
       {!toolboxOpen && timmyContents &&
         <Timmy>{timmyContents}</Timmy>
       }
