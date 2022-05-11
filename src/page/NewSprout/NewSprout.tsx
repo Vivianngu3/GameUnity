@@ -81,10 +81,10 @@ export default function NewSprout() {
   const stateMediator = new NewSproutStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
+    disabledTools: {'value': disabledTools, 'set': setDisabledTools},
     timmyContents: {'value': timmyContents, 'set': setTimmyContents},
     setToolboxOpen: setToolboxOpen,
     setToolboxDisabled: setToolboxDisabled,
-    setDisabledTools: setDisabledTools,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
     nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
     unorderedToolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},

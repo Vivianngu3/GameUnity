@@ -60,6 +60,7 @@ export default function Nurturing() {
   const stateMediator = new NurturingStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
+    disabledTools: {'value': disabledTools, 'set': setDisabledTools},
     timmyContents: {'value': timmyContents, 'set': setTimmyContents},
     showChecklistExplanation: {'value': showChecklistExplanation, 'set': setShowChecklistExplanation},
     showShovelAnimation: {'value': showShovelAnimation, 'set': setShowShovelAnimation},
@@ -67,7 +68,6 @@ export default function Nurturing() {
     setToolboxOpen: setToolboxOpen,
     setToolboxDisabled: setToolboxDisabled,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
-    setDisabledTools: setDisabledTools,
     setShowNextArrow: setShowArrow,
   })
 
@@ -78,10 +78,12 @@ export default function Nurturing() {
     <>
       <GameBackground />
 
-      <Plot
-        progress={plotProgress}
-        coverSeed={() => {stateMediator.coverSeeds()}}
+      <DirectedDialog anchor={
+        <Plot
+          progress={plotProgress}
+          coverSeed={() => {stateMediator.coverSeeds()}}
         />
+      }>Words</DirectedDialog>
 
       {showChecklistExplanation ?
         <DirectedDialog

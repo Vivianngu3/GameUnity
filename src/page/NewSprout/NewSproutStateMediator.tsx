@@ -18,6 +18,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       if (this.isCompleted('tomato')) {
         console.log('Tomato completed')
         this.state?.setToolboxOpen(false)
+        this.addDisabledTool('Scissors')
         this.state?.showScissorsAnimation.set(true)
         this.state?.timmyContents.set(null)
         setTimeout(() => {
@@ -60,6 +61,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     // TODO: Handle if not in tools learning phase
     if (this.isCompleted('protected')) {
       this.addLearnedTool(UnorderedProgress.FERTILIZER_LEARNED)
+      this.addDisabledTool('Fertilizer')
 
       this.state?.timmyContents.set(<>Fertilizer is used to make plants grow bigger...</>)
       this.state?.setToolboxOpen(false)
@@ -91,6 +93,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
           this.state?.showWormsAnimation.set(false)
           this.soilImproved = true
           this.addCheckedItem('improved')
+          this.addDisabledTool('Worms')
 
           this.state?.timmyContents.set(<>Woohoo!</>)
           this.state?.setToolboxOpen(false)
@@ -149,11 +152,16 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   postFence(): void {
     if (!this.isCompleted('protected')) {
       this.setPlotCompleted('protected')
+      this.addDisabledTool('Fence')
       this.addCheckedItem('protected')
 
+      console.log("before set timmy contents")
       this.state?.timmyContents.set(<>Awesome! Open up your tool box to improve the area your plant is growing in.</>)
+      console.log("after set timmy contents")
       setTimeout(() => {
+        console.log("before inside callback")
         this.state?.setToolboxOpen(false)
+        console.log("after inside callback")
       }, 1000)
     }
   }
@@ -214,6 +222,8 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       </>)
       this.state?.setToolboxOpen(false)
       this.setPlotCompleted('protected-tomato')
+      this.addDisabledTool('Fertilizer')
+      this.addDisabledTool('Pesticide')
     } else {
       this.state?.timmyContents.set(<>Keep learning tools by clicking on them!</>)
     }

@@ -9,6 +9,22 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
   }
 
   dig() {
+    if (this.state) {
+      console.log('state')
+      if (this.state.timmyContents) {
+        console.log('contents')
+        if (this.state.timmyContents.set !== null) {
+          console.log('set')
+        } else {
+          console.log('null set')
+        }
+      } else {
+        console.log('null contents')
+      }
+    } else {
+      console.log('null state')
+    }
+
     this.state?.timmyContents.set(null)
     this.state?.showChecklistExplanation.set(false)
     this.state?.showShovelAnimation.set(true)
