@@ -7,7 +7,7 @@ import {Props as ChecklistProps} from '../component/container/CheckList/CheckLis
 export interface GamePageState {
   plotProgress: State<PlotProgress>
   checkedItems: State<ChecklistProps>
-  timmyText: State<string>
+  timmyContents: State<JSX.Element | null>
   setToolboxOpen: Dispatch<SetStateAction<boolean>>
   setToolboxDisabled: Dispatch<SetStateAction<boolean>>
   setToolboxToggleSideEffect: Dispatch<SetStateAction<() => void>>
@@ -32,16 +32,16 @@ export default abstract class GameStateMediator<S extends GamePageState> {
   }
 
   protected disabledTool() {
-    this.notifyUserOnce("We're all done with that tool!")
+    this.notifyUserOnce(<>We're all done with that tool!</>)
   }
 
-  protected notifyUserOnce(str: string) {
+  protected notifyUserOnce(contents: JSX.Element) {
     if (this.state) {
-      let timmyTextBefore: string = this.state.timmyText.value
-      this.state.timmyText.set(str)
+      let timmyTextBefore: JSX.Element | null = this.state.timmyContents.value
+      this.state.timmyContents.set(contents)
       this.state.setToolboxOpen(false)
       this.state.setToolboxToggleSideEffect(() => () => {
-        this.state?.timmyText.set(timmyTextBefore)
+        this.state?.timmyContents.set(timmyTextBefore)
         this.state?.setToolboxToggleSideEffect(() => () => {})
       })
     }

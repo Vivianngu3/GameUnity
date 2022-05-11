@@ -13,22 +13,28 @@ import Tool from '../../component/modal/Tool/Tool'
 import Definition from '../../component/modal/Definition/Definition'
 import pesticide from '../../res/images/pesticide.svg'
 import fertilizer from '../../res/images/fertilizer.svg'
+import WormsAnimation from '../../component/animated/WormsAnimation/WormsAnimation'
+import ScissorsAnimation from '../../component/animated/ScissorsAnimation/ScissorsAnimation'
 
 
 export interface NewSproutState extends GamePageState {
   nextArrowCallbacks: State<(() => void)[]>
   unorderedToolsLearned: State<MyArray<UnorderedProgress>>
   navigate: NavigateFunction
+  showWormsAnimation: State<boolean>
+  showScissorsAnimation: State<boolean>
 }
 
 export default function NewSprout() {
-  const [timmyText, setTimmyText] = React.useState('Oh look! Some new friends have joined us.')
+  const [timmyContents, setTimmyContents] = React.useState<JSX.Element | null>(<>Oh look! Some new friends have joined us.</>)
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
   const [toolboxDisabled, setToolboxDisabled] = React.useState(true)
   const [nextArrowVariation, setNextArrowVariation] = React.useState(false)
   const [checkListVariation, setCheckListVariation] = React.useState(false)
   const [showWormsAnimation, setShowWormsAnimation] = React.useState(false)
   const [showScissorsAnimation, setShowScissorsAnimation] = React.useState(false)
+
+  const animations = [showWormsAnimation, showScissorsAnimation]
 
   const [showPesticideTool, setShowPesticideTool] = React.useState(false)
   const [showFertilizerTool, setShowFertilizerTool] = React.useState(false)
@@ -47,16 +53,16 @@ export default function NewSprout() {
 
   const initialNextArrowCallbacks = [
     () => {
-      setTimmyText('With this many new faces, it might be a good idea to protect your plant.')
+      setTimmyContents(<>With this many new faces, it might be a good idea to protect your plant.</>)
     },
     () => {
-      setTimmyText('It seems like the bunny looks hungry.')
+      setTimmyContents(<>It seems like the bunny looks hungry.</>)
     },
     () => {
-      setTimmyText('We need to protect your plant so the bunny can’t eat it!.')
+      setTimmyContents(<>We need to protect your plant so the bunny can’t eat it!.</>)
     },
     () => {
-      setTimmyText('Look in your tool box and pick the tool that would help protect your plant.')
+      setTimmyContents(<>Look in your tool box and pick the tool that would help protect your plant.</>)
       setToolboxDisabled(false)
       setNextArrowCallbacks([])
     }
@@ -74,92 +80,21 @@ export default function NewSprout() {
   const stateMediator = new NewSproutStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
-    timmyText: {'value': timmyText, 'set': setTimmyText},
+    timmyContents: {'value': timmyContents, 'set': setTimmyContents},
     setToolboxOpen: setToolboxOpen,
     setToolboxDisabled: setToolboxDisabled,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
     nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
     unorderedToolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
-    navigate: navigate
+    navigate: navigate,
+    showWormsAnimation: {'value': showWormsAnimation, 'set': setShowWormsAnimation},
+    showScissorsAnimation: {'value': showScissorsAnimation, 'set': setShowScissorsAnimation},
   })
 
   return (
     <>
-      {showPesticideTool &&
-        <Tool
-          hide={() => {
-            setShowPesticideTool(false)
-          }
-          }
-          definition={'Used to keep away organisms from harming your plant'}
-          img={pesticide}
-          pronunciation={'peh • stuh • side'}
-          partOfSpeech={'Noun'}
-          toolName={'Pesticide'}
-        />
-      }
-      {showFertilizerTool &&
-        <Tool
-          hide={() => {
-            setShowFertilizerTool(false)
-          }
-          }
-          definition={'Used to speed up the growth of your plant'}
-          img={fertilizer}
-          pronunciation={'fur • till • eye • zur'}
-          partOfSpeech={'Noun'}
-          toolName={'Fertilizer'}
-        />
-      }
-      {showOrganismDefinition &&
-        <Definition
-          hide={() => {
-            setShowOrganismDefinition(false)
-          }
-          }
-          pronunciation={'or • guh • niz •um'}
-          word={'Organism'}
-          partOfSpeech={'Noun'}
-          definition={'A single living thing'}
-        />
-      }
-      {showEnvironmentDefinition &&
-        <Definition
-          hide={() => {
-            setShowEnvironmentDefinition(false)
-          }
-          }
-          pronunciation={'en • vy • urn • ment'}
-          word={'Environment'}
-          partOfSpeech={'Noun'}
-          definition={'Everything that is around us'}
-        />
-      }
-      {showChemicalDefinition &&
-        <Definition
-          hide={() => {
-            setShowChemicalDefinition(false)
-          }
-          }
-          pronunciation={'kehm • ih • cull'}
-          word={'Chemical'}
-          partOfSpeech={'Noun'}
-          definition={'Something that is made up of two or more things'}
-        />
-      }
-      {showPollinateDefinition &&
-        <Definition
-          hide={() => {
-            setShowPollinateDefinition(false)
-          }
-          }
-          pronunciation={'paw • lihn • ate'}
-          word={'Pollinate'}
-          partOfSpeech={'Verb'}
-          definition={'Moving a plant\'s powder to another plant so that new seeds can be made'}
-        />
-      }
       <GameBackground rabbitPosition={1} beePosition={1} />
+
       <Plot
         progress={plotProgress}
         removeFence={() => { stateMediator.removeFence() }}
@@ -170,9 +105,9 @@ export default function NewSprout() {
         modalVariation={checkListVariation}
       />
 
-      {/* When timmyText === '', it is falsey, and this <Timmy /> is not displayed */}
-      {!toolboxOpen && timmyText &&
-        <Timmy>{timmyText}</Timmy>
+      {/* When timmyContents === null, it is falsey, and this <Timmy /> is not displayed */}
+      {!toolboxOpen && timmyContents &&
+        <Timmy>{timmyContents}</Timmy>
       }
 
       {nextArrowCallbacks.length > 0 &&
@@ -183,12 +118,83 @@ export default function NewSprout() {
         />
       }
 
-      {!toolboxDisabled &&
+      {/* If any animation is playing, the toolbox is disabled */}
+      {!toolboxDisabled && !animations.some((elem) => elem) &&
         <ToolBox
           disabledTools={['Water', 'Shovel', 'Seeds']}
           behaviorHandler={stateMediator}
           openState={{value: toolboxOpen, set: setToolboxOpen}}
           toggleSideEffect={() => {toolboxToggleSideEffect()}}
+        />
+      }
+
+      {showWormsAnimation &&
+        <WormsAnimation />
+      }
+
+      {showScissorsAnimation &&
+        <ScissorsAnimation />
+      }
+
+      {showPesticideTool &&
+        <Tool
+          hide={() => setShowPesticideTool(false)}
+          definition={'Used to keep away organisms from harming your plant'}
+          img={pesticide}
+          pronunciation={'peh • stuh • side'}
+          partOfSpeech={'Noun'}
+          toolName={'Pesticide'}
+        />
+      }
+
+      {showFertilizerTool &&
+        <Tool
+          hide={() => setShowFertilizerTool(false)}
+          definition={'Used to speed up the growth of your plant'}
+          img={fertilizer}
+          pronunciation={'fur • till • eye • zur'}
+          partOfSpeech={'Noun'}
+          toolName={'Fertilizer'}
+        />
+      }
+
+      {showOrganismDefinition &&
+        <Definition
+          hide={() => setShowOrganismDefinition(false)}
+          pronunciation={'or • guh • niz •um'}
+          word={'Organism'}
+          partOfSpeech={'Noun'}
+          definition={'A single living thing'}
+        />
+      }
+
+      {showEnvironmentDefinition &&
+        <Definition
+          hide={() => setShowEnvironmentDefinition(false)}
+          pronunciation={'en • vy • urn • ment'}
+          word={'Environment'}
+          partOfSpeech={'Noun'}
+          definition={'Everything that is around us'}
+        />
+      }
+
+      {showChemicalDefinition &&
+        <Definition
+          hide={() => setShowChemicalDefinition(false)}
+          pronunciation={'kehm • ih • cull'}
+          word={'Chemical'}
+          partOfSpeech={'Noun'}
+          definition={'Something that is made up of two or more things'}
+        />
+      }
+
+      {showPollinateDefinition &&
+        <Definition
+          hide={() => setShowPollinateDefinition(false)}
+          pronunciation={'paw • lihn • ate'}
+          word={'Pollinate'}
+          partOfSpeech={'Verb'}
+          definition={'Moving a plant\'s powder to another plant so that new seeds can be made'}
         />
       }
     </>

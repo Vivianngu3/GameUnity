@@ -6,5 +6,7 @@
 :root {
   --time-lapse-duration: 0s;
   --shovel-duration: 0s;
+  --water-duration: 0s;
   --scissors-duration: 0s;
+  --worms-duration: 0s,
 }

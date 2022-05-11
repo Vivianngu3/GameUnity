@@ -2,6 +2,7 @@ import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
 import {GAME, KITCHEN} from '../../res/constants/url-endpoints'
+import {SCISSORS, WORMS} from '../../theme/animation-durations'
 
 export enum UnorderedProgress {
   SCISSORS_LEARNED,
@@ -16,32 +17,36 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     if (!this.soilImproved) {
       if (this.isCompleted('tomato')) {
         console.log('Tomato completed')
-        // Show big tomatoes
-        this.state?.timmyText.set("Great job! You grew your own tomatoes.")
         this.state?.setToolboxOpen(false)
-        this.setNextArrowCallbacks([
-          () => {
-            this.state?.timmyText.set('With that, our journey comes to an end.')
-          },
-          () => {
-            this.state?.timmyText.set("I'll see you next time!")
-          },
-          () => {
-            this.state?.navigate('/' + GAME + KITCHEN)
-          },
-        ], true)
+        this.state?.showScissorsAnimation.set(true)
+        this.state?.timmyContents.set(null)
+        setTimeout(() => {
+          this.state?.showScissorsAnimation.set(false)
+          this.state?.timmyContents.set(<>Great job! You grew your own tomatoes.</>)
+          this.setNextArrowCallbacks([
+            () => {
+              this.state?.timmyContents.set(<>With that, our journey comes to an end.</>)
+            },
+            () => {
+              this.state?.timmyContents.set(<>I'll see you next time!</>)
+            },
+            () => {
+              this.state?.navigate('/' + GAME + KITCHEN)
+            },
+          ], true)
+        }, SCISSORS * 1000)
       } else {
         console.log('Tomato not completed')
         this.addLearnedTool(UnorderedProgress.SCISSORS_LEARNED)
 
-        this.state?.timmyText.set("Scissors can be used to keep plants healthy.")
+        this.state?.timmyContents.set(<>Scissors can be used to keep plants healthy.</>)
         this.state?.setToolboxOpen(false)
         this.setNextArrowCallbacks([
           () => {
-            this.state?.timmyText.set("Cutting off dead parts of a plant can help the rest of the plant grow.")
+            this.state?.timmyContents.set(<>Cutting off dead parts of a plant can help the rest of the plant grow.</>)
           },
           () => {
-            this.state?.timmyText.set("Scissors are also good for collecting fruits and veggies from a plant that has finished growing.")
+            this.state?.timmyContents.set(<>Scissors are also good for collecting fruits and veggies from a plant that has finished growing.</>)
           },
           () => {
             this.moveOnIfAllToolsLearned()
@@ -56,79 +61,82 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     if (this.isCompleted('protected')) {
       this.addLearnedTool(UnorderedProgress.FERTILIZER_LEARNED)
 
-      this.state?.timmyText.set("Fertilizer is used to make plants grow bigger...")
+      this.state?.timmyContents.set(<>Fertilizer is used to make plants grow bigger...</>)
       this.state?.setToolboxOpen(false)
       this.setNextArrowCallbacks([
         () => {
-          this.state?.timmyText.set("But fertilizers are not always a good way to help your plant grow.")
+          this.state?.timmyContents.set(<>But fertilizers are not always a good way to help your plant grow.</>)
         },
         () => {
-          this.state?.timmyText.set("Some of the bad chemicals in fertilizer can sink underground and get into the water you drink!")
+          this.state?.timmyContents.set(<>Some of the bad chemicals in fertilizer can sink underground and get into the water you drink!</>)
         },
         () => {
-          this.state?.timmyText.set("We don’t want to drink fertilizer!")
+          this.state?.timmyContents.set(<>We don’t want to drink fertilizer!</>)
         },
         () => {
           this.moveOnIfAllToolsLearned()
         },
       ], true)
     } else {
-      this.notifyUserOnce("We aren't ready for that yet!")
+      this.notifyUserOnce(<>We aren't ready for that yet!</>)
     }
   }
 
   improveSoil(): void {
     if (!this.soilImproved) {
       if (this.isCompleted('protected')) {
-        this.soilImproved = true
-        this.addCheckedItem('improved')
-
-        this.state?.timmyText.set('Woohoo!')
+        this.state?.setToolboxDisabled(true)
+        this.state?.showWormsAnimation.set(true)
         setTimeout(() => {
+          this.state?.showWormsAnimation.set(false)
+          this.soilImproved = true
+          this.addCheckedItem('improved')
+
+          this.state?.timmyContents.set(<>Woohoo!</>)
           this.state?.setToolboxOpen(false)
           this.setNextArrowCallbacks([
-              () => {
-                this.state?.timmyText.set('Now try learning about the other tools while your plant grows!')
-              },
-              () => {
-                this.state?.timmyText.set("Click on all the tools you haven't learned yet!")
-              },
+            () => {
+              this.state?.timmyContents.set(<>Now try learning about the other tools while your plant grows!</>)
+            },
+            () => {
+              this.state?.timmyContents.set(<>Click on all the tools you haven't learned yet!</>)
+            },
           ], true)
-        }, 1000)
+        }, WORMS * 1000)
       } else {
-        this.notifyUserOnce("We aren't ready for that yet!")
+        this.notifyUserOnce(<>We aren't ready for that yet!</>)
       }
     }
   }
 
   pesticide(): void {
     this.addLearnedTool(UnorderedProgress.PESTICIDE_LEARNED)
-    this.state?.timmyText.set("Pesticides are used to keep bugs from harming your plant")
+    this.state?.timmyContents.set(<>Pesticides are used to keep bugs from harming your plant</>)
     this.state?.setToolboxOpen(false)
     let callbacks = [
       () => {
-        this.state?.timmyText.set("Even if pesticides could help keep away bugs and insects...")
+        this.state?.timmyContents.set(<>Even if pesticides could help keep away bugs and insects...</>)
       },
       () => {
-        this.state?.timmyText.set("They can also harm people, plants, animals, and the environment.")
+        this.state?.timmyContents.set(<>They can also harm people, plants, animals, and the environment.</>)
       },
       () => {
-        this.state?.timmyText.set("That’s because pesticides are made up of chemicals that animals shouldn't eat.")
+        this.state?.timmyContents.set(<>That’s because pesticides are made up of chemicals that animals shouldn't eat.</>)
       },
       () => {
-        this.state?.timmyText.set("If these chemicals hurt the bees that pollinate the plants, then your seed won't grow!")
+        this.state?.timmyContents.set(<>If these chemicals hurt the bees that pollinate the plants, then your seed won't grow!</>)
       },
     ]
     if (!this.isCompleted('protected')) {
       callbacks.push(
         () => {
-          this.state?.timmyText.set("Open up your toolbox to find something else to protect your plant.")
+          this.state?.timmyContents.set(<>Open up your toolbox to find something else to protect your plant.</>)
         },
       )
     } else {
       callbacks.push(
         () => {
-          this.state?.timmyText.set("That's why it's better find a different way to protect your plant.")
+          this.state?.timmyContents.set(<>That's why it's better find a different way to protect your plant.</>)
         },
         () => {
           this.moveOnIfAllToolsLearned()
@@ -143,7 +151,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       this.setPlotCompleted('protected')
       this.addCheckedItem('protected')
 
-      this.state?.timmyText.set('Awesome! Open up your tool box to improve the area your plant is growing in.')
+      this.state?.timmyContents.set(<>Awesome! Open up your tool box to improve the area your plant is growing in.</>)
       setTimeout(() => {
         this.state?.setToolboxOpen(false)
       }, 1000)
@@ -153,7 +161,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   removeFence() {
     this.setPlotCompleted('tomato')
     this.state?.setToolboxDisabled(false)
-    this.state?.timmyText.set('Now use your scissors to collect it.')
+    this.state?.timmyContents.set(<>Now use your scissors to collect it.</>)
   }
 
   dig(): void {this.disabledTool()}
@@ -200,14 +208,14 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     if (this.state?.unorderedToolsLearned.value.hasAll(unorderedTools)) {
       this.state?.setToolboxDisabled(true)
       // TODO: Change to directed dialog
-      this.state?.timmyText.set(
-        'Your plant has finished growing!\n' +
-        'It’s time to take off the fence. Click it!'
-      )
+      this.state?.timmyContents.set(<>
+        Your plant has finished growing!<br/>
+        It's time to take off the fence. Click it!
+      </>)
       this.state?.setToolboxOpen(false)
       this.setPlotCompleted('protected-tomato')
     } else {
-      this.state?.timmyText.set("Keep learning tools by clicking on them!")
+      this.state?.timmyContents.set(<>Keep learning tools by clicking on them!</>)
     }
   }
 }
