@@ -2,7 +2,7 @@ import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
 import {GAME, KITCHEN} from '../../res/constants/url-endpoints'
-import {SCISSORS} from '../../theme/animation-durations'
+import {SCISSORS, WORMS} from '../../theme/animation-durations'
 
 export enum UnorderedProgress {
   SCISSORS_LEARNED,
@@ -85,21 +85,24 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   improveSoil(): void {
     if (!this.soilImproved) {
       if (this.isCompleted('protected')) {
-        this.soilImproved = true
-        this.addCheckedItem('improved')
-
-        this.state?.timmyContents.set(<>Woohoo!</>)
+        this.state?.setToolboxDisabled(true)
+        this.state?.showWormsAnimation.set(true)
         setTimeout(() => {
+          this.state?.showWormsAnimation.set(false)
+          this.soilImproved = true
+          this.addCheckedItem('improved')
+
+          this.state?.timmyContents.set(<>Woohoo!</>)
           this.state?.setToolboxOpen(false)
           this.setNextArrowCallbacks([
-              () => {
-                this.state?.timmyContents.set(<>Now try learning about the other tools while your plant grows!</>)
-              },
-              () => {
-                this.state?.timmyContents.set(<>Click on all the tools you haven't learned yet!</>)
-              },
+            () => {
+              this.state?.timmyContents.set(<>Now try learning about the other tools while your plant grows!</>)
+            },
+            () => {
+              this.state?.timmyContents.set(<>Click on all the tools you haven't learned yet!</>)
+            },
           ], true)
-        }, 1000)
+        }, WORMS * 1000)
       } else {
         this.notifyUserOnce(<>We aren't ready for that yet!</>)
       }
