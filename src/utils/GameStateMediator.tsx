@@ -1,6 +1,7 @@
 import {Dispatch, SetStateAction} from 'react'
 import {Progress as PlotProgress} from '../component/container/Plot/Plot'
 import {Props as ChecklistProps} from '../component/container/CheckList/CheckList'
+import {ToolName} from '../component/container/ToolBox/Tool/Tool'
 
 // export type GameProgress = PlotProgress | 'improved'// | UnorderedProgress
 
@@ -11,6 +12,7 @@ export interface GamePageState {
   setToolboxOpen: Dispatch<SetStateAction<boolean>>
   setToolboxDisabled: Dispatch<SetStateAction<boolean>>
   setToolboxToggleSideEffect: Dispatch<SetStateAction<() => void>>
+  setDisabledTools: Dispatch<SetStateAction<ToolName[]>>
 }
 
 export interface State<E> {

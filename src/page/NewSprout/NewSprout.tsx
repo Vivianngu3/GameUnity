@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Dispatch, SetStateAction} from 'react'
 import GameBackground from '../../component/animated/GameBackground/GameBackground'
 import {GamePageState, State} from '../../utils/GameStateMediator'
 import Plot, {Progress as PlotProgress} from '../../component/container/Plot/Plot'
@@ -15,7 +15,7 @@ import pesticide from '../../res/images/pesticide.svg'
 import fertilizer from '../../res/images/fertilizer.svg'
 import WormsAnimation from '../../component/animated/WormsAnimation/WormsAnimation'
 import ScissorsAnimation from '../../component/animated/ScissorsAnimation/ScissorsAnimation'
-
+import {ToolName} from '../../component/container/ToolBox/Tool/Tool'
 
 export interface NewSproutState extends GamePageState {
   nextArrowCallbacks: State<(() => void)[]>
@@ -76,6 +76,7 @@ export default function NewSprout() {
     watered: true,
   })
   const [unorderedToolsLearned, setUnorderedToolsLearned] = React.useState<MyArray<UnorderedProgress>>(new MyArray())
+  const [disabledTools, setDisabledTools] = React.useState<ToolName[]>(['Water', 'Shovel', 'Seeds'])
 
   const stateMediator = new NewSproutStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
@@ -83,6 +84,7 @@ export default function NewSprout() {
     timmyContents: {'value': timmyContents, 'set': setTimmyContents},
     setToolboxOpen: setToolboxOpen,
     setToolboxDisabled: setToolboxDisabled,
+    setDisabledTools: setDisabledTools,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
     nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
     unorderedToolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
@@ -121,7 +123,7 @@ export default function NewSprout() {
       {/* If any animation is playing, the toolbox is disabled */}
       {!toolboxDisabled && !animations.some((elem) => elem) &&
         <ToolBox
-          disabledTools={['Water', 'Shovel', 'Seeds']}
+          disabledTools={disabledTools}
           behaviorHandler={stateMediator}
           openState={{value: toolboxOpen, set: setToolboxOpen}}
           toggleSideEffect={() => {toolboxToggleSideEffect()}}

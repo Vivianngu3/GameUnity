@@ -12,6 +12,7 @@ import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import DirectedDialog from '../../component/static/DirectedDialog/DirectedDialog'
 import ShovelAnimation from '../../component/animated/ShovelAnimation/ShovelAnimation'
 import WaterAnimation from '../../component/animated/WaterAnimation/WaterAnimation'
+import { ToolName } from '../../component/container/ToolBox/Tool/Tool'
 
 export interface NurturingState extends GamePageState {
   setShowNextArrow: Dispatch<SetStateAction<boolean>>
@@ -54,6 +55,8 @@ export default function Nurturing() {
   const [plotProgress, setPlotProgress] = useState<PlotProgress>('start')
   const [checkedItems, setCheckedItems] = useState<ChecklistProps>({})
 
+  const [disabledTools, setDisabledTools] = useState<ToolName[]>([])
+
   const stateMediator = new NurturingStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
@@ -64,6 +67,7 @@ export default function Nurturing() {
     setToolboxOpen: setToolboxOpen,
     setToolboxDisabled: setToolboxDisabled,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
+    setDisabledTools: setDisabledTools,
     setShowNextArrow: setShowArrow,
   })
 
@@ -106,7 +110,7 @@ export default function Nurturing() {
       {/* If any animation is playing, the toolbox is disabled */}
       {!toolboxDisabled && !animations.some((elem) => elem) &&
         <ToolBox
-          disabledTools={[]}
+          disabledTools={disabledTools}
           behaviorHandler={stateMediator}
           openState={{value: toolboxOpen, set: setToolboxOpen}}
           toggleSideEffect={() => {toolboxToggleSideEffect()}}
