@@ -6,5 +6,5 @@
 }
 
 .priority {
-  z-index: var(--modal-z-index);
+  z-index: var(--priority-z-index);
 }

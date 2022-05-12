@@ -1,6 +1,7 @@
 :root {
   --timmy-z-index: 400;
   --checklist-z-index: 500;
+  --priority-z-index: 1000;
   --modal-z-index: 999;
   --toolbox-zindex: 200;
   --toolbox-icon-z-index: 300;
