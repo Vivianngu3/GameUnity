@@ -27,6 +27,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
 
     this.state?.timmyContents.set(null)
     this.state?.showChecklistExplanation.set(false)
+    this.addDisabledTool('Shovel')
     this.state?.showShovelAnimation.set(true)
     setTimeout(() => {
       this.state?.showShovelAnimation.set(false)
@@ -38,6 +39,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
   sowSeeds() {
     if (this.isCompleted('dug')) {
       this.setPlotCompleted('seeds-sown')
+      this.addDisabledTool('Seeds')
       this.state?.timmyContents.set(null)
       this.state?.setToolboxOpen(false)
       this.state?.setToolboxDisabled(true)
@@ -60,7 +62,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
   water() {
     if (this.isCompleted('planted')) {
       this.state?.timmyContents.set(null)
-      // TODO: Watering animation
+      this.addDisabledTool('Water')
       this.state?.showWaterAnimation.set(true)
       this.state?.setToolboxDisabled(true)
       setTimeout(() => {
@@ -69,10 +71,8 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
         this.addCheckedItem('watered')
 
         this.state?.timmyContents.set(<>Great work!</>)
-        setTimeout(() => {
-          this.state?.setToolboxOpen(false)
-          this.state?.setShowNextArrow(true)
-        }, 1000)
+        this.state?.setToolboxOpen(false)
+        this.state?.setShowNextArrow(true)
       }, WATER_SECONDS * 1000)
     } else if (this.isCompleted('dug')) {
       this.notifyUserOnce(<>You need to finish planting your seed first!</>)

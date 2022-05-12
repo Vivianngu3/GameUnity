@@ -116,6 +116,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     this.addLearnedTool(UnorderedProgress.PESTICIDE_LEARNED)
     this.state?.timmyContents.set(<>Pesticides are used to keep bugs from harming your plant</>)
     this.state?.setToolboxOpen(false)
+    this.addDisabledTool('Pesticide')
     let callbacks = [
       () => {
         this.state?.timmyContents.set(<>Even if pesticides could help keep away bugs and insects...</>)

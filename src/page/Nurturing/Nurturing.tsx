@@ -78,12 +78,10 @@ export default function Nurturing() {
     <>
       <GameBackground />
 
-      <DirectedDialog anchor={
-        <Plot
-          progress={plotProgress}
-          coverSeed={() => {stateMediator.coverSeeds()}}
-        />
-      }>Words</DirectedDialog>
+      <Plot
+        progress={plotProgress}
+        coverSeed={() => {stateMediator.coverSeeds()}}
+      />
 
       {showChecklistExplanation ?
         <DirectedDialog
