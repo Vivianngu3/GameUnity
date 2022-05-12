@@ -19,6 +19,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         console.log('Tomato completed')
         this.state?.setToolboxOpen(false)
         this.addDisabledTool('Scissors')
+        this.state?.setPlotDialog({text: ''})
         this.state?.showScissorsAnimation.set(true)
         this.state?.timmyContents.set(null)
         setTimeout(() => {
@@ -170,7 +171,12 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   removeFence() {
     this.setPlotCompleted('tomato')
     this.state?.setToolboxDisabled(false)
-    this.state?.timmyContents.set(<>Now use your scissors to collect it.</>)
+    this.state?.timmyContents.set(null)
+    this.state?.setPlotDialog({
+      side: 'left',
+      closenessCoordinates: {x: 50, y: -150},
+      text: "There is one more tool left to help you take off the tomatoes!"
+    })
   }
 
   dig(): void {this.disabledTool()}

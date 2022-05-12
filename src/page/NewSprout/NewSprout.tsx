@@ -16,8 +16,16 @@ import fertilizer from '../../res/images/fertilizer.svg'
 import WormsAnimation from '../../component/animated/WormsAnimation/WormsAnimation'
 import ScissorsAnimation from '../../component/animated/ScissorsAnimation/ScissorsAnimation'
 import {ToolName} from '../../component/container/ToolBox/Tool/Tool'
+import DirectedDialog, {Side} from '../../component/static/DirectedDialog/DirectedDialog'
+
+interface PlotDialog {
+  closenessCoordinates?: {x:number, y:number}
+  side?: Side
+  text: string
+}
 
 export interface NewSproutState extends GamePageState {
+  setPlotDialog: Dispatch<SetStateAction<any>>
   nextArrowCallbacks: State<(() => void)[]>
   unorderedToolsLearned: State<MyArray<UnorderedProgress>>
   navigate: NavigateFunction
@@ -27,6 +35,7 @@ export interface NewSproutState extends GamePageState {
 
 export default function NewSprout() {
   const [timmyContents, setTimmyContents] = React.useState<JSX.Element | null>(<>Oh look! Some new friends have joined us.</>)
+  const [plotDialog, setPlotDialog] = React.useState<PlotDialog>({text: ''})
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
   const [toolboxDisabled, setToolboxDisabled] = React.useState(true)
   const [nextArrowVariation, setNextArrowVariation] = React.useState(false)
@@ -86,6 +95,7 @@ export default function NewSprout() {
     setToolboxOpen: setToolboxOpen,
     setToolboxDisabled: setToolboxDisabled,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
+    setPlotDialog: setPlotDialog,
     nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
     unorderedToolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
     navigate: navigate,
@@ -97,10 +107,22 @@ export default function NewSprout() {
     <>
       <GameBackground rabbitPosition={1} beePosition={1} />
 
-      <Plot
-        progress={plotProgress}
-        removeFence={() => { stateMediator.removeFence() }}
-      />
+      {plotDialog.text ? (
+        <DirectedDialog
+          side={plotDialog.side}
+          closenessCoordinates={plotDialog.closenessCoordinates}
+          anchor={
+            <Plot
+              progress={plotProgress}
+              removeFence={() => { stateMediator.removeFence() }}
+            />
+          }>{ plotDialog.text }</DirectedDialog>
+      ) : (
+        <Plot
+          progress={plotProgress}
+          removeFence={() => { stateMediator.removeFence() }}
+        />
+      )}
 
       <CheckList
         {...checkedItems}
