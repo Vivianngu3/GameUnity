@@ -1,0 +1,31 @@
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+@keyframes greenArrow {
+  0%   {
+    opacity: 0;
+  }
+  20%  {
+    opacity: 0;
+  }
+  50%  {
+    opacity: 1;
+  }
+  80%  {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.greenArrow {
+  animation: greenArrow var(--definition-arrow-duration) infinite;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}

@@ -9,6 +9,7 @@ import styles from './Welcome.module.css'
 import utils from '../../utils/utils.module.css'
 import {GAME, PLOT_CHOICE} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
+import DefinableWord from '../../component/animated/GreenArrow/DefinableWord'
 
 export default function Welcome() {
 
@@ -36,12 +37,9 @@ export default function Welcome() {
         setDialog(
           <Dialog>
             On this journey you will learn about <></>
-            <span
-              onClick={() => {
-                console.log('clicked underlined word')
-                setShowDefinition(true)}}
-              className={utils.clickable + ' ' + utils.underline}
-            >agriculture</span>.
+            <DefinableWord
+              onClick={() => setShowDefinition(true)}
+            >agriculture</DefinableWord>.
           </Dialog>
         )
       },

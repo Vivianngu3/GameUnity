@@ -51,7 +51,7 @@ export default function Kitchen() {
       setView('pizza')
     },
     () => {
-      setTimmyText('With that, out journey comes to an end.')
+      setTimmyText('With that, our journey comes to an end.')
       setTime('1')
       setView('clear')
     },

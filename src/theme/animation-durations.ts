@@ -5,6 +5,7 @@ export const SHOVEL = 2
 export const WATER = 2.5
 export const SCISSORS = 4
 export const WORMS = 4
+export const DEFINITION_ARROW = 3
 
 /*
   The compiler does not see css variable declarations that are done via the style attribute (which is how this STYLES
@@ -20,5 +21,6 @@ const STYLES = {
   '--water-duration': `${WATER}s`,
   '--scissors-duration': `${SCISSORS}s`,
   '--worms-duration': `${WORMS}s`,
+  '--definition-arrow-duration': `${DEFINITION_ARROW}s`,
 }
 export default STYLES as CSSProperties
