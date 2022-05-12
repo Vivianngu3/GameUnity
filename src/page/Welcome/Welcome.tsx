@@ -9,7 +9,7 @@ import styles from './Welcome.module.css'
 import utils from '../../utils/utils.module.css'
 import {GAME, PLOT_CHOICE} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
-import DefinableWord from '../../component/animated/GreenArrow/DefinableWord'
+import DefinableWord from '../../component/animated/DefinableWord/DefinableWord'
 
 export default function Welcome() {
 

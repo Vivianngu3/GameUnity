@@ -17,7 +17,7 @@ import WormsAnimation from '../../component/animated/WormsAnimation/WormsAnimati
 import ScissorsAnimation from '../../component/animated/ScissorsAnimation/ScissorsAnimation'
 import {ToolName} from '../../component/container/ToolBox/Tool/Tool'
 import DirectedDialog, {Side} from '../../component/static/DirectedDialog/DirectedDialog'
-import DefinableWord from '../../component/animated/GreenArrow/DefinableWord'
+import DefinableWord from '../../component/animated/DefinableWord/DefinableWord'
 
 interface PlotDialog {
   closenessCoordinates?: {x:number, y:number}

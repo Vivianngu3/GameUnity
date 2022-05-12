@@ -2,9 +2,9 @@ import utils from '../../utils/utils.module.css'
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
-import {COLLECT_PLANT, GAME, KITCHEN} from '../../res/constants/url-endpoints'
+import {COLLECT_PLANT, GAME} from '../../res/constants/url-endpoints'
 import {SCISSORS, WORMS} from '../../theme/animation-durations'
-import DefinableWord from '../../component/animated/GreenArrow/DefinableWord'
+import DefinableWord from '../../component/animated/DefinableWord/DefinableWord'
 
 export enum UnorderedProgress {
   SCISSORS_LEARNED,
