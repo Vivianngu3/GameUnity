@@ -1,4 +1,4 @@
-import React, {CSSProperties, Dispatch, SetStateAction} from 'react'
+import React, {CSSProperties} from 'react'
 import './App.css'
 import * as urls from './res/constants/url-endpoints'
 import {BrowserRouter, Outlet, Route, Routes} from 'react-router-dom'
@@ -15,6 +15,7 @@ import TimmySelect from './page/TimmySelect/TimmySelect'
 import PlotChoice from './page/PlotChoice/PlotChoice'
 import Onboarding from './page/Onboarding/Onboarding'
 import {WhichTimmy} from './component/static/Timmy/Timmy'
+import CollectPlant from './page/CollectPlant/CollectPlant'
 
 export interface Timmy {
   whichTimmy: WhichTimmy
@@ -31,13 +32,14 @@ export default function App(props: {style: CSSProperties}) {
 
   return (
     <div style={props.style} className="App">
-      <TimmyContext.Provider value={timmyContext}>
         <BrowserRouter>
           <Routes>
             <Route path={urls.LANDING} element={<Landing/>} />
             <Route path={urls.ABOUT_US} element={<About/>} />
             <Route path={urls.RECAP} element={<Recap/>} />
-            <Route path={urls.GAME} element={<Outlet />} >
+            <Route path={urls.GAME} element={
+              <TimmyContext.Provider value={timmyContext}><Outlet/></TimmyContext.Provider>
+            }>
               <Route index element={<GameStart />} />
               <Route path={urls.TIMMY_SELECT} element={<TimmySelect />} />
               <Route path={urls.GAME_WELCOME} element={<Welcome />} />
@@ -46,11 +48,12 @@ export default function App(props: {style: CSSProperties}) {
               <Route path={urls.NURTURING} element={<Nurturing />} />
               <Route path={urls.TIME_LAPSE} element={<TimeLapse />} />
               <Route path={urls.NEW_SPROUT} element={<NewSprout />} />
+              <Route path={urls.COLLECT_PLANT} element={<CollectPlant />} />
               <Route path={urls.KITCHEN} element={<Kitchen />} />
             </Route>
           </Routes>
         </BrowserRouter>
-      </TimmyContext.Provider>
+
     </div>
   );
 }

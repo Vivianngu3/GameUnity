@@ -30,9 +30,7 @@
 }
 
 .tomatoStarburst{
-  position: absolute;
-  left: 0;
-  right: 0;
+  position: static;
   height: 800px;
   width: 800px;
   margin: auto;

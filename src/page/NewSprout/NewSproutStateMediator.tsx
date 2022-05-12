@@ -1,7 +1,7 @@
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
-import {GAME, KITCHEN} from '../../res/constants/url-endpoints'
+import {COLLECT_PLANT, GAME, KITCHEN} from '../../res/constants/url-endpoints'
 import {SCISSORS, WORMS} from '../../theme/animation-durations'
 
 export enum UnorderedProgress {
@@ -12,51 +12,6 @@ export enum UnorderedProgress {
 
 export default class NewSproutStateMediator extends GameStateMediator<NewSproutState> implements ToolBehaviorHandler {
   soilImproved = false
-
-  cut(): void {
-    if (!this.soilImproved) {
-      if (this.isCompleted('tomato')) {
-        console.log('Tomato completed')
-        this.state?.setToolboxOpen(false)
-        this.addDisabledTool('Scissors')
-        this.state?.setPlotDialog({text: ''})
-        this.state?.showScissorsAnimation.set(true)
-        this.state?.timmyContents.set(null)
-        setTimeout(() => {
-          this.state?.showScissorsAnimation.set(false)
-          this.state?.timmyContents.set(<>Great job! You grew your own tomatoes.</>)
-          this.setNextArrowCallbacks([
-            () => {
-              this.state?.timmyContents.set(<>With that, our journey comes to an end.</>)
-            },
-            () => {
-              this.state?.timmyContents.set(<>I'll see you next time!</>)
-            },
-            () => {
-              this.state?.navigate('/' + GAME + KITCHEN)
-            },
-          ], true)
-        }, SCISSORS * 1000)
-      } else {
-        console.log('Tomato not completed')
-        this.addLearnedTool(UnorderedProgress.SCISSORS_LEARNED)
-
-        this.state?.timmyContents.set(<>Scissors can be used to keep plants healthy.</>)
-        this.state?.setToolboxOpen(false)
-        this.setNextArrowCallbacks([
-          () => {
-            this.state?.timmyContents.set(<>Cutting off dead parts of a plant can help the rest of the plant grow.</>)
-          },
-          () => {
-            this.state?.timmyContents.set(<>Scissors are also good for collecting fruits and veggies from a plant that has finished growing.</>)
-          },
-          () => {
-            this.moveOnIfAllToolsLearned()
-          },
-        ], true)
-      }
-    }
-  }
 
   fertilizer(): void {
     // TODO: Handle if not in tools learning phase
@@ -177,6 +132,46 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       closenessCoordinates: {x: 50, y: -150},
       text: "There is one more tool left to help you take off the tomatoes!"
     })
+  }
+
+  cut(): void {
+    if (!this.soilImproved) {
+      if (this.isCompleted('tomato')) {
+        this.proceedWithCut()
+      } else {
+        this.learnScissors()
+      }
+    }
+  }
+
+  private proceedWithCut() {
+    this.state?.setToolboxOpen(false)
+    this.addDisabledTool('Scissors')
+    this.state?.setPlotDialog({text: ''})
+    this.state?.showScissorsAnimation.set(true)
+    this.state?.timmyContents.set(null)
+    setTimeout(() => {
+      this.state?.showScissorsAnimation.set(false)
+      this.state?.navigate('/' + GAME + COLLECT_PLANT)
+    }, SCISSORS * 1000)
+  }
+
+  private learnScissors() {
+    this.addLearnedTool(UnorderedProgress.SCISSORS_LEARNED)
+    this.state?.timmyContents.set(<>Scissors can be used to keep plants healthy.</>)
+    this.state?.setToolboxOpen(false)
+    this.setNextArrowCallbacks([
+      () => {
+        this.state?.timmyContents.set(<>Cutting off dead parts of a plant can help the rest of the plant grow.</>)
+      },
+      () => {
+        this.state?.timmyContents.set(<>Scissors are also good for collecting fruits and veggies from a plant that has
+          finished growing.</>)
+      },
+      () => {
+        this.moveOnIfAllToolsLearned()
+      },
+    ], true)
   }
 
   dig(): void {this.disabledTool()}
