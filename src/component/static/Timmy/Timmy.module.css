@@ -3,6 +3,11 @@
   z-index: var(--timmy-z-index);
 }
 
+.wrapperPriority {
+  position: relative;
+  z-index: var(--priority-z-index);
+}
+
 .timmy {
   margin: auto auto 0 0;
   position: fixed;
