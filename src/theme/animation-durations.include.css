@@ -1,0 +1,12 @@
+/*
+  This file's constants are not used; they are here to help common IDE features detect that variables with these names
+  have in fact been declared.
+  The real values of these constants are defined in animation-durations.ts
+ */
+:root {
+  --time-lapse-duration: 0s;
+  --shovel-duration: 0s;
+  --water-duration: 0s;
+  --scissors-duration: 0s;
+  --worms-duration: 0s,
+}

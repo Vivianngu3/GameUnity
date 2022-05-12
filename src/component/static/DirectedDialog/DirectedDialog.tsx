@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './DirectedDialog.module.css'
 import Block, {Size as TextSize} from '../../text/Block'
 
-type Side = 'left' | 'right'
+export type Side = 'left' | 'right'
 
 interface Props {
   anchor: JSX.Element

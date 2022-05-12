@@ -1,16 +1,18 @@
 import {Dispatch, SetStateAction} from 'react'
 import {Progress as PlotProgress} from '../component/container/Plot/Plot'
 import {Props as ChecklistProps} from '../component/container/CheckList/CheckList'
+import {ToolName} from '../component/container/ToolBox/Tool/Tool'
 
 // export type GameProgress = PlotProgress | 'improved'// | UnorderedProgress
 
 export interface GamePageState {
   plotProgress: State<PlotProgress>
   checkedItems: State<ChecklistProps>
-  timmyText: State<string>
+  timmyContents: State<JSX.Element | null>
   setToolboxOpen: Dispatch<SetStateAction<boolean>>
   setToolboxDisabled: Dispatch<SetStateAction<boolean>>
   setToolboxToggleSideEffect: Dispatch<SetStateAction<() => void>>
+  disabledTools: State<ToolName[]>
 }
 
 export interface State<E> {
@@ -28,20 +30,21 @@ export default abstract class GameStateMediator<S extends GamePageState> {
 
   // We need to stop updates when the game page is unmounted to avoid updating the state of an unmounted component
   stopUpdates() {
+    console.log("Updates stopped")
     this.state = null
   }
 
   protected disabledTool() {
-    this.notifyUserOnce("We're all done with that tool!")
+    this.notifyUserOnce(<>We're all done with that tool!</>)
   }
 
-  protected notifyUserOnce(str: string) {
+  protected notifyUserOnce(contents: JSX.Element) {
     if (this.state) {
-      let timmyTextBefore: string = this.state.timmyText.value
-      this.state.timmyText.set(str)
+      let timmyTextBefore: JSX.Element | null = this.state.timmyContents.value
+      this.state.timmyContents.set(contents)
       this.state.setToolboxOpen(false)
       this.state.setToolboxToggleSideEffect(() => () => {
-        this.state?.timmyText.set(timmyTextBefore)
+        this.state?.timmyContents.set(timmyTextBefore)
         this.state?.setToolboxToggleSideEffect(() => () => {})
       })
     }
@@ -59,6 +62,14 @@ export default abstract class GameStateMediator<S extends GamePageState> {
       let currStateIndex = this.progressOrder.indexOf(this.state.plotProgress.value)
       return currStateIndex >= passedStateIndex
     } else return false
+  }
+
+  protected addDisabledTool(tool: ToolName) {
+    if (this.state) {
+      let temp = (this.state.disabledTools.value).slice()
+      temp.push(tool)
+      this.state?.disabledTools.set(temp)
+    }
   }
 
   protected addCheckedItem(item: keyof ChecklistProps) {

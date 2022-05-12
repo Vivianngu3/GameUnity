@@ -54,7 +54,7 @@
 .animateWateringCan {
   width: 150px;
   height: 150px;
-  animation: wateringCan 2.5s 1;
+  animation: wateringCan var(--water-duration) 1;
 }
 
 @keyframes water {
@@ -86,5 +86,5 @@
   height: 65px;
   z-index: 399;
   opacity: 0;
-  animation: water 2.5s 1;
+  animation: water var(--water-duration) 1;
 }

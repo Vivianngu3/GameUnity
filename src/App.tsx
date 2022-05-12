@@ -14,33 +14,46 @@ import Kitchen from './page/Kitchen/Kitchen'
 import TimmySelect from './page/TimmySelect/TimmySelect'
 import PlotChoice from './page/PlotChoice/PlotChoice'
 import Onboarding from './page/Onboarding/Onboarding'
+import {WhichTimmy} from './component/static/Timmy/Timmy'
+import CollectPlant from './page/CollectPlant/CollectPlant'
 
+export interface Timmy {
+  whichTimmy: WhichTimmy
+  setContext: (timmy: Timmy) => void
+}
+const defaultTimmy: Timmy = {whichTimmy: 1, setContext: () => {}}
+export const TimmyContext = React.createContext<Timmy>(defaultTimmy)
 
 export default function App(props: {style: CSSProperties}) {
+  const [timmyContext, setTimmyContext] = React.useState({
+    whichTimmy: defaultTimmy.whichTimmy,
+    setContext: (timmy: Timmy) => {setTimmyContext(timmy)}
+  })
+
   return (
-  <div style={props.style} className="App">
-    <BrowserRouter>
-      <Routes>
-        <Route path={urls.LANDING} element={<Landing/>} />
-        <Route path={urls.ABOUT_US} element={<About/>} />
-        <Route path={urls.RECAP} element={<Recap/>} />
-        <Route path={urls.GAME} element={<Outlet />} >
-          <Route index element={<GameStart />} />
-          <Route path={urls.TIMMY_SELECT} element={<TimmySelect />} />
-          <Route path={urls.GAME_WELCOME} element={<Welcome />} />
-          <Route path={urls.PLOT_CHOICE} element={<PlotChoice />} />
-          {/*
-          The onboarding and nurturing pages will have many different states to accommodate the
-          steps that make up each of these user flows.
-          */}
-          <Route path={urls.ONBOARDING} element={<Onboarding />} />
-          <Route path={urls.NURTURING} element={<Nurturing />} />
-          <Route path={urls.TIME_LAPSE} element={<TimeLapse />} />
-          <Route path={urls.NEW_SPROUT} element={<NewSprout />} />
-          <Route path={urls.KITCHEN} element={<Kitchen />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div style={props.style} className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path={urls.LANDING} element={<Landing/>} />
+            <Route path={urls.ABOUT_US} element={<About/>} />
+            <Route path={urls.RECAP} element={<Recap/>} />
+            <Route path={urls.GAME} element={
+              <TimmyContext.Provider value={timmyContext}><Outlet/></TimmyContext.Provider>
+            }>
+              <Route index element={<GameStart />} />
+              <Route path={urls.TIMMY_SELECT} element={<TimmySelect />} />
+              <Route path={urls.GAME_WELCOME} element={<Welcome />} />
+              <Route path={urls.PLOT_CHOICE} element={<PlotChoice />} />
+              <Route path={urls.ONBOARDING} element={<Onboarding />} />
+              <Route path={urls.NURTURING} element={<Nurturing />} />
+              <Route path={urls.TIME_LAPSE} element={<TimeLapse />} />
+              <Route path={urls.NEW_SPROUT} element={<NewSprout />} />
+              <Route path={urls.COLLECT_PLANT} element={<CollectPlant />} />
+              <Route path={urls.KITCHEN} element={<Kitchen />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+
     </div>
   );
 }

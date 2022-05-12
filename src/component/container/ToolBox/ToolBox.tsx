@@ -43,14 +43,13 @@ export default function ToolBox(props: Props) {
     {name: 'Fertilizer', onClick: () => {callbacks.fertilizer()}, icon: fertilizer}
   ]
 
-  let toolsArray = tools.map(tool => {
-    return (
-      <Tool
-        disabled={props.disabledTools.includes(tool.name)}
-        name={tool.name} alt={tool.name} key={tool.name}
-        icon={tool.icon} onClick={tool.onClick}
-      />
-    )})
+  let toolsArray = tools.map(tool =>
+    <Tool
+      disabled={props.disabledTools.includes(tool.name)}
+      name={tool.name} alt={tool.name} key={tool.name}
+      icon={tool.icon} onClick={tool.onClick}
+    />
+  )
 
   const openButtonHandler = () => {
     props.openState.set(!props.openState.value)
