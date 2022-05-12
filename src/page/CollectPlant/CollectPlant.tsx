@@ -36,7 +36,7 @@ export default function CollectPlant() {
       <CheckList dug planted watered protected improved learned collected modalVariation />
 
       {showTimmy &&
-        <Timmy>"Great Job! Now, let’s take your tomatoes to the kitchen and make something yummy!"</Timmy>
+        <Timmy modalVariation={true}>"Great Job! Now, let’s take your tomatoes to the kitchen and make something yummy!"</Timmy>
       }
 
       {showDialog

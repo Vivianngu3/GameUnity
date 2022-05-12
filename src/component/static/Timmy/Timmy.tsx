@@ -9,11 +9,24 @@ import {TimmyContext} from '../../../App'
 
 export type WhichTimmy = 1 | 2 | 3 | 4
 
-export default function Timmy(props: React.PropsWithChildren<{}>) {
+interface Props {
+  modalVariation?: boolean
+}
+
+export default function Timmy(props: React.PropsWithChildren<Props>) {
+
+  const containerStyles = []
+
+  if (props.modalVariation) {
+    containerStyles.push(styles.wrapperPriority)
+  } else {
+    containerStyles.push(styles.wrapper)
+  }
+
   const timmyContext = React.useContext(TimmyContext)
   const timmys = [timmy1, timmy2, timmy3, timmy4]
   return(
-    <div className={styles.wrapper}>
+    <div className={containerStyles.join(' ')}>
       <DirectedDialog
         closenessCoordinates={{ x:30, y:225 }}
         textSize={'small'}
