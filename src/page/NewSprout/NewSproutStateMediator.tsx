@@ -1,8 +1,10 @@
+import utils from '../../utils/utils.module.css'
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
 import {COLLECT_PLANT, GAME, KITCHEN} from '../../res/constants/url-endpoints'
 import {SCISSORS, WORMS} from '../../theme/animation-durations'
+import DefinableWord from '../../component/animated/GreenArrow/DefinableWord'
 
 export enum UnorderedProgress {
   SCISSORS_LEARNED,
@@ -58,7 +60,9 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
               this.state?.timmyContents.set(<>Now try learning about the other tools while your plant grows!</>)
             },
             () => {
-              this.state?.timmyContents.set(<>Click on all the tools you haven't learned yet!</>)
+              this.state?.timmyContents.set(<>
+                Remember to click on the <span className={utils.underline}>underlined</span> words to learn the meaning!
+              </>)
             },
           ], true)
         }, WORMS * 1000)
@@ -78,13 +82,26 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         this.state?.timmyContents.set(<>Even if pesticides could help keep away bugs and insects...</>)
       },
       () => {
-        this.state?.timmyContents.set(<>They can also harm people, plants, animals, and the environment.</>)
+        this.state?.timmyContents.set(<>
+          They can also harm people, plants, animals, and the <DefinableWord
+            onClick={() => this.state?.setShowEnvironmentDefinition(true)}
+          >environment</DefinableWord>.
+        </>)
       },
       () => {
-        this.state?.timmyContents.set(<>That’s because pesticides are made up of chemicals that animals shouldn't eat.</>)
+        this.state?.timmyContents.set(<>
+          That’s because pesticides are made up of bad <DefinableWord
+            onClick={() => this.state?.setShowChemicalDefinition(true)}
+          >chemicals</DefinableWord>.
+        </>)
       },
       () => {
-        this.state?.timmyContents.set(<>If these chemicals hurt the bees that pollinate the plants, then your seed won't grow!</>)
+        this.state?.timmyContents.set(<>
+          If these chemicals hurt the bees that <DefinableWord
+            onClick={() => this.state?.setShowPollinateDefinition(true)}
+          >pollinate</DefinableWord>
+          the plants, then your seed won't grow!
+        </>)
       },
     ]
     if (!this.isCompleted('protected')) {

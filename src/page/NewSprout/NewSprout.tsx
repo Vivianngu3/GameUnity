@@ -17,6 +17,7 @@ import WormsAnimation from '../../component/animated/WormsAnimation/WormsAnimati
 import ScissorsAnimation from '../../component/animated/ScissorsAnimation/ScissorsAnimation'
 import {ToolName} from '../../component/container/ToolBox/Tool/Tool'
 import DirectedDialog, {Side} from '../../component/static/DirectedDialog/DirectedDialog'
+import DefinableWord from '../../component/animated/GreenArrow/DefinableWord'
 
 interface PlotDialog {
   closenessCoordinates?: {x:number, y:number}
@@ -29,8 +30,14 @@ export interface NewSproutState extends GamePageState {
   nextArrowCallbacks: State<(() => void)[]>
   unorderedToolsLearned: State<MyArray<UnorderedProgress>>
   navigate: NavigateFunction
+
   showWormsAnimation: State<boolean>
   showScissorsAnimation: State<boolean>
+
+  setShowOrganismDefinition: Dispatch<SetStateAction<boolean>>
+  setShowEnvironmentDefinition: Dispatch<SetStateAction<boolean>>
+  setShowChemicalDefinition: Dispatch<SetStateAction<boolean>>
+  setShowPollinateDefinition: Dispatch<SetStateAction<boolean>>
 }
 
 export default function NewSprout() {
@@ -38,8 +45,6 @@ export default function NewSprout() {
   const [plotDialog, setPlotDialog] = React.useState<PlotDialog>({text: ''})
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
   const [toolboxDisabled, setToolboxDisabled] = React.useState(true)
-  const [nextArrowVariation, setNextArrowVariation] = React.useState(false)
-  const [checkListVariation, setCheckListVariation] = React.useState(false)
   const [showWormsAnimation, setShowWormsAnimation] = React.useState(false)
   const [showScissorsAnimation, setShowScissorsAnimation] = React.useState(false)
 
@@ -99,8 +104,14 @@ export default function NewSprout() {
     nextArrowCallbacks: {'value': nextArrowCallbacks, 'set': setNextArrowCallbacks},
     unorderedToolsLearned: {'value': unorderedToolsLearned, 'set': setUnorderedToolsLearned},
     navigate: navigate,
+
     showWormsAnimation: {'value': showWormsAnimation, 'set': setShowWormsAnimation},
     showScissorsAnimation: {'value': showScissorsAnimation, 'set': setShowScissorsAnimation},
+
+    setShowOrganismDefinition: setShowOrganismDefinition,
+    setShowEnvironmentDefinition: setShowEnvironmentDefinition,
+    setShowChemicalDefinition: setShowChemicalDefinition,
+    setShowPollinateDefinition: setShowPollinateDefinition,
   })
 
   return (
@@ -126,7 +137,6 @@ export default function NewSprout() {
 
       <CheckList
         {...checkedItems}
-        modalVariation={checkListVariation}
       />
 
       {/* When timmyContents === null, it is falsey, and this <Timmy /> is not displayed */}
@@ -138,7 +148,6 @@ export default function NewSprout() {
         <NextArrow
           callbacks={nextArrowCallbacks}
           setCallbacks={setNextArrowCallbacks}
-          modalVariation={nextArrowVariation}
         />
       }
 
@@ -160,17 +169,6 @@ export default function NewSprout() {
         <ScissorsAnimation />
       }
 
-      {showPesticideTool &&
-        <Tool
-          hide={() => setShowPesticideTool(false)}
-          definition={'Used to keep away organisms from harming your plant'}
-          img={pesticide}
-          pronunciation={'peh • stuh • side'}
-          partOfSpeech={'Noun'}
-          toolName={'Pesticide'}
-        />
-      }
-
       {showFertilizerTool &&
         <Tool
           hide={() => setShowFertilizerTool(false)}
@@ -182,9 +180,30 @@ export default function NewSprout() {
         />
       }
 
+      {showPesticideTool &&
+        <Tool
+          hide={() => setShowPesticideTool(false)}
+          definition={<>
+            Used to keep <DefinableWord
+              onClick={() => {
+                setShowPesticideTool(false)
+                setShowOrganismDefinition(true)
+              }}
+            >organisms</DefinableWord> from harming your plant
+          </>}
+          img={pesticide}
+          pronunciation={'peh • stuh • side'}
+          partOfSpeech={'Noun'}
+          toolName={'Pesticide'}
+        />
+      }
+
       {showOrganismDefinition &&
         <Definition
-          hide={() => setShowOrganismDefinition(false)}
+          hide={() => {
+            setShowOrganismDefinition(false)
+            setShowPesticideTool(true)
+          }}
           pronunciation={'or • guh • niz •um'}
           word={'Organism'}
           partOfSpeech={'Noun'}
@@ -195,7 +214,7 @@ export default function NewSprout() {
       {showEnvironmentDefinition &&
         <Definition
           hide={() => setShowEnvironmentDefinition(false)}
-          pronunciation={'en • vy • urn • ment'}
+          pronunciation={'en • vy • run • ment'}
           word={'Environment'}
           partOfSpeech={'Noun'}
           definition={'Everything that is around us'}
@@ -218,7 +237,7 @@ export default function NewSprout() {
           pronunciation={'paw • lihn • ate'}
           word={'Pollinate'}
           partOfSpeech={'Verb'}
-          definition={'Moving a plant\'s powder to another plant so that new seeds can be made'}
+          definition={'Moving a plant\'s pollen to another plant so that new seeds can be made'}
         />
       }
     </>

@@ -9,7 +9,7 @@ interface Props {
   pronunciation?: string
   toolName: string
   partOfSpeech?: string
-  definition?: string
+  definition?: string | JSX.Element
 }
 
 export default function Tool(props: Props) {
