@@ -13,6 +13,7 @@ interface Props {
   progress?: Progress
   coverSeed?: () => void
   removeFence?: () => void
+  animation?: JSX.Element
 }
 
 export default function Plot(props: Props) {
@@ -120,6 +121,7 @@ export default function Plot(props: Props) {
   return (
     <div className={styles.soil} >
       {contained}
+      {props.animation}
     </div>
   )
 }

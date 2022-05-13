@@ -79,6 +79,15 @@ export default function Nurturing() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {return () => {stateMediator.stopUpdates()}}, [])
 
+  let currentAnimation: JSX.Element
+  if (showShovelAnimation) {
+    currentAnimation = <ShovelAnimation />
+  } else if (showWaterAnimation) {
+    currentAnimation = <WaterAnimation />
+  } else {
+    currentAnimation = <></>
+  }
+
   return (
     <>
       <GameBackground />
@@ -86,6 +95,7 @@ export default function Nurturing() {
       <Plot
         progress={plotProgress}
         coverSeed={() => {stateMediator.coverSeeds()}}
+        animation={currentAnimation}
       />
 
       {showChecklistExplanation ?
@@ -122,14 +132,6 @@ export default function Nurturing() {
           openState={{value: toolboxOpen, set: setToolboxOpen}}
           toggleSideEffect={() => {toolboxToggleSideEffect()}}
         />
-      }
-
-      {showShovelAnimation &&
-        <ShovelAnimation />
-      }
-
-      {showWaterAnimation &&
-        <WaterAnimation />
       }
     </>
   )
