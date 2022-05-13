@@ -32,7 +32,7 @@ export default function Timmy(props: React.PropsWithChildren<Props>) {
         textSize={'small'}
         anchor={
         <div className={styles.timmy}>
-          timmy = <img draggable={false} src={timmys[whichTimmy]} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
+          <img draggable={false} src={timmys[whichTimmy]} alt={'directions-giver timmy'} width={'360'} height={'400'}/>
         </div>
       }
       >{props.children}</DirectedDialog>
