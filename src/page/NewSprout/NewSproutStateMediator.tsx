@@ -1,4 +1,3 @@
-import utils from '../../utils/utils.module.css'
 import {ToolBehaviorHandler} from '../../component/container/ToolBox/ToolBox'
 import GameStateMediator from '../../utils/GameStateMediator'
 import {NewSproutState} from './NewSprout'
