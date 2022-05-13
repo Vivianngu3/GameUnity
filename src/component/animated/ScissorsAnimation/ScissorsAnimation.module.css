@@ -27,7 +27,7 @@
   opacity: 0;
   width: 90px;
   height: 90px;
-  animation: openScissors1 4s 1;
+  animation: openScissors1 var(--scissors-duration) 1;
 }
 
 @keyframes openScissors2 {
@@ -60,7 +60,7 @@
   width: 90px;
   height: 90px;
   transform: scaleX(-1);
-  animation: openScissors2 4s 1;
+  animation: openScissors2 var(--scissors-duration) 1;
 }
 
 @keyframes closedScissors1 {
@@ -93,7 +93,7 @@
   height: 125px;
   opacity: 0;
   transform: rotate(-5deg);
-  animation: closedScissors1 4s 1;
+  animation: closedScissors1 var(--scissors-duration) 1;
 }
 
 @keyframes closedScissors2 {
@@ -126,5 +126,5 @@
   width: 125px;
   height: 125px;
   transform: rotate(5deg) scaleX(-1);
-  animation: closedScissors2 4s 1;
+  animation: closedScissors2 var(--scissors-duration) 1;
 }

@@ -54,7 +54,7 @@
 .animateShovel {
   width: 120px;
   height: 120px;
-  animation: dig 2s linear 1;
+  animation: dig var(--shovel-duration) linear 1;
 }
 
 @keyframes hole {
@@ -86,7 +86,7 @@
   height: 48px;
   z-index: 399;
   opacity: 0;
-  animation: hole 2s 1;
+  animation: hole var(--shovel-duration) 1;
 }
 
 .hole {
