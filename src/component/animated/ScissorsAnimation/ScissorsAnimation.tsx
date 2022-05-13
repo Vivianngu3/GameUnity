@@ -3,17 +3,13 @@ import styles from "./ScissorsAnimation.module.css";
 import openScissors from "../../../res/images/open-scissors.svg";
 import closedScissors from "../../../res/images/closed-scissors.svg";
 
-interface Props {
-
-}
-
-export default function ScissorsAnimation(props: Props) {
+export default function ScissorsAnimation() {
   return (
     <>
-      <img className={styles.animateOpenScissors1} src={openScissors} />
-      <img className={styles.animateOpenScissors2} src={openScissors} />
-      <img className={styles.animateClosedScissors1} src={closedScissors} />
-      <img className={styles.animateClosedScissors2} src={closedScissors} />
+      <img className={styles.animateOpenScissors1} src={openScissors} alt={'Scissors'} />
+      <img className={styles.animateOpenScissors2} src={openScissors} alt={'Scissors'} />
+      <img className={styles.animateClosedScissors1} src={closedScissors} alt={'Scissors'} />
+      <img className={styles.animateClosedScissors2} src={closedScissors} alt={'Scissors'} />
     </>
   )
 }

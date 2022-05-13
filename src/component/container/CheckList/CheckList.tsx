@@ -14,12 +14,10 @@ export interface Props {
 }
 
 export default function CheckList(props: Props) {
-    const containerStyles = []
+    const containerStyles = [styles.checkListContainer]
 
     if (props.modalVariation) {
-        containerStyles.push(styles.checkListContainerPriority)
-    } else {
-        containerStyles.push(styles.checkListContainer)
+        containerStyles.push(styles.priority)
     }
     return (
       <div className={containerStyles.join(' ')}>

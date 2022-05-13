@@ -37,6 +37,7 @@ export default function DirectedDialog(props: React.PropsWithChildren<Props>) {
       })
       setContainerStyle(builtStyles)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.closeness, props.closenessCoordinates, props.side, windowDimensions])
 
   React.useEffect(() => {

@@ -3,15 +3,11 @@ import styles from "./WaterAnimation.module.css";
 import wateringCan from "../../../res/images/watering-can.svg";
 import water from  "../../../res/images/water-drops.svg"
 
-interface Props {
-
-}
-
-export default function WaterAnimation(props: Props) {
+export default function WaterAnimation() {
   return (
     <>
-      <img className={styles.animateWateringCan} src={wateringCan} />
-      <img className={styles.waterDrops} src={water} />
+      <img className={styles.animateWateringCan} src={wateringCan} alt={'Watering can'} />
+      <img className={styles.waterDrops} src={water} alt={'Water drops'} />
     </>
   )
 }

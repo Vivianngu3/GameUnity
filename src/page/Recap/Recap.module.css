@@ -19,13 +19,13 @@
   justify-content: center;
 }
 
-.bee1{
+.bee1 {
   height: 100px;
   transform: scaleX(-1) rotate(25deg);
   margin-right: 30px;
 }
 
-.bee2{
+.bee2 {
   height: 100px;
   transform: rotate(25deg);
   margin-left: 30px;

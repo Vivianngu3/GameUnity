@@ -68,9 +68,8 @@ export default function Onboarding() {
     setTimmyText: setTimmyText,
   })
 
-  React.useEffect(() => {
-    return () => stateMediator.stopUpdates()
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  React.useEffect(() => {return () => {stateMediator.stopUpdates()}}, [])
 
   const disabledToolboxOpener = (newState: boolean) => {}
 

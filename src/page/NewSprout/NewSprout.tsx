@@ -94,6 +94,9 @@ export default function NewSprout() {
   const [unorderedToolsLearned, setUnorderedToolsLearned] = React.useState<MyArray<UnorderedProgress>>(new MyArray())
   const [disabledTools, setDisabledTools] = React.useState<ToolName[]>(['Water', 'Shovel', 'Seeds'])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  React.useEffect(() => {return () => {stateMediator.stopUpdates()}}, [])
+
   const stateMediator = new NewSproutStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     soilImproved: {'value': soilImproved, 'set': setSoilImproved},

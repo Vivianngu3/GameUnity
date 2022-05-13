@@ -30,19 +30,12 @@ export default function TimmySelect() {
       <Dialog>
         To begin, please select a character you would like to have help you on your journey.
       </Dialog>
-
-      <TimmyContext.Consumer>
-        { value => (
-          <div className={styles.timmysRowContainer}>
-
-            <TimmyChoice src={timmy1} onClick={() => timmyOnClick(1)}/>
-            <TimmyChoice src={timmy2} onClick={() => timmyOnClick(2)}/>
-            <TimmyChoice src={timmy3} onClick={() => timmyOnClick(3)}/>
-            <TimmyChoice src={timmy4} onClick={() => timmyOnClick(4)}/>
-
-          </div>
-        )}
-      </TimmyContext.Consumer>
+      <div className={styles.timmysRowContainer}>
+        <TimmyChoice src={timmy1} onClick={() => timmyOnClick(1)}/>
+        <TimmyChoice src={timmy2} onClick={() => timmyOnClick(2)}/>
+        <TimmyChoice src={timmy3} onClick={() => timmyOnClick(3)}/>
+        <TimmyChoice src={timmy4} onClick={() => timmyOnClick(4)}/>
+      </div>
     </div>
   )
 }
