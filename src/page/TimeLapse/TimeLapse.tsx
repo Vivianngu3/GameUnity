@@ -6,15 +6,16 @@ import NextArrow from '../../component/clickable/NextArrow/NextArrow'
 import {useNavigate} from 'react-router-dom'
 import {GAME, NEW_SPROUT} from '../../res/constants/url-endpoints'
 import PlotAnimation from '../../component/animated/PlotAnimation/PlotAnimation'
+import DirectedDialog from '../../component/static/DirectedDialog/DirectedDialog'
 
 export default function TimeLapse() {
-  const [showNextArrow, setShowNextArrow] = React.useState(false)
+  const [timeLapseComplete, setTimeLapseComplete] = React.useState(false)
 
   const navigate = useNavigate()
 
   React.useEffect(() => {
     let timerID = setTimeout(() => {
-      setShowNextArrow(true)
+      setTimeLapseComplete(true)
     }, timeLapseSeconds * 1000)
     return () => {clearTimeout(timerID)}
   })
@@ -22,12 +23,17 @@ export default function TimeLapse() {
   return (
     <>
       <GameBackground time={'time-lapse'}/>
-      <PlotAnimation />
-      {showNextArrow &&
+      {timeLapseComplete ? (
         <>
+          <DirectedDialog
+            anchor={ <PlotAnimation complete /> }
+            side={'left'}
+            closenessCoordinates={{x: 35, y: -75}}
+            >Look at your seed sprout!</DirectedDialog>
           <CheckList dug planted watered />
           <NextArrow callbacks={[()=>{navigate('/' + GAME + NEW_SPROUT)}]} setCallbacks={()=>{}} />
         </>
+        ) : <PlotAnimation />
       }
     </>
   )
