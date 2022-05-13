@@ -23,15 +23,13 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   }
 
   private learnFertilizer() {
+    this.state?.setShowFertilizerTool(true)
     this.addLearnedTool(UnorderedProgress.FERTILIZER_LEARNED)
     this.addDisabledTool('Fertilizer')
 
-    this.state?.timmyContents.set(<>Fertilizer is used to make plants grow bigger...</>)
+    this.state?.timmyContents.set(<>Fertilizers are not always a good way to help your plant grow.</>)
     this.state?.setToolboxOpen(false)
     let callbacks = [
-      () => {
-        this.state?.timmyContents.set(<>But fertilizers are not always a good way to help your plant grow.</>)
-      },
       () => {
         this.state?.timmyContents.set(<>Some of the bad chemicals in fertilizer can sink underground and get into the
           water you drink!</>)
@@ -244,8 +242,6 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       </>)
       this.state?.setToolboxOpen(false)
       this.setPlotCompleted('protected-tomato')
-      this.addDisabledTool('Fertilizer')
-      this.addDisabledTool('Pesticide')
     } else {
       this.state?.timmyContents.set(<>Keep learning tools by clicking on them!</>)
     }

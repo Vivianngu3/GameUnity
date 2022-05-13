@@ -54,16 +54,18 @@ export default function NewSprout() {
   const [showScissorsAnimation, setShowScissorsAnimation] = React.useState(false)
 
   const animations = [showWormsAnimation, showScissorsAnimation]
+  const animationInProgress = animations.some((elem) => elem)
 
   const [showPesticideTool, setShowPesticideTool] = React.useState(false)
   const [showFertilizerTool, setShowFertilizerTool] = React.useState(false)
-
-  const toolModals = [showPesticideTool, showFertilizerTool]
 
   const [showOrganismDefinition, setShowOrganismDefinition] = React.useState(false)
   const [showEnvironmentDefinition, setShowEnvironmentDefinition] = React.useState(false)
   const [showChemicalDefinition, setShowChemicalDefinition] = React.useState(false)
   const [showPollinateDefinition, setShowPollinateDefinition] = React.useState(false)
+
+  const modals = [showPesticideTool, showFertilizerTool, showOrganismDefinition, showEnvironmentDefinition, showChemicalDefinition, showPollinateDefinition]
+  const modalOpen = modals.some((elem) => elem)
 
   const [soilImproved, setSoilImproved] = React.useState(false)
 
@@ -154,7 +156,7 @@ export default function NewSprout() {
       />
 
       {/* When timmyContents === null, it is falsey, and this <Timmy /> is not displayed */}
-      {!toolboxOpen && !animations.some((elem) => elem) && !toolModals.some((elem) => elem) && timmyContents &&
+      {!toolboxOpen && !animationInProgress && !modalOpen && timmyContents &&
         <Timmy>{timmyContents}</Timmy>
       }
 
