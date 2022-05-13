@@ -76,14 +76,11 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   }
 
   pesticide(): void {
-    this.addLearnedTool(UnorderedProgress.PESTICIDE_LEARNED)
-    this.state?.timmyContents.set(<>Pesticides are used to keep bugs from harming your plant</>)
+    this.state?.setShowPesticideTool(true)
+    this.state?.timmyContents.set(<>Even if pesticides could help keep away bugs and insects...</>)
     this.state?.setToolboxOpen(false)
     this.addDisabledTool('Pesticide')
     let callbacks = [
-      () => {
-        this.state?.timmyContents.set(<>Even if pesticides could help keep away bugs and insects...</>)
-      },
       () => {
         this.state?.timmyContents.set(<>
           They can also harm people, plants, animals, and the <DefinableWord
@@ -105,6 +102,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         >pollinate</DefinableWord>
           the plants, then your seed won't grow!
         </>)
+        this.addLearnedTool(UnorderedProgress.PESTICIDE_LEARNED)
       },
     ]
     if (!this.isCompleted('protected')) {

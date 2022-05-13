@@ -36,6 +36,9 @@ export interface NewSproutState extends GamePageState {
   showWormsAnimation: State<boolean>
   showScissorsAnimation: State<boolean>
 
+  setShowPesticideTool: Dispatch<SetStateAction<boolean>>
+  setShowFertilizerTool: Dispatch<SetStateAction<boolean>>
+
   setShowOrganismDefinition: Dispatch<SetStateAction<boolean>>
   setShowEnvironmentDefinition: Dispatch<SetStateAction<boolean>>
   setShowChemicalDefinition: Dispatch<SetStateAction<boolean>>
@@ -54,6 +57,8 @@ export default function NewSprout() {
 
   const [showPesticideTool, setShowPesticideTool] = React.useState(false)
   const [showFertilizerTool, setShowFertilizerTool] = React.useState(false)
+
+  const toolModals = [showPesticideTool, showFertilizerTool]
 
   const [showOrganismDefinition, setShowOrganismDefinition] = React.useState(false)
   const [showEnvironmentDefinition, setShowEnvironmentDefinition] = React.useState(false)
@@ -114,6 +119,9 @@ export default function NewSprout() {
     showWormsAnimation: {'value': showWormsAnimation, 'set': setShowWormsAnimation},
     showScissorsAnimation: {'value': showScissorsAnimation, 'set': setShowScissorsAnimation},
 
+    setShowPesticideTool: setShowPesticideTool,
+    setShowFertilizerTool: setShowFertilizerTool,
+
     setShowOrganismDefinition: setShowOrganismDefinition,
     setShowEnvironmentDefinition: setShowEnvironmentDefinition,
     setShowChemicalDefinition: setShowChemicalDefinition,
@@ -146,7 +154,7 @@ export default function NewSprout() {
       />
 
       {/* When timmyContents === null, it is falsey, and this <Timmy /> is not displayed */}
-      {!toolboxOpen && timmyContents &&
+      {!toolboxOpen && !animations.some((elem) => elem) && !toolModals.some((elem) => elem) && timmyContents &&
         <Timmy>{timmyContents}</Timmy>
       }
 
