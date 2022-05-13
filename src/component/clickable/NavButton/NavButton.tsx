@@ -18,10 +18,14 @@ export default function NavButton(props: React.PropsWithChildren<Props>) {
   classes.push(styles.container)
 
   return (
-    <div className={classes.join(' ')}>
-      <NavLink className={styles.link} to={props.destination}>
+    <NavLink
+      className={styles.link}
+      to={props.destination}
+      onClick={() => window.scrollTo(0,0)}
+    >
+      <div className={classes.join(' ')}>
         {props.children}
-      </NavLink>
-    </div>
+      </div>
+    </NavLink>
   )
 }
