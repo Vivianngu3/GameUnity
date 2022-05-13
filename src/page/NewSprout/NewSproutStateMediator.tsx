@@ -76,14 +76,6 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   }
 
   pesticide(): void {
-    if (this.state?.soilImproved.value) {
-      this.learnPesticide()
-    } else {
-      this.toolTooEarly()
-    }
-  }
-
-  private learnPesticide() {
     this.addLearnedTool(UnorderedProgress.PESTICIDE_LEARNED)
     this.state?.timmyContents.set(<>Pesticides are used to keep bugs from harming your plant</>)
     this.state?.setToolboxOpen(false)
@@ -126,10 +118,10 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
         () => {
           this.state?.timmyContents.set(<>That's why it's better find a different way to protect your plant.</>)
         },
-        () => {
-          this.moveOnIfAllToolsLearned()
-        },
       )
+      if (!this.state?.soilImproved.value) {
+        callbacks.push(() => this.moveOnIfAllToolsLearned())
+      }
     }
     this.setNextArrowCallbacks(callbacks, true)
   }
