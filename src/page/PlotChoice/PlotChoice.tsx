@@ -72,6 +72,21 @@ export default function PlotChoice() {
     setNextArrowCallbacks(incorrectNextArrowCallbacks)
   }
 
+  let plotProps: {wetness: PlotWetness, callback: () => void}[] = [
+    {wetness: 'dry', callback: dryCallback},
+    {wetness: 'medium', callback: mediumCallback},
+    {wetness: 'wet', callback: wetCallback},
+  ]
+
+  let plotElements = plotProps
+    .filter(props =>  plotsShown.includes(props.wetness) )
+    .map(props =>
+      <ChoicePlot
+        onClick={ enableCallbacks ? props.callback : undefined }
+        wetness={props.wetness}
+        key={props.wetness}
+      />
+    )
 
   return (
     <>
@@ -79,21 +94,7 @@ export default function PlotChoice() {
       {dialog
       }
       <div className={styles.plotsContainer}>
-        {plotsShown.includes('dry') &&
-          <ChoicePlot onClick={() => {
-            enableCallbacks && dryCallback()
-          }} wetness={'dry'}/>
-        }
-        {plotsShown.includes('medium') &&
-          <ChoicePlot onClick={() => {
-            enableCallbacks && mediumCallback()
-          }} wetness={'medium'}/>
-        }
-        {plotsShown.includes('wet') &&
-          <ChoicePlot onClick={() => {
-            enableCallbacks && wetCallback()
-          }} wetness={'wet'}/>
-        }
+        {plotElements}
       </div>
       {nextArrowCallbacks.length &&
         <NextArrow callbacks={nextArrowCallbacks} setCallbacks={setNextArrowCallbacks} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '../Modal'
 import styles from './Tool.module.css'
+import utils from '../../../utils/utils.module.css'
 import speaker from "../../../res/images/speaker-icon.svg";
 
 interface Props {
@@ -31,7 +32,7 @@ export default function Tool(props: Props) {
         </div>
 
         <div className={styles.pronunciation}>
-          <img className={styles.speaker} src={speaker} alt={'speaker icon'} onClick={() => window.speechSynthesis.speak(textToSpeech)} />
+          <img className={styles.speaker + ' ' + utils.clickable} src={speaker} alt={'speaker icon'} onClick={() => window.speechSynthesis.speak(textToSpeech)} />
           {props.pronunciation}
         </div>
 

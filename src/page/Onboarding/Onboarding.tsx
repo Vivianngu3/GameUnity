@@ -1,4 +1,6 @@
 import React, {Dispatch, SetStateAction} from 'react'
+import styles from './Onboarding.module.css'
+import plotStyles from '../../component/container/Plot/Plot.module.css'
 import Dialog from '../../component/static/Dialog/Dialog'
 import Timmy from '../../component/static/Timmy/Timmy'
 import NextArrow from '../../component/clickable/NextArrow/NextArrow'
@@ -93,7 +95,9 @@ export default function Onboarding() {
       }
 
       {showWaterAnimation &&
-        <WaterAnimation />
+        <div className={plotStyles.soil + ' ' + styles.animationWrapper}>
+          <WaterAnimation />
+        </div>
       }
 
       {showToolbox &&

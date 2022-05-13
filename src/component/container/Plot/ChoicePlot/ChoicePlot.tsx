@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './ChoicePlot.module.css'
+import utils from '../../../../utils/utils.module.css'
 
 export type Wetness = "dry" | "medium" | "wet"
 
@@ -25,6 +26,10 @@ export default function ChoicePlot(props: Props) {
       break
     default:
       innerClasses.push(styles.medium)
+  }
+
+  if (props.onClick) {
+    innerClasses.push(utils.clickable)
   }
 
   return (
