@@ -15,7 +15,7 @@ export default function DefinableWord(props: React.PropsWithChildren<Props>) {
   React.useEffect(() => {
     let timeoutID = setTimeout(() => {
      setShowGreenArrow(true)
-    }, ( props.secondsDelay || 5 ) * 1000)
+    }, ( props.secondsDelay || 1 ) * 1000)
     return () => {clearTimeout(timeoutID)}
   }, [props.secondsDelay])
 

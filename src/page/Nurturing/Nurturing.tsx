@@ -19,6 +19,7 @@ export interface NurturingState extends GamePageState {
   showChecklistExplanation: State<boolean>
   showShovelAnimation: State<boolean>
   showWaterAnimation: State<boolean>
+  setHighlightedTool: Dispatch<SetStateAction<ToolName | undefined>>
 }
 
 export default function Nurturing() {
@@ -35,7 +36,7 @@ export default function Nurturing() {
   // See here for an explanation of why this needs a function that returns a function in order to have a simple function in state:
   // https://stackoverflow.com/questions/55621212/is-it-possible-to-react-usestate-in-react
   const [toolboxToggleSideEffect, setToolboxToggleSideEffect] =
-    React.useState<() => void>(() => () => {})
+    React.useState<() => void>(() => () => {setHighlightToolboxButton(false)})
 
   const navigate = useNavigate()
 
@@ -57,6 +58,9 @@ export default function Nurturing() {
 
   const [disabledTools, setDisabledTools] = useState<ToolName[]>([])
 
+  const [highlightedTool, setHighlightedTool] = useState<ToolName | undefined>('Shovel')
+  const [highlightToolboxButton, setHighlightToolboxButton] = useState(true)
+
   const stateMediator = new NurturingStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
@@ -68,6 +72,7 @@ export default function Nurturing() {
     setToolboxOpen: setToolboxOpen,
     setToolboxDisabled: setToolboxDisabled,
     setToolboxToggleSideEffect: setToolboxToggleSideEffect,
+    setHighlightedTool: setHighlightedTool,
     setShowNextArrow: setShowArrow,
   })
 
@@ -111,6 +116,8 @@ export default function Nurturing() {
       {!toolboxDisabled && !animations.some((elem) => elem) &&
         <ToolBox
           disabledTools={disabledTools}
+          highlightedTool={highlightedTool}
+          highlightOpenButton={highlightToolboxButton}
           behaviorHandler={stateMediator}
           openState={{value: toolboxOpen, set: setToolboxOpen}}
           toggleSideEffect={() => {toolboxToggleSideEffect()}}

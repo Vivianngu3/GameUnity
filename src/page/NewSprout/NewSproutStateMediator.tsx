@@ -242,6 +242,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       </>)
       this.state?.setToolboxOpen(false)
       this.setPlotCompleted('protected-tomato')
+      this.addCheckedItem('learned')
     } else {
       this.state?.timmyContents.set(<>Keep learning tools by clicking on them!</>)
     }

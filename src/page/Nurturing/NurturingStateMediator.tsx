@@ -8,6 +8,7 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
     this.state?.timmyContents.set(null)
     this.state?.showChecklistExplanation.set(false)
     this.addDisabledTool('Shovel')
+    this.state?.setHighlightedTool(undefined)
     this.state?.showShovelAnimation.set(true)
     setTimeout(() => {
       this.state?.showShovelAnimation.set(false)
