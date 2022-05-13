@@ -18,8 +18,6 @@ import ScissorsAnimation from '../../component/animated/ScissorsAnimation/Scisso
 import {ToolName} from '../../component/container/ToolBox/Tool/Tool'
 import DirectedDialog, {Side} from '../../component/static/DirectedDialog/DirectedDialog'
 import DefinableWord from '../../component/animated/DefinableWord/DefinableWord'
-import ShovelAnimation from '../../component/animated/ShovelAnimation/ShovelAnimation'
-import WaterAnimation from '../../component/animated/WaterAnimation/WaterAnimation'
 
 interface PlotDialog {
   closenessCoordinates?: {x:number, y:number}
