@@ -1,0 +1,1 @@
+export const WHICH_TIMMY = 'whichTimmy'

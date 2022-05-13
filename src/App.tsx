@@ -14,22 +14,9 @@ import Kitchen from './page/Kitchen/Kitchen'
 import TimmySelect from './page/TimmySelect/TimmySelect'
 import PlotChoice from './page/PlotChoice/PlotChoice'
 import Onboarding from './page/Onboarding/Onboarding'
-import {WhichTimmy} from './component/static/Timmy/Timmy'
 import CollectPlant from './page/CollectPlant/CollectPlant'
 
-export interface Timmy {
-  whichTimmy: WhichTimmy
-  setContext: (timmy: Timmy) => void
-}
-const defaultTimmy: Timmy = {whichTimmy: 1, setContext: () => {}}
-export const TimmyContext = React.createContext<Timmy>(defaultTimmy)
-
 export default function App(props: {style: CSSProperties}) {
-  const [timmyContext, setTimmyContext] = React.useState({
-    whichTimmy: defaultTimmy.whichTimmy,
-    setContext: (timmy: Timmy) => {setTimmyContext(timmy)}
-  })
-
   return (
     <div style={props.style} className="App">
         <BrowserRouter>
@@ -37,9 +24,7 @@ export default function App(props: {style: CSSProperties}) {
             <Route path={urls.LANDING} element={<Landing/>} />
             <Route path={urls.ABOUT_US} element={<About/>} />
             <Route path={urls.RECAP} element={<Recap/>} />
-            <Route path={urls.GAME} element={
-              <TimmyContext.Provider value={timmyContext}><Outlet/></TimmyContext.Provider>
-            }>
+            <Route path={urls.GAME} element={<Outlet/>}>
               <Route index element={<GameStart />} />
               <Route path={urls.TIMMY_SELECT} element={<TimmySelect />} />
               <Route path={urls.GAME_WELCOME} element={<Welcome />} />
@@ -53,7 +38,6 @@ export default function App(props: {style: CSSProperties}) {
             </Route>
           </Routes>
         </BrowserRouter>
-
     </div>
   );
 }

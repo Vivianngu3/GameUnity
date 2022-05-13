@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import Dialog from '../../component/static/Dialog/Dialog'
 import timmy1 from '../../res/images/Timmy1.svg'
 import timmy2 from '../../res/images/Timmy2.svg'
@@ -8,20 +8,16 @@ import {GAME, GAME_WELCOME} from '../../res/constants/url-endpoints'
 import {useNavigate} from 'react-router-dom'
 import styles from './TimmySelect.module.css'
 import TimmyChoice from '../../component/static/Timmy/TimmyChoice/TimmyChoice'
-import {TimmyContext} from '../../App'
 import {WhichTimmy} from '../../component/static/Timmy/Timmy'
+import {WHICH_TIMMY} from '../../res/constants/storage-keys'
 
 export default function TimmySelect() {
 
   const navigate = useNavigate()
-  const timmy = useContext(TimmyContext)
 
   let timmyOnClick = ( whichTimmy: WhichTimmy ) => {
     console.log(`Timmy selected: ${whichTimmy}`)
-    timmy.setContext({
-      ...timmy,
-      whichTimmy: whichTimmy,
-    })
+    window.sessionStorage.setItem(WHICH_TIMMY, `${whichTimmy}`)
     navigate('/' + GAME + GAME_WELCOME)
   }
 
