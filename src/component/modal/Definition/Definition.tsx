@@ -3,6 +3,7 @@ import styles from './Definition.module.css'
 import Modal from '../Modal'
 import Caption from '../../text/Caption'
 import speaker from '../../../res/images/speaker-icon.svg'
+import utils from '../../../utils/utils.module.css'
 
 interface Props {
   hide: () => void
@@ -21,7 +22,7 @@ export default function Definition(props: Props) {
       <div className={styles.container}>
 
         <div className={styles.pronunciation}>
-          <img className={styles.speaker} src={speaker} alt={'speaker icon'} onClick={() => window.speechSynthesis.speak(textToSpeech)} />
+          <img className={styles.speaker + ' ' + utils.clickable} src={speaker} alt={'speaker icon'} onClick={() => window.speechSynthesis.speak(textToSpeech)} />
           {props.pronunciation}
         </div>
 
