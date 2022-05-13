@@ -31,9 +31,16 @@ export default function Welcome() {
 
   let initialNextArrowCallbacks = [
       () => {
-        console.log('first callback')
         setShowTimmy(false)
         setShowPlanet(true)
+        setDialog(
+          <Dialog>
+            On this journey you will learn about agriculture.
+          </Dialog>
+        )
+      },
+      () => {
+        setTimmy(<Timmy>Click on the <span className={utils.underline}>underlined</span> word to learn more about it!</Timmy>)
         setDialog(
           <Dialog>
             On this journey you will learn about <></>
@@ -42,16 +49,11 @@ export default function Welcome() {
             >agriculture</DefinableWord>.
           </Dialog>
         )
-      },
-      () => {
-        console.log('second callback')
-        setTimmy(<Timmy>Click on the <span className={utils.underline}>underlined</span> word to learn more about it!</Timmy>)
         setShowTimmy(true)
         setShowArrow(false)
         setShowPlanet(true)
       },
       () => {
-        console.log('third callback')
         setShowTimmy(false)
         setShowPlanet(false)
         setDialog(
@@ -86,7 +88,7 @@ export default function Welcome() {
             setShowArrow(true)
             }
           }
-          pronunciation={'ag • ruh • cull •chur'}
+          pronunciation={'ag • ruh • cull • chur'}
           word={'Agriculture'}
           partOfSpeech={'Noun'}
           definition={'The practice of growing plants and animals'}
