@@ -18,6 +18,8 @@ import ScissorsAnimation from '../../component/animated/ScissorsAnimation/Scisso
 import {ToolName} from '../../component/container/ToolBox/Tool/Tool'
 import DirectedDialog, {Side} from '../../component/static/DirectedDialog/DirectedDialog'
 import DefinableWord from '../../component/animated/DefinableWord/DefinableWord'
+import ShovelAnimation from '../../component/animated/ShovelAnimation/ShovelAnimation'
+import WaterAnimation from '../../component/animated/WaterAnimation/WaterAnimation'
 
 interface PlotDialog {
   closenessCoordinates?: {x:number, y:number}
@@ -130,6 +132,23 @@ export default function NewSprout() {
     setShowPollinateDefinition: setShowPollinateDefinition,
   })
 
+  let currentAnimation: JSX.Element
+  if (showScissorsAnimation) {
+    currentAnimation = <ScissorsAnimation />
+  } else if (showWormsAnimation) {
+    currentAnimation = <WormsAnimation />
+  } else {
+    currentAnimation = <></>
+  }
+
+  let plot = (
+    <Plot
+      progress={plotProgress}
+      removeFence={() => { stateMediator.removeFence() }}
+      animation={currentAnimation}
+    />
+  )
+
   return (
     <>
       <GameBackground rabbitPosition={1} beePosition={1} />
@@ -138,18 +157,10 @@ export default function NewSprout() {
         <DirectedDialog
           side={plotDialog.side}
           closenessCoordinates={plotDialog.closenessCoordinates}
-          anchor={
-            <Plot
-              progress={plotProgress}
-              removeFence={() => { stateMediator.removeFence() }}
-            />
-          }>{ plotDialog.text }</DirectedDialog>
-      ) : (
-        <Plot
-          progress={plotProgress}
-          removeFence={() => { stateMediator.removeFence() }}
-        />
-      )}
+          anchor={plot}
+        >{ plotDialog.text }</DirectedDialog>
+      ) : plot
+      }
 
       <CheckList
         {...checkedItems}
@@ -175,14 +186,6 @@ export default function NewSprout() {
           openState={{value: toolboxOpen, set: setToolboxOpen}}
           toggleSideEffect={() => {toolboxToggleSideEffect()}}
         />
-      }
-
-      {showWormsAnimation &&
-        <WormsAnimation />
-      }
-
-      {showScissorsAnimation &&
-        <ScissorsAnimation />
       }
 
       {showFertilizerTool &&

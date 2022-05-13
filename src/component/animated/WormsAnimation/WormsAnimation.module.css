@@ -1,79 +1,35 @@
 @keyframes wormBag {
   0% {
-    position: absolute;
-    top: 180px;
-    right: 0;
-    bottom: 0;
-    left: 150px;
-    margin: auto;
     transform: rotate(0deg);
-    z-index: 999;
   }
   16% {
-    position: absolute;
-    top: 180px;
-    right: 0;
-    bottom: 0;
-    left: 150px;
-    margin: auto;
     transform: rotate(-45deg);
-    z-index: 999;
   }
   32%  {
-    position: absolute;
-    top: 180px;
-    right: 0;
-    bottom: 0;
-    left: 150px;
-    margin: auto;
     transform: rotate(-80deg);
-    z-index: 999;
   }
   48%  {
-    position: absolute;
-    top: 180px;
-    right: 0;
-    bottom: 0;
-    left: 150px;
-    margin: auto;
     transform: rotate(-120deg);
-    z-index: 999;
   }
   64%  {
-    position: absolute;
-    top: 180px;
-    right: 0;
-    bottom: 0;
-    left: 150px;
-    margin: auto;
     transform: rotate(-45deg);
-    z-index: 999;
   }
   80%  {
-    position: absolute;
-    top: 180px;
-    right: 0;
-    bottom: 0;
-    left: 150px;
-    margin: auto;
     transform: rotate(0deg);
-    z-index: 999;
   }
   100% {
-    position: absolute;
-    top: 180px;
-    right: 0;
-    bottom: 0;
-    left: 150px;
-    margin: auto;
     transform: rotate(0deg);
-    z-index: 999;
   }
 }
 
 .animateWormBag {
+  position: absolute;
+  top: -180px;
+  left: 150px;
   width: 110px;
   height: 110px;
+  margin: auto;
+  z-index: 999;
   animation: wormBag var(--worms-duration) 1;
 }
 

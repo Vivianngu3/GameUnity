@@ -18,10 +18,10 @@
 
 .animateOpenScissors1 {
   position: absolute;
-  top: 80px;
+  top: -370px;
   right: 0;
   bottom: 0;
-  left: 160px;
+  left: 150px;
   margin: auto;
   z-index: var(--timmy-z-index);
   opacity: 0;
@@ -50,7 +50,7 @@
 
 .animateOpenScissors2 {
   position: absolute;
-  top: 260px;
+  top: -190px;
   right: 120px;
   bottom: 0;
   left: 0;
@@ -83,10 +83,10 @@
 
 .animateClosedScissors1 {
   position: absolute;
-  top: 80px;
+  top: -370px;
   right: 0;
   bottom: 0;
-  left: 160px;
+  left: 150px;
   margin: auto;
   z-index: var(--timmy-z-index);
   width: 125px;
@@ -116,7 +116,7 @@
 
 .animateClosedScissors2 {
   position: absolute;
-  top: 260px;
+  top: -190px;
   right: 120px;
   bottom: 0;
   left: 0;
