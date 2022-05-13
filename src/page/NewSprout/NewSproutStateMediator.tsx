@@ -61,11 +61,6 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
           () => {
             this.state?.timmyContents.set(<>Now try learning about the other tools while your plant grows!</>)
           },
-          () => {
-            this.state?.timmyContents.set(<>
-              Remember to click on the <span className={utils.underline}>underlined</span> words to learn the meaning!
-            </>)
-          },
         ], true)
       }, WORMS * 1000)
     } else {

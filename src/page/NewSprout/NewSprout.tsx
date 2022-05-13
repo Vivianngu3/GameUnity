@@ -18,6 +18,7 @@ import ScissorsAnimation from '../../component/animated/ScissorsAnimation/Scisso
 import {ToolName} from '../../component/container/ToolBox/Tool/Tool'
 import DirectedDialog, {Side} from '../../component/static/DirectedDialog/DirectedDialog'
 import DefinableWord from '../../component/animated/DefinableWord/DefinableWord'
+import utils from '../../utils/utils.module.css'
 
 interface PlotDialog {
   closenessCoordinates?: {x:number, y:number}
@@ -82,13 +83,18 @@ export default function NewSprout() {
       setTimmyContents(<>It seems like the bunny looks hungry.</>)
     },
     () => {
-      setTimmyContents(<>We need to protect your plant so the bunny can’t eat it!.</>)
+      setTimmyContents(<>We need to protect your plant so the bunny can’t eat it!</>)
     },
     () => {
       setTimmyContents(<>Look in your tool box and pick the tool that would help protect your plant.</>)
+    },
+    () => {
+      setTimmyContents(<>
+        Remember to click on the <span className={utils.underline}>underlined</span> words to learn the meaning!
+      </>)
       setToolboxDisabled(false)
       setNextArrowCallbacks([])
-    }
+    },
   ]
   const [nextArrowCallbacks, setNextArrowCallbacks] = React.useState(initialNextArrowCallbacks)
 
