@@ -17,7 +17,7 @@ export interface GamePageState {
 
 export interface State<E> {
   value: E
-  set: Dispatch<SetStateAction<E>>
+  set: Dispatch<SetStateAction<E>> | ( (newState: E) => void )
 }
 
 export default abstract class GameStateMediator<S extends GamePageState> {

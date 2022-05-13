@@ -25,3 +25,12 @@
   height: 85px;
   width: 85px;
 }
+
+.highlight {
+  position: absolute;
+  --oversizing: 30%;
+  left: calc(-0.5 * var(--oversizing));
+  top: calc(-0.5 * var(--oversizing));
+  width: calc(100% + var(--oversizing));
+  height: calc(100% + var(--oversizing));
+}

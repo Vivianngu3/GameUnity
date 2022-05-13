@@ -43,3 +43,17 @@
   margin: 0 auto;
   background: #F3E9DC80;
 }
+
+.buttonHighlightWrapper {
+  position: absolute;
+  --width: 112px;
+  height: var(--width);
+  width: var(--width);
+  bottom: calc((100% - var(--width)) / 2);
+  right: calc((100% - var(--width)) / 2);
+}
+
+.buttonHighlight {
+  width: 100%;
+  height: 100%;
+}
