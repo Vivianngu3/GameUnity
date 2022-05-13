@@ -47,7 +47,7 @@ export interface NewSproutState extends GamePageState {
 }
 
 export default function NewSprout() {
-  const [timmyContents, setTimmyContents] = React.useState<JSX.Element | null>(<>Oh look! Some new friends have joined us.</>)
+  const [timmyContents, setTimmyContents] = React.useState<JSX.Element | null>(<>Oh, look! Some new friends have joined us.</>)
   const [plotDialog, setPlotDialog] = React.useState<PlotDialog>({text: ''})
   const [toolboxOpen, setToolboxOpen] = React.useState(false)
   const [toolboxDisabled, setToolboxDisabled] = React.useState(true)
