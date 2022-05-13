@@ -28,7 +28,6 @@ export default abstract class GameStateMediator<S extends GamePageState> {
 
   // We need to stop updates when the game page is unmounted to avoid updating the state of an unmounted component
   stopUpdates() {
-    console.log("Updates stopped")
     this.state = null
   }
 

@@ -42,11 +42,9 @@ export default function Nurturing() {
 
   let initialNextArrowCallbacks = [
     () => {
-      console.log('first callback')
       setTimmyContents(<>Let's take a break and watch your seed grow!</>)
     },
     () => {
-      console.log('navigation callback')
       navigate('/' + GAME + TIME_LAPSE)
     }
   ]

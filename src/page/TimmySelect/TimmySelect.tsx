@@ -16,7 +16,6 @@ export default function TimmySelect() {
   const navigate = useNavigate()
 
   let timmyOnClick = ( whichTimmy: WhichTimmy ) => {
-    console.log(`Timmy selected: ${whichTimmy}`)
     window.sessionStorage.setItem(WHICH_TIMMY, `${whichTimmy}`)
     navigate('/' + GAME + GAME_WELCOME)
   }

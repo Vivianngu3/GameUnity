@@ -51,7 +51,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       this.state?.showWormsAnimation.set(true)
       setTimeout(() => {
         this.state?.showWormsAnimation.set(false)
-        // TODO: Use checked items to track improved soil instead of dedicated state
+        // Suggestion: Use checked items to track improved soil instead of dedicated state
         this.state?.soilImproved.set(true)
         this.addCheckedItem('improved')
         this.addDisabledTool('Worms')
@@ -124,13 +124,9 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       this.addDisabledTool('Fence')
       this.addCheckedItem('protected')
 
-      console.log("before set timmy contents")
       this.state?.timmyContents.set(<>Awesome! Open up your tool box to improve the area your plant is growing in.</>)
-      console.log("after set timmy contents")
       setTimeout(() => {
-        console.log("before inside callback")
         this.state?.setToolboxOpen(false)
-        console.log("after inside callback")
       }, 1000)
     }
   }
@@ -215,23 +211,13 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   }
 
   private moveOnIfAllToolsLearned() {
-    // TODO: get UnorderedProgress values dynamically
-    // let unorderedTools: UnorderedProgress[] = Object.keys(UnorderedProgress).map((i) => UnorderedProgress[i])
-
-    // let unorderedTools = Object.values(UnorderedProgress)
-    // // enums get converted to the format ['key1', 'key2', 'value1', 'value2'], so we want only the half with the values in it
-    // unorderedTools = unorderedTools.slice(unorderedTools.length / 2)
-
     let unorderedTools: UnorderedProgress[] = [
       UnorderedProgress.PESTICIDE_LEARNED,
       UnorderedProgress.SCISSORS_LEARNED,
       UnorderedProgress.FERTILIZER_LEARNED,
     ]
-    console.log("UnorderedToolsLearned:")
-    console.log(this.state?.unorderedToolsLearned.value)
     if (this.state?.unorderedToolsLearned.value.hasAll(unorderedTools)) {
       this.state?.setToolboxDisabled(true)
-      // TODO: Change to directed dialog
       this.state?.timmyContents.set(<>
         Your plant has finished growing!<br/>
         It's time to take off the fence. Click it!
