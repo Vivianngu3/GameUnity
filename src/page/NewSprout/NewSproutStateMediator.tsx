@@ -39,6 +39,8 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     ]
     if (this.state?.soilImproved.value) {
       callbacks.push(() => this.moveOnIfAllToolsLearned())
+    } else {
+      callbacks.push(() => this.state?.timmyContents.set(<>You should find a different tool to improve the soil.</>))
     }
     this.setNextArrowCallbacks(callbacks, true)
   }

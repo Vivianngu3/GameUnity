@@ -40,7 +40,7 @@ export default function Definition(props: Props) {
 
         <div className={styles.exitContainer}>
           <div className={styles.exit}>
-            <button className={styles.exitButton} onClick={props.hide}>GOT IT!</button>
+            <button className={styles.exitButton + ' ' + utils.clickable} onClick={props.hide}>GOT IT!</button>
           </div>
         </div>
 
