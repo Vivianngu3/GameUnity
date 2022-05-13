@@ -4,27 +4,7 @@ import GameStateMediator from '../../utils/GameStateMediator'
 import {SHOVEL as SHOVEL_SECONDS, WATER as WATER_SECONDS} from '../../theme/animation-durations'
 
 export default class NurturingStateMediator extends GameStateMediator<NurturingState> implements ToolBehaviorHandler {
-  cut() {
-    this.notifyUserOnce(<>Not ready to use that yet</>)
-  }
-
   dig() {
-    if (this.state) {
-      console.log('state')
-      if (this.state.timmyContents) {
-        console.log('contents')
-        if (this.state.timmyContents.set !== null) {
-          console.log('set')
-        } else {
-          console.log('null set')
-        }
-      } else {
-        console.log('null contents')
-      }
-    } else {
-      console.log('null state')
-    }
-
     this.state?.timmyContents.set(null)
     this.state?.showChecklistExplanation.set(false)
     this.addDisabledTool('Shovel')
@@ -81,19 +61,9 @@ export default class NurturingStateMediator extends GameStateMediator<NurturingS
     }
   }
 
-  postFence() {
-    this.notifyUserOnce(<>Not ready to use that yet</>)
-  }
-
-  improveSoil() {
-    this.notifyUserOnce(<>Not ready to use that yet</>)
-  }
-
-  fertilizer() {
-    this.notifyUserOnce(<>Not ready to use that yet</>)
-  }
-
-  pesticide() {
-    this.notifyUserOnce(<>Not ready to use that yet</>)
-  }
+  postFence() { this.toolTooEarly() }
+  improveSoil() { this.toolTooEarly() }
+  fertilizer() { this.toolTooEarly() }
+  pesticide() { this.toolTooEarly() }
+  cut() { this.toolTooEarly() }
 }

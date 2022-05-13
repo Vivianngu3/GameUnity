@@ -13,66 +13,77 @@ export enum UnorderedProgress {
 }
 
 export default class NewSproutStateMediator extends GameStateMediator<NewSproutState> implements ToolBehaviorHandler {
-  soilImproved = false
 
   fertilizer(): void {
-    // TODO: Handle if not in tools learning phase
     if (this.isCompleted('protected')) {
-      this.addLearnedTool(UnorderedProgress.FERTILIZER_LEARNED)
-      this.addDisabledTool('Fertilizer')
-
-      this.state?.timmyContents.set(<>Fertilizer is used to make plants grow bigger...</>)
-      this.state?.setToolboxOpen(false)
-      this.setNextArrowCallbacks([
-        () => {
-          this.state?.timmyContents.set(<>But fertilizers are not always a good way to help your plant grow.</>)
-        },
-        () => {
-          this.state?.timmyContents.set(<>Some of the bad chemicals in fertilizer can sink underground and get into the water you drink!</>)
-        },
-        () => {
-          this.state?.timmyContents.set(<>We don’t want to drink fertilizer!</>)
-        },
-        () => {
-          this.moveOnIfAllToolsLearned()
-        },
-      ], true)
+      this.learnFertilizer()
     } else {
-      this.notifyUserOnce(<>We aren't ready for that yet!</>)
+      this.toolTooEarly()
     }
   }
 
-  improveSoil(): void {
-    if (!this.soilImproved) {
-      if (this.isCompleted('protected')) {
-        this.state?.setToolboxDisabled(true)
-        this.state?.showWormsAnimation.set(true)
-        setTimeout(() => {
-          this.state?.showWormsAnimation.set(false)
-          this.soilImproved = true
-          this.addCheckedItem('improved')
-          this.addDisabledTool('Worms')
+  private learnFertilizer() {
+    this.addLearnedTool(UnorderedProgress.FERTILIZER_LEARNED)
+    this.addDisabledTool('Fertilizer')
 
-          this.state?.timmyContents.set(<>Woohoo!</>)
-          this.state?.setToolboxOpen(false)
-          this.setNextArrowCallbacks([
-            () => {
-              this.state?.timmyContents.set(<>Now try learning about the other tools while your plant grows!</>)
-            },
-            () => {
-              this.state?.timmyContents.set(<>
-                Remember to click on the <span className={utils.underline}>underlined</span> words to learn the meaning!
-              </>)
-            },
-          ], true)
-        }, WORMS * 1000)
-      } else {
-        this.notifyUserOnce(<>We aren't ready for that yet!</>)
-      }
+    this.state?.timmyContents.set(<>Fertilizer is used to make plants grow bigger...</>)
+    this.state?.setToolboxOpen(false)
+    let callbacks = [
+      () => {
+        this.state?.timmyContents.set(<>But fertilizers are not always a good way to help your plant grow.</>)
+      },
+      () => {
+        this.state?.timmyContents.set(<>Some of the bad chemicals in fertilizer can sink underground and get into the
+          water you drink!</>)
+      },
+      () => {
+        this.state?.timmyContents.set(<>We don’t want to drink fertilizer!</>)
+      },
+    ]
+    if (this.state?.soilImproved.value) {
+      callbacks.push(() => this.moveOnIfAllToolsLearned())
+    }
+    this.setNextArrowCallbacks(callbacks, true)
+  }
+
+  improveSoil(): void {
+    if (this.isCompleted('protected')) {
+      this.state?.setToolboxDisabled(true)
+      this.state?.showWormsAnimation.set(true)
+      setTimeout(() => {
+        this.state?.showWormsAnimation.set(false)
+        // TODO: Use checked items to track improved soil instead of dedicated state
+        this.state?.soilImproved.set(true)
+        this.addCheckedItem('improved')
+        this.addDisabledTool('Worms')
+
+        this.state?.timmyContents.set(<>Woohoo!</>)
+        this.state?.setToolboxOpen(false)
+        this.setNextArrowCallbacks([
+          () => {
+            this.state?.timmyContents.set(<>Now try learning about the other tools while your plant grows!</>)
+          },
+          () => {
+            this.state?.timmyContents.set(<>
+              Remember to click on the <span className={utils.underline}>underlined</span> words to learn the meaning!
+            </>)
+          },
+        ], true)
+      }, WORMS * 1000)
+    } else {
+      this.toolTooEarly()
     }
   }
 
   pesticide(): void {
+    if (this.state?.soilImproved.value) {
+      this.learnPesticide()
+    } else {
+      this.toolTooEarly()
+    }
+  }
+
+  private learnPesticide() {
     this.addLearnedTool(UnorderedProgress.PESTICIDE_LEARNED)
     this.state?.timmyContents.set(<>Pesticides are used to keep bugs from harming your plant</>)
     this.state?.setToolboxOpen(false)
@@ -84,22 +95,22 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       () => {
         this.state?.timmyContents.set(<>
           They can also harm people, plants, animals, and the <DefinableWord
-            onClick={() => this.state?.setShowEnvironmentDefinition(true)}
-          >environment</DefinableWord>.
+          onClick={() => this.state?.setShowEnvironmentDefinition(true)}
+        >environment</DefinableWord>.
         </>)
       },
       () => {
         this.state?.timmyContents.set(<>
           That’s because pesticides are made up of bad <DefinableWord
-            onClick={() => this.state?.setShowChemicalDefinition(true)}
-          >chemicals</DefinableWord>.
+          onClick={() => this.state?.setShowChemicalDefinition(true)}
+        >chemicals</DefinableWord>.
         </>)
       },
       () => {
         this.state?.timmyContents.set(<>
           If these chemicals hurt the bees that <DefinableWord
-            onClick={() => this.state?.setShowPollinateDefinition(true)}
-          >pollinate</DefinableWord>
+          onClick={() => this.state?.setShowPollinateDefinition(true)}
+        >pollinate</DefinableWord>
           the plants, then your seed won't grow!
         </>)
       },
@@ -152,12 +163,14 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
   }
 
   cut(): void {
-    if (!this.soilImproved) {
+    if (this.state?.soilImproved.value) {
       if (this.isCompleted('tomato')) {
         this.proceedWithCut()
       } else {
         this.learnScissors()
       }
+    } else {
+      this.toolTooEarly()
     }
   }
 
@@ -191,9 +204,9 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
     ], true)
   }
 
-  dig(): void {this.disabledTool()}
-  sowSeeds(): void {this.disabledTool()}
-  water(): void {this.disabledTool()}
+  dig(): void { }
+  sowSeeds(): void { }
+  water(): void { }
 
   private setNextArrowCallbacks(callbacks: (() => void)[], disableToolbox?: boolean) {
     let end = callbacks.length - 1
@@ -229,7 +242,7 @@ export default class NewSproutStateMediator extends GameStateMediator<NewSproutS
       UnorderedProgress.PESTICIDE_LEARNED,
       UnorderedProgress.SCISSORS_LEARNED,
       UnorderedProgress.FERTILIZER_LEARNED,
-  ]
+    ]
     console.log("UnorderedToolsLearned:")
     console.log(this.state?.unorderedToolsLearned.value)
     if (this.state?.unorderedToolsLearned.value.hasAll(unorderedTools)) {

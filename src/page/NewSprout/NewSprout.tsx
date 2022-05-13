@@ -26,6 +26,8 @@ interface PlotDialog {
 }
 
 export interface NewSproutState extends GamePageState {
+  soilImproved: State<boolean>
+  
   setPlotDialog: Dispatch<SetStateAction<any>>
   nextArrowCallbacks: State<(() => void)[]>
   unorderedToolsLearned: State<MyArray<UnorderedProgress>>
@@ -58,7 +60,7 @@ export default function NewSprout() {
   const [showChemicalDefinition, setShowChemicalDefinition] = React.useState(false)
   const [showPollinateDefinition, setShowPollinateDefinition] = React.useState(false)
 
-
+  const [soilImproved, setSoilImproved] = React.useState(false)
 
   const [toolboxToggleSideEffect, setToolboxToggleSideEffect] =
     React.useState<() => void>(() => () => {})
@@ -94,6 +96,7 @@ export default function NewSprout() {
 
   const stateMediator = new NewSproutStateMediator({
     plotProgress: {'value': plotProgress, 'set': setPlotProgress},
+    soilImproved: {'value': soilImproved, 'set': setSoilImproved},
     checkedItems: {'value': checkedItems, 'set': setCheckedItems},
     disabledTools: {'value': disabledTools, 'set': setDisabledTools},
     timmyContents: {'value': timmyContents, 'set': setTimmyContents},

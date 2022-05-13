@@ -3,8 +3,6 @@ import {Progress as PlotProgress} from '../component/container/Plot/Plot'
 import {Props as ChecklistProps} from '../component/container/CheckList/CheckList'
 import {ToolName} from '../component/container/ToolBox/Tool/Tool'
 
-// export type GameProgress = PlotProgress | 'improved'// | UnorderedProgress
-
 export interface GamePageState {
   plotProgress: State<PlotProgress>
   checkedItems: State<ChecklistProps>
@@ -34,8 +32,8 @@ export default abstract class GameStateMediator<S extends GamePageState> {
     this.state = null
   }
 
-  protected disabledTool() {
-    this.notifyUserOnce(<>We're all done with that tool!</>)
+  protected toolTooEarly() {
+    this.notifyUserOnce(<>We're not ready for that tool! Try a different one.</>)
   }
 
   protected notifyUserOnce(contents: JSX.Element) {
